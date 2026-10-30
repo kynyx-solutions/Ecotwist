@@ -7,7 +7,11 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 const BASE_URL = 'https://ecotwist.in';
-const SITEMAP_PATH = path.join(rootDir, 'public', 'sitemap.xml');
+// sitemap.xml is an index pointing at the page list (built here) and the blog
+// list (served live by api/sitemap-blog.js, so new articles appear at once)
+const INDEX_PATH = path.join(rootDir, 'public', 'sitemap.xml');
+const PAGES_PATH = path.join(rootDir, 'public', 'sitemap-pages.xml');
+const SEO_PATH = path.join(rootDir, 'src', 'content', 'seo.json');
 const APP_PATH = path.join(rootDir, 'src', 'App.tsx');
 const PUBLIC_DIR = path.join(rootDir, 'public');
 
@@ -117,8 +121,13 @@ export function generateSitemapXml() {
   const routes = extractRoutesFromApp();
   const catalogues = extractCataloguesFromPublic();
 
+  // Leave out pages marked noindex in the SEO settings, and pages whose
+  // canonical address is another page (e.g. /product → /products)
+  const seoPages = fs.existsSync(SEO_PATH) ? JSON.parse(fs.readFileSync(SEO_PATH, 'utf-8')).pages ?? [] : [];
+  const hidden = new Set(seoPages.filter((p) => p.noindex || (p.canonical && p.canonical !== p.route)).map((p) => p.route));
+
   // Combine unique URLs
-  const allUrls = Array.from(new Set([...routes, ...catalogues]));
+  const allUrls = Array.from(new Set([...routes, ...catalogues])).filter((u) => !hidden.has(u));
 
   // Sort URLs logically (home first, then priority)
   allUrls.sort((a, b) => {
@@ -146,14 +155,29 @@ ${urlEntries.join('\n')}
 `;
 }
 
-/**
- * Write sitemap to public/sitemap.xml
- */
-export function writeSitemap() {
-  const xml = generateSitemapXml();
-  fs.writeFileSync(SITEMAP_PATH, xml, 'utf-8');
-  console.log(`[sitemap] Successfully generated dynamic sitemap at ${SITEMAP_PATH}`);
+export function generateSitemapIndex() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${BASE_URL}/sitemap-pages.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>${BASE_URL}/sitemap-blog.xml</loc>
+  </sitemap>
+</sitemapindex>
+`;
 }
 
-// Execute directly if run via CLI
-writeSitemap();
+/**
+ * Write public/sitemap.xml (index) and public/sitemap-pages.xml
+ */
+export function writeSitemap() {
+  fs.writeFileSync(PAGES_PATH, generateSitemapXml(), 'utf-8');
+  fs.writeFileSync(INDEX_PATH, generateSitemapIndex(), 'utf-8');
+  console.log(`[sitemap] Wrote ${INDEX_PATH} and ${PAGES_PATH}`);
+}
+
+// Run when called directly (npm run generate:sitemap), not when imported by vite.config.ts
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  writeSitemap();
+}

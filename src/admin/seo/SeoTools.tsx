@@ -26,18 +26,43 @@ function useText(path: string) {
   return { text, error };
 }
 
+const parseXml = (text: string) => new DOMParser().parseFromString(text, 'application/xml');
+
+// Reads /sitemap.xml; when it's an index, also reads each sitemap it lists
+// (pages and blog) and returns all their addresses together
+function useSitemapUrls() {
+  const [urls, setUrls] = useState<SitemapUrl[] | null>(null);
+  const [error, setError] = useState('');
+  useEffect(() => {
+    const get = (path: string) =>
+      fetch(path, { cache: 'no-store' }).then((r) => (r.ok ? r.text() : Promise.reject(new Error(`${path} returned ${r.status}`))));
+    const entries = (doc: Document) =>
+      Array.from(doc.getElementsByTagName('url')).map((u) => ({
+        loc: u.getElementsByTagName('loc')[0]?.textContent ?? '',
+        lastmod: u.getElementsByTagName('lastmod')[0]?.textContent ?? '',
+      }));
+    get('/sitemap.xml')
+      .then(async (text) => {
+        const doc = parseXml(text);
+        const children = Array.from(doc.getElementsByTagName('sitemap')).map((n) => n.getElementsByTagName('loc')[0]?.textContent ?? '');
+        if (!children.length) return entries(doc);
+        // Fetch from this site (works on localhost too), not the live address in the index
+        const lists = await Promise.all(children.map((loc) => get(new URL(loc).pathname).then((t) => entries(parseXml(t)))));
+        return lists.flat();
+      })
+      .then(setUrls)
+      .catch((e: Error) => setError(e.message));
+  }, []);
+  return { urls, error };
+}
+
 export function SeoTools() {
   const [route, setRoute] = useState('/');
-  const sitemap = useText('/sitemap.xml');
+  const sitemap = useSitemapUrls();
   const robots = useText('/robots.txt');
   const pageUrl = `${BASE}${route}`;
 
-  const urls: SitemapUrl[] = sitemap.text
-    ? Array.from(new DOMParser().parseFromString(sitemap.text, 'application/xml').getElementsByTagName('url')).map((u) => ({
-        loc: u.getElementsByTagName('loc')[0]?.textContent ?? '',
-        lastmod: u.getElementsByTagName('lastmod')[0]?.textContent ?? '',
-      }))
-    : [];
+  const urls = sitemap.urls ?? [];
 
   return (
     <>
@@ -92,7 +117,7 @@ export function SeoTools() {
         <Card>
           <CardTitle>Submit the sitemap</CardTitle>
           <div className="space-y-3 p-5 text-sm">
-            <p className="text-gray-600">The sitemap lists every page so search engines find new ones quickly. It's rebuilt automatically on every deploy.</p>
+            <p className="text-gray-600">The sitemap lists every page and blog article so search engines find new ones quickly. Pages are rebuilt on every deploy; articles are added within an hour of publishing.</p>
             <ol className="list-decimal space-y-2 pl-5">
               <li>In Search Console, open <strong>Indexing → Sitemaps</strong>.</li>
               <li>Enter <code className="rounded bg-admin-muted px-1">sitemap.xml</code> and click <strong>Submit</strong>.</li>
@@ -106,7 +131,7 @@ export function SeoTools() {
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
         <Card className="overflow-hidden">
           <CardTitle action={<span className="text-gray-500">{urls.length} pages</span>}>sitemap.xml</CardTitle>
-          {sitemap.error ? <p className="p-5 text-sm text-red-700">{sitemap.error}</p> : !sitemap.text ? <Spinner /> : (
+          {sitemap.error ? <p className="p-5 text-sm text-red-700">{sitemap.error}</p> : !sitemap.urls ? <Spinner /> : (
             <div className="max-h-[480px] overflow-auto">
               <table className="w-full text-sm">
                 <thead className="sticky top-0 bg-white text-left text-xs uppercase tracking-[0.1em] text-gray-600">
