@@ -8,8 +8,8 @@
   ],
   "rewrites": [
     {
-      "source": "/sitemap-blog.xml",
-      "destination": "/api/sitemap-blog"
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
     },
     {
       "source": "/admin",

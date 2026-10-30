@@ -28,29 +28,19 @@ function useText(path: string) {
 
 const parseXml = (text: string) => new DOMParser().parseFromString(text, 'application/xml');
 
-// Reads /sitemap.xml; when it's an index, also reads each sitemap it lists
-// (pages and blog) and returns all their addresses together
+// Every address listed in /sitemap.xml (pages and blog articles)
 function useSitemapUrls() {
   const [urls, setUrls] = useState<SitemapUrl[] | null>(null);
   const [error, setError] = useState('');
   useEffect(() => {
-    const get = (path: string) =>
-      fetch(path, { cache: 'no-store' }).then((r) => (r.ok ? r.text() : Promise.reject(new Error(`${path} returned ${r.status}`))));
-    const entries = (doc: Document) =>
-      Array.from(doc.getElementsByTagName('url')).map((u) => ({
-        loc: u.getElementsByTagName('loc')[0]?.textContent ?? '',
-        lastmod: u.getElementsByTagName('lastmod')[0]?.textContent ?? '',
-      }));
-    get('/sitemap.xml')
-      .then(async (text) => {
-        const doc = parseXml(text);
-        const children = Array.from(doc.getElementsByTagName('sitemap')).map((n) => n.getElementsByTagName('loc')[0]?.textContent ?? '');
-        if (!children.length) return entries(doc);
-        // Fetch from this site (works on localhost too), not the live address in the index
-        const lists = await Promise.all(children.map((loc) => get(new URL(loc).pathname).then((t) => entries(parseXml(t)))));
-        return lists.flat();
-      })
-      .then(setUrls)
+    fetch('/sitemap.xml', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.text() : Promise.reject(new Error(`/sitemap.xml returned ${r.status}`))))
+      .then((text) =>
+        setUrls(Array.from(parseXml(text).getElementsByTagName('url')).map((u) => ({
+          loc: u.getElementsByTagName('loc')[0]?.textContent ?? '',
+          lastmod: u.getElementsByTagName('lastmod')[0]?.textContent ?? '',
+        }))),
+      )
       .catch((e: Error) => setError(e.message));
   }, []);
   return { urls, error };
@@ -117,7 +107,7 @@ export function SeoTools() {
         <Card>
           <CardTitle>Submit the sitemap</CardTitle>
           <div className="space-y-3 p-5 text-sm">
-            <p className="text-gray-600">The sitemap lists every page and blog article so search engines find new ones quickly. Pages are rebuilt on every deploy; articles are added within an hour of publishing.</p>
+            <p className="text-gray-600">The sitemap lists every page and blog article so search engines find new ones quickly. Pages come from the SEO settings, and new articles are added within an hour of publishing.</p>
             <ol className="list-decimal space-y-2 pl-5">
               <li>In Search Console, open <strong>Indexing → Sitemaps</strong>.</li>
               <li>Enter <code className="rounded bg-admin-muted px-1">sitemap.xml</code> and click <strong>Submit</strong>.</li>
