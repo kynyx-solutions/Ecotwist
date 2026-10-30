@@ -1,0 +1,41 @@
+/* Admin rich-text editor (TipTap). Article typography itself comes from src/styles/article.css */
+
+.tiptap-body {
+  min-height: 480px;
+  padding: 1.5rem 1.75rem 2rem;
+  outline: none;
+}
+@media (max-width: 640px) {
+  .tiptap-body { padding: 1rem; }
+}
+
+.tiptap-body p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: #a3a29a;
+  pointer-events: none;
+}
+
+.tiptap-body img { cursor: pointer; }
+.tiptap-body img.ProseMirror-selectednode { outline: 3px solid #c5a059; outline-offset: 2px; }
+.tiptap-body hr.ProseMirror-selectednode { background: #c5a059; }
+
+.tiptap-body a { cursor: text; }
+
+.tiptap-body table { display: table; table-layout: fixed; overflow: hidden; }
+.tiptap-body td,
+.tiptap-body th { border: 1px solid #e6e2d8; position: relative; vertical-align: top; }
+.tiptap-body td > p,
+.tiptap-body th > p { margin: 0; }
+.tiptap-body th { background: #f5f3ee; }
+.tiptap-body .selectedCell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(197, 160, 89, 0.18);
+  pointer-events: none;
+}
+
+.tiptap-body mark { border-radius: 2px; padding: 0 0.1em; }
+.tiptap-body .ProseMirror-gapcursor::after { border-top-color: #4a5d23; }

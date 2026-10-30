@@ -1,0 +1,77 @@
+{
+  "_meta": { "label": "Home (regular)", "route": "/" },
+  "hero": {
+    "titleLine1": "Tailored Gifting,",
+    "titleLine2": "Designed for You.",
+    "button": "Explore Occasions",
+    "scrollLabel": "Scroll"
+  },
+  "occasions": {
+    "title": "Gifting for Every Occasion",
+    "viewLabel": "View",
+    "exploreLabel": "Explore",
+    "cards": [
+      { "title": "Client Partnerships", "image": "/site/home/client-partnerships.avif", "accent": "#b5a26a", "tag": "B2B", "path": "/occasions/client-appreciation" },
+      { "title": "Employee Onboarding", "image": "/site/home/employee-onboarding.png", "accent": "#5a8a6e", "tag": "HR", "path": "/occasions/employee-onboarding" },
+      { "title": "Festive Gifting", "image": "/site/home/festive-gifting.jpg", "accent": "#c4735d", "tag": "Seasonal", "path": "/occasions/festive-gifting" },
+      { "title": "Events & Conferences", "image": "/site/home/events-conferences.png", "accent": "#6b7fa3", "tag": "Events", "path": "/occasions/events-conferences" },
+      { "title": "Employee Wellness", "image": "/site/home/employee-wellness.avif", "accent": "#8a7db5", "tag": "Wellness", "path": "/occasions/employee-wellness" },
+      { "title": "Birthday Gifting", "image": "/site/home/birthday-gifting.webp", "accent": "#d4856a", "tag": "Personal", "path": "/occasions/birthday-gifting" },
+      { "title": "Work Anniversary", "image": "/site/home/work-anniversary.avif", "accent": "#7a9e7e", "tag": "Milestone", "path": "/occasions/work-anniversary" },
+      { "title": "Product Launch", "image": "/site/home/product-launch.avif", "accent": "#5b8fa8", "tag": "Brand", "path": "/occasions/product-launch" },
+      { "title": "Award & Recognition", "image": "/site/home/award-recognition.webp", "accent": "#c4a23a", "tag": "Culture", "path": "/occasions/award-recognition" },
+      { "title": "Retirement Gifting", "image": "/site/home/retirement-gifting.jpg", "accent": "#9c7bb5", "tag": "Farewell", "path": "/occasions/retirement-gifting" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Our Process",
+    "title": "Seamless",
+    "titleHighlight": "Corporate",
+    "titleEnd": "Gifting",
+    "steps": [
+      { "step": "01", "title": "Tell us your requirement", "text": "Share your budget, timeline, and company vision with our experts. We listen before we create.", "tag": "Discovery", "icon": "Discovery", "detail": "15-min call" },
+      { "step": "02", "title": "We design your experience", "text": "Our designers curate custom bundles tailored to your brand identity, values, and recipients.", "tag": "Design", "icon": "Design", "detail": "3–5 days" },
+      { "step": "03", "title": "We deliver at scale", "text": "Eco-friendly logistics ensure your gifts arrive perfectly, sustainably, and on time — every time.", "tag": "Delivery", "icon": "Delivery", "detail": "Pan-India" },
+      { "step": "04", "title": "Ongoing support & feedback", "text": "We stay connected post-delivery to ensure satisfaction, gather feedback, and continuously improve your gifting experience.", "tag": "Support", "icon": "Support", "detail": "Always on" }
+    ],
+    "note": "Ready to start? Our team typically responds within 2 business hours.",
+    "button": "Start the Conversation"
+  },
+  "curated": {
+    "title": "Curated Experiences",
+    "intro": "Our signature collections designed for high-impact professional gifting.",
+    "viewAllLabel": "View All Bundles",
+    "buttonLabel": "Explore",
+    "bundles": [
+      { "title": "Executive Gift Box", "tier": "Premium Tier", "price": "₹4500", "text": "Hand-pressed recycled paper journals, organic tea blends, and artisanal ceramics.", "image": "/site/home/executive-gift-box.jpg" },
+      { "title": "Onboarding Kits", "tier": "Essentials Tier", "price": "₹2500", "text": "Everything a new hire needs: Bamboo water bottles, cork coasters, and upcycled bags.", "image": "/site/home/onboarding-kits.jpeg" }
+    ]
+  },
+  "impact": {
+    "image": "/site/home/artisan-weaving.avif",
+    "imageAlt": "Artisan weaving",
+    "quote": "Through Ecotwist, our community's weaving tradition has found a global stage.",
+    "quoteAuthor": "Saanvi, Mithila artist",
+    "eyebrow": "Our Global Footprint",
+    "title": "Beyond Gifting: A Cycle of Positive Impact",
+    "text": "Every gift box you order directly supports circular economy initiatives and provides fair wages to master artisans across five continents.",
+    "stats": [
+      { "value": "1,000+", "label": "Lives Impacted" },
+      { "value": "12", "label": "SDGs Addressed" }
+    ]
+  },
+  "impactStats": {
+    "stats": [
+      { "label": "CO₂ Reduced (KG)", "value": "1000+" },
+      { "label": "Sustainable Materials", "value": "100%" },
+      { "label": "Artisan Families", "value": "100+" }
+    ]
+  },
+  "cta": {
+    "titleLine1": "Ready to make an",
+    "titleHighlight": "Impression?",
+    "text": "Join over 50+ forward-thinking companies choosing sustainable corporate gifting.",
+    "primaryButton": "Partner with Us",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "_meta": { "label": "Events & Conferences", "route": "/occasions/events-conferences" },
+  "hero": {
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Events &",
+    "titleLine2": "Conferences",
+    "titleItalic": "Gifting Solutions.",
+    "intro": "Make every moment memorable with curated corporate gifts that embody sophistication and environmental consciousness.",
+    "primaryButton": "Explore Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll",
+    "image": "/site/events-conferences/hero.png",
+    "imageAlt": "Hero"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "Elevating Engagement",
+    "titleLine2": "Through Thoughtful Curation",
+    "text": "At Ecotwist, we believe that an event's impact extends far beyond the final session. Our gifting solutions bridge the gap between corporate professionalism and genuine human connection — selecting materials that respect the earth and designs that inspire the mind.",
+    "image": "/site/events-conferences/philosophy.png",
+    "imageAlt": "About"
+  },
+  "collections": {
+    "title": "Explore Our Collections",
+    "intro": "Tailored solutions for every touchpoint of your corporate event journey.",
+    "buttonText": "View Collection",
+    "cards": [
+      { "key": "vip", "label": "VIP Hampers", "desc": "Exquisite luxury for your most esteemed keynote speakers and executive guests.", "image": "/site/events-conferences/vip-hamper.png" },
+      { "key": "swag", "label": "Sustainable Swag", "desc": "", "image": "/site/events-conferences/sustainable-swag.png" },
+      { "key": "speaker", "label": "Speaker Gifts", "desc": "", "image": "/site/events-conferences/speaker-gifts.png" },
+      { "key": "team", "label": "Team Kits", "desc": "", "image": "/site/events-conferences/team-kit.png" }
+    ]
+  },
+  "products": {
+    "eyebrow": "Curated Essentials",
+    "title": "Signature Pieces",
+    "viewAll": "View All",
+    "buttonText": "Quick Inquiry",
+    "items": [
+      { "name": "Boreal Glass Carafe", "subtitle": "Borosilicate & Bamboo", "image": "/site/events-conferences/glass-carafe.png" },
+      { "name": "Zenith Bamboo Journal", "subtitle": "Sustainable FSC Paper", "image": "/site/events-conferences/bamboo-journal.png" },
+      { "name": "Terra Ceramic Tumbler", "subtitle": "Artisan Crafted", "image": "/site/events-conferences/ceramic-tumbler.png" },
+      { "name": "Heritage Canvas Tote", "subtitle": "GOTS Certified Cotton", "image": "/site/events-conferences/canvas-tote.png" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Bespoke Details",
+    "titleLine1": "Personalized for",
+    "titleHighlight": "Your Brand",
+    "image": "/site/events-conferences/bespoke.png",
+    "imageAlt": "Custom",
+    "items": [
+      { "symbol": "◈", "title": "Logo Branding", "desc": "Laser engraving, embossing, or precision screen printing tailored to your identity." },
+      { "symbol": "📜", "title": "Personal Messages", "desc": "Individually addressed handwritten notes or custom printed inserts for every guest." },
+      { "symbol": "🎁", "title": "Packaging Styles", "desc": "Choose from minimalist recycled kraft or premium rigid boxes with fabric lining." },
+      { "symbol": "🎨", "title": "Theme Curation", "desc": "Aligning gift palettes with your conference colors and design aesthetics." }
+    ]
+  },
+  "why": {
+    "title": "The Ecotwist Difference",
+    "items": [
+      { "symbol": "✦", "title": "Premium Quality", "desc": "Meticulously sourced materials and artisan craftsmanship." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Seamless fulfillment for events of 50 to 500+ attendees." },
+      { "symbol": "◎", "title": "Fast Delivery", "desc": "Pan-India logistics ensuring on-time arrival for your event." },
+      { "symbol": "◐", "title": "Custom Branding", "desc": "End-to-end personalization from product to packaging." },
+      { "symbol": "◑", "title": "Dedicated Support", "desc": "A personal consultant to guide your gifting strategy." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Industry Leaders"
+  },
+  "cta": {
+    "title": "Ready to create the perfect",
+    "titleHighlight": "Events & Conferences",
+    "titleEnd": "gift experience?",
+    "text": "Our team is ready to help you curate a selection that resonates with your brand values and delights your guests.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

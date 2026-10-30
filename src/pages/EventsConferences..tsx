@@ -7,18 +7,13 @@ import {
   useMotionValue,
   useInView,
 } from 'motion/react';
-import eventhero  from '../assests/eventhero.png';
-import philosophy from '../assests/philosophy.png';
-import swag from '../assests/sustanableswag.png';
-import vip from '../assests/viphamper.png';
-import speaker from "../assests/speaker.png";
-import teamkit from "../assests/teamkit.png";
-import carafe from "../assests/glass carafe.png";
-import journal from "../assests/bamboojournal.png";
-import tetra from "../assests/tetra.png";
-import Canvas from "../assests/tote.png";
-import bespoke from "../assests/bespoke.png";
 import type { Variants } from 'motion/react';
+import { clients } from '../lib/clients';
+import { asset } from '../lib/content';
+import content from '../content/pages/events-conferences.json';
+
+// Page words and photos: src/content/pages/events-conferences.json (admin → Pages → Events & Conferences)
+const { hero, about, collections, products, customization, why, trust, cta } = content;
 
 /* BRAND TOKENS */
 const BRAND = {
@@ -936,48 +931,26 @@ const vSlideRight: Variants = {
 /* ═════════════════════════════════════════════════════════
    DATA
 ═════════════════════════════════════════════════════════ */
-const PRODUCTS = [
-  { name: 'Boreal Glass Carafe', sub: 'Borosilicate & Bamboo', img: carafe},
-  { name: 'Zenith Bamboo Journal', sub: 'Sustainable FSC Paper', img: journal },
-  { name: 'Terra Ceramic Tumbler', sub: 'Artisan Crafted', img: tetra },
-  { name: 'Heritage Canvas Tote', sub: 'GOTS Certified Cotton', img: Canvas },
-];
+const PRODUCTS = products.items.map(p => ({ name: p.name, sub: p.subtitle, img: asset(p.image) }));
 
-const BENTO_CARDS = [
-  {
-    key: 'vip', label: 'VIP Hampers',
-    desc: 'Exquisite luxury for your most esteemed keynote speakers and executive guests.',
-    col: 'span 2', row: 'span 2', large: true,
-    img: vip,
-  },
-  {
-    key: 'swag', label: 'Sustainable Swag', col: 'span 2', row: 'span 1', large: false,
-    img: swag,
-  },
-  {
-    key: 'speaker', label: 'Speaker Gifts', col: 'span 1', row: 'span 1', large: false,
-    img: speaker,
-  },
-  {
-    key: 'team', label: 'Team Kits', col: 'span 1', row: 'span 1', large: false,
-    img: teamkit,
-  },
-];
+// Grid placement per card (design, not content); cards added in the admin get the small tile
+const BENTO_LAYOUT: Record<string, { col: string; row: string; large: boolean }> = {
+  vip: { col: 'span 2', row: 'span 2', large: true },
+  swag: { col: 'span 2', row: 'span 1', large: false },
+  speaker: { col: 'span 1', row: 'span 1', large: false },
+  team: { col: 'span 1', row: 'span 1', large: false },
+};
+const BENTO_DEFAULT = { col: 'span 1', row: 'span 1', large: false };
 
-const CUSTOM_ITEMS = [
-  { icon: '◈', title: 'Logo Branding', desc: 'Laser engraving, embossing, or precision screen printing tailored to your identity.' },
-  { icon: '📜', title: 'Personal Messages', desc: 'Individually addressed handwritten notes or custom printed inserts for every guest.' },
-  { icon: '🎁', title: 'Packaging Styles', desc: 'Choose from minimalist recycled kraft or premium rigid boxes with fabric lining.' },
-  { icon: '🎨', title: 'Theme Curation', desc: 'Aligning gift palettes with your conference colors and design aesthetics.' },
-];
+const BENTO_CARDS = collections.cards.map(c => ({
+  key: c.key, label: c.label, desc: c.desc,
+  ...(BENTO_LAYOUT[c.key] ?? BENTO_DEFAULT),
+  img: asset(c.image),
+}));
 
-const WHY = [
-  { icon: '✦', title: 'Premium Quality', desc: 'Meticulously sourced materials and artisan craftsmanship.' },
-  { icon: '◈', title: 'Bulk Ordering', desc: 'Seamless fulfillment for events of 50 to 500+ attendees.' },
-  { icon: '◎', title: 'Fast Delivery', desc: 'Pan-India logistics ensuring on-time arrival for your event.' },
-  { icon: '◐', title: 'Custom Branding', desc: 'End-to-end personalization from product to packaging.' },
-  { icon: '◑', title: 'Dedicated Support', desc: 'A personal consultant to guide your gifting strategy.' },
-];
+const CUSTOM_ITEMS = customization.items.map(i => ({ icon: i.symbol, title: i.title, desc: i.desc }));
+
+const WHY = why.items.map(i => ({ icon: i.symbol, title: i.title, desc: i.desc }));
 
 /* ═════════════════════════════════════════════════════════
    SUB-COMPONENTS
@@ -1015,7 +988,7 @@ function BentoCard({ card, index }: { card: typeof BENTO_CARDS[0]; index: number
             whileHover={{ scale: 1.05 }}
             className="px-6 py-2 bg-white text-gray-800 text-[10px] font-bold uppercase tracking-widest border-none cursor-pointer"
           >
-            View Collection
+            {collections.buttonText}
           </motion.button>
         </motion.div>
       )}
@@ -1024,7 +997,7 @@ function BentoCard({ card, index }: { card: typeof BENTO_CARDS[0]; index: number
           <>
             <h3 className="font-serif text-3xl text-white mb-2">{card.label}</h3>
             <p className="text-white/70 text-sm font-light leading-relaxed mb-5 max-w-sm">{card.desc}</p>
-            <button className="text-white text-[10px] font-bold uppercase tracking-widest border-b border-white pb-0.5 bg-transparent cursor-pointer">View Collection</button>
+            <button className="text-white text-[10px] font-bold uppercase tracking-widest border-b border-white pb-0.5 bg-transparent cursor-pointer">{collections.buttonText}</button>
           </>
         ) : (
           <motion.h3 className="font-serif text-lg text-white" animate={{ opacity: hovered ? 0 : 1 }} transition={{ duration: 0.25 }}>{card.label}</motion.h3>
@@ -1050,7 +1023,7 @@ function ProductCard({ item, index }: { item: typeof PRODUCTS[0]; index: number 
     >
       <div className="relative overflow-hidden mb-4 rounded-lg" style={{ aspectRatio: '3/4', background: '#f1f0ed' }}>
         <motion.img src={item.img} alt={item.name} className="w-full h-full object-cover" animate={{ scale: hovered ? 1.06 : 1 }} transition={{ duration: 0.65, ease: EASE }} style={{ willChange: 'transform' }} />
-        <motion.button animate={{ y: hovered ? 0 : 60, opacity: hovered ? 1 : 0 }} transition={{ duration: 0.35, ease: EASE }} className="absolute bottom-4 left-4 right-4 py-3 text-[10px] font-bold uppercase tracking-widest border-none cursor-pointer rounded" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', color: '#3d3a34' }}>Quick Inquiry</motion.button>
+        <motion.button animate={{ y: hovered ? 0 : 60, opacity: hovered ? 1 : 0 }} transition={{ duration: 0.35, ease: EASE }} className="absolute bottom-4 left-4 right-4 py-3 text-[10px] font-bold uppercase tracking-widest border-none cursor-pointer rounded" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', color: '#3d3a34' }}>{products.buttonText}</motion.button>
       </div>
       <h4 className="font-medium text-gray-800 mb-1">{item.name}</h4>
     </motion.div>
@@ -1122,8 +1095,8 @@ export default function EventsConferences() {
         {/* Parallax Background */}
         <motion.div style={{ y: springImg, willChange: 'transform' }} className="absolute inset-0">
           <img
-            src={eventhero}
-            alt="Hero"
+            src={asset(hero.image)}
+            alt={hero.imageAlt}
             className="w-full h-full object-cover"
             style={{ minHeight: '120%', filter: 'brightness(0.42)' }}
           />
@@ -1149,11 +1122,11 @@ export default function EventsConferences() {
             className="text-[10px] uppercase tracking-[0.32em] font-bold text-white/60 mb-5 flex items-center gap-3"
           >
             <span className="w-10 h-px inline-block" style={{ background: '#b5a26a' }} />
-            Corporate Solutions
+            {hero.eyebrow}
           </motion.p>
 
           <h1 className="font-serif text-white" style={{ fontSize: 'clamp(3rem,7vw,6rem)', lineHeight: 1.08 }}>
-            {['Events &', 'Conferences'].map((word, i) => (
+            {[hero.titleLine1, hero.titleLine2].map((word, i) => (
               <motion.span
                 key={word}
                 initial={{ rotateX: -90, opacity: 0, y: 40 }}
@@ -1170,7 +1143,7 @@ export default function EventsConferences() {
               transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
               style={{ display: 'block', fontStyle: 'italic', fontWeight: 400, transformOrigin: 'bottom center', transformStyle: 'preserve-3d' }}
             >
-              Gifting Solutions.
+              {hero.titleItalic}
             </motion.span>
           </h1>
 
@@ -1180,8 +1153,7 @@ export default function EventsConferences() {
             transition={{ duration: 0.65, delay: 0.8 }}
             className="text-white/80 mt-6 max-w-md text-lg font-light leading-relaxed"
           >
-            Make every moment memorable with curated corporate gifts that embody
-            sophistication and environmental consciousness.
+            {hero.intro}
           </motion.p>
 
           <motion.div
@@ -1197,7 +1169,7 @@ export default function EventsConferences() {
               className="text-white font-bold uppercase tracking-widest text-xs px-9 py-4 rounded-lg"
               style={{ background: '#444f36', border: 'none', cursor: 'pointer' }}
             >
-              Explore Gifts
+              {hero.primaryButton}
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.04, y: -2 }}
@@ -1207,7 +1179,7 @@ export default function EventsConferences() {
               className="text-white font-bold uppercase tracking-widest text-xs px-9 py-4 backdrop-blur-sm rounded-lg"
               style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}
             >
-              Request Quote
+              {hero.secondaryButton}
             </motion.button>
           </motion.div>
         </motion.div>
@@ -1219,7 +1191,7 @@ export default function EventsConferences() {
           transition={{ delay: 1.8, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         >
-          <span className="text-white/40 text-[9px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+          <span className="text-white/40 text-[9px] uppercase tracking-[0.3em] font-bold">{hero.scrollLabel}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -1239,13 +1211,13 @@ export default function EventsConferences() {
                 transition={{ duration: 0.55, ease: EASE }}
                 style={{ originX: 0, height: 3, width: 80, background: '#708156', marginBottom: 24 }}
               />
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: '#708156' }}>Our Philosophy</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: '#708156' }}>{about.eyebrow}</p>
             </motion.div>
             <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-7" style={{ color: '#3d3a34' }}>
-              Elevating Engagement<br />Through Thoughtful Curation
+              {about.titleLine1}<br />{about.titleLine2}
             </motion.h2>
             <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-10" style={{ color: '#7b7466' }}>
-              At Ecotwist, we believe that an event's impact extends far beyond the final session. Our gifting solutions bridge the gap between corporate professionalism and genuine human connection — selecting materials that respect the earth and designs that inspire the mind.
+              {about.text}
             </motion.p>
             <motion.div variants={vFadeUp} style={{ width: 80, height: 1, background: '#d1cdc5' }} />
           </motion.div>
@@ -1259,8 +1231,8 @@ export default function EventsConferences() {
             <motion.div ref={aRef} onMouseMove={aMM} onMouseLeave={aML} style={{ rotateX: aX, rotateY: aY, transformStyle: 'preserve-3d', willChange: 'transform', position: 'relative' }}>
               <motion.div className="absolute -inset-1 border border-gray-300" style={{ transform: 'translate(16px,16px)', zIndex: 0 }} whileHover={{ x: 8, y: 8 } as any} />
               <img
-                src={philosophy}
-                alt="About" className="relative w-full shadow-2xl rounded-lg" style={{ aspectRatio: '4/5', objectFit: 'cover', zIndex: 1 }}
+                src={asset(about.image)}
+                alt={about.imageAlt} className="relative w-full shadow-2xl rounded-lg" style={{ aspectRatio: '4/5', objectFit: 'cover', zIndex: 1 }}
               />
             </motion.div>
           </motion.div>
@@ -1283,11 +1255,11 @@ export default function EventsConferences() {
             className="text-center mb-10 sm:mb-14"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4" style={{ color: '#3d3a34' }}>
-              Explore Our Collections
+              {collections.title}
             </h2>
 
             <p className="font-light max-w-lg mx-auto text-xs sm:text-sm" style={{ color: '#968f80' }}>
-              Tailored solutions for every touchpoint of your corporate event journey.
+              {collections.intro}
             </p>
           </motion.div>
 
@@ -1308,10 +1280,10 @@ export default function EventsConferences() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={prodInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }} transition={{ duration: 0.6 }} className="flex justify-between items-end mb-12">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{ color: '#708156' }}>Curated Essentials</p>
-              <h2 className="text-4xl font-serif" style={{ color: '#3d3a34' }}>Signature Pieces</h2>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{ color: '#708156' }}>{products.eyebrow}</p>
+              <h2 className="text-4xl font-serif" style={{ color: '#3d3a34' }}>{products.title}</h2>
             </div>
-            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: '#708156', color: '#3d3a34' }}>View All</motion.a>
+            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: '#708156', color: '#3d3a34' }}>{products.viewAll}</motion.a>
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {PRODUCTS.map((p, i) => <ProductCard key={p.name} item={p} index={i} />)}
@@ -1324,11 +1296,11 @@ export default function EventsConferences() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <motion.div variants={vSlideLeft} initial="hidden" animate={custInView ? 'show' : 'hidden'} style={{ position: 'relative' }}>
             <div className="absolute -top-12 -left-12 rounded-full opacity-50" style={{ width: 256, height: 256, background: '#363f2c', filter: 'blur(60px)' }} />
-            <img src={bespoke} alt="Custom" className="relative w-full rounded-lg shadow-2xl" style={{ zIndex: 1 }} />
+            <img src={asset(customization.image)} alt={customization.imageAlt} className="relative w-full rounded-lg shadow-2xl" style={{ zIndex: 1 }} />
           </motion.div>
           <motion.div variants={vSlideRight} initial="hidden" animate={custInView ? 'show' : 'hidden'}>
-            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">Bespoke Details</p>
-            <h2 className="text-5xl font-serif text-white leading-tight mb-12">Personalized for<br /><span style={{ color: '#b3bea0', fontStyle: 'italic', fontWeight: 400 }}>Your Brand</span></h2>
+            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">{customization.eyebrow}</p>
+            <h2 className="text-5xl font-serif text-white leading-tight mb-12">{customization.titleLine1}<br /><span style={{ color: '#b3bea0', fontStyle: 'italic', fontWeight: 400 }}>{customization.titleHighlight}</span></h2>
             <motion.div variants={vStagger} initial="hidden" animate={custInView ? 'show' : 'hidden'} className="grid grid-cols-2 gap-8">
               {CUSTOM_ITEMS.map(item => (
                 <motion.div key={item.title} variants={vFadeUp}>
@@ -1346,7 +1318,7 @@ export default function EventsConferences() {
       <section className="py-32 px-8 md:px-20 lg:px-32 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.6 }} className="text-center mb-14">
-            <h2 className="text-4xl font-serif mb-4" style={{ color: '#3d3a34' }}>The Ecotwist Difference</h2>
+            <h2 className="text-4xl font-serif mb-4" style={{ color: '#3d3a34' }}>{why.title}</h2>
             <div className="mx-auto" style={{ width: 64, height: 3, background: '#708156' }} />
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
@@ -1356,16 +1328,18 @@ export default function EventsConferences() {
       </section>
 
       {/* ══ TRUST ══ */}
+      {clients.length > 0 && (
       <section className="py-12 px-8 border-y border-gray-200">
         <div className="max-w-7xl mx-auto">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false, amount: 0.5 }} className="text-center text-[9px] uppercase tracking-[0.3em] font-bold mb-10" style={{ color: '#b4aea1' }}>Trusted by Industry Leaders</motion.p>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false, amount: 0.5 }} className="text-center text-[9px] uppercase tracking-[0.3em] font-bold mb-10" style={{ color: '#b4aea1' }}>{trust.title}</motion.p>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 0.6 }} viewport={{ once: false, amount: 0.5 }} transition={{ duration: 0.6 }} whileHover={{ opacity: 1 } as any} className="flex flex-wrap justify-center gap-16 grayscale cursor-pointer" style={{ transition: 'opacity 0.5s' }}>
-            {['Aether', 'Solace', 'Noir', 'Lumina', 'Vantage'].map(b => (
-              <span key={b} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{b}</span>
-            ))}
+            {clients.map(c => c.logo
+              ? <img key={c.name} src={c.logo} alt={c.name} style={{ height: 32, objectFit: 'contain' }} />
+              : <span key={c.name} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{c.name}</span>)}
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ══ CTA ══ */}
       <section ref={ctaRef} className="py-10 px-8 text-center" style={{ background: '#f1f0ed' }}>
@@ -1377,12 +1351,12 @@ export default function EventsConferences() {
             className="font-serif text-5xl md:text-6xl leading-tight mb-6"
             style={{ color: '#3d3a34' }}
           >
-            Ready to create the perfect
-            <span className="italic font-normal"> Events & Conferences </span>
-            gift experience?
+            {cta.title}
+            <span className="italic font-normal"> {cta.titleHighlight} </span>
+            {cta.titleEnd}
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} transition={{ duration: 0.6, delay: 0.15 }} className="text-lg font-light leading-relaxed mb-12" style={{ color: '#7b7466' }}>
-            Our team is ready to help you curate a selection that resonates with your brand values and delights your guests.
+            {cta.text}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} transition={{ duration: 0.6, delay: 0.28 }} className="flex flex-col sm:flex-row justify-center gap-6">
             <motion.button
@@ -1393,7 +1367,7 @@ export default function EventsConferences() {
               className="text-white font-bold uppercase tracking-[0.2em] text-xs px-14 py-6 shadow-xl rounded-lg"
               style={{ background: '#444f36', border: 'none', cursor: 'pointer' }}
             >
-              Get Started
+              {cta.primaryButton}
             </motion.button>
             <motion.button
               whileHover={{ y: -2 }}
@@ -1404,7 +1378,7 @@ export default function EventsConferences() {
               onMouseEnter={e => (e.currentTarget.style.borderBottomColor = '#708156')}
               onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'rgba(61,58,52,0.2)')}
             >
-              Schedule a Consultation
+              {cta.secondaryButton}
             </motion.button>
           </motion.div>
         </div>

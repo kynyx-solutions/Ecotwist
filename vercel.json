@@ -1,4 +1,23 @@
 {
-  "redirects": [{ "source": "/configurator", "destination": "/get-proposal", "permanent": true }],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "redirects": [
+    {
+      "source": "/configurator",
+      "destination": "/get-proposal",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/:path((?!assets/).*)",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/((?!api/|admin).*)",
+      "destination": "/"
+    }
+  ]
 }

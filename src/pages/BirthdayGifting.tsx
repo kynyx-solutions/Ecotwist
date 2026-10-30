@@ -10,6 +10,13 @@ import {
 } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { siteImage } from '../lib/siteImages';
+import { clients } from '../lib/clients';
+import { asset } from '../lib/content';
+import content from '../content/pages/birthday-gifting.json';
+
+// Page words and photos: src/content/pages/birthday-gifting.json (admin → Pages → Birthday Gifting)
+const { hero, about, categories, products, customization, why, trust, cta } = content;
 
 function useTilt(strength = 10) {
   const ref = useRef<HTMLDivElement>(null);
@@ -494,29 +501,11 @@ const BirthdayCanvas: React.FC = () => {
 /* ═══════════════════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════════════════ */
-const PRODUCTS = [
-  { name: 'Celebration Hamper', sub: 'Starting at ₹1,499', tag: 'Bestseller', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80' },
-  { name: 'Sweet Indulgence Box', sub: 'Starting at ₹999', tag: 'Customizable', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&q=80' },
-  { name: 'Luxury Candle Set', sub: 'Starting at ₹1,199', tag: 'Eco-friendly', img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80' },
-];
-const CATEGORIES = [
-  { name: 'Personalised Keepsakes', desc: 'Engraved photo frames, custom journals, and memory boxes.', accent: ACCENT, tag: 'Personal', img: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80' },
-  { name: 'Gourmet Celebration Kits', desc: 'Artisan chocolates, premium teas, and handcrafted sweets.', accent: '#c4735d', tag: 'Gourmet', img: 'https://khoyamithai.com/cdn/shop/files/47_14e6fbe7-2b44-400b-ac85-dfea01b2291a.jpg?v=1758631902&width=3003' },
-  { name: 'Pampering Wellness Sets', desc: 'Luxurious bath salts, aromatherapy candles, and skin-care treats.', accent: '#a0617a', tag: 'Wellness', img: 'https://m.media-amazon.com/images/I/810qdrjodjL._AC_UF350%2C350_QL80_.jpg' },
-];
-const CUSTOM_ITEMS = [
-  { icon: '🎂', title: 'Name & Date Engraving', desc: 'Personalised messages laser-etched on premium products.' },
-  { icon: '🎀', title: 'Signature Gift Wrapping', desc: 'Bespoke ribbons, tissue paper, and branded gift tags.' },
-  { icon: '📸', title: 'Photo Personalisation', desc: 'Custom photo prints incorporated into hamper packaging.' },
-  { icon: '🎨', title: 'Theme Curation', desc: 'Color palettes and products aligned to birthday themes.' },
-];
-const WHY = [
-  { icon: '🎁', title: 'Joyful Curation', desc: 'Every item handpicked to spark delight.' },
-  { icon: '◈', title: 'Bulk Ordering', desc: 'Fulfillment for 10 to 10,000 gifts.' },
-  { icon: '◎', title: 'Pan-India Delivery', desc: 'On-time delivery everywhere.' },
-  { icon: '✦', title: 'Custom Branding', desc: 'Your brand on every gift.' },
-  { icon: '◐', title: 'Dedicated Support', desc: 'Expert consultants at every step.' },
-];
+const PRODUCTS = products.items.map(p => ({ name: p.name, sub: p.sub, tag: p.tag, img: asset(p.image) }));
+// An uploaded photo wins; otherwise the photo set under "Photos to add"
+const CATEGORIES = categories.items.map(c => ({ name: c.name, desc: c.desc, accent: c.accent, tag: c.tag, img: c.image ? asset(c.image) : siteImage(c.photoId ?? '') }));
+const CUSTOM_ITEMS = customization.items.map(c => ({ icon: c.symbol, title: c.title, desc: c.desc }));
+const WHY = why.items.map(w => ({ icon: w.symbol, title: w.title, desc: w.desc }));
 
 function useNavigateTo() { return useCallback((path: string) => { window.location.href = path; }, []); }
 
@@ -549,7 +538,7 @@ function CategoryCard({ item }: { item: typeof CATEGORIES[0] }) {
           <h3 className="font-serif text-2xl mb-2" style={{ color: ACCENT_DARK }}>{item.name}</h3>
           <p className="text-sm font-light leading-relaxed mb-5" style={{ color: '#73736e' }}>{item.desc}</p>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: ACCENT_DARK }}>
-            <motion.span animate={{ x: hovered ? 3 : 0 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>View Collection</motion.span>
+            <motion.span animate={{ x: hovered ? 3 : 0 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>{categories.linkText}</motion.span>
             <motion.span animate={{ rotate: hovered ? 45 : 0, x: hovered ? 2 : 0 }} transition={{ type: 'spring', stiffness: 380, damping: 18 }} style={{ display: 'inline-flex' }}><ArrowRight size={11} /></motion.span>
           </div>
         </div>
@@ -610,7 +599,7 @@ export default function BirthdayGifting() {
   const ctaInView = useInView(ctaRef, { once: false, amount: 0.3 });
   const [ctaHovered, setCtaHovered] = useState(false);
 
-  const words = ['Celebrate', 'Cherish', 'Delight', 'Surprise'];
+  const words = hero.rotatingWords;
   const [wIdx, setWIdx] = useState(0);
   useEffect(() => { const t = setInterval(() => setWIdx(p => (p + 1) % words.length), 2600); return () => clearInterval(t); }, []);
 
@@ -633,7 +622,7 @@ export default function BirthdayGifting() {
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.6, duration: 1.2 }} className="absolute top-7 right-10 pointer-events-none flex items-center gap-2" style={{ zIndex: 10 }}>
           <motion.span animate={{ scale: [1, 1.4, 1], opacity: [0.35, 1, 0.35] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: '0.9rem' }}>🎈</motion.span>
-          <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.26em', fontWeight: 700 }}>Click balloons to pop!</span>
+          <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.26em', fontWeight: 700 }}>{hero.popHint}</span>
         </motion.div>
 
         <motion.div style={{ y: springTxt, opacity: heroOpacity, willChange: 'transform', position: 'relative', zIndex: 10 }} className="w-full pointer-events-none">
@@ -643,58 +632,58 @@ export default function BirthdayGifting() {
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08, ease: EASE }} className="flex items-center gap-3 mb-7">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(212,133,106,0.15)', border: '1px solid rgba(212,133,106,0.35)', borderRadius: 100, padding: '5px 14px 5px 10px', backdropFilter: 'blur(8px)' }}>
                   <motion.span animate={{ rotate: [0, 12, -7, 0] }} transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: '0.78rem' }}>🎂</motion.span>
-                  <span style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.28em', fontWeight: 700, color: 'rgba(255,255,255,0.60)' }}>Corporate Birthday Solutions</span>
+                  <span style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.28em', fontWeight: 700, color: 'rgba(255,255,255,0.60)' }}>{hero.eyebrow}</span>
                 </span>
                 <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: 0.45, ease: EASE }} style={{ height: 1, flex: 1, maxWidth: 48, background: 'linear-gradient(to right,#b5a26a,transparent)', originX: 0 }} />
               </motion.div>
 
               <div style={{ height: 22, overflow: 'hidden', marginBottom: 12 }}>
                 <AnimatePresence mode="wait">
-                  <motion.p key={wIdx} initial={{ y: 22, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -22, opacity: 0 }} transition={{ duration: 0.42, ease: EASE }} style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.44em', fontWeight: 800, color: ACCENT }}>— {words[wIdx]} Every Moment —</motion.p>
+                  <motion.p key={wIdx} initial={{ y: 22, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -22, opacity: 0 }} transition={{ duration: 0.42, ease: EASE }} style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.44em', fontWeight: 800, color: ACCENT }}>— {words[wIdx]} {hero.rotatingSuffix} —</motion.p>
                 </AnimatePresence>
               </div>
 
               <h1 className="font-serif text-white" style={{ fontSize: 'clamp(2.8rem,5.5vw,5rem)', lineHeight: 1.06, marginBottom: 0 }}>
                 <motion.span style={{ display: 'block' }} initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.042, delayChildren: 0.28 } } }}>
-                  {'Birthday'.split('').map((ch, i) => (
+                  {hero.titleLine1.split('').map((ch, i) => (
                     <motion.span key={i} variants={{ hidden: { opacity: 0, y: 36, rotateX: -55 }, show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.52, ease: EASE } } }} style={{ display: 'inline-block', transformOrigin: 'bottom center', transformStyle: 'preserve-3d' }}>{ch}</motion.span>
                   ))}
                 </motion.span>
                 <motion.span style={{ display: 'block' }} initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.048, delayChildren: 0.55 } } }}>
-                  {'Gifting'.split('').map((ch, i) => (
+                  {hero.titleLine2.split('').map((ch, i) => (
                     <motion.span key={i} variants={{ hidden: { opacity: 0, y: 36, rotateX: -55 }, show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.52, ease: EASE } } }} style={{ display: 'inline-block', transformOrigin: 'bottom center', transformStyle: 'preserve-3d' }}>{ch}</motion.span>
                   ))}
                 </motion.span>
-                <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 1.0, ease: EASE }} style={{ display: 'block', fontStyle: 'italic', fontWeight: 400, color: ACCENT }}>Solutions.</motion.span>
+                <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 1.0, ease: EASE }} style={{ display: 'block', fontStyle: 'italic', fontWeight: 400, color: ACCENT }}>{hero.titleHighlight}</motion.span>
               </h1>
 
               <motion.div initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }} transition={{ duration: 0.55, delay: 1.25, ease: EASE }} style={{ height: 1.5, width: 100, background: `linear-gradient(to right,${ACCENT},transparent)`, originX: 0, marginTop: 22, marginBottom: 18 }} />
 
               <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.62, delay: 1.35, ease: EASE }} className="font-light leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)', fontSize: 'clamp(0.95rem,1.4vw,1.15rem)', maxWidth: 420 }}>
-                Make every birthday feel extraordinary with personalised, sustainable gifts your team and clients will cherish for years.
+                {hero.intro}
               </motion.p>
 
               <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.58, delay: 1.55, ease: EASE }} className="flex items-stretch gap-8 mt-9 mb-10" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 20 }}>
-                <AnimatedStat value="10K+" label="Happy Clients" delay={1.65} />
+                <AnimatedStat value={hero.stats[0].value} label={hero.stats[0].label} delay={1.65} />
                 <div style={{ width: 1, background: 'rgba(255,255,255,0.10)', alignSelf: 'stretch' }} />
-                <AnimatedStat value="50+" label="Gift Collections" delay={1.78} />
+                <AnimatedStat value={hero.stats[1].value} label={hero.stats[1].label} delay={1.78} />
                 <div style={{ width: 1, background: 'rgba(255,255,255,0.10)', alignSelf: 'stretch' }} />
-                <AnimatedStat value="Pan-India" label="Delivery" delay={1.90} />
+                <AnimatedStat value={hero.stats[2].value} label={hero.stats[2].label} delay={1.90} />
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 1.80, ease: EASE }} className="flex gap-4 flex-wrap" style={{ pointerEvents: 'all' }}>
                 <motion.button whileHover={{ scale: 1.05, y: -2, boxShadow: `0 16px 38px rgba(212,133,106,0.52)` }} whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="flex items-center gap-2 font-bold uppercase tracking-widest text-white" style={{ fontSize: 10, padding: '14px 30px', background: ACCENT, border: 'none', borderRadius: 100, cursor: 'pointer', fontFamily: 'inherit', boxShadow: `0 8px 28px rgba(212,133,106,0.38)`, letterSpacing: '0.16em' }}>
                   <motion.span animate={{ rotate: [0, 14, -7, 0] }} transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: '0.9rem' }}>🎁</motion.span>
-                  Explore Birthday Gifts
+                  {hero.primaryButton}
                 </motion.button>
-                <motion.button whileHover={{ scale: 1.04, y: -2, background: 'rgba(255,255,255,0.07)' }} whileTap={{ scale: 0.96 }} onClick={() => navigateTo('/contact')} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="font-bold uppercase tracking-widest text-white" style={{ fontSize: 10, padding: '14px 28px', background: 'transparent', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 100, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: '0.16em' }}>Request Quote</motion.button>
+                <motion.button whileHover={{ scale: 1.04, y: -2, background: 'rgba(255,255,255,0.07)' }} whileTap={{ scale: 0.96 }} onClick={() => navigateTo('/contact')} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="font-bold uppercase tracking-widest text-white" style={{ fontSize: 10, padding: '14px 28px', background: 'transparent', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 100, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: '0.16em' }}>{hero.secondaryButton}</motion.button>
               </motion.div>
             </div>
           </div>
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.3, duration: 0.9 }} className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none" style={{ zIndex: 10 }}>
-          <motion.span animate={{ opacity: [0.3, 0.75, 0.3] }} transition={{ duration: 2.2, repeat: Infinity }} style={{ fontSize: 7, textTransform: 'uppercase', letterSpacing: '0.3em', fontWeight: 700, color: 'rgba(255,255,255,0.35)' }}>Scroll</motion.span>
+          <motion.span animate={{ opacity: [0.3, 0.75, 0.3] }} transition={{ duration: 2.2, repeat: Infinity }} style={{ fontSize: 7, textTransform: 'uppercase', letterSpacing: '0.3em', fontWeight: 700, color: 'rgba(255,255,255,0.35)' }}>{hero.scrollLabel}</motion.span>
           <motion.div animate={{ y: [0, 9, 0], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }} style={{ width: 1, height: 30, background: `linear-gradient(to bottom,${ACCENT},transparent)` }} />
         </motion.div>
       </section>
@@ -705,19 +694,19 @@ export default function BirthdayGifting() {
           <motion.div variants={vStagger} initial="hidden" animate={aboutInView ? 'show' : 'hidden'}>
             <motion.div variants={vFadeUp}>
               <motion.div initial={{ scaleX: 0 }} animate={aboutInView ? { scaleX: 1 } : { scaleX: 0 }} transition={{ duration: 0.55, ease: EASE }} style={{ originX: 0, height: 3, width: 80, background: ACCENT, marginBottom: 24 }} />
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: ACCENT }}>Our Philosophy</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: ACCENT }}>{about.eyebrow}</p>
             </motion.div>
-            <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-8" style={{ color: ACCENT_DARK }}>The Joy of Making<br />Someone Feel Special</motion.h2>
-            <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-5" style={{ color: '#73736e' }}>Birthdays are not just dates on a calendar — they are an opportunity to pause, celebrate, and show your team members and clients how much they mean to you.</motion.p>
-            <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-10" style={{ color: '#73736e' }}>We take the guesswork out of corporate birthday gifting with sustainably curated hampers, personalised keepsakes, and gourmet indulgences.</motion.p>
+            <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-8" style={{ color: ACCENT_DARK }}>{about.titleLine1}<br />{about.titleLine2}</motion.h2>
+            <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-5" style={{ color: '#73736e' }}>{about.paragraph1}</motion.p>
+            <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-10" style={{ color: '#73736e' }}>{about.paragraph2}</motion.p>
             <motion.div variants={vFadeUp} className="flex items-center gap-4 pt-8" style={{ borderTop: '1px solid #f0d8cf' }}>
-              <div className="flex items-center justify-center rounded-full text-2xl flex-shrink-0" style={{ width: 48, height: 48, background: '#f5ddd5' }}>🎂</div>
-              <p className="font-semibold text-sm" style={{ color: ACCENT }}>100% Personalised — No Two Gifts Alike</p>
+              <div className="flex items-center justify-center rounded-full text-2xl flex-shrink-0" style={{ width: 48, height: 48, background: '#f5ddd5' }}>{about.badgeSymbol}</div>
+              <p className="font-semibold text-sm" style={{ color: ACCENT }}>{about.badgeText}</p>
             </motion.div>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.85 }} animate={aboutInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }} transition={{ duration: 0.85, ease: EASE }} style={{ perspective: '1200px' }}>
             <motion.div ref={aRef} onMouseMove={aMM} onMouseLeave={aML} style={{ rotateX: aX, rotateY: aY, transformStyle: 'preserve-3d', willChange: 'transform' }}>
-              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=900&q=80" alt="Birthday Gifting" className="w-full rounded-2xl shadow-2xl" style={{ aspectRatio: '4/5', objectFit: 'cover' }} />
+              <img src={asset(about.image)} alt={about.imageAlt} className="w-full rounded-2xl shadow-2xl" style={{ aspectRatio: '4/5', objectFit: 'cover' }} />
             </motion.div>
           </motion.div>
         </div>
@@ -727,8 +716,8 @@ export default function BirthdayGifting() {
       <section ref={catRef} className="py-32 px-8 md:px-20 lg:px-32 overflow-hidden" style={{ background: '#f5ede9' }}>
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={catInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }} transition={{ duration: 0.6 }} className="text-center mb-14">
-            <h2 className="text-5xl font-serif mb-4" style={{ color: ACCENT_DARK }}>Curated Birthday Collections</h2>
-            <p className="font-light text-sm max-w-lg mx-auto" style={{ color: '#73736e' }}>Explore our themed collections designed to make every birthday celebration truly memorable.</p>
+            <h2 className="text-5xl font-serif mb-4" style={{ color: ACCENT_DARK }}>{categories.title}</h2>
+            <p className="font-light text-sm max-w-lg mx-auto" style={{ color: '#73736e' }}>{categories.intro}</p>
           </motion.div>
           <motion.div variants={vStagger} initial="hidden" animate={catInView ? 'show' : 'hidden'} className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ perspective: '1600px' }}>
             {CATEGORIES.map(item => <CategoryCard key={item.name} item={item} />)}
@@ -741,10 +730,10 @@ export default function BirthdayGifting() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }} className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>Featured Birthday Products</h2>
-              <p className="font-light" style={{ color: '#73736e' }}>The most-loved additions to our corporate birthday programs.</p>
+              <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>{products.title}</h2>
+              <p className="font-light" style={{ color: '#73736e' }}>{products.intro}</p>
             </div>
-            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: ACCENT, color: ACCENT_DARK }}>View All</motion.a>
+            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: ACCENT, color: ACCENT_DARK }}>{products.viewAll}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4" style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none' } as React.CSSProperties}>
             {PRODUCTS.map((p, i) => <ProductCard key={p.name} item={p} index={i} />)}
@@ -756,9 +745,9 @@ export default function BirthdayGifting() {
       <section ref={custRef} className="py-32 px-8 md:px-20 lg:px-32 overflow-hidden" style={{ background: '#1f1410' }}>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <motion.div variants={vSlideLeft} initial="hidden" animate={custInView ? 'show' : 'hidden'}>
-            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">Personalisation</p>
-            <h2 className="text-5xl font-serif text-white leading-tight mb-6">Tailored to Every<br /><span style={{ color: '#f0a891', fontStyle: 'italic', fontWeight: 400 }}>Birthday Personality</span></h2>
-            <p className="text-lg font-light leading-relaxed mb-12" style={{ color: 'rgba(212,212,212,0.7)' }}>From the minimalist who appreciates subtle elegance to the one who loves a grand celebration — we craft birthday gifts that mirror their personality perfectly.</p>
+            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">{customization.eyebrow}</p>
+            <h2 className="text-5xl font-serif text-white leading-tight mb-6">{customization.title}<br /><span style={{ color: '#f0a891', fontStyle: 'italic', fontWeight: 400 }}>{customization.titleHighlight}</span></h2>
+            <p className="text-lg font-light leading-relaxed mb-12" style={{ color: 'rgba(212,212,212,0.7)' }}>{customization.intro}</p>
             <motion.div variants={vStagger} initial="hidden" animate={custInView ? 'show' : 'hidden'} className="grid grid-cols-2 gap-8">
               {CUSTOM_ITEMS.map(item => (
                 <motion.div key={item.title} variants={vFadeUp} className="flex gap-4">
@@ -771,7 +760,7 @@ export default function BirthdayGifting() {
           <motion.div variants={vSlideRight} initial="hidden" animate={custInView ? 'show' : 'hidden'} style={{ position: 'relative' }}>
             <div className="absolute inset-0 rounded-3xl opacity-50" style={{ background: ACCENT, transform: 'rotate(3deg) scale(0.95)' }} />
             <div className="relative rounded-3xl overflow-hidden p-6" style={{ background: '#f5ede9' }}>
-              <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80" alt="Custom" className="w-full rounded-2xl shadow-xl" style={{ aspectRatio: '1', objectFit: 'cover' }} />
+              <img src={asset(customization.image)} alt={customization.imageAlt} className="w-full rounded-2xl shadow-xl" style={{ aspectRatio: '1', objectFit: 'cover' }} />
             </div>
           </motion.div>
         </div>
@@ -781,7 +770,7 @@ export default function BirthdayGifting() {
       <section className="py-32 px-8 md:px-20 lg:px-32 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <h2 className="text-5xl font-serif" style={{ color: ACCENT_DARK }}>Why Choose Ecotwist</h2>
+            <h2 className="text-5xl font-serif" style={{ color: ACCENT_DARK }}>{why.title}</h2>
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {WHY.map((item, i) => <WhyCard key={item.title} item={item} index={i} />)}
@@ -790,25 +779,29 @@ export default function BirthdayGifting() {
       </section>
 
       {/* ══ TRUST ══ */}
+      {clients.length > 0 && (
       <section className="py-14 px-8 border-t border-gray-200">
         <div className="max-w-7xl mx-auto">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false, amount: 0.5 }} className="text-center text-[9px] uppercase tracking-[0.3em] font-bold mb-10" style={{ color: '#a6a6a1' }}>Trusted by Visionary Brands</motion.p>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false, amount: 0.5 }} className="text-center text-[9px] uppercase tracking-[0.3em] font-bold mb-10" style={{ color: '#a6a6a1' }}>{trust.title}</motion.p>
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 0.6 }} viewport={{ once: false, amount: 0.5 }} transition={{ duration: 0.6 }} className="flex flex-wrap justify-center gap-16">
-            {['Aether', 'Solace', 'Lumina', 'Vantage', 'Noir'].map(b => (<span key={b} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{b}</span>))}
+            {clients.map(c => c.logo
+              ? <img key={c.name} src={c.logo} alt={c.name} style={{ height: 32, objectFit: 'contain' }} />
+              : <span key={c.name} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{c.name}</span>)}
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ══ CTA ══ */}
       <section ref={ctaRef} className="py-32 px-8 text-center" style={{ background: '#f5ede9' }}>
         <div className="max-w-4xl mx-auto">
           <motion.h2 initial={{ opacity: 0, letterSpacing: '-0.05em', y: 20 }} animate={ctaInView ? { opacity: 1, letterSpacing: '-0.01em', y: 0 } : { opacity: 0, letterSpacing: '-0.05em', y: 20 }} transition={{ duration: 0.85, ease: EASE }} className="font-serif text-5xl md:text-6xl leading-tight mb-6" style={{ color: ACCENT_DARK }}>
-            Ready to make every<br /><span className="italic font-normal">birthday unforgettable?</span>
+            {cta.titleLine1}<br /><span className="italic font-normal">{cta.titleHighlight}</span>
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} transition={{ duration: 0.6, delay: 0.15 }} className="text-xl font-light leading-relaxed mb-12" style={{ color: '#73736e' }}>Let's create personalised birthday experiences your team will talk about all year long.</motion.p>
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} transition={{ duration: 0.6, delay: 0.15 }} className="text-xl font-light leading-relaxed mb-12" style={{ color: '#73736e' }}>{cta.text}</motion.p>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }} transition={{ duration: 0.6, delay: 0.28 }} className="flex flex-col sm:flex-row justify-center gap-6">
-            <motion.button whileHover={{ scale: 1.06, y: -3, boxShadow: `0 18px 40px rgba(212,133,106,0.35)` }} onClick={() => navigateTo('/get-proposal')} whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="text-white font-bold uppercase tracking-[0.2em] text-xs px-14 py-6 rounded-full shadow-xl" style={{ background: ACCENT, border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>Get Started</motion.button>
-            <motion.button whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }} onClick={() => navigateTo('/contact')} onMouseEnter={() => setCtaHovered(true)} onMouseLeave={() => setCtaHovered(false)} className="font-bold uppercase tracking-[0.2em] text-xs pb-1" style={{ background: 'transparent', border: 'none', borderBottom: `2px solid ${ctaHovered ? ACCENT : 'rgba(212,133,106,0.3)'}`, cursor: 'pointer', fontFamily: 'inherit', color: ACCENT_DARK, transition: 'border-bottom-color 0.25s' }}>Schedule a Consultation</motion.button>
+            <motion.button whileHover={{ scale: 1.06, y: -3, boxShadow: `0 18px 40px rgba(212,133,106,0.35)` }} onClick={() => navigateTo('/get-proposal')} whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="text-white font-bold uppercase tracking-[0.2em] text-xs px-14 py-6 rounded-full shadow-xl" style={{ background: ACCENT, border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>{cta.primaryButton}</motion.button>
+            <motion.button whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }} onClick={() => navigateTo('/contact')} onMouseEnter={() => setCtaHovered(true)} onMouseLeave={() => setCtaHovered(false)} className="font-bold uppercase tracking-[0.2em] text-xs pb-1" style={{ background: 'transparent', border: 'none', borderBottom: `2px solid ${ctaHovered ? ACCENT : 'rgba(212,133,106,0.3)'}`, cursor: 'pointer', fontFamily: 'inherit', color: ACCENT_DARK, transition: 'border-bottom-color 0.25s' }}>{cta.secondaryButton}</motion.button>
           </motion.div>
         </div>
       </section>

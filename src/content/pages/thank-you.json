@@ -1,0 +1,40 @@
+{
+  "_meta": { "label": "Thank-you page", "route": "/thanks" },
+  "hero": {
+    "eyebrow": "EcoTwist Studio",
+    "titleLine1": "Thank You.",
+    "titleLine2": "Your Journey Begins.",
+    "text": "Thank you for reaching out. Our sustainability experts are reviewing your requirements and will craft a tailored gifting experience for your brand.",
+    "timeline": [
+      { "text": "Request Submitted" },
+      { "text": "Requirement Review" },
+      { "text": "Proposal Creation" },
+      { "text": "We Will Contact You" }
+    ],
+    "responseLabel": "Average Response Time",
+    "responseUnit": "Hours",
+    "exploreButton": "Explore Collection",
+    "homeButton": "Return Home",
+    "callButton": "Book a Call"
+  },
+  "summary": {
+    "submissionIdLabel": "Submission ID",
+    "title": "Submission Summary",
+    "subtitle": "EcoTwist Proposal Details",
+    "detailsHeading": "Your Details",
+    "nameLabel": "Full Name",
+    "companyLabel": "Company",
+    "emailLabel": "Work Email",
+    "phoneLabel": "Mobile",
+    "notProvided": "Not Provided",
+    "configurationHeading": "Configuration",
+    "notSelected": "Not Selected",
+    "statusLabel": "Status",
+    "statusValue": "Received",
+    "dateLabel": "Date",
+    "timeLabel": "Time"
+  },
+  "quote": {
+    "text": "\"Sustainability is the ultimate sophistication.\""
+  }
+}

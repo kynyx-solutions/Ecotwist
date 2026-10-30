@@ -1,0 +1,66 @@
+{
+  "_meta": { "label": "Shipping Policy", "route": "/shipping-policy" },
+  "header": {
+    "topLabel": "Shipping policy",
+    "title": "Shipping Policy",
+    "intro": "Everything you need to know about processing, delivery and tracking."
+  },
+  "journey": {
+    "heading": "Processing & Shipping: Your Order's Journey",
+    "paragraphs": [
+      "We know how exciting it is to get your hands on your new products — we're just as eager to get them to you! As soon as you place your order, our dedicated team gets to work."
+    ],
+    "points": [
+      "Standard orders are typically processed and packed within 1–2 business days.",
+      "Custom orders may take 3–7 business days depending on type and quantity."
+    ],
+    "paragraphsAfter": [
+      "Once your package is ready, it usually arrives within 3–7 business days for standard deliveries across India. These are estimates — see the Disclaimer below for details."
+    ]
+  },
+  "charges": {
+    "heading": "Shipping Charges: Keeping it Simple",
+    "text": "We offer",
+    "textHighlight": "free shipping on all prepaid orders of ₹499 and above",
+    "textEnd": ". For orders below that amount, applicable shipping charges will be shown at checkout."
+  },
+  "sections": [
+    {
+      "heading": "Tracking Your Package",
+      "paragraphs": [
+        "As soon as your package is dispatched, we'll send you a tracking number via email or WhatsApp. Use that number with the carrier to follow your order in real time."
+      ]
+    },
+    {
+      "heading": "Undelivered Shipments",
+      "paragraphs": [
+        "Sometimes shipments are returned to us due to an incorrect address or because the carrier couldn't reach you. If that happens, we will contact you to arrange redelivery. Please note that additional shipping charges may apply for reshipment."
+      ]
+    }
+  ],
+  "contact": {
+    "heading": "Contact Information",
+    "text": "If you have any questions or concerns about shipping, please reach out to our support team — we're happy to help.",
+    "emailLabel": "Email:",
+    "email": "support@ecotwist.in"
+  },
+  "disclaimer": {
+    "heading": "Disclaimer",
+    "text": "Please be aware that delivery times are estimates and may be affected by factors outside our control, such as carrier delays, severe weather, public holidays, or other unforeseen events. We appreciate your understanding."
+  },
+  "faq": {
+    "heading": "Quick FAQs",
+    "items": [
+      {
+        "question": "When will I get my tracking number?",
+        "answer": "You'll receive a tracking number via email or WhatsApp as soon as your order is dispatched."
+      },
+      {
+        "question": "My address was entered incorrectly — what should I do?",
+        "answer": "Contact support immediately at",
+        "email": "support@ecotwist.in",
+        "answerAfterEmail": ". If the shipment is returned, additional charges may apply for reshipment."
+      }
+    ]
+  }
+}

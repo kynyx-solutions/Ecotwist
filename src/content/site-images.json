@@ -1,0 +1,124 @@
+{
+  "images": [
+    {
+      "id": "retirement-hero",
+      "page": "Retirement Gifting",
+      "place": "Hero background (behind the headline)",
+      "image": ""
+    },
+    {
+      "id": "retirement-legacy-keepsake-box",
+      "page": "Retirement Gifting",
+      "place": "Product card: Legacy Keepsake Box",
+      "image": ""
+    },
+    {
+      "id": "retirement-relaxation-hamper",
+      "page": "Retirement Gifting",
+      "place": "Product card: Relaxation Hamper",
+      "image": ""
+    },
+    {
+      "id": "retirement-memory-journal-set",
+      "page": "Retirement Gifting",
+      "place": "Product card: Memory Journal Set",
+      "image": ""
+    },
+    {
+      "id": "retirement-legacy-tribute-gifts",
+      "page": "Retirement Gifting",
+      "place": "Collection card: Legacy Tribute Gifts",
+      "image": ""
+    },
+    {
+      "id": "retirement-relaxation-leisure",
+      "page": "Retirement Gifting",
+      "place": "Collection card: Relaxation & Leisure",
+      "image": ""
+    },
+    {
+      "id": "solutions-festive-gifting",
+      "page": "Solutions",
+      "place": "Occasion card: Festive Gifting",
+      "image": ""
+    },
+    {
+      "id": "solutions-work-anniversary",
+      "page": "Solutions",
+      "place": "Occasion card: Work Anniversary",
+      "image": ""
+    },
+    {
+      "id": "solutions-award-recognition",
+      "page": "Solutions",
+      "place": "Occasion card: Award & Recognition",
+      "image": ""
+    },
+    {
+      "id": "festive-welcome-kits",
+      "page": "Festive Gifting",
+      "place": "Collection card: Welcome Kits",
+      "image": ""
+    },
+    {
+      "id": "festive-premium-hampers",
+      "page": "Festive Gifting",
+      "place": "Collection card: Premium Festive Hampers",
+      "image": ""
+    },
+    {
+      "id": "festive-custom-merchandise",
+      "page": "Festive Gifting",
+      "place": "Collection card: Custom Merchandise",
+      "image": ""
+    },
+    {
+      "id": "festive-heritage-box",
+      "page": "Festive Gifting",
+      "place": "Product card: The Heritage Box",
+      "image": ""
+    },
+    {
+      "id": "festive-wellness-kit",
+      "page": "Festive Gifting",
+      "place": "Product card: The Wellness Kit",
+      "image": ""
+    },
+    {
+      "id": "festive-gourmet-collection",
+      "page": "Festive Gifting",
+      "place": "Product card: Gourmet Collection",
+      "image": ""
+    },
+    {
+      "id": "festive-executive-signature",
+      "page": "Festive Gifting",
+      "place": "Product card: Executive Signature",
+      "image": ""
+    },
+    {
+      "id": "festive-about",
+      "page": "Festive Gifting",
+      "place": "About section photo (a Diwali celebration scene)",
+      "image": ""
+    },
+    {
+      "id": "festive-cta-background",
+      "page": "Festive Gifting",
+      "place": "Faint background behind the closing call to action",
+      "image": ""
+    },
+    {
+      "id": "birthday-gourmet-kits",
+      "page": "Birthday Gifting",
+      "place": "Collection card: Gourmet Celebration Kits",
+      "image": ""
+    },
+    {
+      "id": "birthday-wellness-sets",
+      "page": "Birthday Gifting",
+      "place": "Collection card: Pampering Wellness Sets",
+      "image": ""
+    }
+  ]
+}

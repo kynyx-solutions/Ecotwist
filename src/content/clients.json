@@ -1,0 +1,13 @@
+{
+  "clients": [
+    { "name": "BiddRx", "logo": "/clients/biddrx.png" },
+    { "name": "Casters Global", "logo": "/clients/casters-global.png" },
+    { "name": "Cehro India", "logo": "/clients/cehro-india.png" },
+    { "name": "Sumedha Agro", "logo": "" },
+    { "name": "Homeasy", "logo": "/clients/homeasy.png" },
+    { "name": "Bharatx Ventures", "logo": "/clients/bharatx-ventures.png" },
+    { "name": "Kynyx", "logo": "/clients/kynyx.png" },
+    { "name": "Aixperts", "logo": "/clients/aixperts.png" },
+    { "name": "Bharatx Infratech", "logo": "/clients/bharatx-infratech.png" }
+  ]
+}

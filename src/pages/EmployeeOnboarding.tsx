@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import {
   motion,
   useScroll,
@@ -9,17 +9,13 @@ import {
   AnimatePresence,
 } from 'motion/react';
 import { ArrowRight, Sparkles, Package, Zap } from 'lucide-react';
-import notebook from '../assests/notebook.png';
-import tote from '../assests/jutetote.png';
-import mug from '../assests/ceramicmug.png';
-import bottle from '../assests/bottle.png';
-import hero from '../assests/onboardinghero.png';
-import philosophy from '../assests/onboardingphilosophy.png';
-import singnature from '../assests/onboardingsing.webp';
-import hamper from '../assests/hamper.webp';
-import essentials from '../assests/techessential.webp';
-import welcomekit from '../assests/welcomekit.webp';
 import type { Variants } from 'motion/react';
+import { asset } from '../lib/content';
+import content from '../content/pages/employee-onboarding.json';
+import { clients, type Client } from '../lib/clients';
+
+// Page words and photos: src/content/pages/employee-onboarding.json (admin → Pages → Employee Onboarding)
+const { hero, stats, philosophy, collections, products, personalization, why, cta } = content;
 
 /* ═══════════════════════════════════════════════════════
    CONSTANTS & BRAND TOKENS
@@ -818,53 +814,17 @@ const scaleIn: Variants = {
 /* ═══════════════════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════════════════ */
-const CATEGORIES = [
-  {
-    name: 'Welcome Kits',
-    desc: 'Essential items to kickstart their journey with style and functionality.',
-    tag: 'Day One', accent: '#b5a26a',
-    img: welcomekit,
-  },
-  {
-    name: 'Premium Hampers',
-    desc: 'Elevated selections featuring artisan snacks and luxury lifestyle goods.',
-    tag: 'Luxury', accent: '#8a7db5',
-    img: hamper,
-  },
-  {
-    name: 'Custom Tech Essentials',
-    desc: 'Modern gadgets designed for the contemporary workspace experience.',
-    tag: 'Tech', accent: '#5a8a6e',
-    img: essentials,
-  },
-] as const;
+const CATEGORIES = collections.items.map(c => ({
+  name: c.name, desc: c.text, tag: c.tag, accent: c.accent, img: asset(c.image),
+}));
 
-const PRODUCTS = [
-  { name: 'Eco-leather Notebook',  sub: 'Sustainable Craftsmanship', img: notebook},
-  { name: 'Recycled Glass Bottle', sub: 'Mindful Hydration',         img: bottle },
-  { name: 'Sustainable Tote',      sub: 'Daily Versatility',         img: tote },
-  { name: 'Artisan Ceramic Mug',   sub: 'Morning Rituals',           img: mug },
-] as const;
+const PRODUCTS = products.items.map(p => ({ name: p.name, sub: p.subtitle, img: asset(p.image) }));
 
-const WHY = [
-  { icon: '✦', title: 'Premium Quality',   desc: 'Meticulously sourced materials and artisan finishes for every single component.' },
-  { icon: '◈', title: 'Bulk Ordering',     desc: 'Scalable solutions for companies of all sizes, from startups to global enterprises.' },
-  { icon: '◎', title: 'Fast Delivery',     desc: 'Efficient logistics ensuring your kits arrive exactly when your new hires do.' },
-  { icon: '◐', title: 'Dedicated Support', desc: 'A personal account manager to guide you through curation and delivery.' },
-] as const;
+const WHY = why.items.map(w => ({ icon: w.symbol, title: w.title, desc: w.text }));
 
-const CUSTOM_ITEMS = [
-  { icon: '✦', title: 'Logo Branding',     desc: 'Subtle, sophisticated branding using premium engraving and printing techniques.' },
-  { icon: '✏', title: 'Personal Messages', desc: 'Handwritten-style notes or custom digital inserts for a truly personal touch.' },
-  { icon: '◈', title: 'Custom Packaging',  desc: 'Branded boxes and eco-friendly wrapping that create an unforgettable unboxing.' },
-] as const;
+const CUSTOM_ITEMS = personalization.items.map(c => ({ icon: c.symbol, title: c.title, desc: c.text }));
 
-const STAT_ITEMS = [
-  { value: '50+',  label: 'Companies Served' },
-  { value: '98%',  label: 'Satisfaction Rate' },
-  { value: '3 Days', label: 'Avg. Delivery' },
-  { value: '200+', label: 'Products Curated' },
-] as const;
+const STAT_ITEMS = stats.items.map(s => ({ value: s.value, label: s.label }));
 
 /* ═══════════════════════════════════════════════════════
    ANIMATED COUNTER
@@ -1031,7 +991,7 @@ function CategoryCard({ item, index }: { item: typeof CATEGORIES[number]; index:
             style={{ color: item.accent }}>
             <motion.span animate={{ x: hovered ? 4 : 0 }}
               transition={{ type: 'spring', stiffness: 420, damping: 22 }}>
-              Explore
+              {collections.linkText}
             </motion.span>
             <motion.span
               animate={{ rotate: hovered ? 45 : 0, x: hovered ? 3 : 0 }}
@@ -1095,7 +1055,7 @@ function ProductCard({ item, index }: { item: typeof PRODUCTS[number]; index: nu
         style={{ color: BRAND.olive }}
         animate={{ x: hovered ? 4 : 0 }}
         transition={{ type: 'spring', stiffness: 380, damping: 20 }}>
-        <span>View Details</span>
+        <span>{products.linkText}</span>
         <ArrowRight size={10} />
       </motion.div>
     </motion.div>
@@ -1157,7 +1117,8 @@ function WhyItem({ item, index }: { item: typeof WHY[number]; index: number }) {
 /* ═══════════════════════════════════════════════════════
    HORIZONTAL MARQUEE — brand social proof
 ═══════════════════════════════════════════════════════ */
-function Marquee({ items }: { items: readonly string[] }) {
+// Client names and logos from the admin panel (admin → Clients)
+function Marquee({ items }: { items: readonly Client[] }) {
   const doubled = [...items, ...items];
   return (
     <div className="overflow-hidden relative py-10 border-y border-gray-200 bg-white">
@@ -1170,9 +1131,11 @@ function Marquee({ items }: { items: readonly string[] }) {
       <motion.div className="flex gap-16 whitespace-nowrap"
         animate={{ x: ['0%', '-50%'] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}>
-        {doubled.map((brand, i) => (
+        {doubled.map((client, i) => client.logo ? (
+          <img key={i} src={client.logo} alt={client.name} className="opacity-30" style={{ height: 32, objectFit: 'contain' }} />
+        ) : (
           <span key={i} className="font-serif text-xl text-gray-800 tracking-widest font-bold opacity-30">
-            {brand}
+            {client.name}
           </span>
         ))}
       </motion.div>
@@ -1226,8 +1189,6 @@ export default function EmployeeOnboarding() {
   const custInView  = useInView(custRef,  { once: false, amount: 0.12 });
   const ctaInView   = useInView(ctaRef,   { once: false, amount: 0.25 });
 
-  const BRANDS = useMemo(() => ['LUMIERE', 'AETHER', 'KINETIC', 'NOIR', 'SOLACE', 'VELA', 'FORMA'], []);
-
   return (
     <div className="overflow-x-hidden bg-brand-beige" style={{ fontFamily: 'inherit' }}>
       <ScrollProgress />
@@ -1239,8 +1200,8 @@ export default function EmployeeOnboarding() {
         {/* Parallax photo */}
         <motion.div style={{ y: springImg, willChange: 'transform' }} className="absolute inset-0">
           <img
-            src={hero}
-            alt="Hero" className="w-full h-full object-cover"
+            src={asset(hero.image)}
+            alt={hero.imageAlt} className="w-full h-full object-cover"
             style={{ minHeight: '120%', filter: 'brightness(0.44)' }} />
           <div className="absolute inset-0"
             style={{ background: 'linear-gradient(112deg,rgba(0,0,0,0.62) 0%,rgba(0,0,0,0.22) 55%,rgba(0,0,0,0.06) 100%)' }} />
@@ -1267,8 +1228,8 @@ export default function EmployeeOnboarding() {
           className="absolute top-6 right-8 z-10 pointer-events-none flex items-center gap-2"
           style={{ color: 'rgba(255,255,255,0.28)', fontSize: 9, textTransform: 'uppercase', letterSpacing: '0.22em', fontWeight: 700 }}>
           <motion.span animate={{ scale: [1, 1.5, 1], opacity: [0.28, 1, 0.28] }}
-            transition={{ duration: 2.8, repeat: Infinity }}>✦</motion.span>
-          Click to spark
+            transition={{ duration: 2.8, repeat: Infinity }}>{hero.clickHintSymbol}</motion.span>
+          {hero.clickHint}
         </motion.div>
 
         {/* Hero text */}
@@ -1281,11 +1242,11 @@ export default function EmployeeOnboarding() {
             <motion.span className="inline-block" style={{ width: 40, height: 1, background: BRAND.olive }}
               initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }} />
-            Corporate Solutions
+            {hero.eyebrow}
           </motion.p>
 
           <h1 className="font-serif text-white" style={{ fontSize: 'clamp(3rem,7vw,6rem)', lineHeight: 1.07 }}>
-            {(['Employee', 'Onboarding'] as const).map((word, i) => (
+            {[hero.titleLine1, hero.titleLine2].map((word, i) => (
               <motion.span key={word}
                 initial={{ clipPath: 'inset(0 0 100% 0)', y: 30, opacity: 0 }}
                 animate={{ clipPath: 'inset(0 0 0% 0)', y: 0, opacity: 1 }}
@@ -1299,14 +1260,14 @@ export default function EmployeeOnboarding() {
               animate={{ clipPath: 'inset(0 0 0% 0)', y: 0, opacity: 1 }}
               transition={{ duration: 0.75, delay: 0.64, ease: EASING.smooth }}
               style={{ display: 'block', fontStyle: 'italic', fontWeight: 400 }}>
-              Gifting.
+              {hero.titleHighlight}
             </motion.span>
           </h1>
 
           <motion.p initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.68, delay: 0.85 }}
             className="text-white/78 mt-7 max-w-md text-lg font-light leading-relaxed">
-            Make every new beginning memorable with consciously curated gifts that reflect your brand's values from day one.
+            {hero.intro}
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
@@ -1315,13 +1276,13 @@ export default function EmployeeOnboarding() {
 
             <MagneticButton
               className="bg-brand-dark-olive text-white px-9 py-4 rounded-sm font-bold uppercase tracking-widest text-xs flex items-center gap-2">
-              Explore Collections <ArrowRight size={12} />
+              {hero.primaryButton} <ArrowRight size={12} />
             </MagneticButton>
 
             <MagneticButton onClick={() => window.location.href = '/contact'}
               className="border border-white/38 text-white px-9 py-4 rounded-sm font-bold uppercase tracking-widest text-xs backdrop-blur-sm"
               style={{ background: 'rgba(255,255,255,0.07)' }}>
-              Request Quote
+              {hero.secondaryButton}
             </MagneticButton>
           </motion.div>
         </motion.div>
@@ -1330,7 +1291,7 @@ export default function EmployeeOnboarding() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ delay: 1.9, duration: 0.9 }}
           className="absolute bottom-9 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-          <span className="text-white/38 text-[9px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+          <span className="text-white/38 text-[9px] uppercase tracking-[0.3em] font-bold">{hero.scrollLabel}</span>
           <motion.div animate={{ scaleY: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
             style={{ width: 1, height: 30, background: `linear-gradient(to bottom,${BRAND.olive},transparent)` }} />
@@ -1358,8 +1319,8 @@ export default function EmployeeOnboarding() {
               style={{ rotateX: atX, rotateY: atY, transformStyle: 'preserve-3d', willChange: 'transform' }}
               className="relative">
               <img
-                src={philosophy}
-                alt="Philosophy" className="w-full rounded-sm shadow-2xl"
+                src={asset(philosophy.image)}
+                alt={philosophy.imageAlt} className="w-full rounded-sm shadow-2xl"
                 style={{ aspectRatio: '4/5', objectFit: 'cover' }} />
 
               {/* Floating quote card */}
@@ -1374,11 +1335,11 @@ export default function EmployeeOnboarding() {
                 <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-sm"
                   style={{ background: BRAND.olive }} />
                 <p className="italic font-serif text-sm text-brand-dark-olive leading-snug mb-4">
-                  "A thoughtful first impression builds loyalty that lasts."
+                  {philosophy.quote}
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-px" style={{ background: BRAND.olive }} />
-                  <span className="text-[9px] uppercase tracking-widest font-bold text-gray-400">Ecotwist</span>
+                  <span className="text-[9px] uppercase tracking-widest font-bold text-gray-400">{philosophy.quoteAuthor}</span>
                 </div>
               </motion.div>
 
@@ -1400,20 +1361,17 @@ export default function EmployeeOnboarding() {
               animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -18 }}
               transition={{ duration: 0.52, delay: 0.08 }}
               className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive mb-5">
-              The Philosophy
+              {philosophy.eyebrow}
             </motion.p>
 
             <motion.h2 initial={{ opacity: 0, y: 30 }}
               animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.68, delay: 0.14, ease: EASING.smooth }}
               className="text-5xl font-serif leading-tight mb-8">
-              The Art of the<br />First Impression
+              {philosophy.titleLine1}<br />{philosophy.titleLine2}
             </motion.h2>
 
-            {[
-              'A new hire\'s first day sets the tone for their entire journey. In an era of remote and hybrid work, the physical touchpoint of a thoughtfully curated gift bridges the gap between digital onboarding and tangible belonging.',
-              'At Ecotwist, we believe gifting should be an extension of your company culture — designed to inspire, comfort, and empower your newest team members from the very first unboxing.',
-            ].map((text, i) => (
+            {philosophy.paragraphs.map((text, i) => (
               <motion.p key={i} initial={{ opacity: 0 }}
                 animate={aboutInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.62, delay: 0.28 + i * 0.12 }}
@@ -1427,7 +1385,7 @@ export default function EmployeeOnboarding() {
               transition={{ duration: 0.52, delay: 0.52 }}
               whileHover={{ x: 6, transition: { type: 'spring', stiffness: 360, damping: 22 } }}
               className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest border-b-2 border-brand-charcoal/18 hover:border-brand-olive pb-1 transition-colors">
-              Learn about our values <ArrowRight size={13} />
+              {philosophy.linkText} <ArrowRight size={13} />
             </motion.button>
           </div>
         </div>
@@ -1444,11 +1402,11 @@ export default function EmployeeOnboarding() {
               <motion.div initial={{ scaleX: 0 }} animate={catInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ duration: 0.55, ease: EASING.smooth }}
                 style={{ originX: 0 }} className="w-20 h-1 bg-brand-olive mb-5" />
-              <h2 className="text-5xl font-serif leading-tight">Curated Collections</h2>
+              <h2 className="text-5xl font-serif leading-tight">{collections.title}</h2>
             </div>
             <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-brand-olive/65 flex items-center gap-2">
               <span className="w-8 h-px bg-brand-olive/38 inline-block" />
-              {CATEGORIES.length} Categories
+              {CATEGORIES.length} {collections.countLabel}
             </span>
           </motion.div>
 
@@ -1465,12 +1423,12 @@ export default function EmployeeOnboarding() {
             animate={prodInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
             transition={{ duration: 0.62 }} className="flex justify-between items-end mb-16">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive mb-3">The Essentials</p>
-              <h2 className="text-5xl font-serif">Signature Pieces</h2>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive mb-3">{products.eyebrow}</p>
+              <h2 className="text-5xl font-serif">{products.title}</h2>
             </div>
             <motion.a whileHover={{ y: -1 }}
               className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">
-              View All
+              {products.viewAllText}
             </motion.a>
           </motion.div>
 
@@ -1490,14 +1448,14 @@ export default function EmployeeOnboarding() {
               animate={custInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -18 }}
               transition={{ duration: 0.52 }}
               className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive/68 mb-4">
-              Personalization
+              {personalization.eyebrow}
             </motion.p>
             <motion.h2 initial={{ opacity: 0, y: 30 }}
               animate={custInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.68, delay: 0.1, ease: EASING.smooth }}
               className="text-5xl font-serif text-white leading-tight mb-16">
-              Make It<br />
-              <span className="italic font-normal" style={{ color: BRAND.olive }}>Unmistakably Yours.</span>
+              {personalization.titleLine1}<br />
+              <span className="italic font-normal" style={{ color: BRAND.olive }}>{personalization.titleHighlight}</span>
             </motion.h2>
 
             <motion.div variants={stagger} initial="hidden"
@@ -1528,8 +1486,8 @@ export default function EmployeeOnboarding() {
             transition={{ duration: 0.95, ease: EASING.spring }}
             style={{ perspective: '1000px', position: 'relative' }}>
             <img
-              src={singnature}
-              alt="Custom branding" className="w-full shadow-2xl rounded-sm"
+              src={asset(personalization.image)}
+              alt={personalization.imageAlt} className="w-full shadow-2xl rounded-sm"
               style={{ aspectRatio: '1', objectFit: 'cover' }} />
 
             {/* Quote */}
@@ -1540,12 +1498,12 @@ export default function EmployeeOnboarding() {
               <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-sm"
                 style={{ background: BRAND.olive }} />
               <p className="italic font-serif text-sm text-brand-dark-olive leading-snug mb-4">
-                "The level of customization exceeded our expectations."
+                {personalization.quote}
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-5 h-px" style={{ background: BRAND.olive }} />
                 <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400">
-                  Richa Sinha, Creative Director
+                  {personalization.quoteAuthor}
                 </span>
               </div>
             </motion.div>
@@ -1562,7 +1520,7 @@ export default function EmployeeOnboarding() {
               viewport={{ once: false, amount: 0.35 }}
               transition={{ duration: 0.55, ease: EASING.smooth }}
               style={{ originX: 0 }} className="w-20 h-1 bg-brand-olive mb-5" />
-            <h2 className="text-5xl font-serif">Why Ecotwist</h2>
+            <h2 className="text-5xl font-serif">{why.title}</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
             {WHY.map((item, i) => <WhyItem key={item.title} item={item} index={i} />)}
@@ -1571,7 +1529,7 @@ export default function EmployeeOnboarding() {
       </section>
 
       {/* ══ MARQUEE ══ */}
-      <Marquee items={BRANDS} />
+      {clients.length > 0 && <Marquee items={clients} />}
 
       {/* ══ FINAL CTA ══ */}
       <section ref={ctaRef} className="py-36 px-8 text-center bg-brand-off-white relative overflow-hidden">
@@ -1588,15 +1546,15 @@ export default function EmployeeOnboarding() {
             animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: 0.88, ease: EASING.smooth }}
             className="font-serif text-5xl md:text-7xl mb-9 leading-tight">
-            Ready to create the perfect{' '}
-            <em className="font-normal not-italic" style={{ color: BRAND.olive }}>Onboarding</em> gift experience?
+            {cta.titleStart}{' '}
+            <em className="font-normal not-italic" style={{ color: BRAND.olive }}>{cta.titleHighlight}</em> {cta.titleEnd}
           </motion.h2>
 
           <motion.p initial={{ opacity: 0, y: 18 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ duration: 0.62, delay: 0.15 }}
             className="text-xl text-gray-600 mb-12 max-w-xl mx-auto leading-relaxed">
-            Join over 50+ forward-thinking companies choosing sustainable onboarding gifting.
+            {cta.text}
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 18 }}
@@ -1606,14 +1564,14 @@ export default function EmployeeOnboarding() {
 
             <MagneticButton onClick={() => window.location.href = '/get-proposal'}
               className="bg-brand-dark-olive text-white px-14 py-6 rounded-sm uppercase tracking-[0.2em] text-xs font-bold shadow-xl">
-              Get Started
+              {cta.primaryButton}
             </MagneticButton>
 
             <motion.button whileHover={{ y: -2 }}
               onClick={() => window.location.href = '/contact'}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               className="text-brand-charcoal uppercase tracking-[0.2em] text-xs font-bold border-b-2 border-brand-charcoal/18 hover:border-brand-olive transition-colors pb-1">
-              Schedule a Consultation
+              {cta.secondaryButton}
             </motion.button>
           </motion.div>
         </div>

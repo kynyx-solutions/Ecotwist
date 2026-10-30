@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
+import content from "../content/pages/thank-you.json";
+
+// Page words: src/content/pages/thank-you.json (admin → Pages → Thank-you page)
+const { hero, summary, quote } = content;
 
 const FloatingParticles = () => {
   const particles = Array.from({ length: 18 });
@@ -100,28 +104,22 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
           transition={{ duration: 0.8 }}
         >
           <p className="uppercase tracking-[0.3em] text-xs text-[#5A8A6E] font-bold mb-6">
-            EcoTwist Studio
+            {hero.eyebrow}
           </p>
 
           <h1 className="text-5xl md:text-7xl font-serif text-[#2C2D1E] leading-tight">
-            Thank You.
+            {hero.titleLine1}
             <br />
-            <span className="italic">Your Journey Begins.</span>
+            <span className="italic">{hero.titleLine2}</span>
           </h1>
 
           <p className="mt-8 text-lg text-[#2C2D1E]/70 leading-relaxed">
-            Thank you for reaching out. Our sustainability experts are reviewing
-            your requirements and will craft a tailored gifting experience for your brand.
+            {hero.text}
           </p>
 
           {/* TIMELINE */}
           <div className="mt-10 space-y-3">
-            {[
-              "Request Submitted",
-              "Requirement Review",
-              "Proposal Creation",
-              "We Will Contact You"
-            ].map((step, i) => (
+            {hero.timeline.map(({ text: step }, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
@@ -142,10 +140,10 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
             animate={{ opacity: 1, y: 0 }}
           >
             <p className="text-xs uppercase tracking-widest text-[#5A8A6E]">
-              Average Response Time
+              {hero.responseLabel}
             </p>
             <p className="text-3xl font-bold text-[#2C2D1E] mt-2">
-              {count} Hours
+              {count} {hero.responseUnit}
             </p>
           </motion.div>
 
@@ -155,21 +153,21 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
               onClick={() => navigate("/products")}
               className="px-6 py-3 bg-[#2C2D1E] text-white rounded-md cursor-pointer"
             >
-              Explore Collection
+              {hero.exploreButton}
             </button>
 
             <button
               onClick={() => navigate("/")}
               className="px-6 py-3 border border-[#2C2D1E] text-[#2C2D1E] rounded-md cursor-pointer"
             >
-              Return Home
+              {hero.homeButton}
             </button>
 
             <button
               onClick={() => navigate("/contact")}
               className="px-6 py-3 border border-[#B8974A] text-[#B8974A] rounded-md cursor-pointer"
             >
-              Book a Call
+              {hero.callButton}
             </button>
           </div>
         </motion.div>
@@ -195,7 +193,7 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
             transition={{ duration: 3.5, repeat: Infinity }}
           >
             <p className="text-xs uppercase tracking-widest text-[#5A8A6E]">
-              Submission ID
+              {summary.submissionIdLabel}
             </p>
 
             <p className="font-bold text-[#2C2D1E] mt-1 text-lg">
@@ -214,11 +212,11 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
             {/* HEADER */}
             <div className="bg-[#2C2D1E] text-white px-6 py-5">
               <h3 className="text-xl font-serif">
-                Submission Summary
+                {summary.title}
               </h3>
 
               <p className="text-xs uppercase tracking-[0.25em] text-[#B8974A] mt-1">
-                EcoTwist Proposal Details
+                {summary.subtitle}
               </p>
             </div>
 
@@ -228,17 +226,17 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
               {/* USER DETAILS */}
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-[#5A8A6E] font-semibold mb-5">
-                  Your Details
+                  {summary.detailsHeading}
                 </p>
 
                 {/* Name */}
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 pb-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest text-[#2C2D1E]/50">
-                      Full Name
+                      {summary.nameLabel}
                     </p>
                     <p className="text-lg font-semibold text-[#2C2D1E]">
-                      {configurator?.name || "Not Provided"}
+                      {configurator?.name || summary.notProvided}
                     </p>
                   </div>
                   <CheckCircle size={18} className="text-green-600" />
@@ -248,10 +246,10 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 py-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest text-[#2C2D1E]/50">
-                      Company
+                      {summary.companyLabel}
                     </p>
                     <p className="text-lg font-semibold text-[#2C2D1E]">
-                      {configurator?.company || "Not Provided"}
+                      {configurator?.company || summary.notProvided}
                     </p>
                   </div>
                   <CheckCircle size={18} className="text-green-600" />
@@ -261,10 +259,10 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 py-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest text-[#2C2D1E]/50">
-                      Work Email
+                      {summary.emailLabel}
                     </p>
                     <p className="text-lg font-semibold text-[#2C2D1E] break-all">
-                      {configurator?.email || "Not Provided"}
+                      {configurator?.email || summary.notProvided}
                     </p>
                   </div>
                   <CheckCircle size={18} className="text-green-600" />
@@ -274,10 +272,10 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 <div className="flex items-center justify-between pt-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest text-[#2C2D1E]/50">
-                      Mobile
+                      {summary.phoneLabel}
                     </p>
                     <p className="text-lg font-semibold text-[#2C2D1E]">
-                      {configurator?.phone || "Not Provided"}
+                      {configurator?.phone || summary.notProvided}
                     </p>
                   </div>
                   <CheckCircle size={18} className="text-green-600" />
@@ -290,13 +288,13 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
               {/* CONFIGURATION */}
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-[#5A8A6E] font-semibold mb-5">
-                  Configuration
+                  {summary.configurationHeading}
                 </p>
 
                 {/* Occasion — or the product, when ordered from the Products page */}
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 pb-3">
                   <p className="text-lg font-semibold text-[#2C2D1E]">
-                    {configurator?.product || configurator?.occasion || "Not Selected"}
+                    {configurator?.product || configurator?.occasion || summary.notSelected}
                   </p>
                   <CheckCircle size={18} className="text-green-600" />
                 </div>
@@ -304,7 +302,7 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 {/* Budget */}
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 py-3">
                   <p className="text-lg font-semibold text-[#2C2D1E]">
-                    {configurator?.budget || "Not Selected"}
+                    {configurator?.budget || summary.notSelected}
                   </p>
                   <CheckCircle size={18} className="text-green-600" />
                 </div>
@@ -312,7 +310,7 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 {/* Quantity */}
                 <div className="flex items-center justify-between border-b border-[#B8974A]/20 py-3">
                   <p className="text-lg font-semibold text-[#2C2D1E]">
-                    {configurator?.quantity || "Not Selected"}
+                    {configurator?.quantity || summary.notSelected}
                   </p>
                   <CheckCircle size={18} className="text-green-600" />
                 </div>
@@ -320,7 +318,7 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
                 {/* Branding */}
                 <div className="flex items-center justify-between pt-3">
                   <p className="text-lg font-semibold text-[#2C2D1E]">
-                    {configurator?.branding || "Not Selected"}
+                    {configurator?.branding || summary.notSelected}
                   </p>
                   <CheckCircle size={18} className="text-green-600" />
                 </div>
@@ -331,19 +329,19 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
             {/* FOOTER */}
             <div className="bg-[#F8F6F1] px-6 py-5 border-t border-[#B8974A]/20">
               <div className="flex justify-between">
-                <span className="text-sm text-[#2C2D1E]/60">Status</span>
+                <span className="text-sm text-[#2C2D1E]/60">{summary.statusLabel}</span>
                 <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
-                  Received
+                  {summary.statusValue}
                 </span>
               </div>
 
               <div className="flex justify-between mt-3">
-                <span className="text-sm text-[#2C2D1E]/60">Date</span>
+                <span className="text-sm text-[#2C2D1E]/60">{summary.dateLabel}</span>
                 <span className="font-semibold text-[#2C2D1E]">{submissionDate}</span>
               </div>
 
               <div className="flex justify-between mt-3">
-                <span className="text-sm text-[#2C2D1E]/60">Time</span>
+                <span className="text-sm text-[#2C2D1E]/60">{summary.timeLabel}</span>
                 <span className="font-semibold text-[#2C2D1E]">{submissionTime}</span>
               </div>
             </div>
@@ -359,7 +357,7 @@ const submissionId = `ECO-${Date.now().toString().slice(-6)}`;
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        "Sustainability is the ultimate sophistication."
+        {quote.text}
       </motion.div>
     </div>
   );

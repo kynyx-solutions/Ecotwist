@@ -1,0 +1,103 @@
+{
+  "_meta": { "label": "Get Proposal form", "route": "/get-proposal" },
+  "steps": [
+    {
+      "stepLabel": "01. Occasion",
+      "subtitle": "Tell us about the",
+      "title": "Occasion",
+      "desc": "Every gift tells a story. Select the purpose for your curated collection.",
+      "options": [
+        { "title": "Employee Appreciation", "desc": "Reward your team." },
+        { "title": "New Hire Onboarding", "desc": "Welcome new employees." },
+        { "title": "Client Gifting", "desc": "Strengthen relationships." },
+        { "title": "Event Swag", "desc": "Perfect for events." }
+      ],
+      "image1": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=900&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=900&auto=format&fit=crop"
+    },
+    {
+      "stepLabel": "02. Budget",
+      "subtitle": "Define your",
+      "title": "Budget",
+      "desc": "Choose a budget range that aligns with your gifting goals.",
+      "options": [
+        { "title": "₹100 - ₹500", "desc": "" },
+        { "title": "₹500 - ₹1000", "desc": "" },
+        { "title": "₹1000 - ₹2000", "desc": "" },
+        { "title": "₹2000+", "desc": "" }
+      ],
+      "image1": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=900&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=900&auto=format&fit=crop"
+    },
+    {
+      "stepLabel": "03. Quantity",
+      "subtitle": "Select the",
+      "title": "Quantity",
+      "desc": "Tell us how many recipients you are planning for.",
+      "options": [
+        { "title": "10 - 50", "desc": "" },
+        { "title": "50 - 100", "desc": "" },
+        { "title": "100 - 500", "desc": "" },
+        { "title": "500+", "desc": "" }
+      ],
+      "image1": "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=900&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900&auto=format&fit=crop"
+    },
+    {
+      "stepLabel": "04. Branding",
+      "subtitle": "Choose your",
+      "title": "Branding",
+      "desc": "Customize your gifts with premium branding options.",
+      "options": [
+        { "title": "Logo Print", "desc": "" },
+        { "title": "Custom Packaging", "desc": "" },
+        { "title": "Embroidery", "desc": "" },
+        { "title": "No Branding", "desc": "" }
+      ],
+      "image1": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=900&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=900&auto=format&fit=crop"
+    },
+    {
+      "stepLabel": "05. Your Details",
+      "subtitle": "Tell us about",
+      "title": "Your Details",
+      "desc": "Share your contact details so our gifting experts can prepare a personalized proposal.",
+      "options": [],
+      "image1": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=900&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=900&auto=format&fit=crop"
+    }
+  ],
+  "productStep": {
+    "stepLabel": "01. Product",
+    "subtitle": "Your selected",
+    "title": "Product",
+    "desc": "Your proposal will be prepared for this product. Continue to choose your budget, quantity and branding.",
+    "reminderLabel": "Proposal for",
+    "skuLabel": "SKU",
+    "changeButton": "Change",
+    "changeLink": "Choose a different product →"
+  },
+  "festivalOption": {
+    "badge": "Festive Special"
+  },
+  "detailsForm": {
+    "namePlaceholder": "Full Name",
+    "companyPlaceholder": "Company Name",
+    "emailPlaceholder": "Work Email",
+    "phonePlaceholder": "Mobile Number",
+    "nameError": "Name required",
+    "companyError": "Company required",
+    "emailError": "Valid email required",
+    "phoneError": "Valid number required",
+    "connectionError": "Unable to connect to the server."
+  },
+  "navigation": {
+    "backButton": "Back",
+    "continueButton": "Continue",
+    "finishButton": "Finish"
+  },
+  "sideImages": {
+    "label1": "Gift",
+    "label2": "Editorial"
+  }
+}

@@ -1,32 +1,8 @@
 import React from 'react';
-import logo from '../assests/logo.png';
-import Homeasy from '../assests/homeasy.png';
-import bharatx from '../assests/bhartex.png';
-import aixperts from '../assests/aixperts.png';
-import infratech from '../assests/bharatx.png';
-import Casters from '../assests/Casters.png';
-import kynyz from '../assests/kynyx logo.png';
-import cehro from '../assests/cehro india logo.png';
-
-type Client = {
-  id: number;
-  name: string;
-  logo: string;
-};
-
-const clients: Client[] = [
-  { id: 1, name: "BiddRx", logo: "https://www.biddrx.com/Images/logo.png" },
-  { id: 2, name: "Casters Global", logo: Casters },
-  { id: 3, name: "Cehro India", logo: cehro },
-  { id: 4, name: "Sumedha Agro", logo: "https://sumedhaagro.com/assets/Logo-DFEZMT6g.webp" },
-  { id: 5, name: "Homeasy", logo: Homeasy },
-  { id: 6, name: "Bharatx Ventures", logo: bharatx },
-  { id: 7, name: "Kynyx", logo: kynyz },
-  { id: 8, name: "Aixperts", logo: aixperts },
-  { id: 9, name: "Bharatx Infratech", logo: infratech },
-];
+import { clients } from '../lib/clients';
 
 export default function OurClients() {
+  if (clients.length === 0) return null;
 
   const duplicatedClients = [...clients, ...clients, ...clients];
 
@@ -55,7 +31,7 @@ export default function OurClients() {
 
             {duplicatedClients.map((client, index) => (
               <div
-                key={`${client.id}-${index}`}
+                key={`${client.name}-${index}`}
                 className="
                   w-auto flex-shrink-0 rounded-3xl 
                   p-3 sm:p-4
@@ -64,18 +40,22 @@ export default function OurClients() {
                   flex items-center justify-center
                 "
               >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="
-                    h-10 sm:h-14 md:h-20
-                    object-contain
-                    mx-auto
-                    transition duration-300
-                    hover:scale-110
-                    drop-shadow-[0_4px_10px_rgba(0,0,0,0.15)]
-                  "
-                />
+                {client.logo ? (
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="
+                      h-10 sm:h-14 md:h-20
+                      object-contain
+                      mx-auto
+                      transition duration-300
+                      hover:scale-110
+                      drop-shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+                    "
+                  />
+                ) : (
+                  <span className="text-sm sm:text-base font-semibold tracking-wider text-gray-700 whitespace-nowrap px-2">{client.name}</span>
+                )}
               </div>
             ))}
 

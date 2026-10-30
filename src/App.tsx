@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AnalyticsTracker } from './lib/analytics';
+import { SeoManager } from './components/SeoManager';
 
 // ── Core pages (default exports) ──────────────────────
 import { Home } from "./pages/Home";
@@ -14,6 +15,8 @@ import { Solutions } from "./pages/Solutions";
 import GetProposal  from './pages/GetProposal';
 import Impact       from './pages/Impact';
 import  ThankYou  from './pages/ThankYou';
+import Blog         from './pages/Blog';
+import BlogPost     from './pages/BlogPost';
 
 // ── Original 5 Occasion pages ─────────────────────────
 import ClientAppreciation from './pages/ClientAppreciation';
@@ -72,6 +75,8 @@ const AnimatedRoutes = () => {
         <Route path="/impact"       element={<PageWrapper><Impact /></PageWrapper>} />
         <Route path="/product"      element={<PageWrapper><ProductList /></PageWrapper>} />
         <Route path="/thanks"      element={<PageWrapper><ThankYou /></PageWrapper>} /> 
+        <Route path="/blog"         element={<PageWrapper><Blog /></PageWrapper>} />
+        <Route path="/blog/:slug"   element={<PageWrapper><BlogPost /></PageWrapper>} />
 
         {/* ── Original 5 occasion routes ── */}
         <Route path="/occasions/client-appreciation" element={<PageWrapper><ClientAppreciation /></PageWrapper>} />
@@ -105,6 +110,7 @@ export default function App() {
   return (
     <Router>
       <AnalyticsTracker />
+      <SeoManager />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

@@ -1,0 +1,102 @@
+{
+  "_meta": { "label": "Refund Policy", "route": "/refund-policy" },
+  "header": {
+    "topLabel": "Refund policy",
+    "title": "Return and Refund Policy",
+    "effectiveDate": "November 01, 2025"
+  },
+  "companyDetails": {
+    "registeredAddressLabel": "Registered Address:",
+    "registeredAddress": "Near Euro Kids Play School, Mahavir Colony, Beur, Patna 800002 (Bihar)",
+    "officeAddressLabel": "Office Address:",
+    "officeAddress": "B-Hub, 5th Floor, A Block, Mauryalok Complex, Patna 800001 (Bihar)",
+    "cinLabel": "CIN:",
+    "cin": "U16292BR2025PTC074427",
+    "websiteLabel": "Website:",
+    "websiteText": "ecotwist.in"
+  },
+  "commitment": {
+    "heading": "Our Commitment to Quality and Your Satisfaction",
+    "paragraphs": [
+      "At Ecotwist Innovtions Private Limited, we are dedicated to offering high-quality, sustainable products that meet and exceed your expectations. This detailed Return and Refund Policy is designed to be a transparent and fair guide. This policy is governed by the principles of the Consumer Protection Act, 2019, and all other applicable laws in India."
+    ]
+  },
+  "rightToReturn": {
+    "heading": "Right to Return: Conditions and Timeframes",
+    "text": "You have the right to request a return within",
+    "textHighlight": "seven (7) calendar days",
+    "textEnd": "from the date your product was delivered, as verified by the delivery date recorded by our shipping partner.",
+    "points": [
+      "The item must be returned in its original, unused state with all tags, labels, accessories, and protective packaging intact.",
+      "You must provide the original sales invoice or the unique order number associated with your purchase."
+    ]
+  },
+  "sections": [
+    {
+      "heading": "Valid Reasons for Initiating a Return",
+      "labelledPoints": [
+        { "label": "Damaged or Defective Product:", "text": "Product is physically damaged, broken, or has a manufacturing defect." },
+        { "label": "Incorrect Product Delivered:", "text": "Wrong model, size, color, or other specifications." },
+        { "label": "Product Not as Described:", "text": "Actual features differ materially from description/images on website." }
+      ]
+    },
+    {
+      "heading": "Products Excluded from Our Return Policy",
+      "paragraphs": [
+        "Certain products cannot be returned unless defective or damaged upon delivery:"
+      ],
+      "points": [
+        "Used or Altered Products",
+        "Custom or Personalized Items",
+        "Final Sale Items"
+      ]
+    }
+  ],
+  "returnProcess": {
+    "heading": "The Step-by-Step Return Process",
+    "steps": [
+      {
+        "label": "Initiate Contact:",
+        "text": "Email",
+        "email": "support@ecotwist.in",
+        "textAfterEmail": "within 7 days with subject line \"Return Request - Order #[Your Order Number]\"."
+      },
+      {
+        "label": "Provide Necessary Information:",
+        "text": "Include product name, quantity, reason for return, and attach clear photos/videos."
+      },
+      {
+        "label": "Receive RA Number:",
+        "text": "Once approved, you'll receive a Return Authorization number and instructions."
+      },
+      {
+        "label": "Ship the Product:",
+        "text": "Free reverse pickup will be arranged. If unavailable, self-ship and we'll reimburse shipping costs."
+      }
+    ]
+  },
+  "refundProcedure": {
+    "heading": "Our Refund Procedure",
+    "paragraphs": [
+      "Once we receive your returned item, we will conduct a thorough quality check and inspection:"
+    ],
+    "labelledPoints": [
+      { "label": "Inspection and Approval:", "text": "Done within 48 business hours of receipt." },
+      { "label": "Refund Processing:", "text": "Refund to original payment method (excluding shipping fees unless error on our part)." },
+      { "label": "Timeline:", "text": "Up to 7 business days for refund to reflect." },
+      { "label": "COD Orders:", "text": "Refunded via bank transfer." }
+    ]
+  },
+  "cancellation": {
+    "heading": "Order Cancellation",
+    "text": "You may cancel your order before dispatch by emailing",
+    "email": "support@ecotwist.in",
+    "textEnd": "Orders already shipped cannot be cancelled and must follow the return process."
+  },
+  "contact": {
+    "heading": "Contact Information",
+    "emailLabel": "Email:",
+    "email": "support@ecotwist.in"
+  },
+  "disclaimer": "Disclaimer: This policy is a binding agreement between you and Ecotwist Innovtions Private Limited. We reserve the right to amend or update this policy at any time."
+}

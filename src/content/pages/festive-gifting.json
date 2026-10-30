@@ -1,0 +1,78 @@
+{
+  "_meta": { "label": "Festive Gifting", "route": "/occasions/festive-gifting" },
+  "hero": {
+    "clickHint": "Click anywhere to spark",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Festive",
+    "titleLine2": "Gifting",
+    "titleHighlight": "Solutions.",
+    "intro": "Celebrate milestones with curated sustainable luxury. Designed for teams who value elegance and the environment.",
+    "primaryButton": "Explore Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "The Art of Gratitude",
+    "titleLine1": "Honoring Seasons",
+    "titleLine2": "of Success",
+    "paragraph": "Festive seasons are more than just dates on a calendar; they are opportunities to pause and acknowledge the collective effort that drives your organization forward.",
+    "quote": "At Ecotwist, we transform corporate gratitude into a tangible experience of luxury that respects our planet.",
+    "image": "",
+    "photoId": "festive-about",
+    "imageAlt": "About"
+  },
+  "categories": {
+    "title": "Curated Collections",
+    "buttonText": "View Collection",
+    "items": [
+      { "name": "Welcome Kits", "tag": "Onboarding", "text": "Perfect for new arrivals and festive onboarding experiences.", "accent": "#b5a26a", "image": "", "photoId": "festive-welcome-kits" },
+      { "name": "Premium Festive Hampers", "tag": "Seasonal", "text": "A celebration of artisanal flavors and eco-luxury craftsmanship.", "accent": "#c4735d", "image": "", "photoId": "festive-premium-hampers" },
+      { "name": "Custom Merchandise", "tag": "Branded", "text": "Bespoke branding on sustainably sourced lifestyle products.", "accent": "#5a8a6e", "image": "", "photoId": "festive-custom-merchandise" }
+    ]
+  },
+  "featured": {
+    "title": "Featured Pieces",
+    "intro": "Selected seasonal favorites from our design studio",
+    "viewAllText": "View All",
+    "items": [
+      { "name": "The Heritage Box", "subtitle": "Traditional meets Sustainable", "image": "", "photoId": "festive-heritage-box" },
+      { "name": "The Wellness Kit", "subtitle": "Mindful Restoration", "image": "", "photoId": "festive-wellness-kit" },
+      { "name": "Gourmet Collection", "subtitle": "Culinary Excellence", "image": "", "photoId": "festive-gourmet-collection" },
+      { "name": "Executive Signature", "subtitle": "Modern Sophistication", "image": "", "photoId": "festive-executive-signature" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Bespoke Details",
+    "title": "Personalized for Your Brand",
+    "items": [
+      { "symbol": "🏆", "title": "Logo Branding", "text": "Subtle, high-end laser engraving or eco-foil stamping for your brand identity." },
+      { "symbol": "✉", "title": "Personalized Messages", "text": "Hand-written notes on recycled seed-paper for a truly personal touch." },
+      { "symbol": "🌿", "title": "Eco-Packaging Styles", "text": "Modular, plastic-free packaging that doubles as stylish home storage." }
+    ]
+  },
+  "why": {
+    "title": "Why Ecotwist",
+    "items": [
+      { "symbol": "✦", "title": "Premium Quality", "text": "Sustainably sourced, luxury finishes, and curated selections." },
+      { "symbol": "◈", "title": "Bulk Ordering", "text": "Seamless logistics for large-scale corporate requirements." },
+      { "symbol": "◎", "title": "Fast Delivery", "text": "Reliable worldwide shipping with real-time tracking." },
+      { "symbol": "◐", "title": "Dedicated Support", "text": "One-on-one concierge for your gifting strategy." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Global Visionaries",
+    "ratingSymbol": "★★★★★",
+    "avatarSymbol": "👤"
+  },
+  "cta": {
+    "titleLine1": "Ready to create the",
+    "titleLine2": "perfect",
+    "titleHighlight": "Festive Gifting",
+    "titleEnd": "experience?",
+    "intro": "Let us help you curate a selection that reflects your brand's commitment to quality and the planet.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation",
+    "backgroundImage": "",
+    "photoId": "festive-cta-background"
+  }
+}

@@ -1,4 +1,7 @@
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
+import content from "../content/pages/policy-layout.json";
+
+const { layout } = content;
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
@@ -98,7 +101,7 @@ interface PolicyLayoutProps {
 export default function PolicyLayout({
   topLabel,
   title,
-  company = "Ecotwist Innovtions Private Limited",
+  company = layout.defaultCompany,
   effectiveDate,
   children,
 }: PolicyLayoutProps) {
@@ -108,8 +111,56 @@ export default function PolicyLayout({
       {topLabel && <p className="pol-top-title">{topLabel}</p>}
       <p className="pol-main-title">{title}</p>
       <p className="pol-company">{company}</p>
-      {effectiveDate && <p className="pol-effective">Effective Date: {effectiveDate}</p>}
+      {effectiveDate && <p className="pol-effective">{layout.effectiveDateLabel} {effectiveDate}</p>}
       {children}
     </div>
+  );
+}
+
+/* ============================
+   One policy section from the page's JSON (edited in the admin panel):
+   <h2> heading, paragraphs, <h3> subsections, a bullet list (plain or with a
+   bold label per point), then any closing paragraphs.
+============================ */
+
+export interface PolicySectionData {
+  heading?: string;
+  paragraphs?: string[];
+  subsections?: { heading: string; paragraphs?: string[]; points?: string[] }[];
+  points?: string[];
+  labelledPoints?: { label: string; text: string }[];
+  paragraphsAfter?: string[];
+}
+
+export function PolicySection({ section }: { section: PolicySectionData }) {
+  return (
+    <>
+      {section.heading && <h2>{section.heading}</h2>}
+      {section.paragraphs?.map((p, i) => <p key={i}>{p}</p>)}
+      {section.subsections?.map((sub, i) => (
+        <Fragment key={i}>
+          <h3>{sub.heading}</h3>
+          {sub.paragraphs?.map((p, j) => <p key={j}>{p}</p>)}
+          {sub.points && (
+            <ul>
+              {sub.points.map((point, j) => <li key={j}>{point}</li>)}
+            </ul>
+          )}
+        </Fragment>
+      ))}
+      {section.points && (
+        <ul>
+          {section.points.map((point, i) => <li key={i}>{point}</li>)}
+        </ul>
+      )}
+      {section.labelledPoints && (
+        <ul>
+          {section.labelledPoints.map((point, i) => (
+            <li key={i}><strong>{point.label}</strong> {point.text}</li>
+          ))}
+        </ul>
+      )}
+      {section.paragraphsAfter?.map((p, i) => <p key={i}>{p}</p>)}
+    </>
   );
 }

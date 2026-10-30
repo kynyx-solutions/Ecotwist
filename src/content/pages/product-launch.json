@@ -1,0 +1,80 @@
+{
+  "_meta": { "label": "Product Launch", "route": "/occasions/product-launch" },
+  "hero": {
+    "backgroundImage": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=80",
+    "backgroundImageAlt": "Product Launch Hero",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Product",
+    "titleLine2": "Launch",
+    "titleHighlight": "Gifting Solutions.",
+    "intro": "Make your product launch unforgettable with curated gift experiences that amplify buzz, delight media, and create a lasting brand impression.",
+    "primaryButton": "Explore Launch Kits",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Approach",
+    "titleLine1": "Launch Experiences",
+    "titleLine2": "That Create Legends",
+    "paragraph1": "A product launch is your brand's defining moment. The gifts you give at launch don't just delight recipients — they become part of your product's story.",
+    "paragraph2": "We design launch gifting experiences that are as innovative as the products they celebrate — sustainable, beautifully crafted, and engineered for maximum brand impact.",
+    "badgeSymbol": "🚀",
+    "badgeText": "Rapid 7-Day Turnaround Available",
+    "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=900&q=80",
+    "imageAlt": "Product Launch Gifting"
+  },
+  "categories": {
+    "title": "Launch Gift Collections",
+    "intro": "Tailored gifting for every stakeholder in your product launch ecosystem.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "VIP Launch Kits", "desc": "Exclusive hampers for key stakeholders, investors, and media guests at your product debut.", "accent": "#5b8fa8", "tag": "VIP", "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
+      { "name": "Branded Merchandise", "desc": "Premium custom merch — apparel, bags, and stationery that puts your new product top of mind.", "accent": "#3a6b82", "tag": "Brand", "img": "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=800&q=80" },
+      { "name": "Media & Press Boxes", "desc": "Curated unboxing experiences designed to make your launch go viral on social media.", "accent": "#2e5571", "tag": "Media", "img": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800&q=80" }
+    ]
+  },
+  "products": {
+    "title": "Featured Launch Products",
+    "intro": "The most-loved items in our product launch gifting range.",
+    "viewAllText": "View All",
+    "items": [
+      { "name": "Launch Day Hamper", "sub": "Starting at ₹1,999", "tag": "Premium", "img": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" },
+      { "name": "Branded Tech Essentials", "sub": "Starting at ₹2,999", "tag": "Customizable", "img": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80" },
+      { "name": "Press Kit Box", "sub": "Starting at ₹3,499", "tag": "Media", "img": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Bespoke Experiences",
+    "title": "Engineered for",
+    "titleHighlight": "Maximum Impact",
+    "intro": "Every element of your launch gift is an extension of your product story. We obsess over the details so your gift becomes a talking point long after launch day.",
+    "items": [
+      { "symbol": "🚀", "title": "Product Integration", "desc": "Incorporate your actual product sample into the launch gift experience." },
+      { "symbol": "◈", "title": "Brand Story Inserts", "desc": "Beautifully designed inserts that tell your product's origin story." },
+      { "symbol": "📦", "title": "Unboxing Experience", "desc": "Magnetic closures, custom tissue, and layered reveal packaging." },
+      { "symbol": "🎥", "title": "QR Code Integration", "desc": "Scannable codes linking to launch videos, demos, or microsites." }
+    ],
+    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800&q=80",
+    "imageAlt": "Launch Gift Box"
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🚀", "title": "Launch Impact", "desc": "Gifts engineered to amplify buzz around your product debut." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Seamless production for 50 to 5,000+ launch kits." },
+      { "symbol": "◎", "title": "Rapid Turnaround", "desc": "Express timelines available for tight launch windows." },
+      { "symbol": "✦", "title": "Brand Storytelling", "desc": "Every element designed to communicate your brand narrative." },
+      { "symbol": "◐", "title": "Launch Consultant", "desc": "Dedicated expert for your entire gifting journey." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Visionary Brands"
+  },
+  "cta": {
+    "titleLine1": "Ready to launch with",
+    "titleHighlight": "maximum impact?",
+    "intro": "Let's craft a launch gifting experience that turns heads, creates buzz, and makes your product the talk of the town.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

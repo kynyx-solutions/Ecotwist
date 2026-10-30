@@ -1,0 +1,131 @@
+{
+  "_meta": { "label": "Navigation menu" },
+  "header": {
+    "logo": "/site/navigation/logo.png",
+    "logoAlt": "Ecotwist",
+    "occasionsLabel": "Occasions",
+    "links": [
+      { "name": "Corporate Solutions", "path": "/solutions" },
+      { "name": "Impact", "path": "/impact" },
+      { "name": "Blog", "path": "/blog" },
+      { "name": "Contact", "path": "/contact" }
+    ],
+    "proposalButton": "Get Proposal"
+  },
+  "occasions": [
+    {
+      "label": "Client Partnerships",
+      "path": "/occasions/client-appreciation",
+      "icon": "Gift",
+      "desc": "Artisanal gifts that strengthen partnerships.",
+      "accent": "#b5a26a",
+      "tag": "B2B"
+    },
+    {
+      "label": "Employee Onboarding",
+      "path": "/occasions/employee-onboarding",
+      "icon": "Users",
+      "desc": "Curated kits that make day one unforgettable.",
+      "accent": "#5a8a6e",
+      "tag": "HR"
+    },
+    {
+      "label": "Depawali Giftings",
+      "path": "/occasions/depawali-gifting",
+      "icon": "Sparkles",
+      "desc": "Celebrate the festival of lights with sustainable gifts.",
+      "accent": "#c4735d",
+      "tag": "Seasonal"
+    },
+    {
+      "label": "Festive Gifting",
+      "path": "/occasions/festive-gifting",
+      "icon": "Sparkles",
+      "desc": "Seasonal luxury rooted in sustainability.",
+      "accent": "#c4735d",
+      "tag": "Seasonal"
+    },
+    {
+      "label": "Events & Conferences",
+      "path": "/occasions/events-conferences",
+      "icon": "CalendarDays",
+      "desc": "VIP hampers and branded swag for every event.",
+      "accent": "#6b7fa3",
+      "tag": "Events"
+    },
+    {
+      "label": "Employee Wellness",
+      "path": "/occasions/employee-wellness",
+      "icon": "HeartPulse",
+      "desc": "Mindful gifts that nurture your team's well-being.",
+      "accent": "#8a7db5",
+      "tag": "Wellness"
+    },
+    {
+      "label": "Birthday Gifting",
+      "path": "/occasions/birthday-gifting",
+      "icon": "Cake",
+      "desc": "Make every birthday feel truly special.",
+      "accent": "#d4856a",
+      "tag": "Personal"
+    },
+    {
+      "label": "Work Anniversary",
+      "path": "/occasions/work-anniversary",
+      "icon": "Award",
+      "desc": "Celebrate milestones that matter most.",
+      "accent": "#7a9e7e",
+      "tag": "Milestone"
+    },
+    {
+      "label": "Product Launch",
+      "path": "/occasions/product-launch",
+      "icon": "Rocket",
+      "desc": "Memorable gifts to mark your big debut.",
+      "accent": "#5b8fa8",
+      "tag": "Brand"
+    },
+    {
+      "label": "Award & Recognition",
+      "path": "/occasions/award-recognition",
+      "icon": "Trophy",
+      "desc": "Premium gifts that honour high achievers.",
+      "accent": "#c4a23a",
+      "tag": "Culture"
+    },
+    {
+      "label": "Retirement Gifting",
+      "path": "/occasions/retirement-gifting",
+      "icon": "GraduationCap",
+      "desc": "A graceful send-off for a remarkable journey.",
+      "accent": "#9c7bb5",
+      "tag": "Farewell"
+    }
+  ],
+  "megaMenu": {
+    "eyebrow": "Our Occasions",
+    "title": "Gifting for",
+    "titleHighlight": "Every Occasion",
+    "tagline": "Sustainably curated corporate gifts designed for every milestone your brand celebrates.",
+    "countSuffix": "Occasions",
+    "viewAllLink": "View All",
+    "ctaTitle": "Need a custom gifting plan?",
+    "ctaText": "Get a personalised quote tailored to your brand, budget, and scale.",
+    "ctaButton": "Get Proposal",
+    "badges": [
+      { "dotColor": "#5a8a6e", "text": "Pan-India Delivery" },
+      { "dotColor": "#b5a26a", "text": "Bulk Orders Welcome" },
+      { "dotColor": "#c4735d", "text": "B-Corp Certified" }
+    ]
+  },
+  "toggle": {
+    "showLess": "Show Less",
+    "viewAll": "View All Occasions",
+    "moreSuffix": "more"
+  },
+  "mobile": {
+    "occasionsLabel": "Occasions",
+    "totalSuffix": "total",
+    "proposalButton": "Get Proposal"
+  }
+}

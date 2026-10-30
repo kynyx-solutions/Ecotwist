@@ -1,0 +1,86 @@
+{
+  "_meta": { "label": "Birthday Gifting", "route": "/occasions/birthday-gifting" },
+  "hero": {
+    "popHint": "Click balloons to pop!",
+    "eyebrow": "Corporate Birthday Solutions",
+    "rotatingWords": ["Celebrate", "Cherish", "Delight", "Surprise"],
+    "rotatingSuffix": "Every Moment",
+    "titleLine1": "Birthday",
+    "titleLine2": "Gifting",
+    "titleHighlight": "Solutions.",
+    "intro": "Make every birthday feel extraordinary with personalised, sustainable gifts your team and clients will cherish for years.",
+    "stats": [
+      { "value": "10K+", "label": "Happy Clients" },
+      { "value": "50+", "label": "Gift Collections" },
+      { "value": "Pan-India", "label": "Delivery" }
+    ],
+    "primaryButton": "Explore Birthday Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "The Joy of Making",
+    "titleLine2": "Someone Feel Special",
+    "paragraph1": "Birthdays are not just dates on a calendar — they are an opportunity to pause, celebrate, and show your team members and clients how much they mean to you.",
+    "paragraph2": "We take the guesswork out of corporate birthday gifting with sustainably curated hampers, personalised keepsakes, and gourmet indulgences.",
+    "badgeSymbol": "🎂",
+    "badgeText": "100% Personalised — No Two Gifts Alike",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=900&q=80",
+    "imageAlt": "Birthday Gifting"
+  },
+  "categories": {
+    "title": "Curated Birthday Collections",
+    "intro": "Explore our themed collections designed to make every birthday celebration truly memorable.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Personalised Keepsakes", "desc": "Engraved photo frames, custom journals, and memory boxes.", "accent": "#d4856a", "tag": "Personal", "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80" },
+      { "name": "Gourmet Celebration Kits", "desc": "Artisan chocolates, premium teas, and handcrafted sweets.", "accent": "#c4735d", "tag": "Gourmet", "image": "", "photoId": "birthday-gourmet-kits" },
+      { "name": "Pampering Wellness Sets", "desc": "Luxurious bath salts, aromatherapy candles, and skin-care treats.", "accent": "#a0617a", "tag": "Wellness", "image": "", "photoId": "birthday-wellness-sets" }
+    ]
+  },
+  "products": {
+    "title": "Featured Birthday Products",
+    "intro": "The most-loved additions to our corporate birthday programs.",
+    "viewAll": "View All",
+    "items": [
+      { "name": "Celebration Hamper", "sub": "Starting at ₹1,499", "tag": "Bestseller", "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80" },
+      { "name": "Sweet Indulgence Box", "sub": "Starting at ₹999", "tag": "Customizable", "image": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&q=80" },
+      { "name": "Luxury Candle Set", "sub": "Starting at ₹1,199", "tag": "Eco-friendly", "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Personalisation",
+    "title": "Tailored to Every",
+    "titleHighlight": "Birthday Personality",
+    "intro": "From the minimalist who appreciates subtle elegance to the one who loves a grand celebration — we craft birthday gifts that mirror their personality perfectly.",
+    "items": [
+      { "symbol": "🎂", "title": "Name & Date Engraving", "desc": "Personalised messages laser-etched on premium products." },
+      { "symbol": "🎀", "title": "Signature Gift Wrapping", "desc": "Bespoke ribbons, tissue paper, and branded gift tags." },
+      { "symbol": "📸", "title": "Photo Personalisation", "desc": "Custom photo prints incorporated into hamper packaging." },
+      { "symbol": "🎨", "title": "Theme Curation", "desc": "Color palettes and products aligned to birthday themes." }
+    ],
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
+    "imageAlt": "Custom"
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🎁", "title": "Joyful Curation", "desc": "Every item handpicked to spark delight." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Fulfillment for 10 to 10,000 gifts." },
+      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "On-time delivery everywhere." },
+      { "symbol": "✦", "title": "Custom Branding", "desc": "Your brand on every gift." },
+      { "symbol": "◐", "title": "Dedicated Support", "desc": "Expert consultants at every step." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Visionary Brands"
+  },
+  "cta": {
+    "titleLine1": "Ready to make every",
+    "titleHighlight": "birthday unforgettable?",
+    "text": "Let's create personalised birthday experiences your team will talk about all year long.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

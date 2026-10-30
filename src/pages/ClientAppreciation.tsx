@@ -8,16 +8,13 @@ import {
   useInView,
 } from "framer-motion";
 import type { Variants } from "framer-motion";
-import exebox from "../assests/exeboxes.png";
-import client from "../assests/client.png";
-import custom from "../assests/customtech.png";
-import catalyst from "../assests/catalyst.png";
-import grand from "../assests/celebration.png";
-import lenin from "../assests/lenin.jpg";
-import morning from "../assests/coffe.jpg";
-import clientperso from "../assests/clientperso.png";
-import madhubani from "../assests/madhubani.jpg";
 import { ArrowRight } from "lucide-react";
+import { clients } from '../lib/clients';
+import { asset } from '../lib/content';
+import content from '../content/pages/client-appreciation.json';
+
+// Page words and photos: src/content/pages/client-appreciation.json (admin → Pages → Client Appreciation)
+const { hero, about, collections, products, personalization, features, trustedBy, cta } = content;
 
 function useTilt(strength = 10) {
   const ref = useRef<HTMLDivElement>(null);
@@ -66,29 +63,10 @@ const vSlideRight: Variants = {
   show: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE } },
 };
 
-const PRODUCTS = [
-  { name: "The Wellness Suite", sub: "Organic Linen & Essential Oils", price: "$145.00", img: lenin },
-  { name: "Morning Ritual", sub: "Artisanal Coffee & Copper Press", price: "$120.00", img: morning },
-  { name: "The Catalyst", sub: "Recycled Leather & Brass Stylus", price: "$95.00", img: catalyst },
-  { name: "Grand Celebration", sub: "Vintage Cuvee & Cocoa Nib Truffles", price: "$210.00", img: grand },
-];
-const CATEGORIES = [
-  { name: "Executive Boxes", desc: "Sophisticated essentials for the modern C-suite leader.", accent: "#b5a26a", tag: "Executive", img: exebox },
-  { name: "Artisanal Curations", desc: "Handmade ceramics and small-batch treats from local makers.", accent: "#c4735d", tag: "Artisan", img: client },
-  { name: "Custom Tech", desc: "Seamlessly integrated technology in eco-conscious housing.", accent: "#5a8a6e", tag: "Tech", img: custom },
-];
-const FEATURES = [
-  { icon: "🌿", title: "100% Plastic Free", desc: "Fully compostable materials" },
-  { icon: "🤝", title: "Artisan Direct", desc: "Supporting small makers" },
-  { icon: "🚚", title: "Carbon Neutral", desc: "Global tracked delivery" },
-  { icon: "✦", title: "B-Corp Certified", desc: "Socially responsible" },
-  { icon: "◐", title: "Dedicated Concierge", desc: "Personalized support" },
-];
-const CUSTOM_ITEMS = [
-  { icon: "◈", title: "Logo Branding", desc: "Subtle engraving or foil-stamping on products and packaging." },
-  { icon: "✏", title: "Personalized Messages", desc: "Hand-calligraphed notes included with every gift shipment." },
-  { icon: "📦", title: "Packaging Styles", desc: "Choose from wooden crates, recycled boxes, or canvas wraps." },
-];
+const PRODUCTS = products.items.map(p => ({ name: p.name, sub: p.subtitle, price: p.price, img: asset(p.image) }));
+const CATEGORIES = collections.items.map(c => ({ name: c.name, desc: c.text, accent: c.accent, tag: c.tag, img: asset(c.image) }));
+const FEATURES = features.items.map(f => ({ icon: f.symbol, title: f.title, desc: f.text }));
+const CUSTOM_ITEMS = personalization.items.map(c => ({ icon: c.symbol, title: c.title, desc: c.text }));
 
 /* ═══════════════════════════════════════════════════════════════
    GIFTING CANVAS  — replaces plain bubbles with themed shapes
@@ -630,7 +608,7 @@ function CategoryCard({ item }: { item: (typeof CATEGORIES)[0]; index: number })
           <h3 className="font-serif text-2xl text-gray-800 mb-2">{item.name}</h3>
           <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.desc}</p>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest" style={{color:"#b5a26a"}}>
-            <motion.span animate={{x:hovered?3:0}} transition={{type:"spring",stiffness:400,damping:20}}>View Collection</motion.span>
+            <motion.span animate={{x:hovered?3:0}} transition={{type:"spring",stiffness:400,damping:20}}>{collections.linkText}</motion.span>
             <motion.span animate={{rotate:hovered?45:0,x:hovered?2:0}} transition={{type:"spring",stiffness:380,damping:18}} style={{display:"inline-flex"}}><ArrowRight size={11}/></motion.span>
           </div>
         </div>
@@ -659,7 +637,7 @@ function ProductCard({ item, index }: { item: (typeof PRODUCTS)[0]; index: numbe
         <div className="flex justify-between items-center">
           <span className="font-semibold text-base" style={{color:"#064e3b"}}>{item.price}</span>
           <motion.button whileTap={{scale:0.88}} transition={{type:"spring",stiffness:320,damping:18}}
-            className="text-base font-semibold" style={{background:"none",border:"none",cursor:"pointer",color:"#064e3b"}}>Order Now</motion.button>
+            className="text-base font-semibold" style={{background:"none",border:"none",cursor:"pointer",color:"#064e3b"}}>{products.buttonText}</motion.button>
         </div>
       </div>
     </motion.div>
@@ -734,7 +712,7 @@ export default function ClientAppreciation() {
             style={{fontSize:11,letterSpacing:"0.5em",fontWeight:700,textTransform:"uppercase",
               color:"rgba(201,169,110,0.75)",marginBottom:"1.2rem",display:"flex",alignItems:"center",justifyContent:"center",gap:"0.75rem"}}>
             <span style={{display:"inline-block",width:36,height:1,background:"rgba(201,169,110,0.55)"}}/>
-            Corporate Gifting Solutions
+            {hero.eyebrow}
             <span style={{display:"inline-block",width:36,height:1,background:"rgba(201,169,110,0.55)"}}/>
           </motion.p>
 
@@ -748,7 +726,7 @@ export default function ClientAppreciation() {
               <motion.span animate={{rotate:[-8,8,-8],scale:[1,1.18,1]}}
                 transition={{duration:3.2,repeat:Infinity,ease:"easeInOut"}}
                 style={{fontSize:"0.52em",filter:"drop-shadow(0 0 10px rgba(255,215,0,0.8))"}}></motion.span>
-              Client
+              {hero.titleLine1}
             </motion.h1>
           </div>
 
@@ -759,7 +737,7 @@ export default function ClientAppreciation() {
               style={{fontSize:"clamp(2.2rem,5vw,5rem)",lineHeight:1.0,fontFamily:"serif",fontWeight:700,
                 color:"#fff",margin:0,textShadow:"0 0 60px rgba(201,169,110,0.4)",letterSpacing:"-1px",
                 display:"flex",alignItems:"center",justifyContent:"center",gap:"0.4em"}}>
-              Appreciation
+              {hero.titleLine2}
               <motion.span animate={{rotate:[0,360],scale:[1,1.25,1]}}
                 transition={{duration:5,repeat:Infinity,ease:"linear"}}
                 style={{fontSize:"0.44em",filter:"drop-shadow(0 0 12px rgba(255,215,0,0.9))"}}></motion.span>
@@ -777,7 +755,7 @@ export default function ClientAppreciation() {
               <motion.span animate={{opacity:[0.4,1,0.4],scale:[0.8,1.35,0.8]}}
                 transition={{duration:2.2,repeat:Infinity,ease:"easeInOut",delay:0.4}}
                 style={{fontSize:"0.5em",filter:"drop-shadow(0 0 10px rgba(255,200,80,0.9))"}}></motion.span>
-              Gifting Solutions.
+              {hero.titleLine3}
               <motion.span animate={{opacity:[0.4,1,0.4],scale:[0.8,1.35,0.8]}}
                 transition={{duration:2.2,repeat:Infinity,ease:"easeInOut",delay:1.1}}
                 style={{fontSize:"0.5em",filter:"drop-shadow(0 0 10px rgba(255,200,80,0.9))"}}></motion.span>
@@ -787,13 +765,12 @@ export default function ClientAppreciation() {
           <motion.p initial={{opacity:0,y:24,filter:"blur(8px)"}} animate={{opacity:1,y:0,filter:"blur(0px)"}}
             transition={{duration:0.9,delay:1.05}}
             style={{color:"rgba(220,200,160,0.72)",maxWidth:520,margin:"0 auto",fontSize:"1.1rem",fontWeight:300,lineHeight:1.7}}>
-            Strengthen partnerships with artisanal, earth-conscious luxury. Curated experiences
-            that reflect your brand's commitment to quality and sustainability.
+            {hero.intro}
           </motion.p>
 
           <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:1.3,duration:0.7}}
             style={{display:"flex",flexWrap:"wrap",gap:"1.2rem",marginTop:"0.6rem",justifyContent:"center",pointerEvents:"none"}}>
-            {[{icon:"",label:"Curated Gifts"},{icon:"💎",label:"Premium Quality"},{icon:"🌿",label:"Eco Certified"},{icon:"💼",label:"Corporate Orders"},{icon:"🎀",label:"Custom Wrapping"}]
+            {hero.tags.map(t=>({icon:t.symbol,label:t.label}))
               .map(({icon,label},i)=>(
               <motion.span key={label} animate={{opacity:[0.3,0.78,0.3]}}
                 transition={{duration:3.5+i*0.5,repeat:Infinity,delay:i*0.35}}
@@ -812,7 +789,7 @@ export default function ClientAppreciation() {
                 padding:"14px 40px",borderRadius:30,fontWeight:800,fontSize:13,letterSpacing:"0.15em",
                 textTransform:"uppercase",border:"none",cursor:"pointer",
                 boxShadow:"0 0 24px rgba(201,169,110,0.4)",display:"flex",alignItems:"center",gap:"0.5rem"}}>
-              <span></span> Explore Gifts
+              <span></span> {hero.primaryButton}
             </motion.button>
             <motion.button whileHover={{scale:1.04,y:-2}} whileTap={{scale:0.96}}
               transition={{type:"spring",stiffness:300,damping:18}}
@@ -821,7 +798,7 @@ export default function ClientAppreciation() {
                 border:"1px solid rgba(201,169,110,0.38)",color:"#e8c882",padding:"14px 40px",
                 borderRadius:30,fontWeight:700,fontSize:13,letterSpacing:"0.15em",
                 textTransform:"uppercase",cursor:"pointer",display:"flex",alignItems:"center",gap:"0.5rem"}}>
-              <span>💼</span> Request Quote
+              <span>💼</span> {hero.secondaryButton}
             </motion.button>
           </motion.div>
         </motion.div>
@@ -830,7 +807,7 @@ export default function ClientAppreciation() {
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2,duration:0.8}}
           style={{position:"absolute",bottom:"2rem",left:"50%",transform:"translateX(-50%)",
             zIndex:5,display:"flex",flexDirection:"column",alignItems:"center",gap:"0.5rem",pointerEvents:"none"}}>
-          <span style={{color:"rgba(201,169,110,0.4)",fontSize:9,letterSpacing:"0.3em",fontWeight:700,textTransform:"uppercase"}}>Scroll</span>
+          <span style={{color:"rgba(201,169,110,0.4)",fontSize:9,letterSpacing:"0.3em",fontWeight:700,textTransform:"uppercase"}}>{hero.scrollLabel}</span>
           <motion.div animate={{y:[0,8,0]}} transition={{duration:1.5,repeat:Infinity,ease:"easeInOut"}}
             style={{width:1,height:28,background:"linear-gradient(to bottom,rgba(201,169,110,0.8),transparent)"}}/>
         </motion.div>
@@ -843,7 +820,7 @@ export default function ClientAppreciation() {
             transition={{duration:0.85,ease:EASE}} style={{perspective:"1200px"}}>
             <motion.div ref={aboutTiltRef} onMouseMove={atMM} onMouseLeave={atML}
               style={{rotateX:atX,rotateY:atY,transformStyle:"preserve-3d",willChange:"transform"}}>
-              <img src={madhubani} alt="About"
+              <img src={asset(about.image)} alt={about.imageAlt}
                 className="w-full rounded-2xl shadow-2xl" style={{aspectRatio:"4/5",objectFit:"cover"}}/>
             </motion.div>
           </motion.div>
@@ -851,21 +828,18 @@ export default function ClientAppreciation() {
             <motion.div variants={vFadeUp}>
               <motion.div initial={{scaleX:0}} animate={aboutInView?{scaleX:1}:{scaleX:0}}
                 transition={{duration:0.55,ease:EASE}} style={{originX:0,background:"#b5a26a",height:4,width:80,marginBottom:24}}/>
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{color:"#065f46"}}>Our Philosophy</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{color:"#065f46"}}>{about.eyebrow}</p>
             </motion.div>
             <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-7">
-              Elevated Intentions<br/>for Lasting Impressions
+              {about.titleLine1}<br/>{about.titleLine2}
             </motion.h2>
             <motion.p variants={vFadeUp} className="text-gray-600 text-lg leading-relaxed mb-10">
-              We believe that a gift is more than just an object; it's a conversation. Our client
-              appreciation collection is designed for those who value authenticity. We source
-              exclusively from independent artisans and carbon-neutral suppliers to ensure your
-              gratitude leaves a mark on the heart, not the planet.
+              {about.text}
             </motion.p>
             <motion.a variants={vFadeUp} whileHover={{x:4,transition:{type:"spring",stiffness:340,damping:22}}}
               className="inline-flex items-center gap-2 font-bold text-[11px] uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
               style={{borderColor:"rgba(0,0,0,0.15)"}}>
-              Learn about our impact <ArrowRight size={13}/>
+              {about.linkText} <ArrowRight size={13}/>
             </motion.a>
           </motion.div>
         </div>
@@ -876,8 +850,8 @@ export default function ClientAppreciation() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{opacity:0,y:30}} animate={catInView?{opacity:1,y:0}:{opacity:0,y:30}}
             transition={{duration:0.6}} className="text-center mb-8">
-            <h2 className="text-5xl font-serif text-gray-900 mb-4">Curated Collections</h2>
-            <p className="text-gray-500 max-w-sm mx-auto text-sm">Discover the perfect alignment for your brand's aesthetic and values.</p>
+            <h2 className="text-5xl font-serif text-gray-900 mb-4">{collections.title}</h2>
+            <p className="text-gray-500 max-w-sm mx-auto text-sm">{collections.intro}</p>
           </motion.div>
           <motion.div variants={vStagger} initial="hidden" animate={catInView?"show":"hidden"}
             className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{perspective:"1600px"}}>
@@ -893,10 +867,10 @@ export default function ClientAppreciation() {
             viewport={{once:false,amount:0.3}} transition={{duration:0.6}}
             className="flex justify-between items-end mb-12">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{color:"#065f46"}}>New Arrivals</p>
-              <h2 className="text-5xl font-serif">Seasonal Favorites</h2>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{color:"#065f46"}}>{products.eyebrow}</p>
+              <h2 className="text-5xl font-serif">{products.title}</h2>
             </div>
-            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{borderColor:"#b5a26a"}}>View All</motion.a>
+            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{borderColor:"#b5a26a"}}>{products.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"
             style={{scrollSnapType:"x mandatory",msOverflowStyle:"none",scrollbarWidth:"none"} as React.CSSProperties}>
@@ -909,10 +883,10 @@ export default function ClientAppreciation() {
       <section ref={custRef} className="py-16 px-8 md:px-20 lg:px-32 overflow-hidden" style={{background:"#1c1917"}}>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <motion.div variants={vSlideLeft} initial="hidden" animate={custInView?"show":"hidden"}>
-            <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{color:"rgba(181,162,106,0.7)"}}>Personalization</p>
+            <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{color:"rgba(181,162,106,0.7)"}}>{personalization.eyebrow}</p>
             <h2 className="text-5xl font-serif text-white leading-tight mb-14">
-              Tailored to Your<br/>
-              <em style={{color:"#4ade80",fontStyle:"italic",fontWeight:400}}>Brand Identity</em>
+              {personalization.titleLine1}<br/>
+              <em style={{color:"#4ade80",fontStyle:"italic",fontWeight:400}}>{personalization.titleHighlight}</em>
             </h2>
             <motion.div variants={vStagger} initial="hidden" animate={custInView?"show":"hidden"} className="space-y-10">
               {CUSTOM_ITEMS.map(item=>(
@@ -930,8 +904,8 @@ export default function ClientAppreciation() {
           <motion.div variants={vSlideRight} initial="hidden" animate={custInView?"show":"hidden"} style={{position:"relative"}}>
             <div className="absolute -inset-4 rounded-2xl" style={{background:"rgba(6,78,59,0.2)",filter:"blur(40px)"}}/>
             <div className="relative overflow-hidden rounded-2xl">
-              <img src={clientperso}
-                alt="Custom" className="w-full rounded-2xl" style={{filter:"grayscale(0.55)",transition:"filter 1s"}}
+              <img src={asset(personalization.image)}
+                alt={personalization.imageAlt} className="w-full rounded-2xl" style={{filter:"grayscale(0.55)",transition:"filter 1s"}}
                 onMouseEnter={e=>{(e.currentTarget as HTMLImageElement).style.filter="grayscale(0)";}}
                 onMouseLeave={e=>{(e.currentTarget as HTMLImageElement).style.filter="grayscale(0.55)";}}/>
             </div>
@@ -947,20 +921,22 @@ export default function ClientAppreciation() {
       </section>
 
       {/* ══ SOCIAL PROOF ══════════════════════════════════════ */}
+      {clients.length > 0 && (
       <section className="py-14 px-8 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.p initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:false,amount:0.5}}
             className="text-center text-[9px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-10">
-            Trusted by visionary brands
+            {trustedBy.title}
           </motion.p>
           <motion.div initial={{opacity:0}} whileInView={{opacity:0.4}} viewport={{once:false,amount:0.5}}
             transition={{duration:0.6}} className="flex flex-wrap justify-center gap-16 grayscale">
-            {["Lumina Tech","Veridia","Oasis Global","NorthStar","Equinox"].map(b=>(
-              <span key={b} className="font-serif text-xl font-bold text-gray-800">{b}</span>
-            ))}
+            {clients.map(c => c.logo
+              ? <img key={c.name} src={c.logo} alt={c.name} style={{ height: 32, objectFit: 'contain' }} />
+              : <span key={c.name} className="font-serif text-xl font-bold text-gray-800">{c.name}</span>)}
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ══ FINAL CTA ═════════════════════════════════════════ */}
       <section ref={ctaRef} className="py-24 px-8 md:px-20 lg:px-32 bg-white">
@@ -974,23 +950,23 @@ export default function ClientAppreciation() {
               <motion.h2 initial={{opacity:0,y:20}} animate={ctaInView?{opacity:1,y:0}:{opacity:0,y:20}}
                 transition={{duration:0.85,ease:EASE}}
                 className="font-serif text-4xl md:text-5xl leading-tight mb-5" style={{color:"#022c22"}}>
-                Ready to create the perfect<br/>
-                <span className="italic font-normal">Client Appreciation</span> gift experience?
+                {cta.titleLine1}<br/>
+                <span className="italic font-normal">{cta.titleHighlight}</span> {cta.titleEnd}
               </motion.h2>
               <motion.p initial={{opacity:0,y:16}} animate={ctaInView?{opacity:1,y:0}:{opacity:0,y:16}}
                 transition={{duration:0.6,delay:0.15}}
                 className="text-gray-600 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                Speak with one of our gifting consultants today and receive a digital mood board for your next campaign.
+                {cta.text}
               </motion.p>
               <motion.div initial={{opacity:0,y:16}} animate={ctaInView?{opacity:1,y:0}:{opacity:0,y:16}}
                 transition={{duration:0.6,delay:0.28}} className="flex flex-col sm:flex-row justify-center gap-5">
                 <motion.button whileHover={{scale:1.06,y:-3,boxShadow:"0 16px 48px rgba(6,78,59,0.35)"}}
                   whileTap={{scale:0.96}} transition={{type:"spring",stiffness:300,damping:18}}
                   className="text-white px-12 py-5 rounded-lg font-bold uppercase tracking-[0.2em] text-xs shadow-xl"
-                  style={{background:"#064e3b"}}>Start Your Project</motion.button>
+                  style={{background:"#064e3b"}}>{cta.primaryButton}</motion.button>
                 <motion.button whileHover={{y:-2}} transition={{type:"spring",stiffness:400,damping:20}}
                   className="border-b-2 text-sm font-bold uppercase tracking-[0.2em] pb-1 transition-colors"
-                  style={{borderColor:"#d1d5db"}}>Schedule a Consultation</motion.button>
+                  style={{borderColor:"#d1d5db"}}>{cta.secondaryButton}</motion.button>
               </motion.div>
             </div>
           </motion.div>

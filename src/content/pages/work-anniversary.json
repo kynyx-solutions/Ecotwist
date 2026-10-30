@@ -1,0 +1,79 @@
+{
+  "_meta": { "label": "Work Anniversary", "route": "/occasions/work-anniversary" },
+  "hero": {
+    "clickHint": "Click to celebrate",
+    "clickHintSymbol": "✦",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Work",
+    "titleLine2": "Anniversary",
+    "titleHighlight": "Gifting Solutions.",
+    "intro": "Celebrate the milestones that matter most — honour years of dedication with premium, personalised gifts that speak to loyalty and legacy.",
+    "primaryButton": "Explore Anniversary Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "Honouring the Journey",
+    "titleLine2": "Behind Every Milestone",
+    "paragraph1": "Every work anniversary is a story of commitment, growth, and trust. When an employee reaches a milestone — whether it's their first year or their twentieth — it deserves to be celebrated with the same care they've invested in the organisation.",
+    "paragraph2": "Our anniversary gifting solutions go beyond the generic. We craft meaningful, personalised experiences that make your people feel genuinely valued — strengthening the bond between individual and organisation.",
+    "badgeSymbol": "🌿",
+    "badgeText": "100% Sustainably Sourced — B-Corp Certified",
+    "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80",
+    "imageAlt": "Work Anniversary Gifting"
+  },
+  "categories": {
+    "title": "Milestone Collections",
+    "intro": "Curated gifting tiers for every work anniversary milestone your team reaches.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Years of Service Awards", "desc": "Elegantly crafted plaques, trophies, and keepsakes marking 1, 5, 10, and 25-year milestones.", "accent": "#7a9e7e", "tag": "Legacy", "img": "/site/work-anniversary/years-of-service-awards.png" },
+      { "name": "Executive Gifting Sets", "desc": "Premium leather goods, fine stationery, and desk accessories for senior milestones.", "accent": "#5a7a5e", "tag": "Premium", "img": "/site/work-anniversary/executive-gifting-set.png" },
+      { "name": "Growth Journey Hampers", "desc": "Curated hampers celebrating professional growth — books, planners, and artisanal treats.", "accent": "#4a6e6e", "tag": "Growth", "img": "/site/work-anniversary/growth-journey-hamper.png" }
+    ]
+  },
+  "products": {
+    "title": "Featured Anniversary Gifts",
+    "intro": "Most-loved products for celebrating years of service.",
+    "viewAllText": "View All",
+    "items": [
+      { "name": "Milestone Memory Box", "sub": "Starting at ₹1,799", "tag": "Premium", "img": "/site/work-anniversary/milestone-memory-box.png" },
+      { "name": "Heritage Leather Folio", "sub": "Starting at ₹2,499", "tag": "Customizable", "img": "/site/work-anniversary/leather-folio.png" },
+      { "name": "Premium Desk Planter", "sub": "Starting at ₹999", "tag": "Eco-friendly", "img": "/site/work-anniversary/desk-planter.png" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Personalisation",
+    "title": "Gifts That Reflect",
+    "titleHighlight": "Their Story",
+    "intro": "No two journeys are the same. Our bespoke personalisation service ensures every anniversary gift tells the unique story of that individual's contribution to your organisation.",
+    "items": [
+      { "symbol": "🏅", "title": "Year Engraving", "desc": "Milestone year and name laser-etched on premium products." },
+      { "symbol": "📜", "title": "Custom Citations", "desc": "Personalised appreciation letters drafted with your brand voice." },
+      { "symbol": "🌿", "title": "Eco Packaging", "desc": "Recycled, biodegradable gift boxes with linen lining." },
+      { "symbol": "🎨", "title": "Brand Integration", "desc": "Seamless logo placement and brand color matching." }
+    ],
+    "image": "/site/work-anniversary/customized-gift.webp"
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🏆", "title": "Recognition Culture", "desc": "Gifts that reinforce a culture of loyalty and appreciation." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Efficient fulfillment from 10 to 10,000 anniversary gifts." },
+      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "Reliable, on-time delivery across the entire country." },
+      { "symbol": "✦", "title": "Custom Branding", "desc": "Your brand identity woven into every product." },
+      { "symbol": "◐", "title": "Dedicated Support", "desc": "Personal gift consultants guiding every order." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Industry Leaders"
+  },
+  "cta": {
+    "titleLine1": "Ready to honour every",
+    "titleHighlight": "Work Anniversary?",
+    "intro": "Let's create meaningful anniversary experiences that celebrate loyalty and inspire continued excellence.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

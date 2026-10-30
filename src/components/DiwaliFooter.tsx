@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import logo from "../assests/logo2.png";
+import { asset } from "../lib/content";
+import content from "../content/pages/diwali-footer.json";
 import catalogue from "../assests/depawali/Ecotwist Diwali Catalogue-2026.pdf";
 import { Diya, Fireworks, Jaali, Kandil, Rangoli, SeriesLights } from "./DiwaliDecor";
 
@@ -14,12 +15,9 @@ import { Diya, Fireworks, Jaali, Kandil, Rangoli, SeriesLights } from "./DiwaliD
 const DEVANAGARI = '"Tiro Devanagari Hindi", "Nirmala UI", "Mangal", serif';
 const goldText = "bg-gradient-to-r from-[#F6D27A] via-[#F59E0B] to-[#E9C46A] bg-clip-text text-transparent";
 
-const SOCIALS = [
-  { name: "Instagram", href: "https://www.instagram.com/ecotwiststores" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/ecotwiststores/" },
-  { name: "Facebook", href: "https://www.facebook.com/ecotwiststore" },
-  { name: "Youtube", href: "https://www.youtube.com/@ecotwiststores" },
-];
+const { greeting, brand, columns, newsletter, bottomBar } = content;
+
+const SOCIALS = brand.socials;
 
 const linkClass = "transition-colors hover:text-[#F6D27A]";
 
@@ -45,30 +43,30 @@ export const DiwaliFooter = () => {
     setError("");
 
     if (!email.trim()) {
-      setError("Email is required.");
+      setError(newsletter.emailRequiredMessage);
       return;
     }
     if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
-      setError("Please enter a valid email address.");
+      setError(newsletter.invalidEmailMessage);
       return;
     }
 
     try {
       setLoading(true);
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/newsletter`, {
+      const response = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, subscribedAt: new Date().toISOString() }),
+        body: JSON.stringify({ type: "newsletter", email, sourcePage: window.location.pathname }),
       });
       const result = await response.json();
       if (result.success) {
-        setMessage("Subscribed successfully!");
+        setMessage(newsletter.successMessage);
         setEmail("");
       } else {
         setError(result.message);
       }
     } catch {
-      setError("Unable to connect to server.");
+      setError(newsletter.connectionErrorMessage);
     } finally {
       setLoading(false);
     }
@@ -105,10 +103,10 @@ export const DiwaliFooter = () => {
           <div>
             {/* padding keeps the vowel marks inside the clipped gold gradient */}
             <p style={{ fontFamily: DEVANAGARI }} className={`py-2 text-4xl leading-normal sm:text-5xl ${goldText}`}>
-              शुभ दीपावली
+              {greeting.title}
             </p>
             <p className="mt-2 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
-              Wishing you and your teams a bright, prosperous Diwali, from all of us at Ecotwist.
+              {greeting.text}
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -116,14 +114,14 @@ export const DiwaliFooter = () => {
               to="/occasions/depawali-gifting"
               className="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] px-7 py-3.5 text-sm font-semibold text-[#2a0a1c] shadow-[0_12px_36px_-14px_rgba(245,158,11,.8)]"
             >
-              Explore Diwali Collection
+              {greeting.primaryButton}
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/get-proposal?occasion=festival"
               className="inline-flex items-center justify-center rounded-full border border-[#E9C46A]/60 px-7 py-3.5 text-sm font-medium text-[#F6D27A] transition-colors hover:bg-white/5"
             >
-              Get Proposal
+              {greeting.secondaryButton}
             </Link>
           </div>
         </div>
@@ -144,17 +142,17 @@ export const DiwaliFooter = () => {
           {/* Brand & social */}
           <div className="lg:col-span-3">
             <Link to="/" className="group mb-8 flex w-fit flex-col items-start">
-              <img src={logo} alt="Ecotwist Logo" className="h-16 w-auto object-contain transition group-hover:scale-105 sm:h-20" />
-              <span className="mt-2 font-serif text-xl font-bold uppercase tracking-widest text-white sm:text-2xl">ECOTWIST</span>
+              <img src={asset(brand.logo)} alt={brand.logoAlt} className="h-16 w-auto object-contain transition group-hover:scale-105 sm:h-20" />
+              <span className="mt-2 font-serif text-xl font-bold uppercase tracking-widest text-white sm:text-2xl">{brand.name}</span>
             </Link>
             <p className="mb-8 max-w-sm text-sm leading-relaxed text-white/55">
-              Pioneering the future of corporate gifting through sustainable design, ethical sourcing, and circular economy principles.
+              {brand.description}
             </p>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
               {SOCIALS.map((social) => (
                 <a
                   key={social.name}
-                  href={social.href}
+                  href={social.profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] font-bold uppercase tracking-widest text-white/55 transition-colors hover:text-[#F6D27A]"
@@ -167,47 +165,38 @@ export const DiwaliFooter = () => {
 
           {/* Link columns */}
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-6">
-            <div>
-              <ColumnHeading>Diwali 2026</ColumnHeading>
-              <ul className="space-y-4 text-sm text-white/60">
-                <li><Link to="/occasions/depawali-gifting" className={linkClass}>Diwali Collection</Link></li>
-                <li><a href={catalogue} target="_blank" rel="noopener noreferrer" className={linkClass}>Diwali Catalogue</a></li>
-                <li><Link to="/products?category=Gift%20Boxes" className={linkClass}>Gift Boxes</Link></li>
-                <li><Link to="/get-proposal?occasion=festival" className={linkClass}>Get Proposal</Link></li>
-              </ul>
-            </div>
-            <div>
-              <ColumnHeading>Solutions</ColumnHeading>
-              <ul className="space-y-4 text-sm text-white/60">
-                <li><Link to="/solutions" className={linkClass}>Custom Bundles</Link></li>
-                <li><Link to="/contact" className={linkClass}>Eco-Consultancy</Link></li>
-                <li><a href="#" className={linkClass}>White-Label</a></li>
-                <li><Link to="/impact" className={linkClass}>Impact Reports</Link></li>
-              </ul>
-            </div>
-            <div>
-              <ColumnHeading>Company</ColumnHeading>
-              <ul className="space-y-4 text-sm text-white/60">
-                <li><Link to="/impact" className={linkClass}>Our Artisans</Link></li>
-                <li><Link to="/impact" className={linkClass}>Impact 2026</Link></li>
-                <li><a href="#" className={linkClass}>Careers</a></li>
-                <li><a href="#" className={linkClass}>Press Kit</a></li>
-              </ul>
-            </div>
+            {columns.map((column) => (
+              <div key={column.heading}>
+                <ColumnHeading>{column.heading}</ColumnHeading>
+                <ul className="space-y-4 text-sm text-white/60">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      {"key" in link && link.key === "catalogue" ? (
+                        <a href={catalogue} target="_blank" rel="noopener noreferrer" className={linkClass}>{link.label}</a>
+                      ) : link.path.startsWith("/") ? (
+                        <Link to={link.path} className={linkClass}>{link.label}</Link>
+                      ) : (
+                        <a href={link.path} className={linkClass}>{link.label}</a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <ColumnHeading>Newsletter</ColumnHeading>
+            <ColumnHeading>{newsletter.heading}</ColumnHeading>
             <p className="mb-6 text-xs leading-relaxed text-white/55">
-              Receive sustainable gifting insights and new collection previews.
+              {newsletter.text}
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
+                placeholder={newsletter.placeholder}
                 className={`rounded-full border bg-white/5 px-5 py-3 text-sm text-white transition-colors placeholder:text-white/35 focus:outline-none ${
                   error ? "border-red-500" : "border-[#E9C46A]/25 focus:border-[#E9C46A]"
                 }`}
@@ -219,7 +208,7 @@ export const DiwaliFooter = () => {
                 disabled={loading}
                 className="rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] py-3 text-sm font-bold uppercase tracking-widest text-[#2a0a1c] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {loading ? "Subscribing..." : "Subscribe"}
+                {loading ? newsletter.buttonLoading : newsletter.button}
               </button>
             </form>
           </div>
@@ -229,16 +218,15 @@ export const DiwaliFooter = () => {
       {/* Bottom bar */}
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 border-t border-[#E9C46A]/15 px-6 pb-10 pt-8 md:flex-row">
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-white/40">
-          <span>© 2024 ECOTWIST.</span>
-          <Link to="/privacy-policy" className={linkClass}>Privacy Policy</Link>
-          <Link to="/terms-of-service" className={linkClass}>Terms of Service</Link>
-          <Link to="/refund-policy" className={linkClass}>Refund Policy</Link>
-          <Link to="/shipping-policy" className={linkClass}>Shipping Policy</Link>
+          <span>{bottomBar.copyright}</span>
+          {bottomBar.legalLinks.map((link) => (
+            <Link key={link.path} to={link.path} className={linkClass}>{link.label}</Link>
+          ))}
         </div>
         <div className="flex items-center gap-2 text-center text-[10px] uppercase tracking-[0.2em] text-white/40">
-          Designed with purpose for a better planet.
-          <span className="text-[#E9C46A]">✦</span>
-          <span style={{ fontFamily: DEVANAGARI }} className="text-xs normal-case tracking-normal text-[#F6D27A]/80">शुभ दीपावली</span>
+          {bottomBar.tagline}
+          <span className="text-[#E9C46A]">{bottomBar.symbol}</span>
+          <span style={{ fontFamily: DEVANAGARI }} className="text-xs normal-case tracking-normal text-[#F6D27A]/80">{bottomBar.greeting}</span>
         </div>
       </div>
     </footer>

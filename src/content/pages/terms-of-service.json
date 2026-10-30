@@ -1,0 +1,143 @@
+{
+  "_meta": { "label": "Terms of Service", "route": "/terms-of-service" },
+  "header": {
+    "topLabel": "Terms of service",
+    "title": "Terms of Service",
+    "company": "Ecotwist Innovtions Private Limited"
+  },
+  "companyDetails": {
+    "registeredAddressLabel": "Registered Address:",
+    "registeredAddress": "Near Euro Kids Play School, Mahavir Colony, Beur, Patna 800002 (Bihar)",
+    "officeAddressLabel": "Office Address:",
+    "officeAddress": "B-Hub, 5th Floor, A Block, Mauryalok Complex, Patna 800001 (Bihar)",
+    "cinLabel": "CIN:",
+    "cin": "U16292BR2025PTC074427",
+    "websiteLabel": "Website:",
+    "websiteText": "ecotwist.in"
+  },
+  "sections": [
+    {
+      "heading": "1. Introduction and Acceptance of Terms",
+      "paragraphs": [
+        "Welcome to Ecotwist Innovtions Private Limited (\"the Company,\" \"we,\" \"us,\" or \"our\"). These Terms of Service (\"ToS\") govern your access to and use of our website, https://ecotwist.in, and all related services, products, content, and functionalities (collectively, the \"Services\").",
+        "By accessing or using our Services, you agree to be bound by these ToS and our Privacy Policy. If you do not agree with any part of these terms, you must not use our Services. These ToS constitute a legally binding agreement between you and the Company."
+      ]
+    },
+    {
+      "heading": "2. User Accounts",
+      "subsections": [
+        {
+          "heading": "2.1 Account Creation",
+          "paragraphs": [
+            "To access certain features of our Services, you may be required to create an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate and current."
+          ]
+        },
+        {
+          "heading": "2.2 Account Security",
+          "paragraphs": [
+            "You are solely responsible for maintaining the confidentiality of your account password and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account. We are not liable for any loss or damage arising from your failure to protect your password or account information."
+          ]
+        },
+        {
+          "heading": "2.3 Eligibility",
+          "paragraphs": [
+            "By using our Services, you represent that you are at least 18 years of age or have the consent of a legal guardian. The Services are not intended for use by individuals under the age of 18 without parental supervision."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "3. Intellectual Property",
+      "paragraphs": [
+        "All content, including but not limited to text, graphics, logos, images, product designs, and software on the website, is the exclusive property of Ecotwist Innovtions Private Limited or its content suppliers and is protected by Indian and international copyright, trademark, and other intellectual property laws.",
+        "You are granted a limited, non-exclusive, non-transferable license to access and use the Services for your personal, non-commercial use. Any unauthorized use — including reproduction, modification, distribution, or republication — without our prior written consent, is strictly prohibited."
+      ]
+    },
+    {
+      "heading": "4. Product Information and Pricing",
+      "subsections": [
+        {
+          "heading": "4.1 Product Descriptions",
+          "paragraphs": [
+            "We strive to provide accurate and detailed product descriptions. However, we do not guarantee that the product descriptions, colors, or other content are entirely accurate, complete, or error-free. The actual product may vary slightly from the images displayed on the website."
+          ]
+        },
+        {
+          "heading": "4.2 Pricing",
+          "paragraphs": [
+            "All prices are listed in Indian Rupees (INR) and are inclusive of applicable taxes unless stated otherwise. We reserve the right to change prices at any time without prior notice. The price charged to you will be the price listed on the website at the time of your order."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "5. Orders, Shipping, and Returns",
+      "subsections": [
+        {
+          "heading": "5.1 Order Acceptance",
+          "paragraphs": [
+            "Your order is an offer to purchase a product. We reserve the right to accept or reject this offer for any reason, including but not limited to product availability, an error in the product description or price, or a security issue."
+          ]
+        },
+        {
+          "heading": "5.2 Shipping",
+          "paragraphs": [
+            "We will ship your order to the address provided by you. We are not responsible for delays or non-delivery due to incorrect or incomplete address information. For more details on shipping, please refer to our Shipping Policy."
+          ]
+        },
+        {
+          "heading": "5.3 Returns and Refunds",
+          "paragraphs": [
+            "All returns and refunds are governed by our Return and Refund Policy, which is incorporated by reference into these ToS. By placing an order, you agree to the terms of that policy."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "6. Prohibited Conduct",
+      "points": [
+        "Violating any applicable laws or regulations.",
+        "Submitting false, misleading, or fraudulent information.",
+        "Hacking, attempting to hack, or interfering with the website.",
+        "Transmitting any viruses, worms, or malicious code.",
+        "Collecting or tracking the personal information of others.",
+        "Engaging in any activity that could disable, overburden, or impair the website's functionality."
+      ]
+    },
+    {
+      "heading": "7. Disclaimer of Warranties",
+      "paragraphs": [
+        "Our Services are provided on an \"as-is\" and \"as-available\" basis. We make no representations or warranties of any kind, express or implied, as to the operation of the Services or the information, content, materials, or products included on the website. To the fullest extent permissible by applicable law, we disclaim all warranties, including but not limited to implied warranties of merchantability and fitness for a particular purpose."
+      ]
+    },
+    {
+      "heading": "8. Limitation of Liability",
+      "paragraphs": [
+        "To the maximum extent permitted by law, Ecotwist Innovtions Private Limited, its directors, employees, or agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill. Our total liability shall not exceed the amount paid by you for the products or services giving rise to the claim."
+      ]
+    },
+    {
+      "heading": "9. Indemnification",
+      "paragraphs": [
+        "You agree to indemnify, defend, and hold harmless Ecotwist Innovtions Private Limited and its affiliates, directors, officers, employees, and agents from and against any and all claims, liabilities, damages, losses, and expenses, including reasonable legal fees, arising out of or in any way connected with your access to or use of the Services or your violation of these ToS."
+      ]
+    },
+    {
+      "heading": "10. Governing Law and Jurisdiction",
+      "paragraphs": [
+        "These ToS are governed by and construed in accordance with the laws of India. You agree that any dispute or claim arising out of or in connection with these ToS shall be subject to the exclusive jurisdiction of the courts in Patna, Bihar."
+      ]
+    },
+    {
+      "heading": "11. Changes to the Terms of Service",
+      "paragraphs": [
+        "We reserve the right to modify these ToS at any time, effective upon posting the updated terms on the website. Your continued use of the Services after any such changes constitutes your acceptance of the new ToS."
+      ]
+    }
+  ],
+  "contact": {
+    "heading": "12. Contact Information",
+    "emailLabel": "Email:",
+    "email": "support@ecotwist.in"
+  }
+}
