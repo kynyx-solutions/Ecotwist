@@ -4,6 +4,16 @@
       "source": "/configurator",
       "destination": "/get-proposal",
       "permanent": true
+    },
+    {
+      "source": "/sitemap-blog.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap-pages.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
     }
   ],
   "rewrites": [
