@@ -4,9 +4,18 @@
 //   leaving out pages marked noindex or whose canonical address is another page.
 //   Articles are read live from Supabase with the public key, which only returns
 //   published, already-due posts, so new articles appear without a redeploy.
-import { createRequire } from 'module';
+import fs from 'fs';
+import path from 'path';
 
-const seo = createRequire(import.meta.url)('../src/content/seo.json');
+// Bundled with the function through "includeFiles" in vercel.json
+function seoPages() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/content/seo.json'), 'utf8')).pages ?? [];
+  } catch (err) {
+    console.error('[sitemap] could not read src/content/seo.json', err);
+    return [{ route: '/' }]; // still serve a valid sitemap (home + blog) rather than an error
+  }
+}
 
 const BASE_URL = 'https://ecotwist.in';
 
@@ -39,7 +48,7 @@ async function publishedPosts() {
 }
 
 export default async function handler(req, res) {
-  const pages = (seo.pages ?? [])
+  const pages = seoPages()
     .filter((p) => !p.noindex && (!p.canonical || p.canonical === p.route))
     .map((p) => p.route)
     .sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
