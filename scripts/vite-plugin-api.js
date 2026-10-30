@@ -21,6 +21,8 @@ export function apiPlugin(env) {
 
       server.middlewares.use(async (req, res, next) => {
         const url = new URL(req.url ?? '/', 'http://localhost');
+        // Same rewrite as vercel.json: the live blog sitemap is a function
+        if (url.pathname === '/sitemap-blog.xml') url.pathname = '/api/sitemap-blog';
         const match = /^\/api\/([a-z0-9-]+(?:\/[a-z0-9-]+)*)$/.exec(url.pathname);
         if (!match) return next();
         const file = path.resolve('api', `${match[1]}.js`);
