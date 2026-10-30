@@ -35,6 +35,18 @@
     {
       "name": "Bharatx Infratech",
       "logo": "/clients/bharatx-infratech.png"
+    },
+    {
+      "name": "DigiGini",
+      "logo": "/site/uploads/clients/digigini-logo.webp"
+    },
+    {
+      "name": "GhaasPaat",
+      "logo": "/site/uploads/clients/logo-ghaaspaat.webp"
+    },
+    {
+      "name": "Turant Logistics",
+      "logo": "/site/uploads/clients/logo-turant.webp"
     }
   ]
 }
