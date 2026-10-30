@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../assests/logo2.png'; // ✅ logo import
+import { asset } from '../lib/content';
+import content from '../content/pages/footer.json';
+
+const { brand, columns, newsletter, bottomBar } = content;
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,7 +17,7 @@ export const Footer = () => {
     setError("");
 
     if (!email.trim()) {
-      setError("Email is required.");
+      setError(newsletter.emailRequiredMessage);
       return;
     }
 
@@ -22,7 +25,7 @@ export const Footer = () => {
       /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
     if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address.");
+      setError(newsletter.invalidEmailMessage);
       return;
     }
 
@@ -30,15 +33,16 @@ export const Footer = () => {
       setLoading(true);
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/newsletter`,
+        "/api/lead",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            type: "newsletter",
             email,
-            subscribedAt: new Date().toISOString(),
+            sourcePage: window.location.pathname,
           }),
         }
       );
@@ -46,13 +50,13 @@ export const Footer = () => {
       const result = await response.json();
 
       if (result.success) {
-        setMessage("Subscribed successfully!");
+        setMessage(newsletter.successMessage);
         setEmail("");
       } else {
         setError(result.message);
       }
     } catch (err) {
-      setError("Unable to connect to server.");
+      setError(newsletter.connectionErrorMessage);
     } finally {
       setLoading(false);
     }
@@ -69,32 +73,27 @@ export const Footer = () => {
 
               {/* LOGO */}
               <img
-                src={logo}
-                alt="Ecotwist Logo"
+                src={asset(brand.logo)}
+                alt={brand.logoAlt}
                 className="h-16 sm:h-20 w-auto object-contain group-hover:scale-105 transition"
               />
 
               {/* TEXT BELOW LOGO */}
               <span className="mt-2 font-bold tracking-widest text-xl sm:text-2xl font-serif text-white uppercase">
-                ECOTWIST
+                {brand.name}
               </span>
 
             </Link>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm">
-              Pioneering the future of corporate gifting through sustainable design, ethical sourcing, and circular economy principles.
+              {brand.description}
             </p>
 
             <div className="flex gap-4">
-              {[
-                { name: 'Instagram', href: 'https://www.instagram.com/ecotwiststores' },
-                { name: 'LinkedIn', href: 'https://www.linkedin.com/company/ecotwiststores/' },
-                { name: 'Facebook', href: 'https://www.facebook.com/ecotwiststore' },
-                { name: 'Youtube', href: 'https://www.youtube.com/@ecotwiststores' },
-              ].map((social) => (
+              {brand.socials.map((social) => (
                 <a
                   key={social.name}
-                  href={social.href}
+                  href={social.profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] uppercase tracking-widest font-bold text-gray-400 hover:text-white transition-colors"
@@ -107,24 +106,20 @@ export const Footer = () => {
 
           {/* Links Grid */}
           <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-2 gap-8">
-            <div>
-              <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">Solutions</h5>
+            {columns.map((column) => (
+            <div key={column.heading}>
+              <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">{column.heading}</h5>
               <ul className="space-y-4 text-sm text-gray-400">
-                <li><Link to="/solutions" className="hover:text-white transition-colors">Custom Bundles</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">Eco-Consultancy</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">White-Label</a></li>
-                <li><Link to="/impact" className="hover:text-white transition-colors">Impact Reports</Link></li>
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {link.path.startsWith('/')
+                      ? <Link to={link.path} className="hover:text-white transition-colors">{link.label}</Link>
+                      : <a href={link.path} className="hover:text-white transition-colors">{link.label}</a>}
+                  </li>
+                ))}
               </ul>
             </div>
-            <div>
-              <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">Company</h5>
-              <ul className="space-y-4 text-sm text-gray-400">
-                <li><Link to="/impact" className="hover:text-white transition-colors">Our Artisans</Link></li>
-                <li><Link to="/impact" className="hover:text-white transition-colors">Impact 2026</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Press Kit</a></li>
-              </ul>
-            </div>
+            ))}
             {/* <div>
               <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">Support</h5>
               <ul className="space-y-4 text-sm text-gray-400">
@@ -143,8 +138,8 @@ export const Footer = () => {
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">Newsletter</h5>
-            <p className="text-xs text-gray-400 mb-6 leading-relaxed">Receive sustainable gifting insights and new collection previews.</p>
+            <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">{newsletter.heading}</h5>
+            <p className="text-xs text-gray-400 mb-6 leading-relaxed">{newsletter.text}</p>
             <form
               onSubmit={handleSubscribe}
               className="flex flex-col gap-3"
@@ -153,7 +148,7 @@ export const Footer = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
+                placeholder={newsletter.placeholder}
                 className={`bg-white/5 border rounded-sm px-4 py-3 text-sm
                 focus:outline-none transition-colors text-white
                 placeholder:text-gray-500
@@ -181,7 +176,7 @@ export const Footer = () => {
                 text-sm uppercase tracking-widest
                 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "Subscribing..." : "Subscribe"}
+                {loading ? newsletter.buttonLoading : newsletter.button}
               </button>
             </form>
           </div>
@@ -189,14 +184,13 @@ export const Footer = () => {
       </div>
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 flex flex-wrap justify-center gap-x-8 gap-y-2">
-          <span>© 2024 ECOTWIST.</span>
-          <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
-          <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
-          <Link to="/shipping-policy" className="hover:text-white transition-colors">Shipping Policy</Link>
+          <span>{bottomBar.copyright}</span>
+          {bottomBar.legalLinks.map((link) => (
+            <Link key={link.path} to={link.path} className="hover:text-white transition-colors">{link.label}</Link>
+          ))}
         </div>
         <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 text-center">
-          Designed with purpose for a better planet.
+          {bottomBar.tagline}
         </div>
       </div>
     </footer>

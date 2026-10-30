@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "label": "SEO: titles & descriptions"
+  },
+  "site": {
+    "siteName": "Ecotwist",
+    "titleTemplate": "%s | Ecotwist",
+    "defaultTitle": "Ecotwist | Sustainable Corporate Gifting in India",
+    "defaultDescription": "Ecotwist creates sustainable, artisan-made corporate gifts in India: custom branded hampers for clients, employees, festivals and events, delivered pan-India.",
+    "defaultImage": "/site/employee-onboarding/hero.png",
+    "baseUrl": "https://ecotwist.in",
+    "googleSiteVerification": "",
+    "organization": {
+      "name": "Ecotwist",
+      "logo": "/site/navigation/logo.png",
+      "email": "info@ecotwist.in",
+      "phone": "+91 70913 23777",
+      "sameAs": [
+        "https://www.instagram.com/ecotwiststores",
+        "https://www.linkedin.com/company/ecotwiststores/",
+        "https://www.facebook.com/ecotwiststore",
+        "https://www.youtube.com/@ecotwiststores"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "route": "/",
+      "title": "Ecotwist | Sustainable Corporate Gifting in India",
+      "description": "Sustainable corporate gifting in India: eco-friendly gifts custom branded for your team and clients, curated hampers for every occasion, delivered pan-India.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "sustainable corporate gifting"
+    },
+    {
+      "route": "/solutions",
+      "title": "Corporate Gifting Solutions & Custom Bundles",
+      "description": "End-to-end corporate gifting: curated eco-friendly bundles, custom branding, white-label packaging and pan-India delivery for teams of 50 to 5,000.",
+      "image": "/site/solutions/hero.jpeg",
+      "noindex": false,
+      "focusKeyword": "corporate gifting"
+    },
+    {
+      "route": "/products",
+      "title": "Sustainable Corporate Gifts Catalogue",
+      "description": "Browse Ecotwist's catalogue of sustainable corporate gifts: bamboo journals, planters, candles, mugs and hampers, all ready for your logo and branding.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "sustainable corporate gifts"
+    },
+    {
+      "route": "/product",
+      "title": "Sustainable Corporate Gifts Catalogue",
+      "description": "Browse Ecotwist's catalogue of sustainable corporate gifts: bamboo journals, planters, candles, mugs and hampers, all ready for your logo and branding.",
+      "image": "",
+      "noindex": false,
+      "canonical": "/products",
+      "focusKeyword": "sustainable corporate gifts"
+    },
+    {
+      "route": "/get-proposal",
+      "title": "Get a Free Corporate Gifting Proposal",
+      "description": "Get a free corporate gifting proposal: tell us your occasion, budget and quantity and we'll suggest sustainable, custom-branded gifts within 24 hours.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "corporate gifting proposal"
+    },
+    {
+      "route": "/impact",
+      "title": "Our Impact: Artisans, Plastic-Free Gifting",
+      "description": "See the impact behind every Ecotwist gift: Indian artisan livelihoods, plastic-free packaging and circular materials that make corporate gifting greener.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "artisan"
+    },
+    {
+      "route": "/contact",
+      "title": "Contact Us for Corporate Gifting Enquiries",
+      "description": "Planning corporate gifting for clients or employees? Call, WhatsApp or write to the Ecotwist team for sustainable gift ideas, samples and bulk quotes.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "corporate gifting"
+    },
+    {
+      "route": "/thanks",
+      "title": "Thank You: Your Proposal Request Is In",
+      "description": "Thanks for your enquiry. The Ecotwist team will review your gifting requirements and send a tailored proposal for sustainable corporate gifts shortly.",
+      "image": "",
+      "noindex": true,
+      "focusKeyword": ""
+    },
+    {
+      "route": "/occasions/client-appreciation",
+      "title": "Client Appreciation Gifts, Eco-Friendly",
+      "description": "Thank your clients with premium client appreciation gifts that are sustainable and custom branded. Curated hampers that leave a lasting impression, pan-India.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "client appreciation gifts"
+    },
+    {
+      "route": "/occasions/employee-onboarding",
+      "title": "Employee Onboarding Kits & Welcome Gifts",
+      "description": "Welcome new hires with sustainable onboarding kits: branded bamboo journals, bottles and desk essentials, packed plastic-free and shipped to any city in India.",
+      "image": "/site/employee-onboarding/hero.png",
+      "noindex": false,
+      "focusKeyword": "onboarding kits"
+    },
+    {
+      "route": "/occasions/festive-gifting",
+      "title": "Festive Gift Hampers for Teams & Clients",
+      "description": "Sustainable festive gift hampers for employees and clients: Diwali, Holi, New Year and more. Artisan-made, custom branded and delivered pan-India on time.",
+      "image": "/site/home/festive-gifting.jpg",
+      "noindex": false,
+      "focusKeyword": "festive gift hampers"
+    },
+    {
+      "route": "/occasions/events-conferences",
+      "title": "Event & Conference Giveaways, Eco-Friendly",
+      "description": "Branded, eco-friendly conference giveaways and event swag for summits and corporate events. Gifts attendees keep, with bulk pricing and fast turnaround.",
+      "image": "/site/events-conferences/hero.png",
+      "noindex": false,
+      "focusKeyword": "conference giveaways"
+    },
+    {
+      "route": "/occasions/employee-wellness",
+      "title": "Employee Wellness Hampers & Self-Care Gifts",
+      "description": "Show your team you care with sustainable wellness hampers: herbal teas, aromatherapy, yoga essentials and mindful self-care gifts, custom branded for you.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "wellness hampers"
+    },
+    {
+      "route": "/occasions/birthday-gifting",
+      "title": "Employee Birthday Gifts, Sustainable",
+      "description": "Make every employee birthday special with personalised, eco-friendly birthday gifts. Name engraving, curated hampers and doorstep delivery across India.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "birthday gifts"
+    },
+    {
+      "route": "/occasions/work-anniversary",
+      "title": "Work Anniversary Gifts for Employees",
+      "description": "Celebrate service milestones with personalised, sustainable work anniversary gifts: engraved keepsakes and curated hampers for every year of service.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "work anniversary gifts"
+    },
+    {
+      "route": "/occasions/product-launch",
+      "title": "Product Launch Gifts & Branded PR Kits",
+      "description": "Make your launch memorable with sustainable product launch gifts and PR kits: branded gift boxes for media, partners and customers, built around your story.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "product launch gifts"
+    },
+    {
+      "route": "/occasions/award-recognition",
+      "title": "Employee Awards & Recognition Gifts",
+      "description": "Recognise top performers with sustainable awards, engraved trophies and premium recognition gifts that celebrate excellence and reflect your company values.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "recognition gifts"
+    },
+    {
+      "route": "/occasions/retirement-gifting",
+      "title": "Retirement Gifts for Employees, Thoughtful",
+      "description": "Honour a remarkable career with thoughtful retirement gifts: legacy keepsake boxes, memory journals and relaxation hampers, personalised and eco-friendly.",
+      "image": "/site/home/retirement-gifting.jpg",
+      "noindex": false,
+      "focusKeyword": "retirement gifts"
+    },
+    {
+      "route": "/occasions/depawali-gifting",
+      "title": "Diwali Corporate Gifts & Hampers 2026",
+      "description": "Premium Diwali corporate gifts and hampers for employees, clients and CXOs: dry fruits, diyas and sweets in plastic-free packaging with your branding.",
+      "image": "/diwali-home/hero-hamper.webp",
+      "noindex": false,
+      "focusKeyword": "diwali corporate gifts"
+    },
+    {
+      "route": "/blog",
+      "title": "Corporate Gifting Ideas & Guides (Blog)",
+      "description": "Corporate gifting ideas, guides and trends for India: occasion-wise gift ideas, budgeting tips and ways to make sustainable employee and client gifts count.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "corporate gifting ideas"
+    },
+    {
+      "route": "/privacy-policy",
+      "title": "Privacy Policy: How We Use Your Data",
+      "description": "How Ecotwist collects, uses and protects your personal information when you browse our website, request a proposal or order sustainable corporate gifts.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "privacy policy"
+    },
+    {
+      "route": "/terms-of-service",
+      "title": "Terms of Service for Gift Orders",
+      "description": "The terms and conditions for using the Ecotwist website and ordering sustainable corporate gifts, including orders, payments, customisation and liability.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "terms of service"
+    },
+    {
+      "route": "/refund-policy",
+      "title": "Return & Refund Policy",
+      "description": "Ecotwist's return and refund policy for corporate gift orders: valid reasons for returns, timeframes, the step-by-step return process and order cancellation.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "refund policy"
+    },
+    {
+      "route": "/shipping-policy",
+      "title": "Shipping Policy & Delivery Times",
+      "description": "Our shipping policy for corporate gifts across India: processing times, shipping charges, bulk and multi-address delivery, tracking and support.",
+      "image": "",
+      "noindex": false,
+      "focusKeyword": "shipping policy"
+    }
+  ]
+}

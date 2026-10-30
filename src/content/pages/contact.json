@@ -1,0 +1,70 @@
+{
+  "_meta": { "label": "Contact", "route": "/contact" },
+  "intro": {
+    "eyebrow": "Get In Touch",
+    "titleLine1": "Start the",
+    "titleLine2": "Conversation.",
+    "text": "Partner with our design experts to create meaningful, sustainable brand experiences that leave a lasting impression.",
+    "contacts": [
+      { "tag": "Email Us", "value": "info@ecotwist.in", "symbol": "✉" },
+      { "tag": "Direct Inquiry", "value": "+91 70913 23777", "symbol": "◎" },
+      { "tag": "The Studio", "value": "5th Floor, Mauryalok Complex, A-Block, Patna 800001, Bihar", "symbol": "◈" }
+    ],
+    "stats": [
+      { "label": "Happy Clients", "value": "100+" },
+      { "label": "Gifts Delivered", "value": "5K+" },
+      { "label": "Satisfaction", "value": "98%" }
+    ]
+  },
+  "gallery": {
+    "linkText": "View Gallery",
+    "cards": [
+      { "label": "Sustainable Gifting", "tag": "Eco", "accent": "#5a8a6e", "image": "/site/contact/contact1.jpeg", "path": "/products" },
+      { "label": "Eco Luxury Craft", "tag": "Artisan", "accent": "#b5a26a", "image": "/site/contact/contact2.jpeg", "path": "/solutions" }
+    ]
+  },
+  "quote": {
+    "text": "\"Sustainability is the ultimate sophistication.\"",
+    "author": "EcoTwist Studio"
+  },
+  "form": {
+    "eyebrow": "Consultation Request",
+    "title": "Tell Us Your Vision",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Jane Doe",
+    "companyLabel": "Company Name",
+    "companyPlaceholder": "Your Brand",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "jane@company.com",
+    "phoneLabel": "Mobile Number",
+    "phonePlaceholder": "98765 43210",
+    "interestLabel": "Area of Interest",
+    "interestPlaceholder": "Select an area...",
+    "interestOptions": [
+      { "key": "corporate", "label": "Corporate Gifting (Bulk)" },
+      { "key": "event", "label": "Special Event / Launch" },
+      { "key": "custom", "label": "Bespoke Design Consultancy" },
+      { "key": "other", "label": "General Inquiry" }
+    ],
+    "messageLabel": "Project Overview",
+    "messagePlaceholder": "Tell us about your gifting goals...",
+    "submitButton": "Submit",
+    "submittingText": "Submitting...",
+    "errorAlert": "Something went wrong",
+    "badgeLabel": "Response Time",
+    "badgeText": "Within 24 hours",
+    "watermark": "Contact Us"
+  },
+  "errors": {
+    "nameRequired": "Please enter your name",
+    "nameShort": "Name looks too short",
+    "companyRequired": "Please enter your company name",
+    "emailRequired": "Please enter your work email",
+    "emailInvalid": "Enter a valid email address",
+    "phoneRequired": "Please enter your mobile number",
+    "phoneInvalid": "Enter a valid mobile number",
+    "interestRequired": "Please select an area of interest",
+    "messageRequired": "Tell us a bit about your project",
+    "messageShort": "Please add a few more details"
+  }
+}

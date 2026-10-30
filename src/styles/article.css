@@ -1,0 +1,140 @@
+/* ============================
+   Article typography for blog posts (HTML sanitised by src/lib/blog.ts).
+   Used on the website (/blog/:slug) and in the admin editor preview.
+   Everything is scoped under .article-body.
+============================ */
+
+.article-body {
+  --article-text: #2b2b27;
+  --article-muted: #6b6a62;
+  --article-accent: #4a5d23;
+  --article-gold: #c5a059;
+  --article-line: rgba(74, 93, 35, 0.16);
+  color: var(--article-text);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.article-body > :first-child { margin-top: 0; }
+.article-body > :last-child { margin-bottom: 0; }
+
+.article-body p,
+.article-body ul,
+.article-body ol,
+.article-body blockquote,
+.article-body pre,
+.article-body table,
+.article-body figure { margin: 0 0 1.5em; }
+
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+  font-family: var(--font-serif, Georgia, serif);
+  color: #1a1a1a;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 2em 0 0.7em;
+}
+.article-body h1 { font-size: 2.25rem; }
+.article-body h2 { font-size: 1.9rem; }
+.article-body h3 { font-size: 1.5rem; }
+.article-body h4 { font-size: 1.2rem; font-weight: 600; }
+
+.article-body a {
+  color: var(--article-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--article-gold);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s;
+}
+.article-body a:hover { color: #38461b; text-decoration-thickness: 2px; }
+
+.article-body strong { font-weight: 600; color: #1a1a1a; }
+.article-body em { font-style: italic; }
+
+.article-body ul,
+.article-body ol { padding-left: 1.5em; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li { margin: 0.4em 0; padding-left: 0.25em; }
+.article-body li::marker { color: var(--article-gold); }
+.article-body li > ul,
+.article-body li > ol { margin: 0.4em 0 0; }
+
+.article-body blockquote {
+  border-left: 3px solid var(--article-gold);
+  padding: 0.25em 0 0.25em 1.25em;
+  font-family: var(--font-serif, Georgia, serif);
+  font-style: italic;
+  font-size: 1.3em;
+  line-height: 1.55;
+  color: #38461b;
+}
+.article-body blockquote p { margin-bottom: 0.5em; }
+
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2em auto;
+  border-radius: 4px;
+}
+.article-body p > img:only-child { margin: 0 auto; }
+
+.article-body hr {
+  border: 0;
+  height: 1px;
+  background: var(--article-line);
+  margin: 2.5em auto;
+  width: 40%;
+}
+
+.article-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: #f1eee6;
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+.article-body pre {
+  background: #f1eee6;
+  border-radius: 6px;
+  padding: 1em 1.25em;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+.article-body pre code { background: none; padding: 0; font-size: 0.85em; }
+
+.article-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+.article-body th,
+.article-body td {
+  border-bottom: 1px solid var(--article-line);
+  padding: 0.6em 0.9em;
+  text-align: left;
+}
+.article-body th { font-weight: 600; color: #1a1a1a; }
+
+@media (max-width: 640px) {
+  .article-body { font-size: 1.0625rem; line-height: 1.75; }
+  .article-body h1 { font-size: 1.9rem; }
+  .article-body h2 { font-size: 1.6rem; }
+  .article-body h3 { font-size: 1.3rem; }
+  .article-body blockquote { font-size: 1.15em; }
+}
+
+/* Inline formatting from the rich-text editor */
+.article-body u { text-decoration: underline; text-underline-offset: 3px; }
+.article-body s { text-decoration: line-through; }
+.article-body mark { background-color: #f6ebc8; color: inherit; border-radius: 2px; padding: 0 0.1em; }
+.article-body td > p,
+.article-body th > p { margin: 0; }
+.article-body th { background: rgba(74, 93, 35, 0.06); }

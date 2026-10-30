@@ -1,0 +1,79 @@
+{
+  "_meta": { "label": "Award & Recognition", "route": "/occasions/award-recognition" },
+  "hero": {
+    "clickHint": "Click to honour",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Award &",
+    "titleLine2": "Recognition",
+    "titleHighlight": "Gifting Solutions.",
+    "intro": "Honour your highest achievers with premium, personalised awards and gifts that make every recognition moment truly unforgettable.",
+    "primaryButton": "Explore Awards",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "The Art of Celebrating",
+    "titleLine2": "Human Excellence",
+    "paragraph1": "Recognition is not just about giving an award. It is about creating a memory — a moment when an individual feels the full weight of their contribution being seen, valued, and celebrated by their organisation.",
+    "paragraph2": "We craft award and recognition gifting programmes that transform ordinary ceremony into extraordinary experience, using only the finest sustainable materials and artisan craftsmanship.",
+    "badgeSymbol": "🏆",
+    "badgeText": "Luxury Materials — Artisan Craftsmanship",
+    "image": "/site/award-recognition/about.jpeg",
+    "imageAlt": "Award Recognition"
+  },
+  "categories": {
+    "title": "Recognition Collections",
+    "intro": "Curated award gifting tiers designed to match every level of achievement and excellence.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Top Performer Awards", "tag": "Excellence", "text": "Luxurious gifts for your highest achievers — because extraordinary performance deserves extraordinary recognition.", "accent": "#c4a23a", "image": "/site/award-recognition/top-performer-awards.avif" },
+      { "name": "Long Service Honours", "tag": "Legacy", "text": "Prestigious awards and curated gifts celebrating decades of outstanding commitment to your organisation.", "accent": "#a8882e", "image": "/site/award-recognition/long-service-honours.jpeg" },
+      { "name": "Innovation Champions", "tag": "Innovation", "text": "Special recognition for the creative minds who drive your organisation forward with bold, fresh thinking.", "accent": "#8a6e20", "image": "/site/award-recognition/innovation-champions.jpeg" }
+    ]
+  },
+  "products": {
+    "title": "Featured Award Products",
+    "intro": "Premium pieces crafted to honour your highest achievers.",
+    "viewAllText": "View All",
+    "items": [
+      { "name": "Gold Excellence Hamper", "price": "Starting at ₹3,499", "tag": "Luxury", "image": "/site/award-recognition/gold-excellence-hamper.jpeg" },
+      { "name": "Engraved Crystal Trophy", "price": "Starting at ₹2,999", "tag": "Customizable", "image": "/site/award-recognition/engraved-crystal-trophy.jpeg" },
+      { "name": "Premium Leather Portfolio", "price": "Starting at ₹1,999", "tag": "Premium", "image": "/site/award-recognition/premium-leather-portfolio.jpeg" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Bespoke Recognition",
+    "title": "Awards as Unique",
+    "titleHighlight": "as Their Achievements",
+    "intro": "Each recognition gift is a unique testament to an individual's contribution. Our bespoke service ensures every award carries the weight and dignity that true excellence deserves.",
+    "items": [
+      { "symbol": "🏆", "title": "Trophy Engraving", "text": "Names, dates, and personalised citations engraved on premium awards." },
+      { "symbol": "📜", "title": "Citation Certificates", "text": "Beautifully typeset achievement certificates with gold foil accents." },
+      { "symbol": "📦", "title": "Prestige Packaging", "text": "Velvet-lined rigid boxes with magnetic closures and satin ribbons." },
+      { "symbol": "🎨", "title": "Brand Alignment", "text": "Awards and packaging perfectly matched to your corporate visual identity." }
+    ],
+    "image": "/site/award-recognition/engraved-crystal-trophy.jpeg",
+    "imageAlt": "Award"
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🏆", "title": "Prestige Craft", "text": "Award pieces handcrafted from premium materials by artisan makers." },
+      { "symbol": "◈", "title": "Bulk Ordering", "text": "Efficient production for 10 to 5,000 award recipients." },
+      { "symbol": "◎", "title": "Pan-India Delivery", "text": "White-glove delivery ensuring perfect presentation on arrival." },
+      { "symbol": "✦", "title": "Custom Branding", "text": "Your brand identity embedded at every touchpoint." },
+      { "symbol": "◐", "title": "Awards Specialist", "text": "Dedicated recognition expert for your programme." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Visionary Brands"
+  },
+  "cta": {
+    "titleLine1": "Ready to celebrate your",
+    "titleHighlight": "high achievers?",
+    "intro": "Let's create recognition experiences that inspire excellence and make your people proud to belong.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

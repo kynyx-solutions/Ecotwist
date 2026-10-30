@@ -1,0 +1,74 @@
+{
+  "_meta": { "label": "Products page", "route": "/products" },
+  "intro": {
+    "brandName": "ATELIER",
+    "brandTagline": "Gifted"
+  },
+  "hero": {
+    "eyebrow": "Executive Gift Collections",
+    "titleLine1": "Gifts that",
+    "titleHighlight": "speak",
+    "titleLine2": "without words.",
+    "intro": "Cork stationery, recycled paper goods, bamboo drinkware, soya wax candles & diyas and handcrafted jar gift boxes — for teams who value craft over consumption.",
+    "primaryButton": "Shop All Products",
+    "secondaryButton": "View Gift Boxes →",
+    "backgroundImage": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1400&q=60",
+    "stats": [
+      { "value": "20", "suffix": "+", "label": "Curated Products" },
+      { "value": "100", "suffix": "%", "label": "Organic & Recycled" },
+      { "value": "40", "suffix": "+", "label": "Artisan Makers" },
+      { "value": "12", "suffix": "k+", "label": "Happy Recipients" }
+    ],
+    "scrollLabel": "Scroll"
+  },
+  "navbar": {
+    "brandName": "ATELIER",
+    "brandTagline": "Gifted",
+    "searchPlaceholder": "Search gifts...",
+    "shopLink": "Shop",
+    "reviewsLink": "Reviews"
+  },
+  "banners": {
+    "linkText": "Shop →",
+    "items": [
+      { "title": "Cork Collection", "category": "Cork Collection", "key": "cork-diary" },
+      { "title": "Recycled Paper", "category": "Recycled Paper", "key": "paper-pencil" },
+      { "title": "Candles", "category": "Candles", "key": "soy-wax-diyas" },
+      { "title": "Gift Boxes", "category": "Gift Boxes", "key": "gift-box-2-jar" }
+    ]
+  },
+  "productGrid": {
+    "allTab": "All",
+    "countLabel": "products",
+    "searchPlaceholder": "Search gifts...",
+    "noResultsSymbol": "🔍",
+    "noResultsText": "No products found for",
+    "clearSearch": "Clear Search"
+  },
+  "productCard": {
+    "designsBadge": "Designs",
+    "viewDesigns": "View Designs",
+    "quickView": "Quick View",
+    "orderNow": "Order Now"
+  },
+  "gallery": {
+    "closeLabel": "Close gallery",
+    "previousLabel": "Previous design",
+    "nextLabel": "Next design",
+    "skuLabel": "SKU",
+    "orderDesign": "Order This Design",
+    "orderNow": "Order Now"
+  },
+  "reviews": {
+    "eyebrow": "Client Stories",
+    "title": "What They Said"
+  },
+  "cta": {
+    "eyebrow": "Bulk & Corporate Orders",
+    "titleLine1": "Ordering for a",
+    "titleLine2": "team or event?",
+    "text": "Custom branding, volume pricing, and white-glove delivery for orders of 10 or more. We handle every detail so your gifts arrive perfectly.",
+    "primaryButton": "Request a Proposal",
+    "secondaryButton": "Contact Us"
+  }
+}

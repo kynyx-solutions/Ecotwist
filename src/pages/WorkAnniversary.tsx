@@ -3,14 +3,13 @@ import {
   motion, useScroll, useTransform, useSpring, useMotionValue, useInView,
 } from 'motion/react';
 import type { Variants } from 'motion/react';
-import award from '../assests/Award.png';
-import giftingset from '../assests/giftingset.png';
-import hamper from '../assests/journeyhamper.png';
-import milestone from '../assests/milestone.png';
-import folio from '../assests/leatherfolio.png';
-import planter from '../assests/deskplanter.png';
-import gift from '../assests/customizedgift.webp';
 import { ArrowRight } from 'lucide-react';
+import { clients } from '../lib/clients';
+import { asset } from '../lib/content';
+import content from '../content/pages/work-anniversary.json';
+
+// Page words and photos: src/content/pages/work-anniversary.json (admin → Pages → Work Anniversary)
+const { hero, about, categories, products, customization, why, trust, cta } = content;
 
 /* ─────────────────────────────────────────────
    CELEBRATION CANVAS HOOK
@@ -952,29 +951,10 @@ const ACCENT_DARK = '#0f1f11';
 /* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
-const PRODUCTS = [
-  { name: 'Milestone Memory Box',   sub: 'Starting at ₹1,799', tag: 'Premium',      img: milestone },
-  { name: 'Heritage Leather Folio', sub: 'Starting at ₹2,499', tag: 'Customizable', img: folio },
-  { name: 'Premium Desk Planter',   sub: 'Starting at ₹999',   tag: 'Eco-friendly', img: planter },
-];
-const CATEGORIES = [
-  { name: 'Years of Service Awards', desc: 'Elegantly crafted plaques, trophies, and keepsakes marking 1, 5, 10, and 25-year milestones.', accent: ACCENT,   tag: 'Legacy',  img: award },
-  { name: 'Executive Gifting Sets',  desc: 'Premium leather goods, fine stationery, and desk accessories for senior milestones.',           accent: '#5a7a5e', tag: 'Premium', img: giftingset },
-  { name: 'Growth Journey Hampers',  desc: 'Curated hampers celebrating professional growth — books, planners, and artisanal treats.',      accent: '#4a6e6e', tag: 'Growth',  img: hamper },
-];
-const CUSTOM_ITEMS = [
-  { icon: '🏅', title: 'Year Engraving',    desc: 'Milestone year and name laser-etched on premium products.' },
-  { icon: '📜', title: 'Custom Citations',  desc: 'Personalised appreciation letters drafted with your brand voice.' },
-  { icon: '🌿', title: 'Eco Packaging',     desc: 'Recycled, biodegradable gift boxes with linen lining.' },
-  { icon: '🎨', title: 'Brand Integration', desc: 'Seamless logo placement and brand color matching.' },
-];
-const WHY = [
-  { icon: '🏆', title: 'Recognition Culture', desc: 'Gifts that reinforce a culture of loyalty and appreciation.' },
-  { icon: '◈',  title: 'Bulk Ordering',       desc: 'Efficient fulfillment from 10 to 10,000 anniversary gifts.' },
-  { icon: '◎',  title: 'Pan-India Delivery',  desc: 'Reliable, on-time delivery across the entire country.' },
-  { icon: '✦',  title: 'Custom Branding',     desc: 'Your brand identity woven into every product.' },
-  { icon: '◐',  title: 'Dedicated Support',   desc: 'Personal gift consultants guiding every order.' },
-];
+const PRODUCTS = products.items;
+const CATEGORIES = categories.items;
+const CUSTOM_ITEMS = customization.items;
+const WHY = why.items;
 
 /* ─────────────────────────────────────────────
    SUB-COMPONENTS
@@ -996,7 +976,7 @@ function CategoryCard({ item }: { item: typeof CATEGORIES[0]; index: number }) {
         }}
       >
         <div style={{ height: 280, overflow: 'hidden', position: 'relative' }}>
-          <motion.img src={item.img} alt={item.name} className="w-full h-full object-cover"
+          <motion.img src={asset(item.img)} alt={item.name} className="w-full h-full object-cover"
             animate={{ scale: hovered ? 1.07 : 1 }} transition={{ duration: 0.75, ease: EASE }} style={{ willChange: 'transform' }} />
           <motion.div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: item.accent }}
             animate={{ opacity: hovered ? 0.16 : 0 }} transition={{ duration: 0.4 }} />
@@ -1013,7 +993,7 @@ function CategoryCard({ item }: { item: typeof CATEGORIES[0]; index: number }) {
           <h3 className="font-serif text-2xl mb-2" style={{ color: ACCENT_DARK }}>{item.name}</h3>
           <p className="text-sm font-light leading-relaxed mb-5" style={{ color: '#73736e' }}>{item.desc}</p>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest" style={{ color: ACCENT_DARK }}>
-            <motion.span animate={{ x: hovered ? 3 : 0 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>View Collection</motion.span>
+            <motion.span animate={{ x: hovered ? 3 : 0 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>{categories.linkText}</motion.span>
             <motion.span animate={{ rotate: hovered ? 45 : 0, x: hovered ? 2 : 0 }}
               transition={{ type: 'spring', stiffness: 380, damping: 18 }} style={{ display: 'inline-flex' }}>
               <ArrowRight size={11} />
@@ -1043,7 +1023,7 @@ function ProductCard({ item, index }: { item: typeof PRODUCTS[0]; index: number 
       style={{ minWidth: 360, scrollSnapAlign: 'start' }}
     >
       <div className="relative overflow-hidden mb-4" style={{ aspectRatio: '1', borderRadius: 16 }}>
-        <motion.img src={item.img} alt={item.name} className="w-full h-full object-cover"
+        <motion.img src={asset(item.img)} alt={item.name} className="w-full h-full object-cover"
           animate={{ scale: hovered ? 1.06 : 1 }} transition={{ duration: 0.65, ease: EASE }} style={{ willChange: 'transform' }} />
         <span className="absolute top-4 left-4 text-[10px] font-bold uppercase text-white px-4 py-1 rounded-full"
           style={{ background: 'rgba(90,138,110,0.85)', backdropFilter: 'blur(6px)', letterSpacing: 2 }}>{item.tag}</span>
@@ -1072,7 +1052,7 @@ function WhyCard({ item, index }: { item: typeof WHY[0]; index: number }) {
         style={{ width: 64, height: 64 }}
         animate={{ background: hovered ? ACCENT : '#eaf2eb', color: hovered ? 'white' : ACCENT_DARK }}
         transition={{ duration: 0.3 }}
-      >{item.icon}</motion.div>
+      >{item.symbol}</motion.div>
       <h4 className="font-bold text-xs uppercase tracking-widest mb-2">{item.title}</h4>
       <p className="text-xs font-light leading-relaxed" style={{ color: '#73736e' }}>{item.desc}</p>
     </motion.div>
@@ -1125,8 +1105,8 @@ export default function WorkAnniversary() {
           className="absolute top-6 right-8 z-10 pointer-events-none flex items-center gap-2"
           style={{ color: 'rgba(255,180,180,0.5)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.2em', fontWeight: 700 }}
         >
-          <motion.span animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }}>✦</motion.span>
-          Click to celebrate
+          <motion.span animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }}>{hero.clickHintSymbol}</motion.span>
+          {hero.clickHint}
         </motion.div>
 
         {/* Hero text */}
@@ -1140,11 +1120,11 @@ export default function WorkAnniversary() {
             style={{ color: 'rgba(255,180,160,0.7)' }}
           >
             <span className="w-10 h-px inline-block" style={{ background: 'rgba(255,180,160,0.6)' }} />
-            Corporate Solutions
+            {hero.eyebrow}
           </motion.p>
 
           <h1 className="font-serif text-white" style={{ fontSize: 'clamp(3rem,7vw,6rem)', lineHeight: 1.08 }}>
-            {['Work', 'Anniversary'].map((word, i) => (
+            {[hero.titleLine1, hero.titleLine2].map((word, i) => (
               <motion.span
                 key={word}
                 initial={{ rotateX: -90, opacity: 0, y: 40 }}
@@ -1162,15 +1142,14 @@ export default function WorkAnniversary() {
                 transformOrigin: 'bottom center', transformStyle: 'preserve-3d',
                 color: 'rgba(255,200,190,0.9)',
               }}
-            >Gifting Solutions.</motion.span>
+            >{hero.titleHighlight}</motion.span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.8 }}
             className="text-white/75 mt-6 max-w-md text-lg font-light leading-relaxed"
           >
-            Celebrate the milestones that matter most — honour years of dedication with premium,
-            personalised gifts that speak to loyalty and legacy.
+            {hero.intro}
           </motion.p>
 
           <motion.div
@@ -1182,7 +1161,7 @@ export default function WorkAnniversary() {
               whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }}
               className="text-white font-bold uppercase tracking-widest text-xs px-9 py-4 rounded-full"
               style={{ background: 'linear-gradient(135deg, #b85068, #8a3048)', border: 'none', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 8px 30px rgba(180,80,100,0.4)' }}
-            >Explore Anniversary Gifts</motion.button>
+            >{hero.primaryButton}</motion.button>
 
             <motion.button
               whileHover={{ scale: 1.04, y: -2, background: 'rgba(255,255,255,0.15)' }}
@@ -1190,7 +1169,7 @@ export default function WorkAnniversary() {
               onClick={() => window.location.href = '/contact'}
               className="text-white font-bold uppercase tracking-widest text-xs px-9 py-4 rounded-full"
               style={{ background: 'transparent', border: '1px solid rgba(255,180,180,0.4)', cursor: 'pointer', fontFamily: 'inherit' }}
-            >Request Quote</motion.button>
+            >{hero.secondaryButton}</motion.button>
           </motion.div>
         </motion.div>
 
@@ -1199,7 +1178,7 @@ export default function WorkAnniversary() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         >
-          <span className="text-white/35 text-[9px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+          <span className="text-white/35 text-[9px] uppercase tracking-[0.3em] font-bold">{hero.scrollLabel}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
             style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, rgba(255,180,160,0.8), transparent)' }}
@@ -1217,24 +1196,21 @@ export default function WorkAnniversary() {
                 transition={{ duration: 0.55, ease: EASE }}
                 style={{ originX: 0, height: 3, width: 80, background: ACCENT, marginBottom: 24 }}
               />
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: ACCENT }}>Our Philosophy</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-4" style={{ color: ACCENT }}>{about.eyebrow}</p>
             </motion.div>
             <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-8" style={{ color: ACCENT_DARK }}>
-              Honouring the Journey<br />Behind Every Milestone
+              {about.titleLine1}<br />{about.titleLine2}
             </motion.h2>
             <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-5" style={{ color: '#73736e' }}>
-              Every work anniversary is a story of commitment, growth, and trust. When an employee reaches a milestone —
-              whether it's their first year or their twentieth — it deserves to be celebrated with the same care they've
-              invested in the organisation.
+              {about.paragraph1}
             </motion.p>
             <motion.p variants={vFadeUp} className="text-lg font-light leading-relaxed mb-10" style={{ color: '#73736e' }}>
-              Our anniversary gifting solutions go beyond the generic. We craft meaningful, personalised experiences that
-              make your people feel genuinely valued — strengthening the bond between individual and organisation.
+              {about.paragraph2}
             </motion.p>
             <motion.div variants={vFadeUp} className="flex items-center gap-4 pt-8" style={{ borderTop: '1px solid #d0e4d2' }}>
               <div className="flex items-center justify-center rounded-full text-2xl flex-shrink-0"
-                style={{ width: 48, height: 48, background: '#daeedd' }}>🌿</div>
-              <p className="font-semibold text-sm" style={{ color: ACCENT }}>100% Sustainably Sourced — B-Corp Certified</p>
+                style={{ width: 48, height: 48, background: '#daeedd' }}>{about.badgeSymbol}</div>
+              <p className="font-semibold text-sm" style={{ color: ACCENT }}>{about.badgeText}</p>
             </motion.div>
           </motion.div>
           <motion.div
@@ -1244,8 +1220,8 @@ export default function WorkAnniversary() {
             <motion.div ref={aRef} onMouseMove={aMM} onMouseLeave={aML}
               style={{ rotateX: aX, rotateY: aY, transformStyle: 'preserve-3d', willChange: 'transform' }}>
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80"
-                alt="Work Anniversary Gifting" className="w-full rounded-2xl shadow-2xl"
+                src={asset(about.image)}
+                alt={about.imageAlt} className="w-full rounded-2xl shadow-2xl"
                 style={{ aspectRatio: '4/5', objectFit: 'cover' }}
               />
             </motion.div>
@@ -1260,9 +1236,9 @@ export default function WorkAnniversary() {
             initial={{ opacity: 0, y: 30 }} animate={catInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }} className="text-center mb-14"
           >
-            <h2 className="text-5xl font-serif mb-4" style={{ color: ACCENT_DARK }}>Milestone Collections</h2>
+            <h2 className="text-5xl font-serif mb-4" style={{ color: ACCENT_DARK }}>{categories.title}</h2>
             <p className="font-light text-sm max-w-lg mx-auto" style={{ color: '#73736e' }}>
-              Curated gifting tiers for every work anniversary milestone your team reaches.
+              {categories.intro}
             </p>
           </motion.div>
           <motion.div
@@ -1283,12 +1259,12 @@ export default function WorkAnniversary() {
             className="flex justify-between items-end mb-12"
           >
             <div>
-              <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>Featured Anniversary Gifts</h2>
-              <p className="font-light" style={{ color: '#73736e' }}>Most-loved products for celebrating years of service.</p>
+              <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>{products.title}</h2>
+              <p className="font-light" style={{ color: '#73736e' }}>{products.intro}</p>
             </div>
             <motion.a whileHover={{ y: -1 }}
               className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
-              style={{ borderColor: ACCENT, color: ACCENT_DARK }}>View All</motion.a>
+              style={{ borderColor: ACCENT, color: ACCENT_DARK }}>{products.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"
             style={{ scrollSnapType: 'x mandatory', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
@@ -1301,20 +1277,19 @@ export default function WorkAnniversary() {
       <section ref={custRef} className="py-32 px-8 md:px-20 lg:px-32 overflow-hidden" style={{ background: ACCENT_DARK }}>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <motion.div variants={vSlideLeft} initial="hidden" animate={custInView ? 'show' : 'hidden'}>
-            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">Personalisation</p>
+            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-white/60 mb-4">{customization.eyebrow}</p>
             <h2 className="text-5xl font-serif text-white leading-tight mb-6">
-              Gifts That Reflect<br />
-              <span style={{ color: '#a8d5ad', fontStyle: 'italic', fontWeight: 400 }}>Their Story</span>
+              {customization.title}<br />
+              <span style={{ color: '#a8d5ad', fontStyle: 'italic', fontWeight: 400 }}>{customization.titleHighlight}</span>
             </h2>
             <p className="text-lg font-light leading-relaxed mb-12" style={{ color: 'rgba(212,212,212,0.7)' }}>
-              No two journeys are the same. Our bespoke personalisation service ensures every anniversary gift tells
-              the unique story of that individual's contribution to your organisation.
+              {customization.intro}
             </p>
             <motion.div variants={vStagger} initial="hidden" animate={custInView ? 'show' : 'hidden'} className="grid grid-cols-2 gap-8">
               {CUSTOM_ITEMS.map(item => (
                 <motion.div key={item.title} variants={vFadeUp} className="flex gap-4">
                   <div className="flex-shrink-0 flex items-center justify-center text-lg rounded-lg"
-                    style={{ width: 40, height: 40, border: '1px solid rgba(168,213,173,0.3)', color: '#a8d5ad' }}>{item.icon}</div>
+                    style={{ width: 40, height: 40, border: '1px solid rgba(168,213,173,0.3)', color: '#a8d5ad' }}>{item.symbol}</div>
                   <div>
                     <h5 className="font-semibold text-white text-sm mb-1">{item.title}</h5>
                     <p className="text-xs font-light leading-relaxed" style={{ color: 'rgba(212,212,212,0.6)' }}>{item.desc}</p>
@@ -1327,7 +1302,7 @@ export default function WorkAnniversary() {
             <div className="absolute inset-0 rounded-3xl opacity-40"
               style={{ background: ACCENT, transform: 'rotate(3deg) scale(0.95)' }} />
             <div className="relative rounded-3xl overflow-hidden p-6" style={{ background: '#ebf3ec' }}>
-              <img src={gift}
+              <img src={asset(customization.image)}
                 className="w-full rounded-2xl shadow-xl" style={{ aspectRatio: '1', objectFit: 'cover' }} />
             </div>
           </motion.div>
@@ -1342,7 +1317,7 @@ export default function WorkAnniversary() {
             viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-serif" style={{ color: ACCENT_DARK }}>Why Choose Ecotwist</h2>
+            <h2 className="text-5xl font-serif" style={{ color: ACCENT_DARK }}>{why.title}</h2>
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {WHY.map((item, i) => <WhyCard key={item.title} item={item} index={i} />)}
@@ -1351,6 +1326,7 @@ export default function WorkAnniversary() {
       </section>
 
       {/* ══ TRUST ═════════════════════════════════ */}
+      {clients.length > 0 && (
       <section className="py-14 px-8 border-t border-gray-200">
         <div className="max-w-7xl mx-auto">
           <motion.p
@@ -1358,18 +1334,19 @@ export default function WorkAnniversary() {
             viewport={{ once: false, amount: 0.5 }}
             className="text-center text-[9px] uppercase tracking-[0.3em] font-bold mb-10"
             style={{ color: '#a6a6a1' }}
-          >Trusted by Industry Leaders</motion.p>
+          >{trust.title}</motion.p>
           <motion.div
             initial={{ opacity: 0 }} whileInView={{ opacity: 0.6 }}
             viewport={{ once: false, amount: 0.5 }} transition={{ duration: 0.6 }}
             className="flex flex-wrap justify-center gap-16"
           >
-            {['Aether', 'Solace', 'Lumina', 'Vantage', 'Noir'].map(b => (
-              <span key={b} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{b}</span>
-            ))}
+            {clients.map(c => c.logo
+              ? <img key={c.name} src={c.logo} alt={c.name} style={{ height: 32, objectFit: 'contain' }} />
+              : <span key={c.name} className="font-serif text-xl font-bold" style={{ color: '#4d4941', letterSpacing: -0.5 }}>{c.name}</span>)}
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ══ CTA ═══════════════════════════════════ */}
       <section ref={ctaRef} className="py-12 px-8 text-center" style={{ background: '#ebf3ec' }}>
@@ -1380,14 +1357,14 @@ export default function WorkAnniversary() {
             transition={{ duration: 0.85, ease: EASE }}
             className="font-serif text-5xl md:text-6xl leading-tight mb-6" style={{ color: ACCENT_DARK }}
           >
-            Ready to honour every<br /><span className="italic font-normal">Work Anniversary?</span>
+            {cta.titleLine1}<br /><span className="italic font-normal">{cta.titleHighlight}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-xl font-light leading-relaxed mb-12" style={{ color: '#73736e' }}
           >
-            Let's create meaningful anniversary experiences that celebrate loyalty and inspire continued excellence.
+            {cta.intro}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }} animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
@@ -1400,7 +1377,7 @@ export default function WorkAnniversary() {
               onClick={() => window.location.href = '/get-proposal'}
               className="text-white font-bold uppercase tracking-[0.2em] text-xs px-14 py-6 rounded-full shadow-xl"
               style={{ background: ACCENT, border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
-            >Get Started</motion.button>
+            >{cta.primaryButton}</motion.button>
 
             <motion.button
               whileHover={{ y: -2 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -1413,7 +1390,7 @@ export default function WorkAnniversary() {
               }}
               onMouseEnter={e => (e.currentTarget.style.borderBottomColor = ACCENT)}
               onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'rgba(122,158,126,0.3)')}
-            >Schedule a Consultation</motion.button>
+            >{cta.secondaryButton}</motion.button>
           </motion.div>
         </div>
       </section>

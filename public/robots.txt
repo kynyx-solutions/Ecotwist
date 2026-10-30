@@ -3,6 +3,7 @@ Allow: /
 
 # Disallow confirmation / private routes
 Disallow: /thanks
+Disallow: /admin/
 
 # Host
 Host: https://ecotwist.in

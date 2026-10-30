@@ -1,5 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { asset } from '../lib/content';
+import content from '../content/pages/impact.json';
+
+// Page words and photos: src/content/pages/impact.json (admin → Pages → Impact)
+const { hero, metrics, artisans, blueprint, closing } = content;
 
 /* ─── MOBILE HOOK ────────────────────────────────────────────── */
 const useIsMobile = () => {
@@ -531,9 +536,9 @@ const useGiftingCanvas = (sectionRef: React.RefObject<HTMLElement | null>) => {
 
 /* ─── ARTISAN IMAGE URLS (sab Unsplash — no hotlink issues) ──── */
 const ARTISAN_IMAGES = {
-  main: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop',
-  hands: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=900&auto=format&fit=crop',
-  textile: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?q=80&w=900&auto=format&fit=crop',
+  main: asset(artisans.mainImage),
+  hands: asset(artisans.handsImage),
+  textile: asset(artisans.textileImage),
 };
 
 /* ─── MAIN COMPONENT ─────────────────────────────────────────── */
@@ -607,7 +612,7 @@ const Impact: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.3 }}
           >
-            A Legacy of Responsibility
+            {hero.eyebrow}
           </motion.span>
 
           <div className="overflow-hidden mb-3 md:mb-6">
@@ -617,7 +622,7 @@ const Impact: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              Sustainable
+              {hero.titleLine1}
             </motion.h1>
           </div>
           <div className="overflow-hidden mb-7 md:mb-10">
@@ -627,7 +632,7 @@ const Impact: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              Luxury Defined.
+              {hero.titleLine2}
             </motion.h1>
           </div>
 
@@ -637,8 +642,7 @@ const Impact: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.0 }}
           >
-            At Ecotwist, we believe true luxury is found in the harmony between exquisite design
-            and ecological integrity.
+            {hero.intro}
           </motion.p>
 
           <motion.div
@@ -647,7 +651,7 @@ const Impact: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6 }}
           >
-            <span className="text-[#C9A96E]/50 text-[9px] uppercase tracking-[0.4em]">Scroll</span>
+            <span className="text-[#C9A96E]/50 text-[9px] uppercase tracking-[0.4em]">{hero.scrollLabel}</span>
             <motion.div
               className="w-px h-10 md:h-12 bg-gradient-to-b from-[#C9A96E]/60 to-transparent"
               animate={{ scaleY: [0, 1, 0] }}
@@ -668,7 +672,7 @@ const Impact: React.FC = () => {
             viewport={{ once: false }}
             transition={{ duration: 1.4 }}
           >
-            ∞
+            {metrics.watermark}
           </motion.div>
         )}
 
@@ -681,31 +685,15 @@ const Impact: React.FC = () => {
             transition={{ duration: 1 }}
           >
             <span className="uppercase tracking-[0.4em] text-[9px] font-bold text-[#C9A96E]">
-              Impact Numbers
+              {metrics.eyebrow}
             </span>
             <h2 className="font-serif text-3xl md:text-6xl mt-3 text-[#1a1a0e]">
-              Measured in <span className="italic text-[#C9A96E]">meaning.</span>
+              {metrics.title} <span className="italic text-[#C9A96E]">{metrics.titleHighlight}</span>
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
-            {[
-              {
-                value: '1000+',
-                label: 'Kilograms CO2 Offset',
-                desc: 'Through regenerative forestry and localized production cycles that prioritize the planet.',
-              },
-              {
-                value: '100+',
-                label: 'Master Artisans',
-                desc: 'Empowering heritage communities across four continents with fair living wages and healthcare.',
-              },
-              {
-                value: '100%',
-                label: 'Traceable Materials',
-                desc: 'Every fiber has a story. Our blockchain-verified supply chain ensures absolute transparency.',
-              },
-            ].map((m, i) => (
+            {metrics.items.map((item) => ({ value: item.value, label: item.label, desc: item.text })).map((m, i) => (
               <MetricCard key={m.label} {...m} index={i} />
             ))}
           </div>
@@ -725,7 +713,7 @@ const Impact: React.FC = () => {
           >
             <div className="h-px flex-1 bg-[#1a1a0e]/20" />
             <span className="uppercase tracking-[0.3em] md:tracking-[0.4em] text-[9px] font-bold text-[#1a1a0e]/50 whitespace-nowrap">
-              Artisan Stories
+              {artisans.eyebrow}
             </span>
             <div className="h-px w-8 md:w-12 bg-[#C9A96E]" />
           </motion.div>
@@ -737,7 +725,7 @@ const Impact: React.FC = () => {
             <div className="md:col-span-7">
               <CinematicImage
                 src={ARTISAN_IMAGES.main}
-                alt="Artisan at work"
+                alt={artisans.mainImageAlt}
                 className="w-full rounded-sm"
                 style={{ aspectRatio: '4/3', minHeight: '220px' }}
                 delay={0}
@@ -754,7 +742,7 @@ const Impact: React.FC = () => {
               >
                 <span className="w-6 md:w-8 h-px bg-[#C9A96E] flex-shrink-0" />
                 <p className="text-[10px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-[#1a1a0e]/50 font-bold">
-                  Master Weaver — Oaxaca, Mexico
+                  {artisans.mainCaption}
                 </p>
               </motion.div>
             </div>
@@ -763,7 +751,7 @@ const Impact: React.FC = () => {
             <div className="md:col-span-5 flex flex-col gap-5 md:gap-6">
               <CinematicImage
                 src={ARTISAN_IMAGES.hands}
-                alt="Artisan hands close-up"
+                alt={artisans.handsImageAlt}
                 className="w-full rounded-sm"
                 style={{ aspectRatio: '3/2', minHeight: '180px' }}
                 delay={0.1}
@@ -781,16 +769,16 @@ const Impact: React.FC = () => {
                 transition={{ duration: 0.9, delay: 0.2 }}
               >
                 <p className="font-serif text-lg md:text-2xl italic text-[#1a1a0e] leading-snug">
-                  "Every knot is a prayer. Every thread, a promise to the earth."
+                  "{artisans.quote}"
                 </p>
                 <cite className="mt-3 block text-[10px] uppercase tracking-[0.3em] text-[#C9A96E] font-bold not-italic">
-                  — Amara Diallo, Artisan Partner
+                  — {artisans.quoteAuthor}
                 </cite>
               </motion.blockquote>
 
               <CinematicImage
                 src={ARTISAN_IMAGES.textile}
-                alt="Sustainable textile detail"
+                alt={artisans.textileImageAlt}
                 className="w-full rounded-sm"
                 style={{ aspectRatio: '3/2', minHeight: '180px' }}
                 delay={0.2}
@@ -820,7 +808,7 @@ const Impact: React.FC = () => {
             animate={{ x: [0, -30, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           >
-            ECOTWIST
+            {blueprint.watermark}
           </motion.div>
         )}
 
@@ -833,37 +821,21 @@ const Impact: React.FC = () => {
             transition={{ duration: 1 }}
           >
             <span className="uppercase tracking-[0.4em] text-[9px] font-bold text-[#C9A96E]/60 block mb-2">
-              Confidential / Internal Methodology
+              {blueprint.eyebrow}
             </span>
             <h2 className="font-serif text-3xl md:text-6xl">
-              The Ethical <span className="italic text-[#C9A96E]">Blueprint</span>
+              {blueprint.title} <span className="italic text-[#C9A96E]">{blueprint.titleHighlight}</span>
             </h2>
           </motion.div>
 
           <div className="divide-y divide-[#f0ead6]/10">
-            {[
-              {
-                id: '01.',
-                title: 'The Requirement',
-                desc: 'Sourcing raw materials that demand nothing from the earth but time.',
-                items: ['Wild Organic Silk', 'Post-Consumer Gold', 'Regen Wool'],
-                img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=400&auto=format&fit=crop',
-              },
-              {
-                id: '02.',
-                title: 'The Design',
-                desc: 'Architecture for the body. Every seam serves a functional and aesthetic purpose.',
-                items: ['Draft No. 42A', 'Zero-Waste Patterning'],
-                img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=400&auto=format&fit=crop',
-              },
-              {
-                id: '03.',
-                title: 'The Delivery',
-                desc: 'Carbon-neutral transit to your door in plastic-free, archival packaging.',
-                items: ['Modern Heirloom', 'Lifetime Integrity'],
-                img: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=400&auto=format&fit=crop',
-              },
-            ].map((step, i) => (
+            {blueprint.steps.map((item) => ({
+              id: item.number,
+              title: item.title,
+              desc: item.text,
+              items: item.tags.map((tag) => tag.text),
+              img: asset(item.image),
+            })).map((step, i) => (
               <motion.div
                 key={step.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -937,7 +909,7 @@ const Impact: React.FC = () => {
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
-          Crafted with intention. Worn with purpose.
+          {closing.text}
         </motion.p>
       </motion.section>
     </div>

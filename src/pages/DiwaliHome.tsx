@@ -17,6 +17,8 @@ import {
   SeriesLights,
   seeded,
 } from "../components/DiwaliDecor";
+import { asset } from "../lib/content";
+import content from "../content/pages/diwali-home.json";
 
 /* ============================
    Diwali special home page.
@@ -26,8 +28,9 @@ import {
 
 const DEVANAGARI = '"Tiro Devanagari Hindi", "Nirmala UI", "Mangal", serif';
 
+// Page words and photos: src/content/pages/diwali-home.json (admin → Pages → Home (Diwali)).
 // Web-sized copies of the Diwali artwork live in /public/diwali-home
-const photo = (file: string) => `/diwali-home/${file}`;
+const { hero, marquee, giftEdit, hampers, workplace, promises, process, cta } = content;
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -50,77 +53,21 @@ const stagger: Variants = {
    Content
 ============================ */
 
-const STATS = [
-  { number: "500+", label: "Corporate clients" },
-  { number: "25K+", label: "Gift boxes delivered" },
-  { number: "98%", label: "Client satisfaction" },
-];
+const ICONS = { Users, Handshake, Crown, Leaf, PenTool, Truck, Building2 };
 
-const MARQUEE = [
-  "Shubh Deepavali",
-  "Sustainable Gifting",
-  "Custom Branding",
-  "शुभ दीपावली",
-  "Pan-India Delivery",
-  "Handcrafted Hampers",
-  "Bulk Corporate Orders",
-];
+const STATS = hero.stats;
 
-const GIFT_EDIT = [
-  {
-    title: "Heritage Jar Boxes", category: "Gift Boxes", image: "edit-jar-boxes.webp",
-    blurb: "Two- to six-jar boxes in velvet, MGI and hand-printed finishes, filled with dry fruits or sweets.",
-  },
-  {
-    title: "Soya Wax Diyas", category: "Candles", image: "edit-diyas.webp",
-    blurb: "Hand-painted terracotta diyas filled with clean-burning soya wax.",
-  },
-  {
-    title: "Scented Candles", category: "Candles", image: "edit-candles.webp",
-    blurb: "Soya wax candle sets, gift-boxed in threes, fours and sixes.",
-  },
-  {
-    title: "Dry Fruit Hampers", category: "Gift Boxes", image: "edit-dry-fruits.webp",
-    blurb: "Compartment boxes, platters and trays with golden cavities.",
-  },
-  {
-    title: "Cork Keepsakes", category: "Cork Collection", image: "edit-cork.webp",
-    blurb: "Cork diaries and pens that carry your brand long after Diwali.",
-  },
-  {
-    title: "Bamboo Bottles", category: "Bamboo Collection", image: "edit-bamboo.webp",
-    blurb: "Bamboo-finish bottles with a tea infuser, for the year ahead.",
-  },
-];
+const MARQUEE = marquee.items.map((item) => item.text);
 
-const HAMPERS = [
-  { title: "Executive Luxury", subtitle: "For CXOs & leadership", tag: "Premium", image: "hamper-executive.webp" },
-  { title: "Employee Delight", subtitle: "For every team member", tag: "Popular", image: "hamper-employee.webp" },
-  { title: "Client Appreciation", subtitle: "For clients & partners", tag: "Corporate", image: "hamper-client.webp" },
-  { title: "Wellness Collection", subtitle: "Healthy & sustainable", tag: "Eco", image: "hamper-wellness.webp" },
-  { title: "Family Celebration", subtitle: "Traditional festive joy", tag: "Festive", image: "hamper-family.webp" },
-  { title: "Premium Gourmet", subtitle: "Artisan treats & delicacies", tag: "Luxury", image: "hamper-gourmet.webp" },
-];
+const GIFT_EDIT = giftEdit.items;
 
-const AUDIENCES = [
-  { icon: Users, title: "Employees", text: "Hampers that thank every member of the team, packed and branded alike." },
-  { icon: Handshake, title: "Clients & partners", text: "Gifts that strengthen relationships well beyond the festival." },
-  { icon: Crown, title: "Leadership", text: "Premium keepsakes for CXOs, the board and key stakeholders." },
-];
+const HAMPERS = hampers.items;
 
-const PROMISES = [
-  { icon: Leaf, title: "Sustainable by design", text: "Cork, bamboo, recycled paper, soya wax and reusable boxes in place of single-use plastic." },
-  { icon: PenTool, title: "Branded your way", text: "Your logo and message on the boxes, diaries and packaging." },
-  { icon: Truck, title: "Pan-India delivery", text: "Hampers delivered across India, to one office or many." },
-  { icon: Building2, title: "Made for bulk orders", text: "Share your budget and quantity and get a proposal tailored to your team." },
-];
+const AUDIENCES = workplace.audiences.map((item) => ({ ...item, icon: ICONS[item.icon as keyof typeof ICONS] }));
 
-const STEPS = [
-  { numeral: "१", title: "Share your brief", text: "Tell us your budget, quantity and who you are gifting." },
-  { numeral: "२", title: "We curate & brand", text: "We shortlist hampers and add your branding." },
-  { numeral: "३", title: "Approve the proposal", text: "Review your proposal and confirm the final selection." },
-  { numeral: "४", title: "Delivered with care", text: "Hampers are packed and delivered across India." },
-];
+const PROMISES = promises.items.map((item) => ({ ...item, icon: ICONS[item.icon as keyof typeof ICONS] }));
+
+const STEPS = process.steps;
 
 const starRand = seeded(21);
 const STARS = Array.from({ length: 46 }, () => ({
@@ -250,9 +197,9 @@ function Hero() {
             variants={fadeUp}
             className="inline-flex items-center gap-3 rounded-full border border-[#E9C46A]/40 bg-white/5 px-4 py-1.5 backdrop-blur-sm"
           >
-            <span style={{ fontFamily: DEVANAGARI }} className="text-lg text-[#F6D27A]">शुभ दीपावली</span>
+            <span style={{ fontFamily: DEVANAGARI }} className="text-lg text-[#F6D27A]">{hero.hindiBadge}</span>
             <span className="h-4 w-px bg-[#E9C46A]/40" />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">Corporate Gifting 2026</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">{hero.badge}</span>
           </motion.div>
 
           <motion.h1
@@ -260,17 +207,15 @@ function Hero() {
             className="mt-6 font-serif leading-[1.04]"
             style={{ fontSize: "clamp(2.6rem, 7vw, 6rem)" }}
           >
-            This Diwali,
+            {hero.titleLine1}
             <br />
-            gift light
+            {hero.titleLine2}
             <br />
-            <span className={`italic ${goldText}`}>that lasts.</span>
+            <span className={`italic ${goldText}`}>{hero.titleHighlight}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
-            Sustainable Diwali hampers for your teams, clients and partners — heritage jar boxes,
-            soya wax diyas, cork keepsakes and dry fruit platters, custom-branded and delivered
-            across India.
+            {hero.intro}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -278,14 +223,14 @@ function Hero() {
               to="/occasions/depawali-gifting"
               className="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] px-8 py-4 font-semibold text-[#2a0a1c] shadow-[0_12px_40px_-12px_rgba(245,158,11,.8)] transition-transform hover:-translate-y-0.5"
             >
-              Explore Diwali Collection
+              {hero.primaryButton}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/get-proposal?occasion=festival"
               className="inline-flex items-center justify-center rounded-full border border-[#E9C46A]/60 px-8 py-4 font-medium text-[#F6D27A] transition-colors hover:bg-white/5"
             >
-              Get Proposal
+              {hero.secondaryButton}
             </Link>
           </motion.div>
 
@@ -311,8 +256,8 @@ function Hero() {
           >
             <div className="overflow-hidden rounded-t-full rounded-b-2xl">
               <img
-                src={photo("hero-hamper.webp")}
-                alt="Diwali hamper with dry fruits, chocolates, diyas and marigolds"
+                src={asset(hero.image)}
+                alt={hero.imageAlt}
                 className="aspect-[3/4] w-full object-cover"
                 fetchPriority="high"
               />
@@ -325,7 +270,7 @@ function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -left-6 bottom-10 w-24 overflow-hidden rounded-full border-4 border-[#E9C46A] shadow-2xl sm:-left-10 sm:w-32"
           >
-            <img src={photo("hero-inset.webp")} alt="" className="aspect-square w-full object-cover" />
+            <img src={asset(hero.insetImage)} alt="" className="aspect-square w-full object-cover" />
           </motion.div>
 
           <motion.div
@@ -337,8 +282,8 @@ function Hero() {
               <Gift size={18} />
             </span>
             <span className="text-left">
-              <span className="block text-[10px] uppercase tracking-[0.2em] text-[#F6D27A]">Custom</span>
-              <span className="block font-serif text-base leading-tight">Branded hampers</span>
+              <span className="block text-[10px] uppercase tracking-[0.2em] text-[#F6D27A]">{hero.badgeCardLabel}</span>
+              <span className="block font-serif text-base leading-tight">{hero.badgeCardText}</span>
             </span>
           </motion.div>
 
@@ -389,10 +334,10 @@ function GiftEdit() {
       <Rangoli className="absolute -bottom-32 -right-32 w-80 opacity-15" />
 
       <SectionHeading
-        hindi="उपहार"
-        eyebrow="The Diwali Edit"
-        title={<>Gifts that carry <span className="italic text-[#B45309]">the glow of Diwali</span></>}
-        body="Handcrafted, sustainable and ready to carry your brand — pick a favourite or mix them into a hamper of your own."
+        hindi={giftEdit.hindi}
+        eyebrow={giftEdit.eyebrow}
+        title={<>{giftEdit.title} <span className="italic text-[#B45309]">{giftEdit.titleHighlight}</span></>}
+        body={giftEdit.intro}
       />
 
       <motion.div
@@ -410,7 +355,7 @@ function GiftEdit() {
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-2xl bg-[#f3eadb]">
                 <img
-                  src={photo(item.image)}
+                  src={asset(item.image)}
                   alt={item.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -422,7 +367,7 @@ function GiftEdit() {
                 <h3 className="mt-1 font-serif text-2xl text-[#2a0a1c]">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-[#5b4b45]">{item.blurb}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#5c1027]">
-                  Shop now
+                  {giftEdit.linkLabel}
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
@@ -436,7 +381,7 @@ function GiftEdit() {
           to="/products"
           className="inline-flex items-center gap-3 rounded-full border border-[#5c1027] px-8 py-4 font-medium text-[#5c1027] transition-colors hover:bg-[#5c1027] hover:text-white"
         >
-          View all products
+          {giftEdit.button}
           <ArrowRight size={18} />
         </Link>
       </div>
@@ -453,10 +398,10 @@ function HamperCollection() {
 
       <SectionHeading
         dark
-        hindi="सौगात"
-        eyebrow="Hamper Collection"
-        title={<>A hamper for <span className={`italic ${goldText}`}>every relationship</span></>}
-        body="Curated Diwali hampers for the people who make your year — from the boardroom to every desk."
+        hindi={hampers.hindi}
+        eyebrow={hampers.eyebrow}
+        title={<>{hampers.title} <span className={`italic ${goldText}`}>{hampers.titleHighlight}</span></>}
+        body={hampers.intro}
       />
 
       <motion.div
@@ -473,7 +418,7 @@ function HamperCollection() {
               className="group relative block overflow-hidden rounded-3xl border border-[#E9C46A]/25"
             >
               <img
-                src={photo(h.image)}
+                src={asset(h.image)}
                 alt={`${h.title} Diwali hamper`}
                 loading="lazy"
                 className="aspect-square w-full object-cover transition duration-700 group-hover:scale-105"
@@ -502,7 +447,7 @@ function HamperCollection() {
           to="/occasions/depawali-gifting"
           className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] px-8 py-4 font-semibold text-[#2a0a1c]"
         >
-          View all Diwali hampers
+          {hampers.button}
           <ArrowRight size={18} />
         </Link>
       </div>
@@ -525,24 +470,24 @@ function Workplace() {
           <div className="relative rounded-t-full rounded-b-3xl bg-gradient-to-b from-[#E9C46A] to-[#B45309] p-[3px] shadow-[0_40px_80px_-40px_rgba(92,16,39,.6)]">
             <div className="overflow-hidden rounded-t-full rounded-b-[22px]">
               <img
-                src={photo("workplace.webp")}
-                alt="Office decorated for Diwali with a rangoli, diyas and marigold garlands"
+                src={asset(workplace.image)}
+                alt={workplace.imageAlt}
                 loading="lazy"
                 className="aspect-[3/4] w-full object-cover"
               />
             </div>
           </div>
           <div className="absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-[#5c1027] px-5 py-3 text-sm text-[#F6D27A] shadow-xl">
-            <span style={{ fontFamily: DEVANAGARI }} className="text-base">रोशनी</span>
+            <span style={{ fontFamily: DEVANAGARI }} className="text-base">{workplace.imageBadgeHindi}</span>
             <span className="text-white/50">·</span>
-            <span>for every desk</span>
+            <span>{workplace.imageBadgeText}</span>
           </div>
         </motion.div>
 
         <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
           <motion.div variants={fadeUp} className="flex items-center gap-3">
-            <span style={{ fontFamily: DEVANAGARI }} className="text-lg text-[#B45309]">रिश्ते</span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#7c5a3a]">For your people</span>
+            <span style={{ fontFamily: DEVANAGARI }} className="text-lg text-[#B45309]">{workplace.hindi}</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#7c5a3a]">{workplace.eyebrow}</span>
             <span className="h-px w-12 bg-[#B45309]/40" />
           </motion.div>
           <motion.h2
@@ -550,11 +495,10 @@ function Workplace() {
             className="mt-5 font-serif leading-tight text-[#2a0a1c]"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            From the boardroom <span className="italic text-[#B45309]">to every desk</span>
+            {workplace.title} <span className="italic text-[#B45309]">{workplace.titleHighlight}</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 max-w-xl text-base leading-7 text-[#5b4b45] sm:text-lg sm:leading-8">
-            Diwali is when companies say thank you. We plan, brand and deliver the gifting for your
-            whole organisation, so every person on your list feels remembered.
+            {workplace.intro}
           </motion.p>
 
           <div className="mt-8 space-y-4">
@@ -580,7 +524,7 @@ function Workplace() {
               to="/get-proposal?occasion=festival"
               className="group inline-flex items-center gap-3 rounded-full bg-[#5c1027] px-8 py-4 font-medium text-white transition-colors hover:bg-[#2a0a1c]"
             >
-              Plan your Diwali gifting
+              {workplace.button}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
@@ -598,10 +542,10 @@ function Promises() {
       </div>
 
       <SectionHeading
-        hindi="भरोसा"
-        eyebrow="Why Ecotwist"
-        title={<>Desi at heart. <span className="italic text-[#B45309]">Corporate in delivery.</span></>}
-        body="The warmth of a Diwali gift from home, with the planning and polish your company expects."
+        hindi={promises.hindi}
+        eyebrow={promises.eyebrow}
+        title={<>{promises.title} <span className="italic text-[#B45309]">{promises.titleHighlight}</span></>}
+        body={promises.intro}
       />
 
       <motion.div
@@ -636,10 +580,10 @@ function Process() {
   return (
     <section className="relative overflow-hidden bg-[#FBF6EC] px-5 pb-24 pt-28 sm:px-8 sm:pb-32 lg:px-12">
       <SectionHeading
-        hindi="प्रक्रिया"
-        eyebrow="How it works"
-        title={<>Four diyas to a <span className="italic text-[#B45309]">brighter Diwali</span></>}
-        body="One brief is all it takes. We handle the rest, from curation to delivery."
+        hindi={process.hindi}
+        eyebrow={process.eyebrow}
+        title={<>{process.title} <span className="italic text-[#B45309]">{process.titleHighlight}</span></>}
+        body={process.intro}
       />
 
       <motion.ol
@@ -659,7 +603,7 @@ function Process() {
             <Diya delay={i * 0.3} className="relative mx-auto w-20" />
             <p className="mt-3 flex items-center justify-center gap-2 text-[#B45309]">
               <span style={{ fontFamily: DEVANAGARI }} className="text-2xl leading-none">{step.numeral}</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">Step {i + 1}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.3em]">{process.stepLabel} {i + 1}</span>
             </p>
             <h3 className="mt-2 font-serif text-2xl text-[#2a0a1c]">{step.title}</h3>
             <p className="mx-auto mt-2 max-w-[16rem] text-sm leading-6 text-[#5b4b45]">{step.text}</p>
@@ -672,7 +616,7 @@ function Process() {
           to="/get-proposal?occasion=festival"
           className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] px-8 py-4 font-semibold text-[#2a0a1c] shadow-[0_12px_40px_-14px_rgba(245,158,11,.8)]"
         >
-          Start your brief
+          {process.button}
           <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
@@ -706,18 +650,17 @@ function FinalCta() {
       >
         {/* padding keeps the vowel marks above the letters inside the clipped gold gradient */}
         <motion.p variants={fadeUp} style={{ fontFamily: DEVANAGARI }} className={`py-3 text-4xl leading-normal sm:text-5xl ${goldText}`}>
-          शुभ दीपावली
+          {cta.hindi}
         </motion.p>
         <motion.h2
           variants={fadeUp}
           className="mt-6 font-serif leading-tight"
           style={{ fontSize: "clamp(2.2rem, 5vw, 4.25rem)" }}
         >
-          Make this Diwali <span className={`italic ${goldText}`}>unforgettable</span> for your people
+          {cta.title} <span className={`italic ${goldText}`}>{cta.titleHighlight}</span> {cta.titleEnd}
         </motion.h2>
         <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
-          Browse the Diwali catalogue, or tell us about your team and we will put together a
-          proposal for you.
+          {cta.text}
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
           <a
@@ -727,17 +670,17 @@ function FinalCta() {
             className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#E9C46A] px-8 py-4 font-semibold text-[#2a0a1c] shadow-[0_12px_40px_-12px_rgba(245,158,11,.8)]"
           >
             <Download size={18} />
-            Download Diwali Catalogue
+            {cta.catalogueButton}
           </a>
           <Link
             to="/get-proposal?occasion=festival"
             className="inline-flex items-center gap-3 rounded-full border border-[#E9C46A]/60 px-8 py-4 font-medium text-[#F6D27A] transition-colors hover:bg-white/5"
           >
-            Get Proposal
+            {cta.proposalButton}
             <ArrowRight size={18} />
           </Link>
           <Link to="/contact" className="px-4 py-4 font-medium text-white/80 underline-offset-4 hover:text-white hover:underline">
-            Talk to our team
+            {cta.contactLink}
           </Link>
         </motion.div>
       </motion.div>

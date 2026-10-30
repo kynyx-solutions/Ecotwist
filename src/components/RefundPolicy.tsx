@@ -1,133 +1,102 @@
-import PolicyLayout from "./PolicyLayout";
+import PolicyLayout, { PolicySection } from "./PolicyLayout";
 import { Link } from "react-router-dom";
+import content from "../content/pages/refund-policy.json";
+
+const {
+  header, companyDetails, commitment, rightToReturn, sections,
+  returnProcess, refundProcedure, cancellation, contact, disclaimer,
+} = content;
+
 export default function RefundPolicy() {
   return (
     <PolicyLayout
-      topLabel="Refund policy"
-      title="Return and Refund Policy"
-      effectiveDate="November 01, 2025"
+      topLabel={header.topLabel}
+      title={header.title}
+      effectiveDate={header.effectiveDate}
     >
-      <span className="pol-label">Registered Address:</span>
-      <p>Near Euro Kids Play School, Mahavir Colony, Beur, Patna 800002 (Bihar)</p>
-      <span className="pol-label">Office Address:</span>
-      <p>B-Hub, 5th Floor, A Block, Mauryalok Complex, Patna 800001 (Bihar)</p>
+      <span className="pol-label">{companyDetails.registeredAddressLabel}</span>
+      <p>{companyDetails.registeredAddress}</p>
+      <span className="pol-label">{companyDetails.officeAddressLabel}</span>
+      <p>{companyDetails.officeAddress}</p>
       <div className="pol-inline">
-        <span><strong>CIN:</strong> U16292BR2025PTC074427</span>
+        <span><strong>{companyDetails.cinLabel}</strong> {companyDetails.cin}</span>
         <span>
-          <strong>Website:</strong>{" "}
+          <strong>{companyDetails.websiteLabel}</strong>{" "}
           <Link to="/" className="text-blue-600 underline">
-            ecotwist.in
+            {companyDetails.websiteText}
           </Link>
         </span>
       </div>
 
-      <h2>Our Commitment to Quality and Your Satisfaction</h2>
-      <p>
-        At Ecotwist Innovtions Private Limited, we are dedicated to offering high-quality, sustainable
-        products that meet and exceed your expectations. This detailed Return and Refund Policy is
-        designed to be a transparent and fair guide. This policy is governed by the principles of the
-        Consumer Protection Act, 2019, and all other applicable laws in India.
-      </p>
+      <PolicySection section={commitment} />
 
-      <h2>Right to Return: Conditions and Timeframes</h2>
+      <h2>{rightToReturn.heading}</h2>
       <p>
-        You have the right to request a return within <strong>seven (7) calendar days</strong> from
-        the date your product was delivered, as verified by the delivery date recorded by our shipping
-        partner.
+        {rightToReturn.text} <strong>{rightToReturn.textHighlight}</strong> {rightToReturn.textEnd}
       </p>
       <ul>
-        <li>The item must be returned in its original, unused state with all tags, labels, accessories, and protective packaging intact.</li>
-        <li>You must provide the original sales invoice or the unique order number associated with your purchase.</li>
+        {rightToReturn.points.map((point, i) => <li key={i}>{point}</li>)}
       </ul>
 
-      <h2>Valid Reasons for Initiating a Return</h2>
-      <ul>
-        <li><strong>Damaged or Defective Product:</strong> Product is physically damaged, broken, or has a manufacturing defect.</li>
-        <li><strong>Incorrect Product Delivered:</strong> Wrong model, size, color, or other specifications.</li>
-        <li><strong>Product Not as Described:</strong> Actual features differ materially from description/images on website.</li>
-      </ul>
+      {sections.map((section, i) => (
+        <PolicySection key={i} section={section} />
+      ))}
 
-      <h2>Products Excluded from Our Return Policy</h2>
-      <p>Certain products cannot be returned unless defective or damaged upon delivery:</p>
-      <ul>
-        <li>Used or Altered Products</li>
-        <li>Custom or Personalized Items</li>
-        <li>Final Sale Items</li>
-      </ul>
-
-      <h2>The Step-by-Step Return Process</h2>
+      <h2>{returnProcess.heading}</h2>
       <ol>
-        <li>
-          <strong>Initiate Contact:</strong> Email <a 
-          href="mailto:support@ecotwist.in"
+        {returnProcess.steps.map((step, i) => (
+          <li key={i}>
+            <strong>{step.label}</strong> {step.text}{"email" in step && step.email && (
+              <> <a
+          href={`mailto:${step.email}`}
           onClick={(e) => {
             if (!navigator.userAgent.includes("Mobile")) {
-              window.open("https://mail.google.com/mail/?view=cm&to=support@ecotwist.in");
+              window.open(`https://mail.google.com/mail/?view=cm&to=${step.email}`);
             }
           }}
           className="text-blue-600 underline"
         >
-          support@ecotwist.in
-        </a> within 7 days with subject
-          line "Return Request - Order #[Your Order Number]".
-        </li>
-        <li>
-          <strong>Provide Necessary Information:</strong> Include product name, quantity, reason for
-          return, and attach clear photos/videos.
-        </li>
-        <li>
-          <strong>Receive RA Number:</strong> Once approved, you'll receive a Return Authorization
-          number and instructions.
-        </li>
-        <li>
-          <strong>Ship the Product:</strong> Free reverse pickup will be arranged. If unavailable,
-          self-ship and we'll reimburse shipping costs.
-        </li>
+          {step.email}
+        </a> {step.textAfterEmail}</>
+            )}
+          </li>
+        ))}
       </ol>
 
-      <h2>Our Refund Procedure</h2>
-      <p>Once we receive your returned item, we will conduct a thorough quality check and inspection:</p>
-      <ul>
-        <li><strong>Inspection and Approval:</strong> Done within 48 business hours of receipt.</li>
-        <li><strong>Refund Processing:</strong> Refund to original payment method (excluding shipping fees unless error on our part).</li>
-        <li><strong>Timeline:</strong> Up to 7 business days for refund to reflect.</li>
-        <li><strong>COD Orders:</strong> Refunded via bank transfer.</li>
-      </ul>
+      <PolicySection section={refundProcedure} />
 
-      <h2>Order Cancellation</h2>
+      <h2>{cancellation.heading}</h2>
       <p>
-        You may cancel your order before dispatch by emailing <a 
-          href="mailto:support@ecotwist.in"
+        {cancellation.text} <a
+          href={`mailto:${cancellation.email}`}
           onClick={(e) => {
             if (!navigator.userAgent.includes("Mobile")) {
-              window.open("https://mail.google.com/mail/?view=cm&to=support@ecotwist.in");
+              window.open(`https://mail.google.com/mail/?view=cm&to=${cancellation.email}`);
             }
           }}
           className="text-blue-600 underline"
         >
-          support@ecotwist.in
-        </a> Orders already
-        shipped cannot be cancelled and must follow the return process.
+          {cancellation.email}
+        </a> {cancellation.textEnd}
       </p>
 
-      <h2>Contact Information</h2>
+      <h2>{contact.heading}</h2>
       <p>
-        Email:{" "}
-        <a 
-          href="mailto:support@ecotwist.in"
+        {contact.emailLabel}{" "}
+        <a
+          href={`mailto:${contact.email}`}
           onClick={(e) => {
             if (!navigator.userAgent.includes("Mobile")) {
-              window.open("https://mail.google.com/mail/?view=cm&to=support@ecotwist.in");
+              window.open(`https://mail.google.com/mail/?view=cm&to=${contact.email}`);
             }
           }}
           className="text-blue-600 underline"
         >
-          support@ecotwist.in
-        </a>       
+          {contact.email}
+        </a>
       </p>
       <p style={{ marginTop: "16px", fontSize: "13px", color: "#555", fontStyle: "italic" }}>
-        Disclaimer: This policy is a binding agreement between you and Ecotwist Innovtions Private
-        Limited. We reserve the right to amend or update this policy at any time.
+        {disclaimer}
       </p>
     </PolicyLayout>
   );

@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
-import conf from '../assests/confe.png';
-import hero from '../assests/contact2.jpeg';
-import emp from '../assests/empl.png';
+import { siteImage } from '../lib/siteImages';
+import { asset } from '../lib/content';
+import content from '../content/pages/solutions.json';
 /* ================================================================
    HOOK: 3D TILT + GLOW FOLLOW
    ================================================================ */
@@ -34,66 +34,8 @@ const useTilt = (intensity = 14) => {
 
   return { style, glowPos, handleMove, handleLeave };
 };
-export const occasionData = [
-  {
-    title: 'Client Partnerships',
-    img: 'https://plus.unsplash.com/premium_photo-1770375699097-0c84230ef551?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000',
-    accent: '#b5a26a',
-    tag: 'B2B',
-    path: '/occasions/client-appreciation',
-  },
-  {
-    title: 'Employee Onboarding',
-    img: emp,
-    accent: '#5a8a6e',
-    tag: 'HR',
-    path: '/occasions/employee-onboarding',
-  },
-  {
-    title: 'Festive Gifting',
-    img: 'https://m.media-amazon.com/images/I/911DmteGNkL.jpg',
-    accent: '#c4735d',
-    tag: 'Seasonal',
-    path: '/occasions/festive-gifting',
-  },
-  {
-    title: 'Events & Conferences',
-    img: conf,
-    accent: '#6b7fa3',
-    tag: 'Events',
-    path: '/occasions/events-conferences',
-  },
-  {
-    title: 'Employee Wellness',
-    img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop',
-    accent: '#8a7db5',
-    tag: 'Wellness',
-    path: '/occasions/employee-wellness',
-  },
- 
-  {
-    title: 'Work Anniversary',
-    img: 'https://parade.com/.image/w_2560%2Cq_auto%3Agood%2Cc_fill%2Car_4%3A3/MTk1NTMwNTI5MzM5MDkwNTAx/work-anniversary-wishes-and-messages.jpg?arena_f_auto=',
-    accent: '#7a9e7e',
-    tag: 'Milestone',
-    path: '/occasions/work-anniversary',
-  },
-  {
-    title: 'Product Launch',
-    img: 'https://images.unsplash.com/photo-1556741533-974f8e62a92d?q=80&w=1974&auto=format&fit=crop',
-    accent: '#5b8fa8',
-    tag: 'Brand',
-    path: '/occasions/product-launch',
-  },
-  {
-    title: 'Award & Recognition',
-    img: 'https://www.applauz.me/hs-fs/hubfs/Resources/group-people-are-celebrating-with-trophy-air.jpg?height=420&name=group-people-are-celebrating-with-trophy-air.jpg&width=800',
-    accent: '#c4a23a',
-    tag: 'Culture',
-    path: '/occasions/award-recognition',
-  },
- 
-];
+// Page words and photos: src/content/pages/solutions.json (admin → Pages → Solutions)
+const { hero, ecosystem, occasions, capabilities: capabilitySection, cta } = content;
 
 /* ================================================================
    MAGNETIC BUTTON
@@ -263,7 +205,7 @@ const SolutionCard = ({
 
       {/* Explore Link */}
       <div className="flex items-center gap-1 mt-2 text-[10px] uppercase tracking-widest font-bold text-brand-dark-olive">
-        Explore Kits <ArrowRight size={12} />
+        {occasions.linkText} <ArrowRight size={12} />
       </div>
     </motion.div>
   );
@@ -351,41 +293,21 @@ export const Solutions = () => {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 140]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
-  /* ---------- original data ---------- */
-const cards = occasionData.map((item) => ({
-  category: item.tag,
-  title: item.title,
-  desc: "Premium sustainable gifting solutions.",
-  img: item.img,
-  path: item.path,
-}));
+  // An uploaded photo wins; otherwise the photo set under "Photos to add"
+  const cards = occasions.cards.map((item) => ({
+    category: item.tag,
+    title: item.title,
+    desc: occasions.cardText,
+    img: item.image ? asset(item.image) : siteImage(item.photoId ?? ''),
+    path: item.path,
+  }));
 
-  const capabilities = [
-    {
-      id: '01.',
-      title: 'Bulk Delivery',
-      sub: 'Omnichannel logistics for teams of 50 to 500.',
-      desc: 'Carbon-neutral fulfillment across 10+ countries with real-time tracking dashboards.',
-    },
-    {
-      id: '02.',
-      title: 'Custom Branding',
-      sub: 'Architecture for the brand identity.',
-      desc: "Eco-friendly laser etching and soy-based ink printing that respects the material's integrity.",
-    },
-    {
-      id: '03.',
-      title: 'Eco-Packaging',
-      sub: '100% Plastic-Free, Archival Quality.',
-      desc: 'Biodegradable materials designed for a second life, presented with a premium unboxing feel.',
-    },
-    {
-      id: '04.',
-      title: 'Studio Patna',
-      sub: 'Artisanal Craftsmanship at Source.',
-      desc: 'Our Patna studio serves as the heart of our design and quality control for regional excellence.',
-    },
-  ];
+  const capabilities = capabilitySection.items.map((item) => ({
+    id: item.number,
+    title: item.title,
+    sub: item.subtitle,
+    desc: item.text,
+  }));
 
   return (
     <div
@@ -429,14 +351,14 @@ const cards = occasionData.map((item) => ({
               className="text-[10px] uppercase tracking-widest text-brand-olive font-bold mb-6 flex items-center gap-3"
             >
               <span className="block w-8 h-px bg-brand-olive" />
-              Corporate Solutions
+              {hero.eyebrow}
             </motion.p>
 
             {/* staggered headline */}
             <div style={{ perspective: '700px' }}>
               {[
-                { text: 'Gifting with', italic: false },
-                { text: 'Profound Impact.', italic: true },
+                { text: hero.titleLine1, italic: false },
+                { text: hero.titleLine2, italic: true },
               ].map((w, i) => (
                 <motion.div
                   key={w.text}
@@ -462,8 +384,7 @@ const cards = occasionData.map((item) => ({
               transition={{ delay: 0.55, duration: 0.6 }}
               className="text-xl text-gray-600 max-w-xl mb-12 mt-8 leading-relaxed font-light"
             >
-              Beyond conventional corporate gifting. We craft high-impact, zero-waste solutions
-              that align your organizational culture with global sustainability standards.
+              {hero.intro}
             </motion.p>
 
             <motion.div
@@ -472,8 +393,8 @@ const cards = occasionData.map((item) => ({
               transition={{ delay: 0.72, duration: 0.55 }}
               className="flex flex-wrap gap-6"
             >
-              <MagneticBtn dark>Get Started</MagneticBtn>
-              <MagneticBtn>Download Brochure</MagneticBtn>
+              <MagneticBtn dark>{hero.primaryButton}</MagneticBtn>
+              <MagneticBtn>{hero.secondaryButton}</MagneticBtn>
             </motion.div>
           </motion.div>
 
@@ -505,7 +426,7 @@ const cards = occasionData.map((item) => ({
                 transition={{ delay: 1.45, duration: 0.38 }}
               />
               <motion.img
-                src={hero}
+                src={asset(hero.image)}
                 className="w-full aspect-[4/5] object-cover"
                 animate={{
                   y: [0, -15, 0],
@@ -528,10 +449,10 @@ const cards = occasionData.map((item) => ({
                 animate={{ scale: [1, 1.06, 1] }}
                 transition={{ delay: 2.3, duration: 0.38 }}
               >
-                100%
+                {hero.badgeValue}
               </motion.span>
               <span className="text-[10px] uppercase tracking-widest font-bold opacity-80 leading-tight block">
-                Plastic-Free & Ethical Gifting Ecosystem
+                {hero.badgeText}
               </span>
             </motion.div>
 
@@ -562,7 +483,7 @@ const cards = occasionData.map((item) => ({
               >
                 <span className="w-10 h-px bg-brand-olive" />
                 <span className="text-[10px] uppercase tracking-widest text-brand-olive font-bold">
-                  Our Ecosystem in Action
+                  {ecosystem.eyebrow}
                 </span>
               </motion.div>
               <motion.h2
@@ -572,7 +493,7 @@ const cards = occasionData.map((item) => ({
                 transition={{ delay: 0.1, duration: 0.65 }}
                 className="font-serif text-4xl md:text-5xl leading-tight"
               >
-                Where Craft Meets <span className="italic font-normal text-brand-olive">Conscience</span>
+                {ecosystem.title} <span className="italic font-normal text-brand-olive">{ecosystem.titleHighlight}</span>
               </motion.h2>
             </div>
             <motion.p
@@ -582,8 +503,7 @@ const cards = occasionData.map((item) => ({
               transition={{ delay: 0.2, duration: 0.6 }}
               className="text-gray-500 font-light text-sm leading-relaxed max-w-sm"
             >
-              From the studio floor in Patna to boardrooms across the world — every piece we
-              create carries a story of intention, craftsmanship, and zero compromise.
+              {ecosystem.intro}
             </motion.p>
           </div>
 
@@ -595,7 +515,7 @@ const cards = occasionData.map((item) => ({
 
               {/* Image — lands from top-left */}
               <LandingImage
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop"
+                src={asset(ecosystem.leftImage)}
                 delay={0}
                 fromX="-55%"
                 fromY="-130%"
@@ -611,11 +531,7 @@ const cards = occasionData.map((item) => ({
                 transition={{ delay: 0.5, duration: 0.7 }}
                 className="grid grid-cols-3 divide-x divide-brand-charcoal/10 border border-brand-charcoal/10 rounded-sm"
               >
-                {[
-                  { num: '10+', label: 'Countries Served' },
-                  { num: '5K+', label: 'Gifts Delivered' },
-                  { num: '0%', label: 'Plastic Used' },
-                ].map((stat, i) => (
+                {ecosystem.stats.map((stat, i) => (
                   <motion.div
                     key={stat.label}
                     initial={{ opacity: 0, y: 20 }}
@@ -625,7 +541,7 @@ const cards = occasionData.map((item) => ({
                     className="p-6 text-center group hover:bg-brand-dark-olive hover:text-brand-beige transition-colors duration-300"
                   >
                     <p className="font-serif text-3xl font-bold mb-1 text-brand-dark-olive group-hover:text-brand-beige transition-colors duration-300">
-                      {stat.num}
+                      {stat.value}
                     </p>
                     <p className="text-[9px] uppercase tracking-widest text-gray-400 group-hover:text-brand-beige/60 transition-colors duration-300">
                       {stat.label}
@@ -643,14 +559,9 @@ const cards = occasionData.map((item) => ({
                 className="flex flex-col gap-3"
               >
                 <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/40 mb-1">
-                  Our Process
+                  {ecosystem.processTitle}
                 </p>
-                {[
-                  { step: '01', text: 'Brief & Brand Discovery', icon: '◎' },
-                  { step: '02', text: 'Sustainable Material Curation', icon: '◈' },
-                  { step: '03', text: 'Artisan Crafting & QC', icon: '◆' },
-                  { step: '04', text: 'Carbon-Neutral Delivery', icon: '◉' },
-                ].map((p, i) => (
+                {ecosystem.process.map((p, i) => (
                   <motion.div
                     key={p.step}
                     initial={{ opacity: 0, x: -30 }}
@@ -661,7 +572,7 @@ const cards = occasionData.map((item) => ({
                     className="flex items-center gap-4 p-4 border border-brand-charcoal/8 rounded-sm hover:border-brand-olive/40 hover:bg-white/50 transition-all duration-300 cursor-pointer group"
                   >
                     <span className="text-brand-olive text-base group-hover:scale-125 transition-transform duration-200">
-                      {p.icon}
+                      {p.symbol}
                     </span>
                     <span className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/30 min-w-[2rem]">
                       {p.step}
@@ -678,7 +589,7 @@ const cards = occasionData.map((item) => ({
 
               {/* Image — lands from top-right */}
               <LandingImage
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=900&auto=format&fit=crop"
+                src={asset(ecosystem.rightImage)}
                 delay={0.28}
                 fromX="55%"
                 fromY="-110%"
@@ -695,20 +606,19 @@ const cards = occasionData.map((item) => ({
                 className="bg-brand-dark-olive text-brand-beige p-10 rounded-sm shadow-2xl"
               >
                 <p className="text-[10px] uppercase tracking-widest text-brand-olive font-bold mb-4">
-                  Why it matters
+                  {ecosystem.quoteLabel}
                 </p>
                 <p className="font-serif text-2xl leading-relaxed mb-6">
-                  "Every gift we create removes plastic from the supply chain and adds dignity to
-                  the craftsperson's hand."
+                  "{ecosystem.quote}"
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-brand-olive flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                    TG
+                    {ecosystem.quoteInitials}
                   </div>
                   <div>
-                    <p className="text-sm font-bold">The Gifting Co.</p>
+                    <p className="text-sm font-bold">{ecosystem.quoteAuthor}</p>
                     <p className="text-[10px] opacity-50 uppercase tracking-widest">
-                      Founding Mission
+                      {ecosystem.quoteRole}
                     </p>
                   </div>
                 </div>
@@ -723,15 +633,10 @@ const cards = occasionData.map((item) => ({
                 className="border border-brand-charcoal/10 rounded-sm p-6"
               >
                 <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/40 mb-5">
-                  Certifications & Standards
+                  {ecosystem.certificationsTitle}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { label: 'Zero-Waste Certified', tag: 'ZWC' },
-                    { label: 'FSC Paper Standards', tag: 'FSC' },
-                    { label: 'Fair Trade Sourcing', tag: 'FTS' },
-                    { label: 'Carbon Neutral Ops', tag: 'CN' },
-                  ].map((cert, i) => (
+                  {ecosystem.certifications.map((cert, i) => (
                     <motion.div
                       key={cert.tag}
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -766,9 +671,9 @@ const cards = occasionData.map((item) => ({
             className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6"
           >
             <h2 className="font-serif text-4xl md:text-6xl leading-tight">
-              Solutions{' '}
-              <span className="italic font-normal text-brand-olive">Designed</span>
-              <br />for Every Team
+              {occasions.title}{' '}
+              <span className="italic font-normal text-brand-olive">{occasions.titleHighlight}</span>
+              <br />{occasions.titleEnd}
             </h2>
             
           </motion.div>
@@ -787,7 +692,7 @@ const cards = occasionData.map((item) => ({
 
         {/* ghost watermark */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[190px] font-serif text-brand-beige/[0.03] leading-none select-none pointer-events-none">
-          Scale
+          {capabilitySection.watermark}
         </div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -800,8 +705,8 @@ const cards = occasionData.map((item) => ({
               transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="font-serif text-5xl md:text-7xl mb-24"
             >
-              The Scaling{' '}
-              <span className="italic font-normal text-brand-olive">Ecosystem</span>
+              {capabilitySection.title}{' '}
+              <span className="italic font-normal text-brand-olive">{capabilitySection.titleHighlight}</span>
             </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-y-12 gap-x-20">
@@ -838,8 +743,8 @@ const cards = occasionData.map((item) => ({
             transition={{ delay: 0.2, duration: 0.7 }}
             className="font-serif text-4xl md:text-6xl mb-8"
           >
-            Ready to Gift{' '}
-            <span className="italic font-normal">Responsibly?</span>
+            {cta.title}{' '}
+            <span className="italic font-normal">{cta.titleHighlight}</span>
           </motion.h3>
           <motion.div
             initial={{ y: 22, opacity: 0 }}
@@ -848,7 +753,7 @@ const cards = occasionData.map((item) => ({
             viewport={{ once: false }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <MagneticBtn dark>Start Your Journey</MagneticBtn>
+            <MagneticBtn dark>{cta.button}</MagneticBtn>
           </motion.div>
         </div>
       </motion.section>

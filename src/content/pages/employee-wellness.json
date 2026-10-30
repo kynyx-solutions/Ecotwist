@@ -1,0 +1,81 @@
+{
+  "_meta": { "label": "Employee Wellness", "route": "/occasions/employee-wellness" },
+  "hero": {
+    "hintSymbol": "✦",
+    "hint": "Click to bloom",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Employee",
+    "titleLine2": "Wellness",
+    "titleItalic": "Gifting Solutions.",
+    "intro": "Nurture your team's well-being with mindful, sustainable gifts designed to inspire balance and restoration.",
+    "primaryButton": "Explore Wellness Kits",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "The Art of",
+    "titleLine2": "Mindful Appreciation",
+    "text1": "In today's fast-paced corporate landscape, the greatest luxury is peace of mind. Employee wellness gifting is more than a gesture — it's a strategic investment in your organization's most valuable asset.",
+    "text2": "We curate experiences that encourage your team to pause, breathe, and reconnect. By prioritizing their well-being, you foster a culture of loyalty, productivity, and genuine human connection.",
+    "badgeSymbol": "🌿",
+    "badgeText": "100% Sustainably Sourced Materials",
+    "image": "/site/employee-wellness/philosophy.png",
+    "imageAlt": "Wellness"
+  },
+  "categories": {
+    "title": "Curated Wellness Experiences",
+    "intro": "Explore our themed collections designed to address the unique needs of the modern professional.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Mindful Workspace", "desc": "Eco-journals, desk plants, and ergonomic tools to create a sanctuary at work.", "accent": "#2d4337", "tag": "Focus", "image": "/site/employee-wellness/mindful-workspace.jpg" },
+      { "name": "Rest & Recovery", "desc": "Plush robes, silk eye masks, and artisanal teas for ultimate restoration.", "accent": "#8a7db5", "tag": "Restore", "image": "/site/employee-wellness/rest-recovery.png" },
+      { "name": "Digital Detox", "desc": "Curated physical books, analog timers, and intricate puzzle sets to unplug.", "accent": "#b5a26a", "tag": "Unplug", "image": "/site/employee-wellness/digital-detox.png" }
+    ]
+  },
+  "products": {
+    "title": "Featured Wellness Products",
+    "intro": "The most-loved additions to our corporate wellness programs.",
+    "viewAll": "View All",
+    "items": [
+      { "name": "Corporate Wellness Saver Combo", "price": "Starting at $125.00", "tag": "Eco-friendly", "image": "/site/employee-wellness/wellness-combo.webp" },
+      { "name": "Artisanal Tea Press", "price": "Starting at $85.00", "tag": "Customizable", "image": "/site/employee-wellness/tea-press.png" },
+      { "name": "Recycled Yoga Mat", "price": "Starting at $110.00", "tag": "Eco-friendly", "image": "/site/employee-wellness/yoga-mat.png" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Personalization",
+    "titleLine1": "Tailored to Your",
+    "titleHighlight": "Wellness Goals",
+    "text": "Every organization is unique. We provide a bespoke customization service to ensure your brand's voice and wellness mission are perfectly articulated.",
+    "image": "/site/employee-wellness/personalization.webp",
+    "imageAlt": "Packaging",
+    "items": [
+      { "symbol": "◈", "title": "Logo Branding", "desc": "Subtle, high-end placement of your corporate identity." },
+      { "symbol": "✏", "title": "Personalized Affirmations", "desc": "Handwritten notes or custom printed mindfulness prompts." },
+      { "symbol": "📦", "title": "Eco-Packaging Styles", "desc": "Select from a range of recycled and biodegradable boxing." },
+      { "symbol": "🎨", "title": "Thematic Curation", "desc": "Colors and products matched to your event theme." }
+    ]
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🏆", "title": "Premium Quality", "desc": "Luxury materials sourced from ethical partners." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Streamlined logistics for 10 to 10,000 sets." },
+      { "symbol": "◎", "title": "Fast Delivery", "desc": "Global fulfillment with white-glove service." },
+      { "symbol": "✦", "title": "Custom Branding", "desc": "Seamless integration of your brand identity." },
+      { "symbol": "◐", "title": "Wellness Concierge", "desc": "Dedicated expert to design your program." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Visionary Brands"
+  },
+  "cta": {
+    "title": "Ready to create the perfect",
+    "titleHighlight": "Employee Wellness",
+    "titleEnd": "experience?",
+    "text": "Let's work together to nurture your team's vitality and success.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

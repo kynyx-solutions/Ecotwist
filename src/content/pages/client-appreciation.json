@@ -1,0 +1,83 @@
+{
+  "_meta": { "label": "Client Appreciation", "route": "/occasions/client-appreciation" },
+  "hero": {
+    "eyebrow": "Corporate Gifting Solutions",
+    "titleLine1": "Client",
+    "titleLine2": "Appreciation",
+    "titleLine3": "Gifting Solutions.",
+    "intro": "Strengthen partnerships with artisanal, earth-conscious luxury. Curated experiences that reflect your brand's commitment to quality and sustainability.",
+    "tags": [
+      { "symbol": "", "label": "Curated Gifts" },
+      { "symbol": "💎", "label": "Premium Quality" },
+      { "symbol": "🌿", "label": "Eco Certified" },
+      { "symbol": "💼", "label": "Corporate Orders" },
+      { "symbol": "🎀", "label": "Custom Wrapping" }
+    ],
+    "primaryButton": "Explore Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "image": "/site/client-appreciation/philosophy.jpg",
+    "imageAlt": "About",
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "Elevated Intentions",
+    "titleLine2": "for Lasting Impressions",
+    "text": "We believe that a gift is more than just an object; it's a conversation. Our client appreciation collection is designed for those who value authenticity. We source exclusively from independent artisans and carbon-neutral suppliers to ensure your gratitude leaves a mark on the heart, not the planet.",
+    "linkText": "Learn about our impact"
+  },
+  "collections": {
+    "title": "Curated Collections",
+    "intro": "Discover the perfect alignment for your brand's aesthetic and values.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Executive Boxes", "text": "Sophisticated essentials for the modern C-suite leader.", "accent": "#b5a26a", "tag": "Executive", "image": "/site/client-appreciation/executive-boxes.png" },
+      { "name": "Artisanal Curations", "text": "Handmade ceramics and small-batch treats from local makers.", "accent": "#c4735d", "tag": "Artisan", "image": "/site/client-appreciation/artisanal-curations.png" },
+      { "name": "Custom Tech", "text": "Seamlessly integrated technology in eco-conscious housing.", "accent": "#5a8a6e", "tag": "Tech", "image": "/site/client-appreciation/custom-tech.png" }
+    ]
+  },
+  "products": {
+    "eyebrow": "New Arrivals",
+    "title": "Seasonal Favorites",
+    "viewAllText": "View All",
+    "buttonText": "Order Now",
+    "items": [
+      { "name": "The Wellness Suite", "subtitle": "Organic Linen & Essential Oils", "price": "$145.00", "image": "/site/client-appreciation/wellness-suite.jpg" },
+      { "name": "Morning Ritual", "subtitle": "Artisanal Coffee & Copper Press", "price": "$120.00", "image": "/site/client-appreciation/morning-ritual.jpg" },
+      { "name": "The Catalyst", "subtitle": "Recycled Leather & Brass Stylus", "price": "$95.00", "image": "/site/client-appreciation/the-catalyst.png" },
+      { "name": "Grand Celebration", "subtitle": "Vintage Cuvee & Cocoa Nib Truffles", "price": "$210.00", "image": "/site/client-appreciation/grand-celebration.png" }
+    ]
+  },
+  "personalization": {
+    "eyebrow": "Personalization",
+    "titleLine1": "Tailored to Your",
+    "titleHighlight": "Brand Identity",
+    "items": [
+      { "symbol": "◈", "title": "Logo Branding", "text": "Subtle engraving or foil-stamping on products and packaging." },
+      { "symbol": "✏", "title": "Personalized Messages", "text": "Hand-calligraphed notes included with every gift shipment." },
+      { "symbol": "📦", "title": "Packaging Styles", "text": "Choose from wooden crates, recycled boxes, or canvas wraps." }
+    ],
+    "image": "/site/client-appreciation/personalization.png",
+    "imageAlt": "Custom"
+  },
+  "features": {
+    "items": [
+      { "symbol": "🌿", "title": "100% Plastic Free", "text": "Fully compostable materials" },
+      { "symbol": "🤝", "title": "Artisan Direct", "text": "Supporting small makers" },
+      { "symbol": "🚚", "title": "Carbon Neutral", "text": "Global tracked delivery" },
+      { "symbol": "✦", "title": "B-Corp Certified", "text": "Socially responsible" },
+      { "symbol": "◐", "title": "Dedicated Concierge", "text": "Personalized support" }
+    ]
+  },
+  "trustedBy": {
+    "title": "Trusted by visionary brands"
+  },
+  "cta": {
+    "titleLine1": "Ready to create the perfect",
+    "titleHighlight": "Client Appreciation",
+    "titleEnd": "gift experience?",
+    "text": "Speak with one of our gifting consultants today and receive a digital mood board for your next campaign.",
+    "primaryButton": "Start Your Project",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

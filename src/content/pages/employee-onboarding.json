@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "label": "Employee Onboarding",
+    "route": "/occasions/employee-onboarding"
+  },
+  "hero": {
+    "image": "/site/employee-onboarding/hero.png",
+    "imageAlt": "Hero",
+    "clickHintSymbol": "✦",
+    "clickHint": "Click to spark",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Employee",
+    "titleLine2": "Onboarding",
+    "titleHighlight": "Gifting.",
+    "intro": "Make every new beginning memorable with consciously curated gifts that reflect your brand's values from day one.",
+    "primaryButton": "Explore Collections",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "50+",
+        "label": "Companies Served"
+      },
+      {
+        "value": "98%",
+        "label": "Satisfaction Rate"
+      },
+      {
+        "value": "3 Days",
+        "label": "Avg. Delivery"
+      },
+      {
+        "value": "200+",
+        "label": "Products Curated"
+      }
+    ]
+  },
+  "philosophy": {
+    "image": "/site/employee-onboarding/philosophy.png",
+    "imageAlt": "Philosophy",
+    "quote": "\"A thoughtful first impression builds loyalty that lasts.\"",
+    "quoteAuthor": "Ecotwist",
+    "eyebrow": "The Philosophy",
+    "titleLine1": "The Art of the",
+    "titleLine2": "First Impression",
+    "paragraphs": [
+      "A new hire's first day sets the tone for their entire journey. In an era of remote and hybrid work, the physical touchpoint of a thoughtfully curated gift bridges the gap between digital onboarding and tangible belonging.",
+      "At Ecotwist, we believe gifting should be an extension of your company culture — designed to inspire, comfort, and empower your newest team members from the very first unboxing."
+    ],
+    "linkText": "Learn about our values"
+  },
+  "collections": {
+    "title": "Curated Collections",
+    "countLabel": "Categories",
+    "linkText": "Explore",
+    "items": [
+      {
+        "name": "Welcome Kits",
+        "text": "Essential items to kickstart their journey with style and functionality.",
+        "tag": "Day One",
+        "accent": "#b5a26a",
+        "image": "/site/employee-onboarding/welcome-kits.webp"
+      },
+      {
+        "name": "Premium Hampers",
+        "text": "Elevated selections featuring artisan snacks and luxury lifestyle goods.",
+        "tag": "Luxury",
+        "accent": "#8a7db5",
+        "image": "/site/employee-onboarding/premium-hampers.webp"
+      },
+      {
+        "name": "Custom Tech Essentials",
+        "text": "Modern gadgets designed for the contemporary workspace experience.",
+        "tag": "Tech",
+        "accent": "#5a8a6e",
+        "image": "/site/employee-onboarding/custom-tech-essentials.webp"
+      }
+    ]
+  },
+  "products": {
+    "eyebrow": "The Essentials",
+    "title": "Signature Pieces",
+    "viewAllText": "View All",
+    "linkText": "View Details",
+    "items": [
+      {
+        "name": "Eco-leather Notebook",
+        "subtitle": "Sustainable Craftsmanship",
+        "image": "/site/employee-onboarding/eco-leather-notebook.png"
+      },
+      {
+        "name": "Recycled Glass Bottle",
+        "subtitle": "Mindful Hydration",
+        "image": "/site/employee-onboarding/recycled-glass-bottle.png"
+      },
+      {
+        "name": "Sustainable Tote",
+        "subtitle": "Daily Versatility",
+        "image": "/site/employee-onboarding/sustainable-tote.png"
+      },
+      {
+        "name": "Artisan Ceramic Mug",
+        "subtitle": "Morning Rituals",
+        "image": "/site/employee-onboarding/artisan-ceramic-mug.png"
+      }
+    ]
+  },
+  "personalization": {
+    "eyebrow": "Personalization",
+    "titleLine1": "Make It",
+    "titleHighlight": "Unmistakably Yours.",
+    "items": [
+      {
+        "symbol": "✦",
+        "title": "Logo Branding",
+        "text": "Subtle, sophisticated branding using premium engraving and printing techniques."
+      },
+      {
+        "symbol": "✏",
+        "title": "Personal Messages",
+        "text": "Handwritten-style notes or custom digital inserts for a truly personal touch."
+      },
+      {
+        "symbol": "◈",
+        "title": "Custom Packaging",
+        "text": "Branded boxes and eco-friendly wrapping that create an unforgettable unboxing."
+      }
+    ],
+    "image": "/site/employee-onboarding/personalization.webp",
+    "imageAlt": "Custom branding",
+    "quote": "\"The level of customization exceeded our expectations.\"",
+    "quoteAuthor": "Richa Sinha, Creative Director"
+  },
+  "why": {
+    "title": "Why Ecotwist",
+    "items": [
+      {
+        "symbol": "✦",
+        "title": "Premium Quality",
+        "text": "Meticulously sourced materials and artisan finishes for every single component."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "text": "Scalable solutions for companies of all sizes, from startups to global enterprises."
+      },
+      {
+        "symbol": "◎",
+        "title": "Fast Delivery",
+        "text": "Efficient logistics ensuring your kits arrive exactly when your new hires do."
+      },
+      {
+        "symbol": "◐",
+        "title": "Dedicated Support",
+        "text": "A personal account manager to guide you through curation and delivery."
+      }
+    ]
+  },
+  "cta": {
+    "titleStart": "Ready to create the perfect",
+    "titleHighlight": "Onboarding",
+    "titleEnd": "gift experience?",
+    "text": "Join over 50+ forward-thinking companies choosing sustainable onboarding gifting.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

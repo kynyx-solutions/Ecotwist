@@ -3,6 +3,9 @@ import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { useNavigate, useLocation } from "react-router-dom";
 import { activeFestival } from "../config/festival";
 import type { Festival } from "../config/festival";
+import { testimonials } from "../lib/testimonials";
+import { asset } from '../lib/content';
+import pageContent from '../content/pages/get-proposal.json';
 
 /* ─────────────────────────────────────────────
    Only animation keyframes injected globally.
@@ -112,65 +115,23 @@ const ANIM_STYLES = `
   .btn-sweep span { position:relative; z-index:1; }
 `;
 
-const stepContent: any = {
-  1: {
-    title: 'Occasion', subtitle: 'Tell us about the',
-    desc: 'Every gift tells a story. Select the purpose for your curated collection.',
-    data: [
-      { title: 'Employee Appreciation', desc: 'Reward your team.' },
-      { title: 'New Hire Onboarding',   desc: 'Welcome new employees.' },
-      { title: 'Client Gifting',        desc: 'Strengthen relationships.' },
-      { title: 'Event Swag',            desc: 'Perfect for events.' },
-    ],
-  },
-  2: {
-    title: 'Budget', subtitle: 'Define your',
-    desc: 'Choose a budget range that aligns with your gifting goals.',
-    data: [{ title: '₹100 - ₹500' }, { title: '₹500 - ₹1000' }, { title: '₹1000 - ₹2000' }, { title: '₹2000+' }],
-  },
-  3: {
-    title: 'Quantity', subtitle: 'Select the',
-    desc: 'Tell us how many recipients you are planning for.',
-    data: [{ title: '10 - 50' }, { title: '50 - 100' }, { title: '100 - 500' }, { title: '500+' }],
-  },
-  4: {
-    title: 'Branding', subtitle: 'Choose your',
-    desc: 'Customize your gifts with premium branding options.',
-    data: [{ title: 'Logo Print' }, { title: 'Custom Packaging' }, { title: 'Embroidery' }, { title: 'No Branding' }],
-  },
-  5: {
-    title: "Your Details",
-    subtitle: "Tell us about",
-    desc: "Share your contact details so our gifting experts can prepare a personalized proposal.",
-  },
-};
+// Page words and photos: src/content/pages/get-proposal.json (admin → Pages → Get Proposal form)
+const { productStep, festivalOption, detailsForm, navigation, sideImages } = pageContent;
+
+// Option titles are what the form submits (occasion / budget / quantity / branding)
+const stepContent: any = Object.fromEntries(pageContent.steps.map((s, i) => [i + 1, {
+  title: s.title, subtitle: s.subtitle,
+  desc: s.desc,
+  data: s.options,
+}]));
 
 // Regular photos beside each step; an active festival with its own images
 // (src/config/festival.ts) shows those instead
-const unsplash = (id: string) => `https://images.unsplash.com/${id}?q=80&w=900&auto=format&fit=crop`;
-const images: Record<number, [string, string]> = {
-  1: [unsplash('photo-1513201099705-a9746e1e201f'), unsplash('photo-1607082348824-0a96f2a4b9da')],
-  2: [unsplash('photo-1454165804606-c3d57bc86b40'), unsplash('photo-1579621970563-ebec7560ff3e')],
-  3: [unsplash('photo-1521791136064-7986c2920216'), unsplash('photo-1522202176988-66273c2fd55f')],
-  4: [unsplash('photo-1556740738-b6a63e27c4df'), unsplash('photo-1607082349566-187342175e2f')],
-  5: [unsplash('photo-1556740738-b6a63e27c4df'), unsplash('photo-1607082349566-187342175e2f')],
-};
+const images: Record<number, [string, string]> = Object.fromEntries(
+  pageContent.steps.map((s, i) => [i + 1, [asset(s.image1), asset(s.image2)]])
+);
 
-const quotes: any = {
-  1: { text: "The most thoughtful corporate gift our team has ever received.", author: "— Global Tech Lead" },
-  2: { text: "Perfectly aligned with our budget and sustainability goals.",    author: "— Procurement Head" },
-  3: { text: "Seamless bulk gifting experience with zero hassle.",             author: "— HR Manager" },
-  4: { text: "Branding quality exceeded all expectations.",                    author: "— Marketing Director" },
-  5: { text: "Outstanding customer service throughout the gifting process.",   author: "— Operations Manager" },
-};
-
-const STEPS = [
-  { id: 1, label: "01. Occasion" },
-  { id: 2, label: "02. Budget" },
-  { id: 3, label: "03. Quantity" },
-  { id: 4, label: "04. Branding" },
-  { id: 5, label: "05. Your Details" },
-];
+const STEPS = pageContent.steps.map((s, i) => ({ id: i + 1, label: s.stepLabel }));
 
 /* Passed in router state by a product's "Order Now" button on the Products page.
    When present, it replaces the Occasion step and the form opens on Budget. */
@@ -182,8 +143,8 @@ export interface OrderProduct {
 }
 
 const productStepContent = {
-  title: 'Product', subtitle: 'Your selected',
-  desc: 'Your proposal will be prepared for this product. Continue to choose your budget, quantity and branding.',
+  title: productStep.title, subtitle: productStep.subtitle,
+  desc: productStep.desc,
 };
 
 
@@ -192,7 +153,7 @@ export const GetProposal = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const product  = (location.state as { product?: OrderProduct } | null)?.product;
-  const steps    = product ? STEPS.map(s => s.id === 1 ? { ...s, label: "01. Product" } : s) : STEPS;
+  const steps    = product ? STEPS.map(s => s.id === 1 ? { ...s, label: productStep.stepLabel } : s) : STEPS;
 
   const [step, setStep]           = React.useState(product ? 2 : 1);
 
@@ -203,7 +164,7 @@ export const GetProposal = () => {
   // /get-proposal?occasion=festival opens with the festival option (src/config/festival.ts) selected
   const festivalLinked = !!activeFestival && new URLSearchParams(location.search).get('occasion') === 'festival';
   const [selected, setSelected]   = React.useState<Record<number,string>>({
-    1: festivalLinked ? activeFestival!.title : 'Employee Appreciation', 2: '₹100 - ₹500', 3: '50 - 100', 4: 'Logo Print',
+    1: festivalLinked ? activeFestival!.title : stepContent[1].data[0]?.title ?? '', 2: stepContent[2].data[0]?.title ?? '', 3: stepContent[3].data[1]?.title ?? '', 4: stepContent[4].data[0]?.title ?? '',
   });
 
   const goToStep = (s: number) => {
@@ -239,14 +200,14 @@ export const GetProposal = () => {
   const validateStep5 = () => {
     const newErrors: any = {};
 
-    if (!userDetails.name) newErrors.name = "Name required";
-    if (!userDetails.company) newErrors.company = "Company required";
+    if (!userDetails.name) newErrors.name = detailsForm.nameError;
+    if (!userDetails.company) newErrors.company = detailsForm.companyError;
 
     if (!userDetails.email.includes("@"))
-      newErrors.email = "Valid email required";
+      newErrors.email = detailsForm.emailError;
 
     if (userDetails.phone.length < 10)
-      newErrors.phone = "Valid number required";
+      newErrors.phone = detailsForm.phoneError;
 
     setErrors(newErrors);
 
@@ -272,11 +233,12 @@ export const GetProposal = () => {
     ? [{ title: activeFestival.title, desc: activeFestival.desc, festival: activeFestival }, ...content.data]
     : content?.data;
   const [img1, img2] = activeFestival?.images?.[step as 1 | 2 | 3 | 4 | 5] ?? images[step];
-  const quote    = quotes[step];
+  // A client testimonial beside each step (from the admin panel); none yet = no quote card
+  const quote    = testimonials.length ? testimonials[(step - 1) % testimonials.length] : null;
 
   async function submitProposal(data: any) {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/configurator`,
+      "/api/lead",
       {
         method: "POST",
         headers: {
@@ -284,8 +246,9 @@ export const GetProposal = () => {
         },
         body: JSON.stringify({
           ...data,
+          type: "proposal",
           submissionId: `ECO-${Date.now()}`,
-          submittedAt: new Date().toISOString(),
+          sourcePage: window.location.pathname,
         }),
       }
     );
@@ -347,15 +310,15 @@ export const GetProposal = () => {
                     onError={e => (e.currentTarget.style.display = 'none')} />
                 )}
                 <div className="min-w-0">
-                  <p className="text-[9px] uppercase tracking-widest font-bold text-brand-dark-olive/50">Proposal for</p>
+                  <p className="text-[9px] uppercase tracking-widest font-bold text-brand-dark-olive/50">{productStep.reminderLabel}</p>
                   <p className="font-serif text-lg leading-tight truncate">
                     {product.name}
-                    {product.sku && <span className="text-sm text-brand-dark-olive/50"> · SKU {product.sku}</span>}
+                    {product.sku && <span className="text-sm text-brand-dark-olive/50"> · {productStep.skuLabel} {product.sku}</span>}
                   </p>
                 </div>
                 <button onClick={() => navigate('/products')}
                   className="ml-2 flex-shrink-0 text-[9px] uppercase tracking-widest font-bold opacity-40 hover:opacity-100 transition-opacity">
-                  Change
+                  {productStep.changeButton}
                 </button>
               </div>
             )}
@@ -389,7 +352,7 @@ export const GetProposal = () => {
                     <div className="p-6 border border-brand-dark-olive/10 bg-white">
                       <input
                         type="text"
-                        placeholder="Full Name"
+                        placeholder={detailsForm.namePlaceholder}
                         value={userDetails.name}
                         onChange={(e) =>
                           setUserDetails(prev => ({
@@ -408,7 +371,7 @@ export const GetProposal = () => {
                     <div className="p-6 border border-brand-dark-olive/10 bg-white">
                       <input
                         type="text"
-                        placeholder="Company Name"
+                        placeholder={detailsForm.companyPlaceholder}
                         value={userDetails.company}
                         onChange={(e) =>
                           setUserDetails(prev => ({
@@ -427,7 +390,7 @@ export const GetProposal = () => {
                     <div className="p-6 border border-brand-dark-olive/10 bg-white">
                       <input
                         type="email"
-                        placeholder="Work Email"
+                        placeholder={detailsForm.emailPlaceholder}
                         value={userDetails.email}
                         onChange={(e) =>
                           setUserDetails(prev => ({
@@ -446,7 +409,7 @@ export const GetProposal = () => {
                     <div className="p-6 border border-brand-dark-olive/10 bg-white">
                       <input
                         type="tel"
-                        placeholder="Mobile Number"
+                        placeholder={detailsForm.phonePlaceholder}
                         value={userDetails.phone}
                         onChange={(e) =>
                           setUserDetails(prev => ({
@@ -478,10 +441,10 @@ export const GetProposal = () => {
                     <div className="min-w-0 pr-8">
                       <p className="text-[9px] uppercase tracking-widest font-bold text-brand-dark-olive/50 mb-2">{product.category}</p>
                       <h3 className="font-serif text-2xl mb-1">{product.name}</h3>
-                      {product.sku && <p className="text-sm text-brand-dark-olive/60">SKU {product.sku}</p>}
+                      {product.sku && <p className="text-sm text-brand-dark-olive/60">{productStep.skuLabel} {product.sku}</p>}
                       <button onClick={() => navigate('/products')}
                         className="mt-4 text-[10px] uppercase tracking-widest font-bold opacity-50 hover:opacity-100 transition-opacity">
-                        Choose a different product →
+                        {productStep.changeLink}
                       </button>
                     </div>
                   </div>
@@ -534,7 +497,7 @@ export const GetProposal = () => {
                                 className="text-[9px] uppercase tracking-widest font-bold text-white px-3 py-1.5"
                                 style={{ background: `linear-gradient(90deg, ${fest.accent[0]}, ${fest.accent[1]})` }}
                               >
-                                Festive Special
+                                {festivalOption.badge}
                               </span>
                               <span
                                 className="text-base"
@@ -575,7 +538,7 @@ export const GetProposal = () => {
                   onClick={() => goToStep(Math.max(step - 1, 1))}
                   className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 opacity-40 hover:opacity-100 transition-all hover:-translate-x-1"
                 >
-                  <ArrowLeft size={14} /> Back
+                  <ArrowLeft size={14} /> {navigation.backButton}
                 </button>
 
                 <button
@@ -615,7 +578,7 @@ export const GetProposal = () => {
 
                       } catch (err) {
                         console.error(err);
-                        alert("Unable to connect to the server.");
+                        alert(detailsForm.connectionError);
                       }
 
                     } else {
@@ -624,7 +587,7 @@ export const GetProposal = () => {
                   }}
                   className="btn-sweep bg-brand-dark-olive text-brand-beige px-12 py-5 text-[10px] font-bold uppercase tracking-widest"
                 >
-                  <span>{step === 5 ? "Finish" : "Continue"}</span>
+                  <span>{step === 5 ? navigation.finishButton : navigation.continueButton}</span>
                 </button>
               </div>
             </div>
@@ -644,7 +607,7 @@ export const GetProposal = () => {
                   background:'rgba(245,240,232,0.92)', backdropFilter:'blur(4px)',
                   fontFamily:'monospace', fontSize:8, letterSpacing:2, fontWeight:700,
                   textTransform:'uppercase', color:'#2C2D1E', padding:'5px 10px',
-                }}>0{step} / Gift</span>
+                }}>0{step} / {sideImages.label1}</span>
 
                 <img
                   src={img1}
@@ -670,7 +633,7 @@ export const GetProposal = () => {
                   background:'rgba(245,240,232,0.92)', backdropFilter:'blur(4px)',
                   fontFamily:'monospace', fontSize:8, letterSpacing:2, fontWeight:700,
                   textTransform:'uppercase', color:'#2C2D1E', padding:'5px 10px',
-                }}>Editorial</span>
+                }}>{sideImages.label2}</span>
 
                 <img
                   src={img2}
@@ -686,15 +649,17 @@ export const GetProposal = () => {
               </div>
 
               {/* Quote card */}
+              {quote && (
               <div
                 key={`q-${step}`}
                 className="anim-quote absolute bg-brand-dark-olive text-brand-beige"
                 style={{ bottom:0, left:-16, right:24, zIndex:5, padding:'28px 32px' }}
               >
                 <div style={{ width:28, height:2, background:'#B8974A', marginBottom:14 }} />
-                <p className="font-serif text-xl italic mb-3">"{quote.text}"</p>
-                <span className="text-[9px] uppercase tracking-widest font-bold opacity-50">{quote.author}</span>
+                <p className="font-serif text-xl italic mb-3">"{quote.quote}"</p>
+                <span className="text-[9px] uppercase tracking-widest font-bold opacity-50">— {[quote.name, quote.role, quote.company].filter(Boolean).join(", ")}</span>
               </div>
+              )}
 
             </div>
           </div>

@@ -6,101 +6,22 @@ import {
   Cake, Award, Rocket, Trophy, GraduationCap,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import logo from '../assests/logo.png';
+import { asset } from '../lib/content';
+import content from '../content/pages/navigation.json';
 
 /* ─────────────────────────────────────────────
    OCCASIONS  — 10 pages, each with icon + desc 
 ───────────────────────────────────────────── */
-const OCCASIONS = [
-  {
-    label: 'Client Partnerships',
-    path: '/occasions/client-appreciation',
-    icon: Gift,
-    desc: 'Artisanal gifts that strengthen partnerships.',
-    accent: '#b5a26a',
-    tag: 'B2B',
-  },
-  {
-    label: 'Employee Onboarding',
-    path: '/occasions/employee-onboarding',
-    icon: Users,
-    desc: 'Curated kits that make day one unforgettable.',
-    accent: '#5a8a6e',
-    tag: 'HR',
-  },
-  {
-    label: 'Depawali Giftings',
-    path: '/occasions/depawali-gifting',
-    icon: Sparkles,
-    desc: 'Celebrate the festival of lights with sustainable gifts.',
-    accent: '#c4735d',
-    tag: 'Seasonal',
-  },
-  {
-    label: 'Festive Gifting',
-    path: '/occasions/festive-gifting',
-    icon: Sparkles,
-    desc: 'Seasonal luxury rooted in sustainability.',
-    accent: '#c4735d',
-    tag: 'Seasonal',
-  },
-  {
-    label: 'Events & Conferences',
-    path: '/occasions/events-conferences',
-    icon: CalendarDays,
-    desc: 'VIP hampers and branded swag for every event.',
-    accent: '#6b7fa3',
-    tag: 'Events',
-  },
-  {
-    label: 'Employee Wellness',
-    path: '/occasions/employee-wellness',
-    icon: HeartPulse,
-    desc: "Mindful gifts that nurture your team's well-being.",
-    accent: '#8a7db5',
-    tag: 'Wellness',
-  },
-  {
-    label: 'Birthday Gifting',
-    path: '/occasions/birthday-gifting',
-    icon: Cake,
-    desc: 'Make every birthday feel truly special.',
-    accent: '#d4856a',
-    tag: 'Personal',
-  },
-  {
-    label: 'Work Anniversary',
-    path: '/occasions/work-anniversary',
-    icon: Award,
-    desc: 'Celebrate milestones that matter most.',
-    accent: '#7a9e7e',
-    tag: 'Milestone',
-  },
-  {
-    label: 'Product Launch',
-    path: '/occasions/product-launch',
-    icon: Rocket,
-    desc: 'Memorable gifts to mark your big debut.',
-    accent: '#5b8fa8',
-    tag: 'Brand',
-  },
-  {
-    label: 'Award & Recognition',
-    path: '/occasions/award-recognition',
-    icon: Trophy,
-    desc: 'Premium gifts that honour high achievers.',
-    accent: '#c4a23a',
-    tag: 'Culture',
-  },
-  {
-    label: 'Retirement Gifting',
-    path: '/occasions/retirement-gifting',
-    icon: GraduationCap,
-    desc: 'A graceful send-off for a remarkable journey.',
-    accent: '#9c7bb5',
-    tag: 'Farewell',
-  },  
-];
+const ICONS = {
+  Gift, Users, Sparkles, CalendarDays, HeartPulse, Cake, Award, Rocket, Trophy, GraduationCap,
+};
+
+const { header, megaMenu, toggle, mobile } = content;
+
+const OCCASIONS = content.occasions.map((o) => ({
+  ...o,
+  icon: ICONS[o.icon as keyof typeof ICONS] ?? Gift,
+}));
 
 /* How many occasions to show before "View All" overflow */
 const VISIBLE_COUNT = 10;
@@ -225,7 +146,7 @@ function ViewAllRow({
             className="text-[11px] font-bold uppercase tracking-widest"
             style={{ color: '#b5a26a' }}
           >
-            {expanded ? 'Show Less' : `View All Occasions (+${hiddenCount} more)`}
+            {expanded ? toggle.showLess : `${toggle.viewAll} (+${hiddenCount} ${toggle.moreSuffix})`}
           </span>
         </motion.div>
       </button>
@@ -291,7 +212,7 @@ function MegaMenu({
               className="text-[10px] font-bold uppercase tracking-[0.22em]"
               style={{ color: '#b5a26a' }}
             >
-              Our Occasions
+              {megaMenu.eyebrow}
             </span>
           </div>
 
@@ -299,9 +220,9 @@ function MegaMenu({
             className="font-serif leading-snug mb-2"
             style={{ fontSize: 20, color: '#1a1a18', fontWeight: 700 }}
           >
-            Gifting for{' '}
+            {megaMenu.title}{' '}
             <span style={{ color: '#b5a26a', fontStyle: 'italic', fontWeight: 400 }}>
-              Every Occasion
+              {megaMenu.titleHighlight}
             </span>
           </h3>
 
@@ -309,7 +230,7 @@ function MegaMenu({
             className="text-xs font-light leading-relaxed mb-3"
             style={{ color: '#73736e', maxWidth: 220 }}
           >
-            Sustainably curated corporate gifts designed for every milestone your brand celebrates.
+            {megaMenu.tagline}
           </p>
 
           {/* Occasion count badge */}
@@ -318,7 +239,7 @@ function MegaMenu({
             style={{ background: 'rgba(90,138,110,0.1)', border: '1px solid rgba(90,138,110,0.2)' }}
           >
             <span className="text-[10px] font-bold" style={{ color: '#5a8a6e' }}>
-              {OCCASIONS.length} Occasions
+              {OCCASIONS.length} {megaMenu.countSuffix}
             </span>
           </div>
 
@@ -329,7 +250,7 @@ function MegaMenu({
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest"
               style={{ color: '#b5a26a', textDecoration: 'none' }}
             >
-              View All <ArrowRight size={12} />
+              {megaMenu.viewAllLink} <ArrowRight size={12} />
             </Link>
           </motion.div>    
         </div>
@@ -374,13 +295,13 @@ function MegaMenu({
             </div>
 
             <p className="font-bold text-sm leading-snug mb-1" style={{ color: '#fff' }}>
-              Need a custom gifting plan?
+              {megaMenu.ctaTitle}
             </p>
             <p
               className="text-[11px] font-light leading-relaxed mb-4"
               style={{ color: 'rgba(255,255,255,0.55)' }}
             >
-              Get a personalised quote tailored to your brand, budget, and scale.
+              {megaMenu.ctaText}
             </p>
 
             <motion.div whileHover={{ x: 3 }} transition={{ type: 'spring', stiffness: 400, damping: 22 }}>
@@ -390,7 +311,7 @@ function MegaMenu({
                 className="inline-flex items-center gap-1.5 text-sm font-bold"
                 style={{ color: '#b5a26a', textDecoration: 'none' }}
               >
-                Get Proposal <ArrowRight size={13} />
+                {megaMenu.ctaButton} <ArrowRight size={13} />
               </Link>
             </motion.div>
 
@@ -398,15 +319,11 @@ function MegaMenu({
               className="mt-3 pt-3 space-y-1.5"
               style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
             >
-              {[
-                { dot: '#5a8a6e', text: 'Pan-India Delivery' },
-                { dot: '#b5a26a', text: 'Bulk Orders Welcome' },
-                { dot: '#c4735d', text: 'B-Corp Certified' },
-              ].map((b) => (
+              {megaMenu.badges.map((b) => (
                 <div key={b.text} className="flex items-center gap-2">
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: b.dot }}
+                    style={{ background: b.dotColor }}
                   />
                   <span
                     className="text-[10px] font-bold uppercase tracking-widest"
@@ -457,11 +374,7 @@ export const Navbar = () => {
     window.scrollTo(0, 0);
   };
 
-  const NAV_LINKS = [
-    { name: 'Corporate Solutions', path: '/solutions' },
-    { name: 'Impact',              path: '/impact'    },
-    { name: 'Contact',             path: '/contact'   },
-  ];
+  const NAV_LINKS = header.links;
 
   const linkColor = (path: string) =>
     location.pathname === path
@@ -487,11 +400,11 @@ export const Navbar = () => {
 
           {/* LOGO */}
           <Link to="/" onClick={handleClose} className="flex items-center flex-shrink-0">
-            <img src={logo} alt="Ecotwist" className="h-12" />
+            <img src={asset(header.logo)} alt={header.logoAlt} className="h-12" />
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-9">
+          <nav className="hidden lg:flex items-center gap-9">
 
             {/* ── Occasions trigger ── */}
             <div className="relative" onMouseEnter={openDD} onMouseLeave={closeDD}>
@@ -500,7 +413,7 @@ export const Navbar = () => {
                 className="flex items-center gap-1 text-[14px] uppercase tracking-[0.2em] font-semibold bg-transparent border-none cursor-pointer transition-colors duration-200"
                 style={{ color: occasionsOpen ? '#b5a26a' : linkColor('/') }}
               >
-                Occasions
+                {header.occasionsLabel}
                 <motion.span
                   animate={{ rotate: occasionsOpen ? 180 : 0 }}
                   transition={{ duration: 0.22, ease: EASE }}
@@ -553,13 +466,13 @@ export const Navbar = () => {
                   borderRadius:   2,
                 }}
               >
-                Get Proposal
+                {header.proposalButton}
               </Link>
             </motion.div>
 
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="md:hidden"
+              className="lg:hidden"
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: isTransparent ? 'white' : '#262624' }}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -594,13 +507,13 @@ export const Navbar = () => {
               <div className="flex items-center gap-2 px-3 mb-1">
                 <Leaf size={10} color="#b5a26a" />
                 <span className="text-[9px] font-bold uppercase tracking-[0.28em]" style={{ color: '#b5a26a' }}>
-                  Occasions
+                  {mobile.occasionsLabel}
                 </span>
                 <span
                   className="ml-auto text-[9px] font-bold px-2 py-0.5 rounded-full"
                   style={{ background: 'rgba(181,162,106,0.12)', color: '#b5a26a' }}
                 >
-                  {OCCASIONS.length} total
+                  {OCCASIONS.length} {mobile.totalSuffix}
                 </span>
               </div>
 
@@ -662,8 +575,8 @@ export const Navbar = () => {
                   style={{ color: '#b5a26a' }}
                 >
                   {mobileExpanded
-                    ? 'Show Less'
-                    : `View All Occasions (+${OCCASIONS.length - VISIBLE_COUNT} more)`}
+                    ? toggle.showLess
+                    : `${toggle.viewAll} (+${OCCASIONS.length - VISIBLE_COUNT} ${toggle.moreSuffix})`}
                 </span>
               </button>
 
@@ -689,7 +602,7 @@ export const Navbar = () => {
                 className="mt-2 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-widest rounded-sm"
                 style={{ background: '#444f36', color: 'white', textDecoration: 'none' }}
               >
-                Get Proposal
+                {mobile.proposalButton}
               </Link>
             </nav>
           </motion.div>

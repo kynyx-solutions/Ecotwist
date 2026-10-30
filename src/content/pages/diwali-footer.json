@@ -1,0 +1,73 @@
+{
+  "_meta": { "label": "Footer (Diwali)" },
+  "greeting": {
+    "title": "शुभ दीपावली",
+    "text": "Wishing you and your teams a bright, prosperous Diwali, from all of us at Ecotwist.",
+    "primaryButton": "Explore Diwali Collection",
+    "secondaryButton": "Get Proposal"
+  },
+  "brand": {
+    "logo": "/site/diwali-footer/logo.png",
+    "logoAlt": "Ecotwist Logo",
+    "name": "ECOTWIST",
+    "description": "Pioneering the future of corporate gifting through sustainable design, ethical sourcing, and circular economy principles.",
+    "socials": [
+      { "name": "Instagram", "profileUrl": "https://www.instagram.com/ecotwiststores" },
+      { "name": "LinkedIn", "profileUrl": "https://www.linkedin.com/company/ecotwiststores/" },
+      { "name": "Facebook", "profileUrl": "https://www.facebook.com/ecotwiststore" },
+      { "name": "Youtube", "profileUrl": "https://www.youtube.com/@ecotwiststores" }
+    ]
+  },
+  "columns": [
+    {
+      "heading": "Diwali 2026",
+      "links": [
+        { "label": "Diwali Collection", "path": "/occasions/depawali-gifting" },
+        { "label": "Diwali Catalogue", "path": "", "key": "catalogue" },
+        { "label": "Gift Boxes", "path": "/products?category=Gift%20Boxes" },
+        { "label": "Get Proposal", "path": "/get-proposal?occasion=festival" }
+      ]
+    },
+    {
+      "heading": "Solutions",
+      "links": [
+        { "label": "Custom Bundles", "path": "/solutions" },
+        { "label": "Eco-Consultancy", "path": "/contact" },
+        { "label": "White-Label", "path": "#" },
+        { "label": "Impact Reports", "path": "/impact" }
+      ]
+    },
+    {
+      "heading": "Company",
+      "links": [
+        { "label": "Our Artisans", "path": "/impact" },
+        { "label": "Impact 2026", "path": "/impact" },
+        { "label": "Careers", "path": "#" },
+        { "label": "Press Kit", "path": "#" }
+      ]
+    }
+  ],
+  "newsletter": {
+    "heading": "Newsletter",
+    "text": "Receive sustainable gifting insights and new collection previews.",
+    "placeholder": "Email address",
+    "button": "Subscribe",
+    "buttonLoading": "Subscribing...",
+    "emailRequiredMessage": "Email is required.",
+    "invalidEmailMessage": "Please enter a valid email address.",
+    "successMessage": "Subscribed successfully!",
+    "connectionErrorMessage": "Unable to connect to server."
+  },
+  "bottomBar": {
+    "copyright": "© 2024 ECOTWIST.",
+    "legalLinks": [
+      { "label": "Privacy Policy", "path": "/privacy-policy" },
+      { "label": "Terms of Service", "path": "/terms-of-service" },
+      { "label": "Refund Policy", "path": "/refund-policy" },
+      { "label": "Shipping Policy", "path": "/shipping-policy" }
+    ],
+    "tagline": "Designed with purpose for a better planet.",
+    "symbol": "✦",
+    "greeting": "शुभ दीपावली"
+  }
+}

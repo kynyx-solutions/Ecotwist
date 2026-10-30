@@ -5,15 +5,26 @@ import { createPortal } from "react-dom";
 import type { OrderProduct } from "./GetProposal";
 import { BookOpen, PenLine, KeyRound, CalendarDays, NotebookPen, Flame, Gift, Package, ShoppingBasket, ChevronLeft, ChevronRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import catalogue from "../content/products.json";
+import { testimonials } from "../lib/testimonials";
+import { asset } from "../lib/content";
+import content from "../content/pages/products.json";
 
-const testimonials = [
-  { quote: "Sent these to our top 20 clients after Q4. Three wrote back the same day. That never happens.", author: "Priya S.", role: "VP Partnerships, Meridian Group", avatar: "PS" },
-  { quote: "The ceramics set arrived wrapped like a museum piece. Every detail said we actually thought about this.", author: "James K.", role: "Chief of Staff, Lune Capital", avatar: "JK" },
-  { quote: "The journals are on every exec's desk now. Organic, intentional, beautiful.", author: "Mara T.", role: "Head of Culture, Verdant Co.", avatar: "MT" },
-  { quote: "Our clients keep asking where the teas came from. That's the best compliment a gift can get.", author: "Arjun R.", role: "Director, Apex Consulting", avatar: "AR" },
-];
+// Page words: src/content/pages/products.json (admin → Pages → Products page).
+// The catalogue itself is the separate products.json collection.
+const { intro, hero, navbar, banners, productGrid, productCard, gallery: galleryText, reviews, cta } = content;
 
-// ── Signature Range (photos live in /public/Products and /public/catalogue) ─
+// Testimonials shown here come from the admin panel; the section is hidden until there is one
+const clientStories = testimonials.map(t => ({
+  quote: t.quote,
+  author: t.name,
+  role: [t.role, t.company].filter(Boolean).join(", "),
+  avatar: t.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase(),
+}));
+
+// ── Signature Range ──────────────────────────────────────────────────────────
+// The catalogue lives in src/content/products.json and is edited from the admin
+// panel (/admin). Photos live in /public/Products and /public/catalogue.
 interface Design {
   name: string;
   src: string;
@@ -33,293 +44,47 @@ interface SignatureItem {
   designs?: Design[];     // a range of designs to choose from (opens the design gallery)
 }
 
+// One product as stored in products.json
+interface CatalogueEntry {
+  id: string;
+  category: string;
+  name: string;
+  description: string;
+  showDesignCount?: boolean; // adds an "N designs" tag
+  tags?: string[];
+  image?: string;            // falls back to the first design or photo
+  icon: string;              // a key of ICONS
+  tint: string;
+  photos?: string[];
+  designs?: Design[];
+}
+
+const ICONS: Record<string, LucideIcon> = { BookOpen, PenLine, KeyRound, CalendarDays, NotebookPen, Flame, Gift, Package, ShoppingBasket };
+
 // File names contain spaces, so encode them for the URL. Keep "+" out of file names:
 // the live site (Vercel) reads it as a space, while the dev server doesn't decode %2B.
-const productPhoto = (file: string) => encodeURI(`/Products/${file}`);
-const cataloguePhoto = (file: string) => encodeURI(`/catalogue/${file}`);
+const photoUrl = (path: string) => encodeURI(path);
 
 // Several photos of one design share a name, so count names rather than photos
 const designCount = (designs: Design[]) => new Set(designs.map(d => d.name)).size;
 
-const twoJarBoxes: Design[] = [
-  { name: "Printed 2 Jar Gift Box", src: productPhoto("2 jar gift Box.JPG") },
-  { name: "Printed 2 Jar Gift Box", src: productPhoto("2 jar Gift Box 2.JPG") },
-  { sku: "9065", name: "Nandi MGI 2 Jar Box", src: cataloguePhoto("nandi-mgi-2-jar-box-enhanced.webp") },
-  { sku: "9065A", name: "White MGI 2 Jar Box", src: cataloguePhoto("white-mgi-2-jar-box-enhanced.webp") },
-  { sku: "9065B", name: "Blue Mystic 2 Jar Box", src: cataloguePhoto("blue-mystic-2-jar-box-enhanced.webp") },
-  { sku: "9065C", name: "Rajasthan 2 Jar Box", src: cataloguePhoto("rajasthan-2-jar-box-enhanced.webp") },
-  { sku: "7201-R", name: "Rajasthani Theme 2 Jar Box", src: cataloguePhoto("rajasthani-theme-2-jar-box-enhanced.webp") },
-  { sku: "7201-P", name: "Peacock Theme 2 Jar Box", src: cataloguePhoto("peacock-theme-2-jar-box-enhanced.webp") },
-  { sku: "7201-F", name: "Flower Theme 2 Jar Box", src: cataloguePhoto("flower-theme-2-jar-box-enhanced.webp") },
-  { sku: "7201-M", name: "Mahal Theme 2 Jar Box", src: cataloguePhoto("mahal-theme-2-jar-box-enhanced.webp") },
-  { sku: "7203", name: "Green Suede 2 Jar Box", src: cataloguePhoto("green-suede-2-jar-box-enhanced.webp") },
-  { sku: "7200", name: "White Majestic 2 Jar Box", src: cataloguePhoto("white-majestic-2-jar-box-enhanced.webp") },
-  { sku: "7009", name: "Blue Diamond 2 Jar Carry Bag Box", src: cataloguePhoto("blue-diamond-2-jar-carry-bag-box-enhanced.webp") },
-  { sku: "9079", name: "Wooden Rotating 2 Jar Tray", src: cataloguePhoto("wooden-rotating-2-jar-tray-enhanced.webp") },
-  { sku: "9501", name: "MGI 2 Tin Jar Bag", src: "/catalogue/52_9501_MGI-2-Tin-Jar-Bag.jpg" },
-  { sku: "9026", name: "2 Jar 2 Chocolate Box", src: "/catalogue/58_9026_2-Jar-2-Chocolate-Box.jpg" },
-  { sku: "9022", name: "Peacock 2 Jar Tin Cavity Box", src: "/catalogue/61_9022_Peacock-2-Jar-Tin-Cavity-Box.jpg" },
-  { sku: "9015A", name: "White 2 Jar Green Theme Box", src: "/catalogue/62_9015A_White-Jar-Green-Theme-Box.jpg" },
-  { sku: "9015", name: "Orange Flower 2 Jar Dome Box", src: "/catalogue/63_9015_Orange-Flower-2-Jar-Dome-Box.jpg" },
-  { sku: "9072", name: "Green Theme 2 Jar Box with Stand", src: "/catalogue/64_9072_Green-Theme-Box-with-Stand.jpg" },
-  { sku: "9010", name: "Floral 2 Jar Cavity Box", src: "/catalogue/67_9010_Floral-2-Jar-Cavity-Box.jpg" },
-  { sku: "9010A", name: "RBG Nandi Fancy Jar Box", src: cataloguePhoto("fancy-jar-box-red-palace.png") },
-];
-
-const threeJarBoxes: Design[] = [
-  { name: "Printed 3 Jar Gift Box", src: productPhoto("3 Jar Gift Box.JPG") },
-  { sku: "9009", name: "Nandi 3 Jar Box", src: cataloguePhoto("nandi-3-jar-box-enhanced.webp") },
-  { sku: "9009A", name: "White MGI 3 Jar Box", src: cataloguePhoto("white-mgi-3-jar-box-enhanced.webp") },
-  { sku: "9009B", name: "Blue Mystic 3 Jar Box", src: cataloguePhoto("blue-mystic-3-jar-box-enhanced.webp") },
-  { sku: "9009C", name: "Mahal 3 Jar Long Box", src: cataloguePhoto("white-jute-basket-enhanced.webp") },
-  { sku: "7303", name: "Blue Velvet 3 Jar Box", src: cataloguePhoto("blue-velvet-3-jar-box-enhanced.webp") },
-  { sku: "7304", name: "Red Velvet 3 Jar Box", src: cataloguePhoto("red-velvet-3-jar-box-enhanced.webp") },
-  { sku: "7301", name: "Leatherette 3 Jar Suitcase Box", src: cataloguePhoto("regsin-3-jar-box-enhanced.webp") },
-  { sku: "7302", name: "Orange 3 Jar Sliding Box", src: cataloguePhoto("orange-3-jar-sliding-box-enhanced.webp") },
-  { sku: "9506", name: "MGI 3 Tin Jar Bag", src: "/catalogue/52_9506_MGI-3-Tin-Jar-Bag.jpg" },
-  { sku: "9509", name: "Pink Triangle 3 Tin Box", src: "/catalogue/53_9509_Pink-Triangle-3-Tin-Box.jpg" },
-  { sku: "9011A", name: "3 Round Jar Cavity Box", src: "/catalogue/65_9011A_3-Round-Jar-Cavity-Box.jpg" },
-  { sku: "9011", name: "Pink White 3 Jar Cavity Box", src: "/catalogue/66_9011_Pink-White-3-Jar-Cavity-Box.jpg" },
-];
-
-const fourJarBoxes: Design[] = [
-  { sku: "9003", name: "Ornate Rajasthani Gift Box Collection", src: cataloguePhoto("Ornate Rajasthani Gift Box Collection.png") },
-  { sku: "9003A", name: "Ornate Peacock Gift Box Collection", src: cataloguePhoto("Ornate Peacock Gift Box Collection.png") },
-  { sku: "9003B", name: "Blue Mystic Scodix 4 Jar Box", src: cataloguePhoto("blue-mystic-4-jar-box-enhanced.png") },
-  { sku: "9003C", name: "Rajasthan Theme 4 Jar Box", src: cataloguePhoto("rajasthan-theme-4-jar-box-enhanced.png") },
-  { sku: "7002", name: "Orange Theme 4 Jar Box", src: cataloguePhoto("orange-theme-4-jar-box-enhanced.png") },
-  { sku: "4002", name: "Mahal Theme 4 Jar Box", src: cataloguePhoto("mahal-theme-4-jar-box-enhanced.png") },
-  { sku: "7202", name: "Blue Peacock 4 Jar Box", src: cataloguePhoto("blue-peacock-4-jar-box-enhanced.webp") },
-  { sku: "7011", name: "Blue 4 Jar Suitcase Box", src: cataloguePhoto("blue-4-jar-box-enhanced.webp") },
-  { sku: "7007", name: "White Gold 4 Jar Box", src: cataloguePhoto("white-gold-4-jar-box-enhanced.webp") },
-  { sku: "7601", name: "Laser Cut Velvet 4 Jar Box", src: cataloguePhoto("laser-velvet-4-jar-box-enhanced.webp") },
-  { sku: "7005", name: "Green Velvet 4 Jar Box", src: cataloguePhoto("green-velvet-4-jar-box-enhanced.webp") },
-  { sku: "7006", name: "Blue Velvet 4 Jar Box", src: cataloguePhoto("blue-velvet-4-jar-box-enhanced.webp") },
-  { sku: "9045", name: "Blue Theme 4 Jar Lift Box", src: cataloguePhoto("blue-theme-4-jar-lift-box-enhanced.webp") },
-  { sku: "9045A", name: "Mughal Theme 4 Jar Lift Box", src: cataloguePhoto("palace-theme-4-jar-lift-box-enhanced.webp") },
-  { sku: "7015", name: "Round D 4 Jar Box Maroon Pink", src: "/catalogue/35_7015_Round-D-4-Jar-Box-Maroon-Pink.jpg" },
-  { sku: "7016", name: "Round D 4 Jar Box", src: "/catalogue/36_7016_Round-D-4-Jar-Box.jpg" },
-  { sku: "7019", name: "Blue Round 4 Jar Box", src: "/catalogue/37_7019_Blue-Round-4-Jar-Box.jpg" },
-  { sku: "7001", name: "MDF Carry Bag 4 Jar Box", src: "/catalogue/38_7001_MDF-Carry-Bag-4-Jar-Box.jpg" },
-  { sku: "7802", name: "Carry Bag 4 Jar Box", src: "/catalogue/39_7802_Carry-Bag-4-Jar-Box.jpg" },
-  { sku: "7008", name: "Blue Diamond 4 Jar Carry Bag Box", src: "/catalogue/40_7008_Blue-Diamond-4-Jar-Carry-Bag-Box.jpg" },
-  { sku: "7803", name: "Carry Bag 4 Jar Box Design 2", src: "/catalogue/41_7803_Carry-Bag-4-Jar-Box-Design-2.jpg" },
-  { sku: "9091B", name: "Gate Open 4 Jar Box", src: "/catalogue/42_9091B_Gate-Open-4-Jar-Box.jpg" },
-  { sku: "7017", name: "Brown 4 Jar Long Box", src: "/catalogue/43_7017_Brown-4-Jar-Long-Box.jpg" },
-  { sku: "7018", name: "Grey Magnetic File 4 Jar Box", src: "/catalogue/44_7018_Grey-Magnetic-File-4-Jar-Box.jpg" },
-  { sku: "7014", name: "White 4 Jar Kappa Box", src: "/catalogue/45_7014_White-4-Jar-Kappa-Box.jpg" },
-  { sku: "1010A", name: "Pinewood 4 Jar Box", src: "/catalogue/46_1010A_Pinewood-4-Jar-Box.jpg" },
-  { sku: "9511", name: "Pink Triangle 4 Tin Box with Handle", src: "/catalogue/54_9511_Pink-Triangle-4-Tin-Box-with-Handle.jpg" },
-  { sku: "9006", name: "Pink Carving 4 Jar Cavity Box", src: "/catalogue/56_9006_Pink-Carving-4-Jar-Cavity-Box.jpg" },
-  { sku: "9064", name: "Red Pink 4 Jar Cavity Box", src: "/catalogue/57_9064_Red-Pink-4-Jar-Cavity-Box.jpg" },
-  { sku: "9046", name: "Blue 4 Jar Cavity Lift Box", src: "/catalogue/59_9046_Blue-4-Jar-Cavity-Lift-Box.jpg" },
-  { sku: "9005", name: "Purple 4 Jar Cavity Box", src: "/catalogue/60_9005_Purple-4-Jar-Cavity-Box.jpg" },
-  { sku: "1010", name: "Pinewood 4 Jar Box Classic", src: "/catalogue/69_1010_Pinewood-4-Jar-Box-Classic.jpg" },
-];
-
-const fiveSixJarBoxes: Design[] = [
-  { sku: "7606", name: "Pink Leather 5 Jar Box", src: cataloguePhoto("pink-leather-5-jar-box.png") },
-  { sku: "7605", name: "Leather 5 Jar Box", src: cataloguePhoto("leather-5-jar-box.png") },
-  { sku: "7607", name: "Velvet 6 Jar Box with Chocolate Cavity", src: cataloguePhoto("velvet-6-jar-cavity-box.png") },
-  { sku: "7602", name: "Laser Cut Velvet 6 Jar Box", src: cataloguePhoto("laser-velvet-6-jar-box.png") },
-  { sku: "9001", name: "Blue Wrinkle 6 Jar Box", src: cataloguePhoto("blue-wrinkle-6-jar-box.png") },
-];
-
-const dryFruitBoxes: Design[] = [
-  { sku: "3401", name: "Regular 4 Compartment Dry Fruit Box", src: cataloguePhoto("regular-4-compartment-dry-fruit-box.png") },
-  { sku: "8103", name: "Brown 4 Compartment Dry Fruit Box", src: cataloguePhoto("brown-mdf-4-compartment-box.png") },
-  { sku: "3106", name: "Nandi 5 Compartment Platter Box", src: cataloguePhoto("5-platter-box.png") },
-  { sku: "8101", name: "Dry Fruit Tray", src: cataloguePhoto("dry-fruit-tray.png") },
-];
-
-const chocolateBoxes: Design[] = [
-  { sku: "CH8004", name: "5 Cavity Chocolate Box", src: cataloguePhoto("5-cavity-chocolate-box.png") },
-  { sku: "CH8001", name: "8 Cavity Slider Chocolate Box", src: cataloguePhoto("8-cavity-yellow-chocolate-box.png") },
-  { name: "Hamper Paper Box", src: cataloguePhoto("hamper-paper-box.png") },
-  { sku: "CH8000", name: "Hamper Paper Basket", src: cataloguePhoto("hamper-paper-basket.png") },
-];
-
-const hamperBaskets: Design[] = [
-  { sku: "1002", name: "Pinewood Jar Basket", src: cataloguePhoto("pinewood-jar-basket.png") },
-  { sku: "1001", name: "Pinewood Basket", src: cataloguePhoto("pinewood-slatted-basket.png") },
-  { sku: "1001", name: "Pinewood Basket", src: cataloguePhoto("pinewood-basket.png") },
-  { sku: "5014", name: "White Jute Bag with Tin Jars", src: cataloguePhoto("white-jute-bag.png") },
-  { sku: "1906", name: "Net Basket", src: cataloguePhoto("net-basket-regular.png") },
-  { sku: "1915", name: "Golden Lace Jute Basket", src: cataloguePhoto("golden-lace-jute-basket.png") },
-  { sku: "1920", name: "White Jute Basket", src: cataloguePhoto("white-jute-basket.png") },
-  { sku: "1902", name: "Brown MDF Jute Basket", src: cataloguePhoto("brown-mdf-jute-basket.png") },
-  { sku: "2001", name: "Hexagon Blue Premium Basket", src: cataloguePhoto("hexagon-blue-premium-basket.png") },
-];
-
-const emptyGiftBoxes: Design[] = [
-  { sku: "6010", name: "Ribbon Box 9x7", src: cataloguePhoto("ribbon-box-9x7.png") },
-  { sku: "6013", name: "Ribbon Box 12x9", src: cataloguePhoto("ribbon-box-12x9.png") },
-  { sku: "6009", name: "Ribbon Box 9x7x3", src: cataloguePhoto("ribbon-box-9x7x3.png") },
-  { sku: "6011", name: "8x8 Magnetic Gift Box", src: cataloguePhoto("8x8-magnetic-gift-box.png") },
-  { sku: "6012", name: "12x9 Top-Bottom Gift Box", src: cataloguePhoto("12x9-top-bottom-gift-box.png") },
-  { sku: "6006", name: "6x7 Gift Box", src: cataloguePhoto("6x7-gift-box-empty.png") },
-];
-
-const corkComboDesigns: Design[] = [
-  { name: "Cork Diary + Cork Pen", src: productPhoto("Cork Diary and Cork Pen.png") },
-  { name: "Denim Cork Diary + Cork Pen", src: productPhoto("Denim Cork Diary and Cork Pen.png") },
-];
-
-const candleDesigns: Design[] = [
-  { name: "4 Round Candle Set — Gold Box", src: productPhoto("4 Candle set Circular.png") },
-  { name: "3 Round Candle Set", src: productPhoto("3 Candle set Circular.png") },
-  { name: "6 Round Candle Set", src: productPhoto("6 Candle set Circular.png") },
-  { name: "4 Round Candle Set — Maroon Box", src: productPhoto("4-Circular wax Candle 1.JPG") },
-  { name: "3 Heart Candle Set", src: productPhoto("3-Heart wax Candle 2.JPG") },
-  { name: "4 Heart Candle Set", src: productPhoto("4-Heart Wax Candle 1.JPG") },
-  { name: "Bubble Candle", src: productPhoto("Soya wax candle1.png") },
-];
-
-const diyaDesigns: Design[] = [
-  { name: "Round Pot Diyas", src: productPhoto("Soya wax Circular Diya1.jpg") },
-  { name: "Paisley Diyas", src: productPhoto("Soya wax Diya 2.jpg") },
-  { name: "Terracotta Diyas — Yellow", src: productPhoto("Soya wax diya 3.jpg") },
-  { name: "Terracotta Diyas — Blue", src: productPhoto("Soya wax Diya 4.JPG") },
-  { name: "Hand-Painted Diya", src: productPhoto("Soya wax Diya1.jpg") },
-  { name: "Square Diyas", src: productPhoto("Soya wax Square Diya 1.jpg") },
-  { name: "Square Flower Diya", src: productPhoto("Soya wax square Diya 2.jpg") },
-];
-
-const signatureRange: SignatureItem[] = [
-  {
-    id: "cork-diary", category: "Cork Collection", name: "Cork Diary",
-    description: "A diary bound in natural cork — light, durable and harvested from cork-oak bark without felling a tree.",
-    tags: ["Natural cork", "Custom branding"],
-    image: productPhoto("Cork Dairy 1.png"), icon: BookOpen, tint: "#d8c19c",
-    photos: [productPhoto("Cork Dairy 1.png")],
-  },
-  {
-    id: "cork-diary-fabric", category: "Cork Collection", name: "Cork Diary with Fabric",
-    description: "Natural cork paired with a denim fabric finish for a warmer, textured cover.",
-    tags: ["Cork + denim", "Custom branding"],
-    image: productPhoto("Cork Denim Diary 1.png"), icon: BookOpen, tint: "#cfb89c",
-    photos: [productPhoto("Cork Denim Diary 1.png"), productPhoto("Cork Denim Dairy 1.1.png"), productPhoto("Cork Denim Dairy 1.2.png")],
-  },
-  {
-    id: "cork-pen", category: "Cork Collection", name: "Cork Pen",
-    description: "An everyday pen wrapped in natural cork for a light, comfortable grip.",
-    tags: ["Natural cork", "Custom branding"],
-    image: productPhoto("Cork Pen.png"), icon: PenLine, tint: "#dcc7a6",
-    photos: [productPhoto("Cork Pen.png")],
-  },
-  {
-    id: "cork-combo", category: "Cork Collection", name: "Cork Diary & Pen Combo",
-    description: "A cork diary paired with a matching cork pen — a ready-to-gift desk set.",
-    tags: ["Diary + pen", "Custom branding"],
-    image: corkComboDesigns[0].src, icon: BookOpen, tint: "#d8c19c", designs: corkComboDesigns,
-  },
-  {
-    id: "cork-keyring", category: "Cork Collection", name: "Cork Keyring",
-    description: "A lightweight, water-resistant cork keyring — a small gift that gets used every day.",
-    tags: ["Natural cork", "Custom branding"],
-    image: "/catalogue/cork-keyring.jpg", icon: KeyRound, tint: "#d3bc98",
-  },
-  {
-    id: "paper-pen", category: "Recycled Paper", name: "Paper Pen",
-    description: "A pen with a barrel rolled from recycled paper — a simple swap for a plastic pen.",
-    tags: ["Recycled paper", "Custom branding"],
-    image: productPhoto("Paper Pen.png"), icon: PenLine, tint: "#d0d3bf",
-    photos: [productPhoto("Paper Pen.png")],
-  },
-  {
-    id: "paper-pencil", category: "Recycled Paper", name: "Paper Pencil",
-    description: "Pencils rolled from recycled newspaper instead of wood.",
-    tags: ["Recycled newspaper", "Custom branding"],
-    image: productPhoto("Paper Pencil.png"), icon: PenLine, tint: "#d0d3bf",
-    photos: [productPhoto("Paper Pencil.png")],
-  },
-  {
-    id: "recycled-daily-planner", category: "Recycled Paper", name: "Recycled Daily Planner",
-    description: "A day-by-day planner printed on recycled paper to keep priorities on track.",
-    tags: ["Recycled paper", "Custom branding"],
-    image: "/catalogue/recycled-daily-planner.jpg", icon: CalendarDays, tint: "#c9cdb6",
-  },
-  {
-    id: "recycled-writing-pad", category: "Recycled Paper", name: "Recycled Writing Pad",
-    description: "A writing pad of recycled paper for notes, meetings and to-do lists.",
-    tags: ["Recycled paper", "Custom branding"],
-    image: "/catalogue/recycled-writing-pad.jpg", icon: NotebookPen, tint: "#d0d3bf",
-  },
-  {
-    id: "bamboo-bottle", category: "Bamboo Collection", name: "Bamboo Bottle",
-    description: "A bamboo-finish bottle with a steel cap and a removable tea infuser.",
-    tags: ["Bamboo finish", "Tea infuser"],
-    image: productPhoto("Bamboo Bottle 1.png"), icon: Gift, tint: "#d9cfb4",
-    photos: [productPhoto("Bamboo Bottle 1.png"), productPhoto("Bamboo Bottle 2.png")],
-  },
-  {
-    id: "gift-box-2-jar", category: "Gift Boxes", name: "2 Jar Gift Boxes",
-    description: "Printed, velvet, wooden and tin boxes with two jars — ready for dry fruits, sweets or chocolates.",
-    tags: [`${designCount(twoJarBoxes)} designs`, "Jars included"],
-    image: twoJarBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: twoJarBoxes,
-  },
-  {
-    id: "gift-box-3-jar", category: "Gift Boxes", name: "3 Jar Gift Boxes",
-    description: "Three-jar boxes in velvet, leatherette, printed MDF and tin finishes.",
-    tags: [`${designCount(threeJarBoxes)} designs`, "Jars included"],
-    image: threeJarBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: threeJarBoxes,
-  },
-  {
-    id: "gift-box-4-jar", category: "Gift Boxes", name: "4 Jar Gift Boxes",
-    description: "Our widest range — lift-open, carry-bag, cavity and pinewood boxes holding four jars.",
-    tags: [`${designCount(fourJarBoxes)} designs`, "Jars included"],
-    image: fourJarBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: fourJarBoxes,
-  },
-  {
-    id: "gift-box-5-6-jar", category: "Gift Boxes", name: "5 & 6 Jar Gift Boxes",
-    description: "Leather and velvet suitcase boxes holding five or six jars — our grandest jar hampers.",
-    tags: [`${designCount(fiveSixJarBoxes)} designs`, "Jars included"],
-    image: fiveSixJarBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: fiveSixJarBoxes,
-  },
-  {
-    id: "dry-fruit-boxes", category: "Gift Boxes", name: "Dry Fruit Boxes & Trays",
-    description: "Compartment boxes, platters and trays with golden cavities for dry fruits and sweets.",
-    tags: [`${designCount(dryFruitBoxes)} designs`, "Golden cavities"],
-    image: dryFruitBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: dryFruitBoxes,
-  },
-  {
-    id: "chocolate-boxes", category: "Gift Boxes", name: "Chocolate & Hamper Boxes",
-    description: "Cavity chocolate boxes and printed paper hamper boxes for chocolates, sweets and treats.",
-    tags: [`${designCount(chocolateBoxes)} designs`, "Chocolates & sweets"],
-    image: chocolateBoxes[0].src, icon: Gift, tint: "#e3d3c4", designs: chocolateBoxes,
-  },
-  {
-    id: "soy-wax-candles", category: "Candles", name: "Scented Candles",
-    description: "Soya wax candles in round and heart shapes, gift-boxed in sets of 3, 4 and 6.",
-    tags: ["Soya wax", "Gift boxed"],
-    image: candleDesigns[0].src, icon: Flame, tint: "#ead9c0", designs: candleDesigns,
-  },
-  {
-    id: "soy-wax-diyas", category: "Candles", name: "Soya Wax Diyas",
-    description: "Terracotta and hand-painted diyas filled with soya wax — made for Diwali gifting.",
-    tags: ["Soya wax", "Hand-painted"],
-    image: diyaDesigns[0].src, icon: Flame, tint: "#ead9c0", designs: diyaDesigns,
-  },
-  {
-    id: "hamper-baskets", category: "Baskets & Packaging", name: "Hamper Baskets",
-    description: "Pinewood, jute and net baskets lined with satin and organza — the base for a hand-packed hamper.",
-    tags: [`${designCount(hamperBaskets)} designs`, "Pinewood & jute"],
-    image: hamperBaskets[0].src, icon: ShoppingBasket, tint: "#dccfb4", designs: hamperBaskets,
-  },
-  {
-    id: "empty-gift-boxes", category: "Baskets & Packaging", name: "Ribbon & Magnetic Gift Boxes",
-    description: "Rigid ribbon, magnetic and lid-and-base gift boxes, supplied empty to fill with your own selection.",
-    tags: [`${designCount(emptyGiftBoxes)} designs`, "Supplied empty"],
-    image: emptyGiftBoxes[0].src, icon: Package, tint: "#e3d3c4", designs: emptyGiftBoxes,
-  },
-  {
-    id: "tin-jars", category: "Baskets & Packaging", name: "Tin Jars",
-    description: "Printed tin jars with lids — pack them into a hamper or gift them on their own.",
-    tags: ["Printed tin", "Reusable"],
-    image: cataloguePhoto("tin-jars.png"), icon: Package, tint: "#dccfb4",
-    photos: [cataloguePhoto("tin-jars.png")],
-  },
-];
+const signatureRange: SignatureItem[] = (catalogue.products as CatalogueEntry[]).map(p => {
+  const designs = p.designs?.length ? p.designs.map(d => ({ ...d, src: photoUrl(d.src) })) : undefined;
+  const photos = p.photos?.length ? p.photos.map(photoUrl) : undefined;
+  const tags = p.tags ?? [];
+  return {
+    id: p.id,
+    category: p.category,
+    name: p.name,
+    description: p.description,
+    tags: designs && p.showDesignCount ? [`${designCount(designs)} designs`, ...tags] : tags,
+    image: p.image ? photoUrl(p.image) : designs?.[0].src ?? photos?.[0] ?? "",
+    icon: ICONS[p.icon] ?? Gift,
+    tint: p.tint,
+    photos,
+    designs,
+  };
+});
 
 // Tabs follow the categories that actually have products
 const categories = ["All", ...new Set(signatureRange.map(i => i.category))];
@@ -620,9 +385,9 @@ function SignatureCard({ item, index, onOpenGallery, onOrder }: {
   const Icon = item.icon;
   // Ranges open the design gallery; single products order directly, with a Quick View of their photos
   const order = () => (item.designs ? onOpenGallery(item) : onOrder(item));
-  const orderLabel = item.designs ? "View Designs" : "Order Now";
+  const orderLabel = item.designs ? productCard.viewDesigns : productCard.orderNow;
   const preview = () => (item.designs || item.photos ? onOpenGallery(item) : onOrder(item));
-  const previewLabel = item.designs ? "View Designs" : item.photos ? "Quick View" : "Order Now";
+  const previewLabel = item.designs ? productCard.viewDesigns : item.photos ? productCard.quickView : productCard.orderNow;
 
   return (
     <TiltCard
@@ -666,7 +431,7 @@ function SignatureCard({ item, index, onOpenGallery, onOrder }: {
 
         {item.designs && (
           <span className="absolute bottom-3 right-3 font-body text-[9px] tracking-widest uppercase bg-[#1c2b1e] text-white px-2.5 py-1">
-            {designCount(item.designs)} Designs
+            {designCount(item.designs)} {productCard.designsBadge}
           </span>
         )}
 
@@ -753,7 +518,7 @@ function DesignGallery({ item, onClose, onOrder }: {
               {designs.length > 1 && (
                 <span className="font-body text-xs text-[#8c8880] whitespace-nowrap">{active + 1} / {designs.length}</span>
               )}
-              <button onClick={onClose} aria-label="Close gallery"
+              <button onClick={onClose} aria-label={galleryText.closeLabel}
                 className="text-[#8c8880] hover:text-[#1c2b1e] text-3xl leading-none"
                 style={{ transition: "transform 0.25s ease, color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "rotate(90deg) scale(1.2)")}
@@ -768,11 +533,11 @@ function DesignGallery({ item, onClose, onOrder }: {
               style={{ animation: "heroFade 0.35s ease both" }} />
             {designs.length > 1 && (
               <>
-                <button onClick={() => go(-1)} aria-label="Previous design"
+                <button onClick={() => go(-1)} aria-label={galleryText.previousLabel}
                   className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#1c2b1e] flex items-center justify-center shadow-md hover:bg-[#c8a96e] hover:text-white transition-colors">
                   <ChevronLeft size={20} strokeWidth={1.5} />
                 </button>
-                <button onClick={() => go(1)} aria-label="Next design"
+                <button onClick={() => go(1)} aria-label={galleryText.nextLabel}
                   className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#1c2b1e] flex items-center justify-center shadow-md hover:bg-[#c8a96e] hover:text-white transition-colors">
                   <ChevronRight size={20} strokeWidth={1.5} />
                 </button>
@@ -786,7 +551,7 @@ function DesignGallery({ item, onClose, onOrder }: {
               {item.designs ? (
                 <>
                   <p className="font-display text-xl font-light text-[#1c2b1e] leading-snug">{current.name}</p>
-                  {current.sku && <p className="font-body text-[10px] tracking-widest uppercase text-[#8c8880] mt-0.5">SKU {current.sku}</p>}
+                  {current.sku && <p className="font-body text-[10px] tracking-widest uppercase text-[#8c8880] mt-0.5">{galleryText.skuLabel} {current.sku}</p>}
                 </>
               ) : (
                 <>
@@ -797,7 +562,7 @@ function DesignGallery({ item, onClose, onOrder }: {
             </div>
             <RippleBtn onClick={() => onOrder(current)}
               className="font-body text-[10px] tracking-widest uppercase bg-[#1c2b1e] text-white px-6 py-3 hover:bg-[#c8a96e] whitespace-nowrap">
-              {item.designs ? "Order This Design" : "Order Now"}
+              {item.designs ? galleryText.orderDesign : galleryText.orderNow}
             </RippleBtn>
           </div>
 
@@ -1142,9 +907,9 @@ export default function ExecutiveGiftPage() {
             zIndex: 1,
           }}>
             <div style={{ textAlign: "center" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#c8a96e", fontWeight: 300, letterSpacing: "0.3em" }}>ATELIER</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem,5vw,3.5rem)", color: "#c8a96e", fontWeight: 300, letterSpacing: "0.3em" }}>{intro.brandName}</p>
               <div style={{ width: "40px", height: "1px", background: "#c8a96e", margin: "12px auto", animation: "shimmer 1s ease infinite" }} />
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "10px", color: "#7a9e7e", letterSpacing: "0.4em", textTransform: "uppercase" }}>Gifted</p>
+              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "10px", color: "#7a9e7e", letterSpacing: "0.4em", textTransform: "uppercase" }}>{intro.brandTagline}</p>
             </div>
           </div>
         </div>
@@ -1183,7 +948,7 @@ export default function ExecutiveGiftPage() {
 
         {/* BG image with parallax */}
         <div className="absolute inset-0" style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1400&q=60')",
+          backgroundImage: `url('${asset(hero.backgroundImage)}')`,
           backgroundSize: "cover", backgroundPosition: "center",
           opacity: heroVisible ? 0.2 : 0,
           transform: `translateY(${heroParallax}px) scale(1.1)`,
@@ -1210,7 +975,7 @@ export default function ExecutiveGiftPage() {
           <div>
             <p className="font-body text-xs tracking-[0.5em] uppercase text-[#7a9e7e] mb-5"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s" }}>
-              Executive Gift Collections
+              {hero.eyebrow}
             </p>
 
             {/* 3D split text headline */}
@@ -1218,19 +983,19 @@ export default function ExecutiveGiftPage() {
               <div className="overflow-hidden">
                 <h1 className="font-display font-light leading-[1.1]"
                   style={{ fontSize: "clamp(2.5rem,5.5vw,4.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.3s both" : "none" }}>
-                  Gifts that
+                  {hero.titleLine1}
                 </h1>
               </div>
               <div className="overflow-hidden">
                 <h1 className="font-display font-light leading-[1.05] italic text-[#c8a96e]"
                   style={{ fontSize: "clamp(3rem,7vw,5.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.45s both" : "none" }}>
-                  speak
+                  {hero.titleHighlight}
                 </h1>
               </div>
               <div className="overflow-hidden">
                 <h1 className="font-display font-light leading-[1.1]"
                   style={{ fontSize: "clamp(2.5rem,5.5vw,4.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.6s both" : "none" }}>
-                  without words.
+                  {hero.titleLine2}
                 </h1>
               </div>
             </div>
@@ -1245,7 +1010,7 @@ export default function ExecutiveGiftPage() {
 
             <p className="font-body text-[#c8c4bb] text-base leading-relaxed max-w-md mb-10 font-light"
               style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.7s ease 0.85s, transform 0.7s ease 0.85s" }}>
-              Cork stationery, recycled paper goods, bamboo drinkware, soya wax candles & diyas and handcrafted jar gift boxes — for teams who value craft over consumption.
+              {hero.intro}
             </p>
 
             <div className="flex flex-wrap gap-4"
@@ -1255,14 +1020,14 @@ export default function ExecutiveGiftPage() {
                 style={{ transition: "background 0.3s, color 0.3s, transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s" }}
                 onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px) scale(1.02)"; e.currentTarget.style.background = "#c8a96e"; e.currentTarget.style.color = "white"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(200,169,110,0.5)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.background = "white"; e.currentTarget.style.color = "#1c2b1e"; e.currentTarget.style.boxShadow = "none"; }}>
-                Shop All Products
+                {hero.primaryButton}
               </a>
               <a href="#products" onClick={() => setActiveCategory("Gift Boxes")}
                 className="font-body text-xs tracking-widest uppercase border border-white/30 text-white px-8 py-4"
                 style={{ transition: "border-color 0.3s, background 0.3s, transform 0.3s cubic-bezier(0.22,1,0.36,1)" }}
                 onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.borderColor = "white"; e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"; e.currentTarget.style.background = "transparent"; }}>
-                View Gift Boxes →
+                {hero.secondaryButton}
               </a>
             </div>
           </div>
@@ -1291,7 +1056,7 @@ export default function ExecutiveGiftPage() {
         {/* Stats bar */}
         <div ref={statsRef} className="relative border-t border-white/10" style={{ zIndex: 3 }}>
           <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[["20", "+", "Curated Products"], ["100", "%", "Organic & Recycled"], ["40", "+", "Artisan Makers"], ["12", "k+", "Happy Recipients"]].map(([n, s, l], i) => (
+            {hero.stats.map(st => [st.value, st.suffix, st.label]).map(([n, s, l], i) => (
               <div key={l} style={{
                 opacity: statsVisible ? 1 : 0,
                 transform: statsVisible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.9)",
@@ -1314,7 +1079,7 @@ export default function ExecutiveGiftPage() {
           zIndex: 3, opacity: heroVisible ? 1 : 0, transition: "opacity 0.5s ease 1.5s",
         }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
-            <span style={{ fontFamily: "'Jost', sans-serif", fontSize: "9px", letterSpacing: "0.4em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Scroll</span>
+            <span style={{ fontFamily: "'Jost', sans-serif", fontSize: "9px", letterSpacing: "0.4em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>{hero.scrollLabel}</span>
             <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
               <rect x="5.5" y="0.5" width="5" height="10" rx="2.5" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
               <rect x="7" y="2" width="2" height="3" rx="1" fill="rgba(200,169,110,0.7)" style={{ animation: "scrollBounce 2s ease-in-out infinite" }} />
@@ -1336,8 +1101,8 @@ export default function ExecutiveGiftPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex-shrink-0 logo-reveal">
-            <span className="font-display text-xl tracking-widest text-[#1c2b1e]">ATELIER</span>
-            <span className="font-body text-xs tracking-[0.3em] text-[#8c8880] ml-2 uppercase hidden sm:inline">Gifted</span>
+            <span className="font-display text-xl tracking-widest text-[#1c2b1e]">{navbar.brandName}</span>
+            <span className="font-body text-xs tracking-[0.3em] text-[#8c8880] ml-2 uppercase hidden sm:inline">{navbar.brandTagline}</span>
           </div>
           {/* Search */}
           <div className="flex-1 max-w-xs hidden md:flex items-center border border-[#e8e4dd] bg-white px-4 py-2 gap-2"
@@ -1345,15 +1110,15 @@ export default function ExecutiveGiftPage() {
             onFocus={e => (e.currentTarget.style.boxShadow = "0 0 0 2px rgba(200,169,110,0.25)")}
             onBlur={e => (e.currentTarget.style.boxShadow = "none")}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8c8880" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-            <input type="text" placeholder="Search gifts..." value={searchQuery}
+            <input type="text" placeholder={navbar.searchPlaceholder} value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               className="flex-1 font-body text-xs text-[#1c2b1e] bg-transparent outline-none placeholder-[#8c8880]" />
           </div>
           {/* Links */}
           <div className="flex items-center gap-5">
             <div className="hidden md:flex gap-5 font-body text-xs tracking-widest uppercase text-[#8c8880]">
-              {["Shop", "Reviews"].map((link, i) => (
-                <a key={link} href={link === "Shop" ? "#products" : "#testimonials"}
+              {(clientStories.length ? [navbar.shopLink, navbar.reviewsLink] : [navbar.shopLink]).map((link, i) => (
+                <a key={link} href={link === navbar.shopLink ? "#products" : "#testimonials"}
                   className="nav-link hover:text-[#1c2b1e] transition-colors"
                   style={{ animation: `navCascade 0.5s ease ${0.7 + i * 0.1}s both` }}>
                   {link}
@@ -1366,13 +1131,8 @@ export default function ExecutiveGiftPage() {
 
       {/* ══════════ CATEGORY BANNERS ══════════ */}
       <section ref={bannersRef} className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-5 gap-4">
-        {[
-          { cat: "Cork Collection", img: productImage("cork-diary"), span: "md:col-span-2" },
-          { cat: "Recycled Paper", img: productImage("paper-pencil"), span: "md:col-span-1" },
-          { cat: "Candles", img: productImage("soy-wax-diyas"), span: "md:col-span-1" },
-          { cat: "Gift Boxes", img: productImage("gift-box-2-jar"), span: "md:col-span-1" },
-        ].map((b, i) => (
-          <button key={b.cat}
+        {banners.items.map((b, i) => ({ title: b.title, cat: b.category, img: productImage(b.key), span: i === 0 ? "md:col-span-2" : "md:col-span-1" })).map((b, i) => (
+          <button key={b.title}
             onClick={() => { setActiveCategory(b.cat); document.getElementById("products")?.scrollIntoView({ behavior: "smooth" }); }}
             className={`relative overflow-hidden rounded-sm group text-left h-40 ${b.span}`}
             style={{
@@ -1381,17 +1141,17 @@ export default function ExecutiveGiftPage() {
             }}
             onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 20px 48px rgba(28,43,30,0.18)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
             onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}>
-            <ParallaxImage src={b.img} alt={b.cat} className="w-full h-full" />
+            <ParallaxImage src={b.img} alt={b.title} className="w-full h-full" />
             <div className="absolute inset-0" style={{
               background: "linear-gradient(to top, rgba(28,43,30,0.85) 0%, transparent 60%)",
               transition: "opacity 0.3s",
             }} />
             <div className="absolute bottom-4 left-4">
-              <p className="font-display text-white text-lg font-light" style={{ animation: bannersVisible ? `inkBleed 0.5s ease ${i * 80 + 200}ms both` : "none" }}>{b.cat}</p>
+              <p className="font-display text-white text-lg font-light" style={{ animation: bannersVisible ? `inkBleed 0.5s ease ${i * 80 + 200}ms both` : "none" }}>{b.title}</p>
               <p className="font-body text-[10px] text-[#c8a96e] tracking-widest uppercase mt-0.5 group-hover:underline"
                 style={{ transition: "letter-spacing 0.3s ease" }}
                 onMouseEnter={e => (e.currentTarget.style.letterSpacing = "0.2em")}
-                onMouseLeave={e => (e.currentTarget.style.letterSpacing = "0.05em")}>Shop →</p>
+                onMouseLeave={e => (e.currentTarget.style.letterSpacing = "0.05em")}>{banners.linkText}</p>
             </div>
             {/* Shimmer on hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500"
@@ -1410,19 +1170,19 @@ export default function ExecutiveGiftPage() {
                 className={`cat-btn font-body text-[10px] tracking-widest uppercase px-4 py-2 border transition-colors duration-200 ${activeCategory === cat ? "active bg-[#1c2b1e] text-white border-[#1c2b1e]" : "text-[#8c8880] border-[#e8e4dd] hover:text-white"
                   }`}
                 style={{ transition: "all 0.3s cubic-bezier(0.22,1,0.36,1)", transitionDelay: `${i * 30}ms` }}>
-                <span>{cat}</span>
+                <span>{cat === "All" ? productGrid.allTab : cat}</span>
               </button>
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <span className="font-body text-xs text-[#8c8880]">{filtered.length} products</span>
+            <span className="font-body text-xs text-[#8c8880]">{filtered.length} {productGrid.countLabel}</span>
           </div>
         </div>
 
         {/* Mobile Search */}
         <div className="flex md:hidden items-center border border-[#e8e4dd] bg-white px-4 py-2.5 gap-2 mb-6">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8c8880" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-          <input type="text" placeholder="Search gifts..." value={searchQuery}
+          <input type="text" placeholder={productGrid.searchPlaceholder} value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="flex-1 font-body text-xs text-[#1c2b1e] bg-transparent outline-none placeholder-[#8c8880]" />
         </div>
@@ -1430,11 +1190,11 @@ export default function ExecutiveGiftPage() {
         {/* Grid */}
         {filtered.length === 0 ? (
           <div className="text-center py-24" style={{ animation: "heroLine 0.5s ease both" }}>
-            <p className="text-5xl mb-4" style={{ animation: "float 3s ease-in-out infinite" }}>🔍</p>
-            <p className="font-body text-[#8c8880]">No products found for "{searchQuery}"</p>
+            <p className="text-5xl mb-4" style={{ animation: "float 3s ease-in-out infinite" }}>{productGrid.noResultsSymbol}</p>
+            <p className="font-body text-[#8c8880]">{productGrid.noResultsText} "{searchQuery}"</p>
             <button onClick={() => setSearchQuery("")}
               className="mt-4 font-body text-xs tracking-widest uppercase border border-[#e8e4dd] px-5 py-2.5 text-[#8c8880] hover:text-[#1c2b1e] hover:border-[#1c2b1e] transition-colors">
-              Clear Search
+              {productGrid.clearSearch}
             </button>
           </div>
         ) : (
@@ -1449,6 +1209,7 @@ export default function ExecutiveGiftPage() {
       </section>
 
       {/* ══════════ TESTIMONIALS ══════════ */}
+      {clientStories.length > 0 && (
       <section id="testimonials" ref={testimonialsRef} className="bg-[#f5f0e8] py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14"
@@ -1458,14 +1219,14 @@ export default function ExecutiveGiftPage() {
               transition: "opacity 0.6s ease, transform 0.6s ease",
             }}>
             <p className="font-body text-xs tracking-[0.4em] uppercase text-[#7a9e7e] mb-3"
-              style={{ animation: testimonialsVisible ? "inkBleed 0.6s ease both" : "none" }}>Client Stories</p>
+              style={{ animation: testimonialsVisible ? "inkBleed 0.6s ease both" : "none" }}>{reviews.eyebrow}</p>
             <h2 className="font-display text-4xl font-light text-[#1c2b1e]"
-              style={{ animation: testimonialsVisible ? "heroLineBlur 0.7s ease 0.1s both" : "none" }}>What They Said</h2>
+              style={{ animation: testimonialsVisible ? "heroLineBlur 0.7s ease 0.1s both" : "none" }}>{reviews.title}</h2>
             <div className="mx-auto mt-4 h-px bg-[#c8a96e]"
               style={{ width: testimonialsVisible ? "48px" : "0px", transition: "width 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.3s" }} />
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map((t, i) => (
+            {clientStories.map((t, i) => (
               <div key={i} className="testimonial-card bg-white border border-[#e8e4dd] p-7 rounded-sm"
                 style={{
                   animation: testimonialsVisible ? `cardMorph 0.65s cubic-bezier(0.22,1,0.36,1) ${i * 100}ms both` : "none",
@@ -1491,6 +1252,7 @@ export default function ExecutiveGiftPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ══════════ CORPORATE CTA ══════════ */}
       <section ref={ctaRef} className="bg-[#1c2b1e] text-white py-20 relative overflow-hidden">
@@ -1515,7 +1277,7 @@ export default function ExecutiveGiftPage() {
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <p className="font-body text-xs tracking-[0.5em] uppercase text-[#7a9e7e] mb-5"
             style={{ opacity: ctaVisible ? 1 : 0, animation: ctaVisible ? "inkBleed 0.6s ease 0.1s both" : "none" }}>
-            Bulk & Corporate Orders
+            {cta.eyebrow}
           </p>
           <h2 className="font-display text-4xl md:text-5xl font-light italic leading-snug mb-6 cta-float"
             style={{
@@ -1523,22 +1285,22 @@ export default function ExecutiveGiftPage() {
               transform: ctaVisible ? "translateY(0)" : "translateY(24px)",
               transition: "opacity 0.7s ease 0.2s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s",
             }}>
-            Ordering for a<br />
-            <span className="font-display text-4xl md:text-5xl font-light italic leading-snug mb-6 cta-float" >team or event?</span>
+            {cta.titleLine1}<br />
+            <span className="font-display text-4xl md:text-5xl font-light italic leading-snug mb-6 cta-float" >{cta.titleLine2}</span>
           </h2>
           <p className="font-body text-[#c8c4bb] text-sm leading-relaxed mb-10 max-w-lg mx-auto font-light"
             style={{ opacity: ctaVisible ? 1 : 0, transition: "opacity 0.6s ease 0.35s" }}>
-            Custom branding, volume pricing, and white-glove delivery for orders of 10 or more. We handle every detail so your gifts arrive perfectly.
+            {cta.text}
           </p>
           <div className="flex flex-wrap gap-4 justify-center"
             style={{ opacity: ctaVisible ? 1 : 0, transform: ctaVisible ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.6s ease 0.45s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.45s" }}>
             <RippleBtn onClick={() => navigate("/get-proposal")}
               className="font-body text-xs tracking-widest uppercase bg-[#c8a96e] text-[#1c2b1e] px-10 py-4 hover:bg-[#b89558] font-medium">
-              Request a Proposal
+              {cta.primaryButton}
             </RippleBtn>
             <RippleBtn onClick={() => navigate("/contact")}
               className="font-body text-xs tracking-widest uppercase border border-white/30 text-white px-10 py-4 hover:border-white hover:bg-white/10">
-              Contact Us
+              {cta.secondaryButton}
             </RippleBtn>
           </div>
         </div>

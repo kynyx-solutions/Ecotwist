@@ -12,21 +12,10 @@ import {
   animate,
 } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import conf from '../assests/confe.png';
-import emp from '../assests/empl.png';
 import heroVideo from '../assests/hero1.mp4';
 import OurClients from '../components/client';
-import curated1 from '../assests/homecure1.jpg';
-import curated2 from '../assests/contact2.jpeg';
-import impact from '../assests/homeimpact.avif';
-import cp from '../assests/clientpartner.avif';
-import empwell from '../assests/empwell.avif';
-import bgift from '../assests/birthdygift.webp';
-import awardrec from '../assests/awardrecog.webp';
-import launch from '../assests/prodlaunch.avif';
-import retire from '../assests/retdgift.jpg';
-import workani from '../assests/workani.avif';
-import festgift from '../assests/festgift.jpg';
+import { asset } from '../lib/content';
+import content from '../content/pages/home.json';
 import EcotwistComingSoon from '../components/Coming';
 /* ─────────────────────────────────────────────
    TYPES
@@ -43,7 +32,8 @@ type ProcessStepItem = {
   step: string;
   title: string;
   desc: string;
-  tag: 'Discovery' | 'Design' | 'Delivery'| 'Support';
+  tag: string;
+  icon: 'Discovery' | 'Design' | 'Delivery'| 'Support';
   detail: string;
 };
 
@@ -182,25 +172,25 @@ function useOccasionSliderConfig() {
 /* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
-export const occasionData: OccasionItem[] = [
-  { title: 'Client Partnerships', img: cp, accent: '#b5a26a', tag: 'B2B', path: '/occasions/client-appreciation' },
-  { title: 'Employee Onboarding', img: emp, accent: '#5a8a6e', tag: 'HR', path: '/occasions/employee-onboarding' },
-  { title: 'Festive Gifting', img: festgift, accent: '#c4735d', tag: 'Seasonal', path: '/occasions/festive-gifting' },
-  { title: 'Events & Conferences', img: conf, accent: '#6b7fa3', tag: 'Events', path: '/occasions/events-conferences' },
-  { title: 'Employee Wellness', img: empwell, accent: '#8a7db5', tag: 'Wellness', path: '/occasions/employee-wellness' },
-  { title: 'Birthday Gifting', img: bgift, accent: '#d4856a', tag: 'Personal', path: '/occasions/birthday-gifting' },
-  { title: 'Work Anniversary', img: workani, accent: '#7a9e7e', tag: 'Milestone', path: '/occasions/work-anniversary' },
-  { title: 'Product Launch', img: launch, accent: '#5b8fa8', tag: 'Brand', path: '/occasions/product-launch' },
-  { title: 'Award & Recognition', img: awardrec, accent: '#c4a23a', tag: 'Culture', path: '/occasions/award-recognition' },
-  { title: 'Retirement Gifting', img: retire, accent: '#9c7bb5', tag: 'Farewell', path: '/occasions/retirement-gifting' },
-];
+// Page words and photos: src/content/pages/home.json (admin → Pages → Home (regular))
+const { hero, occasions, process, curated, impact: impactSection, impactStats, cta } = content;
 
-const processSteps: ProcessStepItem[] = [
-  { step: '01', title: 'Tell us your requirement', desc: 'Share your budget, timeline, and company vision with our experts. We listen before we create.', tag: 'Discovery', detail: '15-min call' },
-  { step: '02', title: 'We design your experience', desc: 'Our designers curate custom bundles tailored to your brand identity, values, and recipients.', tag: 'Design', detail: '3–5 days' },
-  { step: '03', title: 'We deliver at scale', desc: 'Eco-friendly logistics ensure your gifts arrive perfectly, sustainably, and on time — every time.', tag: 'Delivery', detail: 'Pan-India' },
-  { step: '04', title: 'Ongoing support & feedback', desc: 'We stay connected post-delivery to ensure satisfaction, gather feedback, and continuously improve your gifting experience.', tag: 'Support', detail: 'Always on' },
-];
+export const occasionData: OccasionItem[] = occasions.cards.map((item) => ({
+  title: item.title,
+  img: asset(item.image),
+  accent: item.accent,
+  tag: item.tag,
+  path: item.path,
+}));
+
+const processSteps: ProcessStepItem[] = process.steps.map((item) => ({
+  step: item.step,
+  title: item.title,
+  desc: item.text,
+  tag: item.tag,
+  icon: item.icon as ProcessStepItem['icon'],
+  detail: item.detail,
+}));
 
 /* ─────────────────────────────────────────────
    PARTICLE TRAIL
@@ -338,7 +328,7 @@ function OccasionCard({ item, index }: { item: OccasionItem; index: number }) {
             className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[8px] sm:text-[9px] uppercase tracking-[0.15em] font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-sm flex items-center gap-1"
             style={{ backgroundColor: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)' }}
           >
-            View <ArrowRight size={8} />
+            {occasions.viewLabel} <ArrowRight size={8} />
           </motion.div>
         </div>
 
@@ -352,7 +342,7 @@ function OccasionCard({ item, index }: { item: OccasionItem; index: number }) {
           <h4 className="font-bold text-xs sm:text-sm lg:text-base mb-1 sm:mb-1.5 leading-snug">{item.title}</h4>
           <div className="text-[8px] sm:text-[9px] lg:text-[10px] font-bold uppercase tracking-widest text-brand-olive flex items-center gap-1">
             <motion.span animate={{ x: hovered ? 3 : 0 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
-              Explore
+              {occasions.exploreLabel}
             </motion.span>
             <motion.span
               animate={{ rotate: hovered ? 45 : 0, x: hovered ? 2 : 0 }}
@@ -578,7 +568,7 @@ function BundleCard({ bundle }: { bundle: Bundle }) {
                   style={{ willChange: 'transform' }}
                   onClick={() => window.location.href = '/products'}
                   className="h-10 px-6 bg-brand-olive text-white flex items-center justify-center hover:bg-brand-dark-olive transition-colors text-sm font-bold"
-                >Explore</motion.button>
+                >{curated.buttonLabel}</motion.button>
               </motion.div>
             </div>
           </motion.div>
@@ -591,7 +581,7 @@ function BundleCard({ bundle }: { bundle: Bundle }) {
 /* ─────────────────────────────────────────────
    PROCESS STEP ICONS
 ───────────────────────────────────────────── */
-const ProcessIcons: Record<ProcessStepItem['tag'], React.ReactNode> = {
+const ProcessIcons: Record<ProcessStepItem['icon'], React.ReactNode> = {
   Discovery: (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b5a26a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
@@ -640,7 +630,7 @@ function ProcessStep({ item, index }: { item: ProcessStepItem; index: number }) 
           animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -20 }}
           transition={{ type: 'spring', stiffness: 260, damping: 18, delay: index * 0.12 + 0.25 }}
           style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(181,162,106,0.08)', border: '1.5px solid rgba(181,162,106,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
-        >{ProcessIcons[item.tag]}</motion.div>
+        >{ProcessIcons[item.icon]}</motion.div>
         <span className="font-serif leading-none select-none" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)', color: 'transparent', WebkitTextStroke: '1.5px rgba(181,162,106,0.25)', lineHeight: 1 }}>{item.step}</span>
       </div>
       <span className="text-[9px] uppercase tracking-[0.2em] font-bold mb-2.5 sm:mb-3 inline-block" style={{ background: 'rgba(181,162,106,0.1)', color: '#b5a26a', padding: '3px 8px', borderRadius: 2, alignSelf: 'flex-start' }}>{item.tag}</span>
@@ -698,8 +688,8 @@ export const Home = () => {
     document.body.setAttribute('data-nav-transparent', isNavTransparent ? 'true' : 'false');
   }, [isNavTransparent]);
 
-  const titleWords = ['Tailored', 'Gifting,'];
-  const subtitleWords = ['Designed', 'for', 'You.'];
+  const titleWords = hero.titleLine1.split(' ');
+  const subtitleWords = hero.titleLine2.split(' ');
 
   return (
     <div className="overflow-x-hidden">
@@ -758,14 +748,14 @@ export const Home = () => {
                 className="w-full md:w-auto bg-brand-dark-olive text-white px-7 sm:px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-brand-olive transition-all"
                 onClick={() => document.querySelector('#occasions')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Explore Occasions
+                {hero.button}
               </motion.button>
             </motion.div>
           </motion.div>
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 0.8 }} className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2">
-          <span className="text-white/50 text-[9px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+          <span className="text-white/50 text-[9px] uppercase tracking-[0.3em] font-bold">{hero.scrollLabel}</span>
           <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }} style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, rgba(181,162,106,0.8), transparent)' }} />
         </motion.div>
       </section>
@@ -784,7 +774,7 @@ export const Home = () => {
             <div>
               <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} style={{ originX: 0 }} className="w-14 sm:w-20 lg:w-24 h-1 bg-brand-olive mb-4 sm:mb-5 lg:mb-6" />
               <h2 className="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-serif leading-tight">
-                Gifting for Every Occasion
+                {occasions.title}
               </h2>
             </div>
             {/* <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-bold text-brand-olive/70 flex-shrink-0">
@@ -805,10 +795,10 @@ export const Home = () => {
           <div className="mb-8 sm:mb-12 lg:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
             <div>
               <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.6 }} className="text-xs uppercase font-bold tracking-[0.3em] text-brand-olive mb-4 sm:mb-5 flex items-center gap-3">
-                <span className="w-8 sm:w-10 h-px bg-brand-olive inline-block" />Our Process
+                <span className="w-8 sm:w-10 h-px bg-brand-olive inline-block" />{process.eyebrow}
               </motion.p>
               <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.4 }} transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08]">
-                Seamless<br /><span className="italic font-normal text-brand-olive">Corporate</span> Gifting
+                {process.title}<br /><span className="italic font-normal text-brand-olive">{process.titleHighlight}</span> {process.titleEnd}
               </motion.h2>
             </div>
           </div>
@@ -824,9 +814,9 @@ export const Home = () => {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.3 }} className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-8 sm:pt-10" style={{ borderTop: '1px solid rgba(181,162,106,0.2)' }}>
-            <p className="text-sm text-gray-500 max-w-xl leading-relaxed">Ready to start? Our team typically responds within 2 business hours.</p>
+            <p className="text-sm text-gray-500 max-w-xl leading-relaxed">{process.note}</p>
             <motion.button whileHover={{ x: 6, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 340, damping: 22 }} onClick={() => window.location.href = '/contact'} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-dark-olive text-white px-6 sm:px-7 py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest">
-              Start the Conversation <ArrowRight size={14} />
+              {process.button} <ArrowRight size={14} />
             </motion.button>
           </motion.div>
         </div>
@@ -836,16 +826,13 @@ export const Home = () => {
       <section className="bg-brand-beige py-10 sm:py-14 md:py-16 lg:py-20 px-4 sm:px-8 md:px-14 lg:px-16 xl:px-20 2xl:px-28 overflow-hidden">        <div className="max-w-[1700px] mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.6 }} className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-8 sm:mb-12 lg:mb-16">
             <div>
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif mb-2 sm:mb-4">Curated Experiences</h2>
-              <p className="text-gray-600 text-sm sm:text-base">Our signature collections designed for high-impact professional gifting.</p>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif mb-2 sm:mb-4">{curated.title}</h2>
+              <p className="text-gray-600 text-sm sm:text-base">{curated.intro}</p>
             </div>
-            <motion.div className="self-start sm:self-auto font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 hover:text-brand-olive transition-all cursor-pointer flex-shrink-0" whileHover={{ y: -1 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>View All Bundles</motion.div>
+            <motion.div className="self-start sm:self-auto font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 hover:text-brand-olive transition-all cursor-pointer flex-shrink-0" whileHover={{ y: -1 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>{curated.viewAllLabel}</motion.div>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 lg:gap-10">
-            {[
-              { title: 'Executive Gift Box', tier: 'Premium Tier', price: '₹4500', desc: 'Hand-pressed recycled paper journals, organic tea blends, and artisanal ceramics.', img: curated1, x: -60 },
-              { title: 'Onboarding Kits', tier: 'Essentials Tier', price: '₹2500', desc: 'Everything a new hire needs: Bamboo water bottles, cork coasters, and upcycled bags.', img: curated2, x: 60 },
-            ].map((bundle) => <BundleCard key={bundle.title} bundle={bundle} />)}
+            {curated.bundles.map((item, i) => ({ title: item.title, tier: item.tier, price: item.price, desc: item.text, img: asset(item.image), x: i % 2 === 0 ? -60 : 60 })).map((bundle) => <BundleCard key={bundle.title} bundle={bundle} />)}
           </div>
         </div>
       </section>
@@ -855,7 +842,7 @@ export const Home = () => {
         <div className="max-w-[1700px] mx-auto grid grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 sm:gap-14 lg:gap-20 items-center">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} className="relative">
             <div className="aspect-square rounded-full overflow-hidden border-[6px] sm:border-[8px] lg:border-[10px] border-white shadow-2xl max-w-[220px] sm:max-w-xs md:max-w-sm lg:max-w-md mx-auto lg:mx-0">
-              <motion.img src={impact} alt="Artisan weaving" style={{ y: springImpactY, scale: 1.03, willChange: 'transform' }} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <motion.img src={asset(impactSection.image)} alt={impactSection.imageAlt} style={{ y: springImpactY, scale: 1.03, willChange: 'transform' }} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             </div>
 
             <motion.div
@@ -873,25 +860,25 @@ export const Home = () => {
               style={{ willChange: 'transform' }}
             >
               <p className="italic font-serif text-base sm:text-lg text-brand-dark-olive mb-3 sm:mb-4">
-                "Through Ecotwist, our community's weaving tradition has found a global stage."
+                "{impactSection.quote}"
               </p>
               <div className="flex items-center gap-3 sm:gap-4">
                 <div className="w-6 sm:w-8 h-px bg-brand-olive flex-shrink-0" />
-                <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Saanvi, Mithila artist</p>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500">{impactSection.quoteAuthor}</p>
               </div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="lg:pl-8 xl:pl-10 pt-2 lg:pt-12">
-            <p className="text-xs uppercase tracking-[0.3em] font-bold text-brand-olive mb-4 sm:mb-6">Our Global Footprint</p>
+            <p className="text-xs uppercase tracking-[0.3em] font-bold text-brand-olive mb-4 sm:mb-6">{impactSection.eyebrow}</p>
             <h2 className="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-serif mb-5 sm:mb-8 leading-tight">
-              Beyond Gifting: A Cycle of Positive Impact
+              {impactSection.title}
             </h2>
             <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 leading-relaxed">
-              Every gift box you order directly supports circular economy initiatives and provides fair wages to master artisans across five continents.
+              {impactSection.text}
             </p>
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
-              {[{ value: '1,000+', label: 'Lives Impacted' }, { value: '12', label: 'SDGs Addressed' }].map((stat, i) => (
+              {impactSection.stats.map((stat, i) => (
                 <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false, amount: 0.3 }} transition={{ type: 'spring', stiffness: 180, damping: 14, delay: 0.2 + i * 0.15 }} whileHover={{ scale: 1.06 }}>
                   <h4 className="text-2xl sm:text-3xl font-bold font-serif text-brand-olive"><AnimatedCounter value={stat.value} /></h4>
                   <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mt-1.5 sm:mt-2">{stat.label}</p>
@@ -905,7 +892,7 @@ export const Home = () => {
       {/* IMPACT STATS BAR */}
       <section className="bg-brand-beige py-14 sm:py-14 px-8 sm:px-10 md:px-16 border-y border-gray-200">
         <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row justify-center sm:justify-between gap-6 sm:gap-8 text-center">
-          {[{ label: 'CO₂ Reduced (KG)', value: '1000+' }, { label: 'Sustainable Materials', value: '100%' }, { label: 'Artisan Families', value: '100+' }].map((stat, i) => (
+          {impactStats.stats.map((stat, i) => (
             <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false, amount: 0.3 }} transition={{ type: 'spring', stiffness: 200, damping: 12, delay: i * 0.12 }} whileHover={{ scale: 1.07, y: -3 }} className="flex-1 min-w-[120px] sm:min-w-[160px]" style={{ willChange: 'transform' }}>
               <h3 className="text-2xl sm:text-3xl font-bold font-serif text-brand-olive"><AnimatedCounter value={stat.value} /></h3>
               <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mt-1.5 sm:mt-2">{stat.label}</p>
@@ -924,10 +911,10 @@ export const Home = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[1.25rem] sm:text-5xl md:text-6xl lg:text-7xl mb-5 sm:mb-8 leading-tight"
           >
-            Ready to make an <br /><span className="italic font-normal">Impression?</span>
+            {cta.titleLine1} <br /><span className="italic font-normal">{cta.titleHighlight}</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.15 }} className="text-sm sm:text-xl text-gray-600 mb-7 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join over 50+ forward-thinking companies choosing sustainable corporate gifting.
+            {cta.text}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6, delay: 0.25 }} className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 sm:gap-8">
             <motion.button
@@ -938,7 +925,7 @@ export const Home = () => {
               style={{ willChange: 'transform' }}
               className="bg-brand-dark-olive text-white px-8 sm:px-12 lg:px-14 py-4 sm:py-5 lg:py-6 rounded-sm uppercase tracking-[0.2em] text-xs font-bold hover:bg-brand-olive transition-all shadow-2xl"
             >
-              Partner with Us
+              {cta.primaryButton}
             </motion.button>
             <motion.button
               whileHover={{ y: -3 }}
@@ -946,7 +933,7 @@ export const Home = () => {
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               className="text-brand-charcoal uppercase tracking-[0.2em] text-xs font-bold border-b-2 border-brand-charcoal/20 hover:border-brand-olive transition-all pb-1 self-center"
             >
-              Schedule a Consultation
+              {cta.secondaryButton}
             </motion.button>
           </motion.div>
         </div>

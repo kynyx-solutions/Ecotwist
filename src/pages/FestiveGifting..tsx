@@ -9,6 +9,14 @@ import {
 } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { hasSiteImage, siteImage } from '../lib/siteImages';
+import { clients } from '../lib/clients';
+import { testimonials } from '../lib/testimonials';
+import { asset } from '../lib/content';
+import content from '../content/pages/festive-gifting.json';
+
+// Page words and photos: src/content/pages/festive-gifting.json (admin → Pages → Festive Gifting)
+const { hero, about, categories, featured, customization, why, trust, cta } = content;
 
 /* ─────────────────────────────────────────────
    FESTIVE CANVAS HOOK
@@ -753,28 +761,11 @@ const vSlideRight:Variants={hidden:{opacity:0,x:40},show:{opacity:1,x:0,transiti
 /* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
-const CATEGORIES=[
-  {name:'Welcome Kits',desc:'Perfect for new arrivals and festive onboarding experiences.',tag:'Onboarding',accent:'#b5a26a',img:'https://bytheleaf.in/cdn/shop/files/5AA4CCC4-821C-4A12-8C11-98F3567BB161.png?v=1758727628'},
-  {name:'Premium Festive Hampers',desc:'A celebration of artisanal flavors and eco-luxury craftsmanship.',tag:'Seasonal',accent:'#c4735d',img:'https://radgifts.in/storage/01J8AWKRJ1CXVNZNT1FWD38WZ1.jpg'},
-  {name:'Custom Merchandise',desc:'Bespoke branding on sustainably sourced lifestyle products.',tag:'Branded',accent:'#5a8a6e',img:'https://www.wraparts.in/cdn/shop/files/WEBSITEPRODUCTLISTING_19_b35fc3cb-ca31-4344-84e1-bf5c17b7b46a.png?v=1764670529'},
-];
-const FEATURED=[
-  {name:'The Heritage Box',sub:'Traditional meets Sustainable',img:'https://m.media-amazon.com/images/I/71iqyqJH-sL.jpg'},
-  {name:'The Wellness Kit',sub:'Mindful Restoration',img:'https://oggnhome.com/cdn/shop/articles/Gemini_Generated_Image_719kn7719kn7719k.png?v=1771223802&width=533'},
-  {name:'Gourmet Collection',sub:'Culinary Excellence',img:'https://advaitliving.com/cdn/shop/products/9.jpg?v=1664035436'},
-  {name:'Executive Signature',sub:'Modern Sophistication',img:'https://www.boxupgifting.com/cdn/shop/products/Scrumptiousmunchbox1.jpg?v=1729161012&width=500'},
-];
-const WHY=[
-  {icon:'✦',title:'Premium Quality',desc:'Sustainably sourced, luxury finishes, and curated selections.'},
-  {icon:'◈',title:'Bulk Ordering',desc:'Seamless logistics for large-scale corporate requirements.'},
-  {icon:'◎',title:'Fast Delivery',desc:'Reliable worldwide shipping with real-time tracking.'},
-  {icon:'◐',title:'Dedicated Support',desc:'One-on-one concierge for your gifting strategy.'},
-];
-const CUSTOM_ITEMS=[
-  {icon:'🏆',title:'Logo Branding',desc:'Subtle, high-end laser engraving or eco-foil stamping for your brand identity.'},
-  {icon:'✉',title:'Personalized Messages',desc:'Hand-written notes on recycled seed-paper for a truly personal touch.'},
-  {icon:'🌿',title:'Eco-Packaging Styles',desc:'Modular, plastic-free packaging that doubles as stylish home storage.'},
-];
+// An uploaded photo wins; otherwise the photo set under "Photos to add"
+const CATEGORIES=categories.items.map(c=>({name:c.name,desc:c.text,tag:c.tag,accent:c.accent,img:c.image?asset(c.image):siteImage(c.photoId ?? '')}));
+const FEATURED=featured.items.map(f=>({name:f.name,sub:f.subtitle,img:f.image?asset(f.image):siteImage(f.photoId ?? '')}));
+const WHY=why.items.map(w=>({icon:w.symbol,title:w.title,desc:w.text}));
+const CUSTOM_ITEMS=customization.items.map(c=>({icon:c.symbol,title:c.title,desc:c.text}));
 
 /* ─────────────────────────────────────────────
    SUB-COMPONENTS
@@ -807,7 +798,7 @@ function CategoryCard({item,index}:{item:typeof CATEGORIES[0];index:number}){
             style={{fontFamily:'inherit'}}
             onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background='#14532d';(e.currentTarget as HTMLElement).style.color='white';}}
             onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background='white';(e.currentTarget as HTMLElement).style.color='#44403c';}}>
-            View Collection <ArrowRight size={13}/>
+            {categories.buttonText} <ArrowRight size={13}/>
           </button>
         </div>
         <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{boxShadow:'inset 0 0 0 1px rgba(0,0,0,0.06)'}}/>
@@ -887,17 +878,17 @@ export default function FestiveGifting(){
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2,duration:1}}
           className="absolute top-6 right-8 z-10 text-white/40 text-[10px] uppercase tracking-widest font-bold pointer-events-none flex items-center gap-2">
           <motion.span animate={{scale:[1,1.3,1]}} transition={{duration:2,repeat:Infinity}}>✦</motion.span>
-          Click anywhere to spark
+          {hero.clickHint}
         </motion.div>
 
         <motion.div style={{y:springTxt,opacity:heroOpacity,willChange:'transform'}}
           className="absolute bottom-20 left-8 md:left-20 z-10 max-w-2xl px-4">
           <motion.p initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{duration:0.6,delay:0.1}}
             className="text-[10px] uppercase tracking-[0.32em] font-bold text-white/60 mb-5 flex items-center gap-3">
-            <span className="w-10 h-px bg-brand-olive inline-block"/>Corporate Solutions
+            <span className="w-10 h-px bg-brand-olive inline-block"/>{hero.eyebrow}
           </motion.p>
           <h1 className="font-serif text-white" style={{fontSize:'clamp(3rem,7vw,6rem)',lineHeight:1.08}}>
-            {['Festive','Gifting'].map((word,i)=>(
+            {[hero.titleLine1,hero.titleLine2].map((word,i)=>(
               <motion.span key={word} initial={{rotateX:-90,opacity:0,y:40}} animate={{rotateX:0,opacity:1,y:0}}
                 transition={{duration:0.7,delay:0.25+i*0.15,ease:EASE}}
                 style={{display:'block',transformOrigin:'bottom center',transformStyle:'preserve-3d'}}>
@@ -907,33 +898,33 @@ export default function FestiveGifting(){
             <motion.span initial={{rotateX:-90,opacity:0,y:40}} animate={{rotateX:0,opacity:1,y:0}}
               transition={{duration:0.7,delay:0.55,ease:EASE}}
               style={{display:'block',transformOrigin:'bottom center',transformStyle:'preserve-3d',fontStyle:'italic',fontWeight:400}}>
-              Solutions.
+              {hero.titleHighlight}
             </motion.span>
           </h1>
           <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.65,delay:0.8}}
             className="text-white/80 mt-6 max-w-md text-lg font-light leading-relaxed">
-            Celebrate milestones with curated sustainable luxury. Designed for teams who value elegance and the environment.
+            {hero.intro}
           </motion.p>
           <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:0.55,delay:1.05}}
             className="flex gap-4 mt-10 flex-wrap">
             <motion.button whileHover={{scale:1.05,y:-2,boxShadow:'0 12px 32px rgba(20,83,45,0.4)'}}
               whileTap={{scale:0.96}} transition={{type:'spring',stiffness:300,damping:18}}
               className="bg-emerald-900 text-white px-9 py-4 rounded-full font-bold uppercase tracking-widest text-xs flex items-center gap-2">
-              Explore Gifts <ArrowRight size={13}/>
+              {hero.primaryButton} <ArrowRight size={13}/>
             </motion.button>
             <motion.button whileHover={{scale:1.04,y:-2}} whileTap={{scale:0.96}}
               transition={{type:'spring',stiffness:300,damping:18}}
               onClick={()=>window.location.href='/contact'}
               className="border border-white/40 text-white px-9 py-4 rounded-full font-bold uppercase tracking-widest text-xs backdrop-blur-sm"
               style={{background:'rgba(255,255,255,0.08)'}}>
-              Request Quote
+              {hero.secondaryButton}
             </motion.button>
           </motion.div>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:1.8,duration:0.8}}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-          <span className="text-white/40 text-[9px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+          <span className="text-white/40 text-[9px] uppercase tracking-[0.3em] font-bold">{hero.scrollLabel}</span>
           <motion.div animate={{y:[0,8,0]}} transition={{duration:1.5,repeat:Infinity,ease:'easeInOut'}}
             style={{width:1,height:28,background:'linear-gradient(to bottom,rgba(181,162,106,0.85),transparent)'}}/>
         </motion.div>
@@ -946,14 +937,14 @@ export default function FestiveGifting(){
             <motion.div variants={vFadeUp}>
               <motion.div initial={{scaleX:0}} animate={aboutInView?{scaleX:1}:{scaleX:0}}
                 transition={{duration:0.55,ease:EASE}} style={{originX:0}} className="w-20 h-1 bg-brand-olive mb-6"/>
-              <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-emerald-800 mb-4">The Art of Gratitude</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-emerald-800 mb-4">{about.eyebrow}</p>
             </motion.div>
-            <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-7">Honoring Seasons<br/>of Success</motion.h2>
+            <motion.h2 variants={vFadeUp} className="text-5xl font-serif leading-tight mb-7">{about.titleLine1}<br/>{about.titleLine2}</motion.h2>
             <motion.p variants={vFadeUp} className="text-gray-600 text-lg leading-relaxed mb-6">
-              Festive seasons are more than just dates on a calendar; they are opportunities to pause and acknowledge the collective effort that drives your organization forward.
+              {about.paragraph}
             </motion.p>
             <motion.blockquote variants={vFadeUp} className="font-serif text-lg text-gray-600 italic leading-relaxed border-l-2 border-emerald-700 pl-6 py-2">
-              "At Ecotwist, we transform corporate gratitude into a tangible experience of luxury that respects our planet."
+              "{about.quote}"
             </motion.blockquote>
           </motion.div>
           <motion.div initial={{opacity:0,scale:0.85}} animate={aboutInView?{opacity:1,scale:1}:{opacity:0,scale:0.85}}
@@ -964,8 +955,8 @@ export default function FestiveGifting(){
                 style={{inset:-16,background:'#dcfce7',transform:'rotate(-2deg)',zIndex:0}}
                 whileHover={{rotate:0} as any}/>
               <div className="overflow-hidden rounded-2xl relative z-10">
-                <img src="https://previews.123rf.com/images/espies/espies2011/espies201100222/158560385-indian-family-lighting-or-arranging-oil-lamp-or-diya-around-flower-rangoli-on-diwali-festival-night.jpg"
-                  alt="About" className="w-full shadow-2xl" style={{aspectRatio:'4/3',objectFit:'cover',borderRadius:16}}/>
+                <img src={about.image ? asset(about.image) : siteImage(about.photoId)}
+                  alt={about.imageAlt} className="w-full shadow-2xl" style={{aspectRatio:'4/3',objectFit:'cover',borderRadius:16}}/>
               </div>
             </motion.div>
           </motion.div>
@@ -977,7 +968,7 @@ export default function FestiveGifting(){
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{opacity:0,y:30}} animate={catInView?{opacity:1,y:0}:{opacity:0,y:30}}
             transition={{duration:0.6}} className="text-center mb-14">
-            <h2 className="text-5xl font-serif mb-5">Curated Collections</h2>
+            <h2 className="text-5xl font-serif mb-5">{categories.title}</h2>
             <motion.div initial={{scaleX:0}} animate={catInView?{scaleX:1}:{scaleX:0}}
               transition={{duration:0.55,delay:0.2,ease:EASE}}
               className="h-[2px] w-20 bg-emerald-700 mx-auto" style={{originX:0.5}}/>
@@ -995,10 +986,10 @@ export default function FestiveGifting(){
           <motion.div initial={{opacity:0,y:24}} animate={prodInView?{opacity:1,y:0}:{opacity:0,y:24}}
             transition={{duration:0.6}} className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-5xl font-serif mb-2">Featured Pieces</h2>
-              <p className="text-gray-500">Selected seasonal favorites from our design studio</p>
+              <h2 className="text-5xl font-serif mb-2">{featured.title}</h2>
+              <p className="text-gray-500">{featured.intro}</p>
             </div>
-            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">View All</motion.a>
+            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">{featured.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"
             style={{scrollSnapType:'x mandatory',msOverflowStyle:'none',scrollbarWidth:'none'}}>
@@ -1012,8 +1003,8 @@ export default function FestiveGifting(){
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{opacity:0,y:24}} animate={custInView?{opacity:1,y:0}:{opacity:0,y:24}}
             transition={{duration:0.6}} className="text-center mb-16">
-            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive/80 mb-4">Bespoke Details</p>
-            <h2 className="text-5xl font-serif text-white">Personalized for Your Brand</h2>
+            <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive/80 mb-4">{customization.eyebrow}</p>
+            <h2 className="text-5xl font-serif text-white">{customization.title}</h2>
           </motion.div>
           <motion.div variants={vStagger} initial="hidden" animate={custInView?'show':'hidden'}
             className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
@@ -1039,7 +1030,7 @@ export default function FestiveGifting(){
             <motion.div initial={{scaleX:0}} whileInView={{scaleX:1}}
               viewport={{once:false,amount:0.4}} transition={{duration:0.55,ease:EASE}}
               style={{originX:0}} className="w-20 h-1 bg-brand-olive mb-5"/>
-            <h2 className="text-5xl font-serif">Why Ecotwist</h2>
+            <h2 className="text-5xl font-serif">{why.title}</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {WHY.map((item,i)=><WhyCard key={item.title} item={item} index={i}/>)}
@@ -1047,61 +1038,65 @@ export default function FestiveGifting(){
         </div>
       </section>
 
-      {/* ══ TRUST ══ */}
+      {/* ══ TRUST: clients and a testimonial from the admin panel ══ */}
+      {clients.length > 0 && (
       <section ref={trustRef} className="py-32 px-8 md:px-20 lg:px-32 overflow-hidden" style={{background:'#f5f5f4'}}>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <motion.div variants={vSlideLeft} initial="hidden" animate={trustInView?'show':'hidden'}>
-            <h2 className="text-4xl font-serif mb-10">Trusted by Global Visionaries</h2>
+            <h2 className="text-4xl font-serif mb-10">{trust.title}</h2>
             <div className="flex flex-wrap gap-6 opacity-50">
-              {['LUXE','AVENUE','GREENER','SOLARIS','MINT','ETHEREAL','NEXUS','ORBIT'].map(b=>(
-                <span key={b} className="font-bold text-base text-gray-800 tracking-widest">{b}</span>
-              ))}
+              {clients.map(c => c.logo
+                ? <img key={c.name} src={c.logo} alt={c.name} style={{height:32,objectFit:'contain'}}/>
+                : <span key={c.name} className="font-bold text-base text-gray-800 tracking-widest">{c.name}</span>)}
             </div>
           </motion.div>
+          {testimonials[0] && (
           <motion.div variants={vSlideRight} initial="hidden" animate={trustInView?'show':'hidden'}
             whileHover={{y:-4,boxShadow:'0 24px 60px rgba(0,0,0,0.12)'}}
             className="bg-white p-8 rounded-2xl shadow-xl" style={{borderTop:'4px solid #166534',willChange:'transform'}}>
-            <div className="text-yellow-400 mb-4 text-xl">★★★★★</div>
+            <div className="text-yellow-400 mb-4 text-xl">{trust.ratingSymbol}</div>
             <p className="font-serif text-gray-600 italic leading-relaxed mb-6 text-[15px]">
-              "Ecotwist redefined our festive gifting. The feedback from our partners was overwhelming. The focus on sustainability really aligned with our corporate values."
+              "{testimonials[0].quote}"
             </p>
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg">👤</div>
+              <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg">{trust.avatarSymbol}</div>
               <div>
-                <p className="font-bold text-sm">Sarah Jenkins</p>
-                <p className="text-gray-400 text-xs">Chief Marketing Officer, Solaris Group</p>
+                <p className="font-bold text-sm">{testimonials[0].name}</p>
+                <p className="text-gray-400 text-xs">{[testimonials[0].role, testimonials[0].company].filter(Boolean).join(', ')}</p>
               </div>
             </div>
           </motion.div>
+          )}
         </div>
       </section>
+      )}
 
       {/* ══ CTA ══ */}
       <section ref={ctaRef} className="py-32 px-8 relative overflow-hidden text-center">
         <div className="absolute inset-0" style={{background:'#14532d'}}>
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTDu2C6JVU1kN_CJOxH-M9qtT3_4-hDQ9O-Jx8wwUGnvZU5171_SLbgHwqTurPqM9KGhTOOSiKkmF5LAnW3-KrmXPsF4cYUiXT6e1nYyY85ilBnATyHwW7hTWsdZJlb5kftQegQhQj5stokL-zc8Z3JuIXWSA4mheDO38BGTbSoVo5ZNXs7mhU0bK77VDCB6nCUhWlp6hA7Tgwtl-yZM-V1r8wYvlqVuepcWmJ5HzM9dKhv5a82Wwi_N0BTHjXauY-ZD0u0mOta-n_"
-            alt="" className="w-full h-full object-cover" style={{opacity:0.18,mixBlendMode:'overlay'}}/>
+          {(cta.backgroundImage || hasSiteImage(cta.photoId)) && <img src={cta.backgroundImage ? asset(cta.backgroundImage) : siteImage(cta.photoId)}
+            alt="" className="w-full h-full object-cover" style={{opacity:0.18,mixBlendMode:'overlay'}}/>}
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-white">
           <motion.h2 initial={{opacity:0,letterSpacing:'-0.05em',y:20}}
             animate={ctaInView?{opacity:1,letterSpacing:'-0.01em',y:0}:{opacity:0,letterSpacing:'-0.05em',y:20}}
             transition={{duration:0.85,ease:EASE}} className="font-serif text-5xl md:text-7xl mb-8 leading-tight">
-            Ready to create the<br/>perfect <span className="italic font-normal">Festive Gifting</span><br/>experience?
+            {cta.titleLine1}<br/>{cta.titleLine2} <span className="italic font-normal">{cta.titleHighlight}</span><br/>{cta.titleEnd}
           </motion.h2>
           <motion.p initial={{opacity:0,y:16}} animate={ctaInView?{opacity:1,y:0}:{opacity:0,y:16}}
             transition={{duration:0.6,delay:0.15}} className="text-emerald-100 text-xl mb-12 max-w-xl mx-auto leading-relaxed">
-            Let us help you curate a selection that reflects your brand's commitment to quality and the planet.
+            {cta.intro}
           </motion.p>
           <motion.div initial={{opacity:0,y:16}} animate={ctaInView?{opacity:1,y:0}:{opacity:0,y:16}}
             transition={{duration:0.6,delay:0.28}} className="flex flex-col sm:flex-row justify-center gap-6">
             <motion.button whileHover={{scale:1.06,y:-3,boxShadow:'0 18px 40px rgba(0,0,0,0.25)'}}
               whileTap={{scale:0.96}} transition={{type:'spring',stiffness:300,damping:18}}
               className="bg-white text-emerald-950 px-14 py-6 rounded-full font-bold text-lg shadow-xl">
-              Get Started
+              {cta.primaryButton}
             </motion.button>
             <motion.button whileHover={{y:-2}} transition={{type:'spring',stiffness:400,damping:20}}
               className="border-b-2 border-white/30 hover:border-white text-white text-sm font-bold uppercase tracking-[0.2em] pb-1 transition-colors">
-              Schedule a Consultation
+              {cta.secondaryButton}
             </motion.button>
           </motion.div>
         </div>

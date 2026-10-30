@@ -7,25 +7,10 @@ import {
 } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import hamper from "../assests/depawali/diwalihamper.png";
-import folio from "../assests/depawali/dewaliportfolio.png";
-import cxo from "../assests/depawali/cxogift.png";
-import delight from "../assests/depawali/delight.png";
-import celebration from "../assests/depawali/familyceleb.png";
-import hamper1 from "../assests/depawali/clienthamper.png";
-import wellnesshamper from "../assests/depawali/Wellnesshamper.png";
-import gourmethamper from "../assests/depawali/gourmethamper.png";
-import signature from "../assests/depawali/signhamper.png";
-import curated from "../assests/depawali/curated.png"
-import branding from "../assests/depawali/branding.png"
-import sustain from "../assests/depawali/sustainable.png"
-import dryfruits from "../assests/depawali/dryfruit.png"
-import liuxurybox from "../assests/depawali/luxurybox.png"
-import festworkspace from "../assests/depawali/festworkspace.png"
-import gifthing from "../assests/depawali/empgifting.png"
-import packaging from "../assests/depawali/prepackaging.png"
-import luxhamper from "../assests/depawali/luxuryhamper.png"
 import catalogue from "../assests/depawali/Ecotwist Diwali Catalogue-2026.pdf"
+import { testimonials } from "../lib/testimonials";
+import { asset } from "../lib/content";
+import content from "../content/pages/diwali-gifting.json";
 import {
   ArrowRight,
   Sparkles,
@@ -125,43 +110,33 @@ const COLORS = {
    Hero Statistics
 ============================ */
 
-const STATS = [
-  {
-    number: "500+",
-    label: "Corporate Clients",
-  },
-  {
-    number: "25K+",
-    label: "Gift Boxes Delivered",
-  },
-  {
-    number: "98%",
-    label: "Client Satisfaction",
-  },
-];
+// Page words and photos: src/content/pages/diwali-gifting.json (admin → Pages → Diwali Gifting)
+const {
+  hero,
+  stats: statsSection,
+  story,
+  collections,
+  signatureHamper,
+  inside,
+  personalisation,
+  sustainability,
+  ordering,
+  gallery,
+  testimonials: testimonialsSection,
+  faq,
+  cta,
+} = content;
+
+const STATS = statsSection.items;
 
 /* ============================
    Floating Badges
 ============================ */
 
-const BADGES = [
-  {
-    icon: "🌿",
-    title: "Eco Packaging",
-  },
-  {
-    icon: "🎁",
-    title: "Luxury Finish",
-  },
-  {
-    icon: "🚚",
-    title: "Pan India Delivery",
-  },
-  {
-    icon: "✨",
-    title: "Custom Branding",
-  },
-];
+const BADGES = hero.badges.map((badge) => ({
+  icon: badge.symbol,
+  title: badge.title,
+}));
 
 /* ============================
    Diwali Collections
@@ -198,50 +173,10 @@ const COLLECTIONS = [
    Main Page
 ============================ */
 
-const DIWALI_COLLECTIONS = [
-  {
-    title: "Executive Luxury",
-    subtitle: "For CXOs & Leadership",
-    image: cxo,
-    tag: "Premium",
-    color: "#C5A059",
-  },
-  {
-    title: "Employee Delight",
-    subtitle: "Celebrate Every Team Member",
-    image: delight,
-    tag: "Popular",
-    color: "#4A5D23",
-  },
-  {
-    title: "Client Appreciation",
-    subtitle: "Build Strong Relationships",
-    image: hamper1,
-    tag: "Corporate",
-    color: "#B98C3E",
-  },
-  {
-    title: "Wellness Collection",
-    subtitle: "Healthy & Sustainable",
-    image: wellnesshamper,
-    tag: "Eco",
-    color: "#4A5D23",
-  },
-  {
-    title: "Family Celebration",
-    subtitle: "Traditional Festive Joy",
-    image: celebration,
-    tag: "Festive",
-    color: "#C5A059",
-  },
-  {
-    title: "Premium Gourmet",
-    subtitle: "Artisan Treats & Delicacies",
-    image: gourmethamper,
-    tag: "Luxury",
-    color: "#8C6A35",
-  },
-];
+const DIWALI_COLLECTIONS = collections.items.map((item) => ({
+  ...item,
+  image: asset(item.image),
+}));
 
 export default function DiwaliGifting() {
 
@@ -590,7 +525,7 @@ export default function DiwaliGifting() {
 
                 <span className="text-[10px] sm:text-xs tracking-[0.28em] uppercase font-semibold text-brand-olive">
 
-                  Festive Collection 2026
+                  {hero.eyebrow}
 
                 </span>
 
@@ -606,17 +541,17 @@ export default function DiwaliGifting() {
                 }}
               >
 
-                Celebrate
+                {hero.titleLine1}
 
                 <br />
 
-                Diwali
+                {hero.titleLine2}
 
                 <br />
 
                 <span className="italic text-brand-gold">
 
-                  Sustainably.
+                  {hero.titleHighlight}
 
                 </span>
 
@@ -629,10 +564,7 @@ export default function DiwaliGifting() {
                 className="mt-2 sm:mt-4 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600 max-w-xl"
               >
 
-                Celebrate the Festival of Lights with thoughtfully curated
-                corporate gifting experiences crafted using premium
-                sustainable materials, luxury packaging and timeless
-                craftsmanship that strengthens every relationship.
+                {hero.intro}
 
               </motion.p>
 
@@ -654,7 +586,7 @@ export default function DiwaliGifting() {
                   onClick={() => navigate("/products")}
                   className="group w-full xs:w-auto px-8 py-4 rounded-full bg-brand-olive text-white flex items-center justify-center gap-3 font-medium shadow-xl cursor-pointer"
                 >
-                  Explore Collection
+                  {hero.primaryButton}
 
                   <ArrowRight
                     size={18}
@@ -673,7 +605,7 @@ export default function DiwaliGifting() {
                   onClick={() => window.open(catalogue, "_blank")}
                   className="w-full xs:w-auto px-8 py-4 rounded-full border border-brand-olive text-brand-olive font-medium backdrop-blur-sm text-center cursor-pointer"
                 >
-                  Request Catalogue
+                  {hero.secondaryButton}
                 </motion.button>
 
               </motion.div>
@@ -694,7 +626,7 @@ export default function DiwaliGifting() {
 
                   <span className="text-sm text-gray-600">
 
-                    Sustainable Materials
+                    {hero.feature1}
 
                   </span>
 
@@ -709,7 +641,7 @@ export default function DiwaliGifting() {
 
                   <span className="text-sm text-gray-600">
 
-                    Luxury Packaging
+                    {hero.feature2}
 
                   </span>
 
@@ -724,7 +656,7 @@ export default function DiwaliGifting() {
 
                   <span className="text-sm text-gray-600">
 
-                    Corporate Bulk Orders
+                    {hero.feature3}
 
                   </span>
 
@@ -786,8 +718,8 @@ export default function DiwaliGifting() {
                 <div className="bg-white rounded-[24px] sm:rounded-[32px] shadow-2xl overflow-hidden p-3 sm:p-5 border border-gray-200">
 
                   <img
-                    src={hamper}
-                    alt="Luxury Diwali Hamper"
+                    src={asset(hero.image)}
+                    alt={hero.imageAlt}
                     className="w-[120px] sm:w-[220px] lg:w-[260px] object-cover rounded-2xl"
                   />
 
@@ -816,13 +748,13 @@ export default function DiwaliGifting() {
 
                   <p className="text-[10px] sm:text-xs uppercase tracking-widest text-brand-gold mb-1 sm:mb-2">
 
-                    Premium
+                    {hero.cardOneLabel}
 
                   </p>
 
                   <h4 className="font-serif text-base sm:text-xl">
 
-                    Eco Luxury
+                    {hero.cardOneTitle}
 
                   </h4>
 
@@ -851,13 +783,13 @@ export default function DiwaliGifting() {
 
                   <p className="text-[10px] sm:text-xs uppercase tracking-widest text-brand-gold mb-1 sm:mb-2">
 
-                    Handmade
+                    {hero.cardTwoLabel}
 
                   </p>
 
                   <h4 className="font-serif text-base sm:text-xl">
 
-                    Sustainable
+                    {hero.cardTwoTitle}
 
                   </h4>
 
@@ -1143,21 +1075,21 @@ export default function DiwaliGifting() {
 
               <span className="uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[10px] sm:text-xs font-semibold text-brand-gold">
 
-                Festival of Light
+                {story.eyebrow}
 
               </span>
 
               <h2 className="font-serif text-brand-charcoal mt-4 sm:mt-6 leading-tight text-3xl sm:text-4xl lg:text-6xl">
 
-                Gifts that
+                {story.titleLine1}
 
                 <br />
 
-                illuminate
+                {story.titleLine2}
 
                 <span className="italic text-brand-gold">
 
-                  relationships.
+                  {story.titleHighlight}
 
                 </span>
 
@@ -1165,19 +1097,13 @@ export default function DiwaliGifting() {
 
               <p className="mt-6 sm:mt-8 text-base sm:text-lg leading-7 sm:leading-9 text-gray-600">
 
-                Diwali is more than a celebration—it is a moment to express gratitude,
-                strengthen partnerships and create memorable experiences.
-                Every Ecotwist gift box is thoughtfully designed using sustainable
-                materials, handcrafted products and timeless aesthetics to help your
-                brand leave a meaningful impression.
+                {story.paragraph1}
 
               </p>
 
               <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-9 text-gray-600">
 
-                Whether you're celebrating your employees, clients, channel partners
-                or distributors, our premium gifting collections combine elegance,
-                craftsmanship and environmental responsibility.
+                {story.paragraph2}
 
               </p>
 
@@ -1187,9 +1113,7 @@ export default function DiwaliGifting() {
 
                 <p className="italic font-serif text-lg sm:text-xl lg:text-2xl text-brand-charcoal leading-relaxed">
 
-                  "The finest gifts aren't remembered for their price,
-
-                  but for the emotions they create."
+                  "{story.quote}"
 
                 </p>
 
@@ -1225,9 +1149,9 @@ export default function DiwaliGifting() {
 
                   transition={{ duration: .8 }}
 
-                  src={folio}
+                  src={asset(story.image)}
 
-                  alt="Diwali"
+                  alt={story.imageAlt}
 
                   className="w-full h-[320px] sm:h-[450px] lg:h-[650px] object-cover"
 
@@ -1261,19 +1185,19 @@ export default function DiwaliGifting() {
 
                   <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-brand-gold">
 
-                    Since
+                    {story.badgeLabel}
 
                   </span>
 
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl mt-2 sm:mt-3">
 
-                    100%
+                    {story.badgeValue}
 
                   </h3>
 
                   <p className="mt-1.5 sm:mt-2 text-sm sm:text-base text-gray-600">
 
-                    Sustainable packaging with handcrafted luxury finishes.
+                    {story.badgeText}
 
                   </p>
 
@@ -1289,41 +1213,7 @@ export default function DiwaliGifting() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-8 gap-y-10 mt-20 sm:mt-24 lg:mt-28">
 
-            {[
-
-              {
-
-                value: "500+",
-
-                title: "Corporate Clients",
-
-              },
-
-              {
-
-                value: "25000+",
-
-                title: "Gift Boxes",
-
-              },
-
-              {
-
-                value: "98%",
-
-                title: "Happy Customers",
-
-              },
-
-              {
-
-                value: "100%",
-
-                title: "Eco Packaging",
-
-              },
-
-            ].map((item, index) => (
+            {story.stats.map((item, index) => (
 
               <motion.div
 
@@ -1398,17 +1288,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs text-brand-gold font-semibold">
 
-              Curated Collections
+              {collections.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Discover Our
+              {collections.title}
 
               <span className="italic text-brand-gold">
 
-                Diwali Hampers
+                {collections.titleHighlight}
 
               </span>
 
@@ -1416,8 +1306,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 text-gray-600 max-w-2xl mx-auto text-lg leading-8">
 
-              Every hamper is handcrafted with premium products, elegant
-              presentation and sustainable materials, making every gift a memorable experience.
+              {collections.intro}
 
             </p>
 
@@ -1516,7 +1405,7 @@ export default function DiwaliGifting() {
 
                     >
 
-                      Explore Collection
+                      {collections.buttonText}
 
                       <ArrowRight size={18} />
 
@@ -1591,9 +1480,9 @@ export default function DiwaliGifting() {
 
                 <img
 
-                  src={signature}
+                  src={asset(signatureHamper.image)}
 
-                  alt="Signature Hamper"
+                  alt={signatureHamper.imageAlt}
 
                   className="w-full h-[650px] object-cover"
 
@@ -1622,13 +1511,13 @@ export default function DiwaliGifting() {
 
                   <p className="uppercase tracking-[0.25em] text-xs text-brand-gold">
 
-                    Bestseller
+                    {signatureHamper.badgeLabel}
 
                   </p>
 
                   <h3 className="font-serif text-2xl mt-2">
 
-                    Luxury Box
+                    {signatureHamper.badgeTitle}
 
                   </h3>
 
@@ -1654,32 +1543,29 @@ export default function DiwaliGifting() {
 
               <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-                Featured Collection
+                {signatureHamper.eyebrow}
 
               </span>
 
               <h2 className="font-serif text-5xl lg:text-6xl mt-6 leading-tight">
 
-                The
+                {signatureHamper.titleStart}
 
                 <span className="italic text-brand-gold">
 
-                  Signature
+                  {signatureHamper.titleHighlight}
 
                 </span>
 
                 <br />
 
-                Diwali Hamper
+                {signatureHamper.titleLine2}
 
               </h2>
 
               <p className="mt-8 text-lg leading-9 text-gray-600">
 
-                A carefully curated gifting experience crafted for leaders,
-                clients and valued partners. Featuring artisan products,
-                premium dry fruits, eco-friendly décor and elegant packaging,
-                every hamper tells a story of appreciation.
+                {signatureHamper.intro}
 
               </p>
 
@@ -1687,16 +1573,7 @@ export default function DiwaliGifting() {
 
               <div className="grid sm:grid-cols-2 gap-6 mt-12">
 
-                {[
-                  "Premium Dry Fruits",
-                  "Luxury Tea Selection",
-                  "Handcrafted Soy Candle",
-                  "Brass Diya",
-                  "Personalised Greeting Card",
-                  "Eco Friendly Packaging",
-                  "Reusable Gift Box",
-                  "Corporate Branding",
-                ].map((item, index) => (
+                {signatureHamper.features.map((item, index) => (
 
                   <motion.div
 
@@ -1750,7 +1627,7 @@ export default function DiwaliGifting() {
 
                 >
 
-                  Request Catalogue
+                  {signatureHamper.primaryButton}
 
                   <ArrowRight size={18} />
 
@@ -1768,7 +1645,7 @@ export default function DiwaliGifting() {
 
                 >
 
-                  View Details
+                  {signatureHamper.secondaryButton}
 
                 </motion.button>
 
@@ -1782,20 +1659,7 @@ export default function DiwaliGifting() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-28">
 
-            {[
-              {
-                title: "Handcrafted",
-                desc: "Every hamper is assembled with meticulous attention to detail.",
-              },
-              {
-                title: "Eco Conscious",
-                desc: "Plastic-free packaging using premium sustainable materials.",
-              },
-              {
-                title: "Fully Customisable",
-                desc: "Add branding, personalised cards and bespoke gift sleeves.",
-              },
-            ].map((item, index) => (
+            {signatureHamper.highlights.map((item, index) => (
 
               <motion.div
 
@@ -1867,17 +1731,17 @@ export default function DiwaliGifting() {
           >
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              Curated Experience
+              {inside.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              What's Inside
+              {inside.title}
 
               <span className="italic text-brand-gold">
 
-                Every Hamper
+                {inside.titleHighlight}
 
               </span>
 
@@ -1885,9 +1749,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 text-lg text-gray-600 max-w-3xl mx-auto leading-8">
 
-              Every hamper is thoughtfully curated with premium festive essentials,
-              gourmet delights and handcrafted keepsakes that create memorable gifting
-              experiences.
+              {inside.intro}
 
             </p>
 
@@ -1899,24 +1761,7 @@ export default function DiwaliGifting() {
 
             <div className="space-y-6">
 
-              {[
-                {
-                  title: "Premium Dry Fruits",
-                  desc: "Almonds, Cashews & Pistachios",
-                },
-                {
-                  title: "Artisan Tea",
-                  desc: "Premium loose leaf blends",
-                },
-                {
-                  title: "Luxury Chocolates",
-                  desc: "Handcrafted festive treats",
-                },
-                {
-                  title: "Organic Honey",
-                  desc: "Natural & sustainably sourced",
-                },
-              ].map((item, index) => (
+              {inside.leftItems.map((item, index) => (
 
                 <motion.div
                   key={item.title}
@@ -1977,9 +1822,9 @@ export default function DiwaliGifting() {
                   repeat: Infinity,
                 }}
 
-                src={curated}
+                src={asset(inside.image)}
 
-                alt="Hamper"
+                alt={inside.imageAlt}
 
                 className="relative z-10 w-full max-w-md rounded-3xl"
 
@@ -1991,24 +1836,7 @@ export default function DiwaliGifting() {
 
             <div className="space-y-6">
 
-              {[
-                {
-                  title: "Brass Diya",
-                  desc: "Traditional festive décor",
-                },
-                {
-                  title: "Soy Wax Candle",
-                  desc: "Hand-poured aromatic candle",
-                },
-                {
-                  title: "Personalised Card",
-                  desc: "Printed with your message",
-                },
-                {
-                  title: "Eco Gift Box",
-                  desc: "Reusable premium packaging",
-                },
-              ].map((item, index) => (
+              {inside.rightItems.map((item, index) => (
 
                 <motion.div
                   key={item.title}
@@ -2056,12 +1884,7 @@ export default function DiwaliGifting() {
 
             <div className="grid md:grid-cols-4 gap-8 text-center">
 
-              {[
-                "Premium Quality",
-                "Eco Friendly",
-                "Handcrafted",
-                "Corporate Branding",
-              ].map((item) => (
+              {inside.highlights.map((item) => (
 
                 <div key={item}>
 
@@ -2116,17 +1939,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              Personalisation
+              {personalisation.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Make Every Gift
+              {personalisation.title}
 
               <span className="italic text-brand-gold">
 
-                Uniquely Yours
+                {personalisation.titleHighlight}
 
               </span>
 
@@ -2134,9 +1957,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 max-w-3xl mx-auto text-lg leading-8 text-gray-600">
 
-              Every hamper can be customised to reflect your company's
-              identity through premium branding, elegant packaging,
-              personalised messaging and memorable unboxing experiences.
+              {personalisation.intro}
 
             </p>
 
@@ -2170,9 +1991,9 @@ export default function DiwaliGifting() {
                   duration: .7,
                 }}
 
-                src={branding}
+                src={asset(personalisation.image)}
 
-                alt="Corporate Branding"
+                alt={personalisation.imageAlt}
 
                 className="relative rounded-[40px] shadow-2xl w-full h-[650px] object-cover"
 
@@ -2199,13 +2020,13 @@ export default function DiwaliGifting() {
 
                   <p className="uppercase tracking-[0.25em] text-xs text-brand-gold">
 
-                    Premium Finish
+                    {personalisation.badgeLabel}
 
                   </p>
 
                   <h3 className="font-serif text-2xl mt-2">
 
-                    Custom Branding
+                    {personalisation.badgeTitle}
 
                   </h3>
 
@@ -2229,32 +2050,7 @@ export default function DiwaliGifting() {
 
               <div className="grid gap-6">
 
-                {[
-                  {
-                    title: "Logo Embossing",
-                    desc: "Elegant foil stamping and premium logo printing."
-                  },
-                  {
-                    title: "Personalised Greeting Cards",
-                    desc: "Include festive wishes from your organisation."
-                  },
-                  {
-                    title: "Custom Gift Sleeves",
-                    desc: "Luxury branded sleeves with festive artwork."
-                  },
-                  {
-                    title: "QR Video Messages",
-                    desc: "Attach a personalised CEO or team message."
-                  },
-                  {
-                    title: "Eco Gift Tags",
-                    desc: "Beautiful seed-paper tags with your branding."
-                  },
-                  {
-                    title: "Luxury Packaging",
-                    desc: "Reusable premium boxes with magnetic closures."
-                  }
-                ].map((item, index) => (
+                {personalisation.options.map((item, index) => (
 
                   <motion.div
 
@@ -2334,20 +2130,19 @@ export default function DiwaliGifting() {
 
                 <span className="uppercase tracking-[0.3em] text-xs text-brand-gold">
 
-                  Corporate Orders
+                  {personalisation.ctaEyebrow}
 
                 </span>
 
                 <h3 className="font-serif text-4xl mt-4">
 
-                  Design a Gift Experience
+                  {personalisation.ctaTitle}
 
                 </h3>
 
                 <p className="mt-4 max-w-2xl text-white/80 leading-8">
 
-                  Collaborate with our gifting experts to create a completely
-                  customised Diwali hamper tailored to your brand and audience.
+                  {personalisation.ctaText}
 
                 </p>
 
@@ -2368,7 +2163,7 @@ export default function DiwaliGifting() {
 
               >
 
-                Start Customising
+                {personalisation.ctaButton}
 
                 <ArrowRight size={18} />
 
@@ -2409,17 +2204,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              Sustainability Promise
+              {sustainability.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Luxury Meets
+              {sustainability.title}
 
               <span className="italic text-brand-gold">
 
-                Responsibility
+                {sustainability.titleHighlight}
 
               </span>
 
@@ -2427,9 +2222,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 max-w-3xl mx-auto text-lg leading-8 text-gray-600">
 
-              Every Ecotwist Diwali hamper is designed to celebrate the festival
-              while reducing environmental impact through conscious materials,
-              ethical sourcing and reusable packaging.
+              {sustainability.intro}
 
             </p>
 
@@ -2453,9 +2246,9 @@ export default function DiwaliGifting() {
 
               <img
 
-                src={sustain}
+                src={asset(sustainability.image)}
 
-                alt="Sustainability"
+                alt={sustainability.imageAlt}
 
                 className="rounded-[40px] shadow-2xl h-[650px] object-cover w-full"
 
@@ -2477,28 +2270,11 @@ export default function DiwaliGifting() {
 
             >
 
-              {[
-                {
-                  title: "Plastic-Free Packaging",
-                  desc: "Beautiful recyclable packaging crafted with premium paper and reusable materials.",
-                  icon: "🌿",
-                },
-                {
-                  title: "Handcrafted by Artisans",
-                  desc: "Supporting local communities and preserving traditional craftsmanship.",
-                  icon: "🤝",
-                },
-                {
-                  title: "Responsibly Sourced",
-                  desc: "Curated products sourced from trusted sustainable partners.",
-                  icon: "🌱",
-                },
-                {
-                  title: "Reusable Gift Boxes",
-                  desc: "Designed to be repurposed long after the celebration ends.",
-                  icon: "♻️",
-                },
-              ].map((item, index) => (
+              {sustainability.points.map((point) => ({
+                title: point.title,
+                desc: point.desc,
+                icon: point.symbol,
+              })).map((item, index) => (
 
                 <motion.div
 
@@ -2560,24 +2336,7 @@ export default function DiwaliGifting() {
 
           <div className="grid md:grid-cols-4 gap-8 mt-28">
 
-            {[
-              {
-                value: "100%",
-                title: "Plastic-Free",
-              },
-              {
-                value: "5000+",
-                title: "Eco Gift Boxes",
-              },
-              {
-                value: "200+",
-                title: "Artisans Supported",
-              },
-              {
-                value: "98%",
-                title: "Reusable Packaging",
-              },
-            ].map((item, index) => (
+            {sustainability.stats.map((item, index) => (
 
               <motion.div
 
@@ -2635,19 +2394,13 @@ export default function DiwaliGifting() {
 
             >
 
-              Our Sustainable Journey
+              {sustainability.journeyTitle}
 
             </motion.h3>
 
             <div className="grid md:grid-cols-5 gap-8">
 
-              {[
-                "Responsible Sourcing",
-                "Artisan Craftsmanship",
-                "Eco Packaging",
-                "Quality Inspection",
-                "Carbon Conscious Delivery",
-              ].map((step, index) => (
+              {sustainability.journey.map((step, index) => (
 
                 <motion.div
 
@@ -2718,17 +2471,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              How It Works
+              {ordering.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Your Corporate
+              {ordering.title}
 
               <span className="italic text-brand-gold">
 
-                Gifting Journey
+                {ordering.titleHighlight}
 
               </span>
 
@@ -2736,9 +2489,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 text-lg text-gray-600 max-w-3xl mx-auto leading-8">
 
-              From your first enquiry to the final doorstep delivery,
-              we manage every detail to ensure a seamless and memorable
-              gifting experience.
+              {ordering.intro}
 
             </p>
 
@@ -2752,33 +2503,11 @@ export default function DiwaliGifting() {
 
             <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-brand-gold/30" />
 
-            {[
-              {
-                title: "Share Your Requirement",
-                desc: "Tell us your gifting goals, budget, quantity and preferred delivery timeline.",
-                icon: "💬",
-              },
-              {
-                title: "Curate Your Hamper",
-                desc: "Select from our festive collections or build a fully customised gift experience.",
-                icon: "🎁",
-              },
-              {
-                title: "Brand Customisation",
-                desc: "Add your logo, greeting cards, gift sleeves and premium packaging.",
-                icon: "✨",
-              },
-              {
-                title: "Production & Quality Check",
-                desc: "Every hamper is handcrafted, assembled and inspected before dispatch.",
-                icon: "🛠️",
-              },
-              {
-                title: "Delivery Across India",
-                desc: "Safe and timely delivery to offices, homes or multiple locations nationwide.",
-                icon: "🚚",
-              },
-            ].map((step, index) => (
+            {ordering.steps.map((item) => ({
+              title: item.title,
+              desc: item.desc,
+              icon: item.symbol,
+            })).map((step, index) => (
 
               <motion.div
                 key={step.title}
@@ -2812,7 +2541,7 @@ export default function DiwaliGifting() {
 
                       <span className="uppercase tracking-[0.25em] text-xs text-brand-gold">
 
-                        Step {index + 1}
+                        {ordering.stepLabel} {index + 1}
 
                       </span>
 
@@ -2863,21 +2592,19 @@ export default function DiwaliGifting() {
 
                 <span className="uppercase tracking-[0.3em] text-xs text-brand-gold">
 
-                  Need Assistance?
+                  {ordering.ctaEyebrow}
 
                 </span>
 
                 <h3 className="font-serif text-4xl mt-4">
 
-                  Let's Create Something Special
+                  {ordering.ctaTitle}
 
                 </h3>
 
                 <p className="mt-4 text-white/80 leading-8 max-w-2xl">
 
-                  Whether you need 50 hampers or 5,000, our gifting consultants
-                  will help you curate the perfect festive experience for your
-                  employees, clients and partners.
+                  {ordering.ctaText}
 
                 </p>
 
@@ -2894,7 +2621,7 @@ export default function DiwaliGifting() {
                 className="bg-brand-gold text-brand-charcoal px-8 py-4 rounded-full font-semibold flex items-center gap-3"
               >
 
-                Talk to a Gifting Expert
+                {ordering.ctaButton}
 
                 <ArrowRight size={18} />
 
@@ -2935,17 +2662,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              Gallery
+              {gallery.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Moments of
+              {gallery.title}
 
               <span className="italic text-brand-gold">
 
-                Celebration
+                {gallery.titleHighlight}
 
               </span>
 
@@ -2953,8 +2680,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 max-w-3xl mx-auto text-lg leading-8 text-gray-600">
 
-              Every hamper tells a story. Explore our premium festive gifting
-              experiences, handcrafted details and elegant corporate celebrations.
+              {gallery.intro}
 
             </p>
 
@@ -2964,44 +2690,12 @@ export default function DiwaliGifting() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            {[
-              {
-                image: liuxurybox,
-                title: "Executive Luxury Box",
-                category: "Corporate Collection",
-                height: "h-[520px]",
-              },
-              {
-                image: festworkspace,
-                title: "Festive Workspace",
-                category: "Corporate Celebration",
-                height: "h-[520px]",
-              },
-              {
-                image: packaging,
-                title: "Premium Packaging",
-                category: "Luxury Finish",
-                height: "h-[520px]",
-              },
-              {
-                image: dryfruits,
-                title: "Dry Fruit Collection",
-                category: "Premium Selection",
-                height: "h-[520px]",
-              },
-              {
-                image: gifthing,
-                title: "Employee Gifting",
-                category: "Festive Moments",
-                height: "h-[520px]",
-              },
-              {
-                image: luxhamper,
-                title: "Luxury Hamper",
-                category: "Signature Collection",
-                height: "h-[520px]",
-              },
-            ].map((item, index) => (
+            {gallery.items.map((item) => ({
+              image: asset(item.image),
+              title: item.title,
+              category: item.category,
+              height: "h-[520px]",
+            })).map((item, index) => (
 
               <motion.div
 
@@ -3089,22 +2783,19 @@ export default function DiwaliGifting() {
 
               <span className="uppercase tracking-[0.35em] text-xs text-brand-gold">
 
-                Every Detail Matters
+                {gallery.highlightEyebrow}
 
               </span>
 
               <h3 className="font-serif text-5xl mt-6">
 
-                Crafted to Leave a Lasting Impression
+                {gallery.highlightTitle}
 
               </h3>
 
               <p className="mt-8 max-w-3xl mx-auto leading-8 text-white/80">
 
-                From luxury packaging and personalised branding to premium
-                handcrafted products, every Ecotwist hamper is designed to
-                celebrate relationships and create unforgettable festive
-                experiences.
+                {gallery.highlightText}
 
               </p>
 
@@ -3123,7 +2814,7 @@ export default function DiwaliGifting() {
 
               >
 
-                Explore All Collections
+                {gallery.highlightButton}
 
                 <ArrowRight size={18} />
 
@@ -3137,7 +2828,8 @@ export default function DiwaliGifting() {
 
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS: added from the admin panel; hidden until there is one */}
+      {testimonials.length > 0 && (<>
       <SeriesLights variant="multi" />
       <section className="relative py-36 bg-brand-off-white overflow-hidden">
 
@@ -3154,17 +2846,17 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs font-semibold text-brand-gold">
 
-              Testimonials
+              {testimonialsSection.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl lg:text-6xl mt-6">
 
-              Trusted by
+              {testimonialsSection.title}
 
               <span className="italic text-brand-gold">
 
-                Leading Brands
+                {testimonialsSection.titleHighlight}
 
               </span>
 
@@ -3172,8 +2864,7 @@ export default function DiwaliGifting() {
 
             <p className="mt-8 text-lg text-gray-600 max-w-3xl mx-auto">
 
-              Every Diwali season, organizations across India trust Ecotwist
-              to create unforgettable gifting experiences.
+              {testimonialsSection.intro}
 
             </p>
 
@@ -3181,23 +2872,11 @@ export default function DiwaliGifting() {
 
           <div className="grid lg:grid-cols-3 gap-8">
 
-            {[
-              {
-                name: "Ananya Sharma",
-                company: "HR Head • TechNova",
-                review: "Our employees absolutely loved the Diwali hampers. The presentation, sustainability and premium quality exceeded expectations."
-              },
-              {
-                name: "Rahul Mehta",
-                company: "Procurement Lead • FinEdge",
-                review: "Ecotwist handled over 2,000 customised hampers flawlessly. The branding and delivery were exceptional."
-              },
-              {
-                name: "Priya Kapoor",
-                company: "Marketing Director • Zenith",
-                review: "Elegant packaging, thoughtful curation and sustainable products made our festive campaign memorable."
-              }
-            ].map((item, index) => (
+            {testimonials.map(t => ({
+              name: t.name,
+              company: [t.role, t.company].filter(Boolean).join(" • "),
+              review: t.quote,
+            })).map((item, index) => (
 
               <motion.div
 
@@ -3219,7 +2898,7 @@ export default function DiwaliGifting() {
 
                 <div className="text-brand-gold text-2xl mb-6">
 
-                  ⭐⭐⭐⭐⭐
+                  {testimonialsSection.stars}
 
                 </div>
 
@@ -3254,6 +2933,7 @@ export default function DiwaliGifting() {
         </div>
 
       </section>
+      </>)}
 
       {/* FAQ */}
       <SeriesLights variant="warm" />
@@ -3275,13 +2955,13 @@ export default function DiwaliGifting() {
 
             <span className="uppercase tracking-[0.35em] text-xs text-brand-gold">
 
-              FAQ
+              {faq.eyebrow}
 
             </span>
 
             <h2 className="font-serif text-5xl mt-6">
 
-              Frequently Asked Questions
+              {faq.title}
 
             </h2>
 
@@ -3289,24 +2969,10 @@ export default function DiwaliGifting() {
 
           <div className="space-y-6">
 
-            {[
-              {
-                q: "What is the minimum order quantity?",
-                a: "We typically cater to corporate orders starting from 25 hampers, with flexible options based on your requirements."
-              },
-              {
-                q: "Can we customise the packaging?",
-                a: "Yes. We offer logo printing, personalised greeting cards, branded sleeves and fully customised gift boxes."
-              },
-              {
-                q: "Do you deliver across India?",
-                a: "Yes. We provide safe and timely delivery to offices, homes and multiple locations nationwide."
-              },
-              {
-                q: "Can we request product samples?",
-                a: "Absolutely. Sample hampers are available before placing large corporate orders."
-              }
-            ].map((item, index) => (
+            {faq.items.map((item) => ({
+              q: item.question,
+              a: item.answer,
+            })).map((item, index) => (
 
               <motion.details
 
@@ -3386,17 +3052,17 @@ export default function DiwaliGifting() {
 
           <span className="uppercase tracking-[0.4em] text-xs text-brand-gold">
 
-            Celebrate Diwali 2026
+            {cta.eyebrow}
 
           </span>
 
           <h2 className="font-serif text-6xl leading-tight mt-8">
 
-            Create a Gift
+            {cta.title}
 
             <span className="italic text-brand-gold">
 
-              They'll Never Forget
+              {cta.titleHighlight}
 
             </span>
 
@@ -3404,9 +3070,7 @@ export default function DiwaliGifting() {
 
           <p className="mt-10 text-xl text-white/80 leading-9 max-w-3xl mx-auto">
 
-            Partner with Ecotwist to craft premium sustainable Diwali hampers
-            that celebrate your employees, clients and partners with elegance,
-            responsibility and unforgettable experiences.
+            {cta.intro}
 
           </p>
 
@@ -3428,7 +3092,7 @@ export default function DiwaliGifting() {
               }
               className="bg-brand-gold text-brand-charcoal px-10 py-5 rounded-full font-semibold flex items-center gap-3"
             >
-              Request Catalogue
+              {cta.primaryButton}
 
               <ArrowRight size={20} />
             </motion.button>
@@ -3439,7 +3103,7 @@ export default function DiwaliGifting() {
               onClick={() => navigate("/contact")}
               className="border border-white px-10 py-5 rounded-full"
             >
-              Talk to Our Team
+              {cta.secondaryButton}
             </motion.button>
 
           </div>

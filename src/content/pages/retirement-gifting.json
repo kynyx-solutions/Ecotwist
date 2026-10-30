@@ -1,0 +1,81 @@
+{
+  "_meta": { "label": "Retirement Gifting", "route": "/occasions/retirement-gifting" },
+  "hero": {
+    "backgroundImage": "",
+    "photoId": "retirement-hero",
+    "imageAlt": "Retirement Hero",
+    "eyebrow": "Corporate Solutions",
+    "titleLine1": "Retirement",
+    "titleLine2": "Gifting",
+    "titleHighlight": "Solutions.",
+    "intro": "A graceful send-off for a remarkable journey — curated retirement gifts that celebrate a lifetime of contribution with the dignity it deserves.",
+    "primaryButton": "Explore Retirement Gifts",
+    "secondaryButton": "Request Quote",
+    "scrollLabel": "Scroll"
+  },
+  "about": {
+    "eyebrow": "Our Philosophy",
+    "titleLine1": "Celebrating the Close",
+    "titleLine2": "of a Remarkable Chapter",
+    "paragraph1": "Retirement is not just the end of a career — it is the culmination of decades of passion, dedication, and impact.",
+    "paragraph2": "We design retirement gifting experiences that feel deeply personal — not like a corporate transaction, but like a heartfelt farewell.",
+    "badgeSymbol": "🌅",
+    "badgeText": "Heirloom Quality — Made to Last a Lifetime",
+    "image": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=80",
+    "imageAlt": "Retirement"
+  },
+  "categories": {
+    "title": "Retirement Gift Collections",
+    "intro": "Thoughtfully curated collections for every retiree and every farewell.",
+    "linkText": "View Collection",
+    "items": [
+      { "name": "Legacy Tribute Gifts", "desc": "Handcrafted keepsakes and luxury mementos that honour a lifetime of achievement.", "accent": "#9c7bb5", "tag": "Legacy", "image": "", "photoId": "retirement-legacy-tribute-gifts" },
+      { "name": "Relaxation & Leisure", "desc": "Premium wellness hampers, travel accessories, and hobby kits for the journey ahead.", "accent": "#7a5ea0", "tag": "Leisure", "image": "", "photoId": "retirement-relaxation-leisure" },
+      { "name": "Personalised Memories", "desc": "Custom photo books, engraved items, and memory collections celebrating their career.", "accent": "#5e4a80", "tag": "Memories", "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80" }
+    ]
+  },
+  "products": {
+    "title": "Featured Retirement Gifts",
+    "intro": "The most treasured pieces from our retirement gifting range.",
+    "viewAll": "View All",
+    "items": [
+      { "name": "Legacy Keepsake Box", "sub": "₹3,999", "tag": "Luxury", "image": "", "photoId": "retirement-legacy-keepsake-box" },
+      { "name": "Relaxation Hamper", "sub": "₹2,499", "tag": "Wellness", "image": "", "photoId": "retirement-relaxation-hamper" },
+      { "name": "Memory Journal Set", "sub": "₹1,799", "tag": "Personalised", "image": "", "photoId": "retirement-memory-journal-set" }
+    ]
+  },
+  "customization": {
+    "eyebrow": "Deep Personalisation",
+    "title": "A Farewell as Unique",
+    "titleHighlight": "as Their Journey",
+    "intro": "Every retirement is a singular story. We create a gift that captures decades of memories, achievements, and relationships.",
+    "items": [
+      { "symbol": "🎓", "title": "Career Timeline", "desc": "Career journey prints marking key milestones." },
+      { "symbol": "📸", "title": "Photo Memorials", "desc": "Custom photo books capturing highlights of their tenure." },
+      { "symbol": "✍️", "title": "Team Tribute Booklet", "desc": "Heartfelt messages bound in a premium keepsake booklet." },
+      { "symbol": "📦", "title": "Heritage Packaging", "desc": "Heirloom-quality boxes designed to be treasured forever." }
+    ],
+    "image": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80",
+    "imageAlt": "Gift"
+  },
+  "why": {
+    "title": "Why Choose Ecotwist",
+    "items": [
+      { "symbol": "🌟", "title": "Graceful Tribute", "desc": "Gifts that honour a lifetime of service with dignity." },
+      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Seamless fulfillment for 1 or 100 retirees." },
+      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "On-time delivery for ceremonies across India." },
+      { "symbol": "✦", "title": "Deep Personalisation", "desc": "Every gift reflects their personal journey." },
+      { "symbol": "◐", "title": "Dedicated Support", "desc": "A consultant for your retirement programme." }
+    ]
+  },
+  "trust": {
+    "title": "Trusted by Visionary Brands"
+  },
+  "cta": {
+    "titleLine1": "Ready to create the perfect",
+    "titleHighlight": "retirement farewell?",
+    "text": "Let's honour their remarkable journey with a farewell gift they will treasure forever.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Schedule a Consultation"
+  }
+}

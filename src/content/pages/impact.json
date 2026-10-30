@@ -1,0 +1,65 @@
+{
+  "_meta": { "label": "Impact", "route": "/impact" },
+  "hero": {
+    "eyebrow": "A Legacy of Responsibility",
+    "titleLine1": "Sustainable",
+    "titleLine2": "Luxury Defined.",
+    "intro": "At Ecotwist, we believe true luxury is found in the harmony between exquisite design and ecological integrity.",
+    "scrollLabel": "Scroll"
+  },
+  "metrics": {
+    "watermark": "∞",
+    "eyebrow": "Impact Numbers",
+    "title": "Measured in",
+    "titleHighlight": "meaning.",
+    "items": [
+      { "value": "1000+", "label": "Kilograms CO2 Offset", "text": "Through regenerative forestry and localized production cycles that prioritize the planet." },
+      { "value": "100+", "label": "Master Artisans", "text": "Empowering heritage communities across four continents with fair living wages and healthcare." },
+      { "value": "100%", "label": "Traceable Materials", "text": "Every fiber has a story. Our blockchain-verified supply chain ensures absolute transparency." }
+    ]
+  },
+  "artisans": {
+    "eyebrow": "Artisan Stories",
+    "mainImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop",
+    "mainImageAlt": "Artisan at work",
+    "mainCaption": "Master Weaver — Oaxaca, Mexico",
+    "handsImage": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=900&auto=format&fit=crop",
+    "handsImageAlt": "Artisan hands close-up",
+    "quote": "Every knot is a prayer. Every thread, a promise to the earth.",
+    "quoteAuthor": "Amara Diallo, Artisan Partner",
+    "textileImage": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?q=80&w=900&auto=format&fit=crop",
+    "textileImageAlt": "Sustainable textile detail"
+  },
+  "blueprint": {
+    "watermark": "ECOTWIST",
+    "eyebrow": "Confidential / Internal Methodology",
+    "title": "The Ethical",
+    "titleHighlight": "Blueprint",
+    "steps": [
+      {
+        "number": "01.",
+        "title": "The Requirement",
+        "text": "Sourcing raw materials that demand nothing from the earth but time.",
+        "tags": [{ "text": "Wild Organic Silk" }, { "text": "Post-Consumer Gold" }, { "text": "Regen Wool" }],
+        "image": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "number": "02.",
+        "title": "The Design",
+        "text": "Architecture for the body. Every seam serves a functional and aesthetic purpose.",
+        "tags": [{ "text": "Draft No. 42A" }, { "text": "Zero-Waste Patterning" }],
+        "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "number": "03.",
+        "title": "The Delivery",
+        "text": "Carbon-neutral transit to your door in plastic-free, archival packaging.",
+        "tags": [{ "text": "Modern Heirloom" }, { "text": "Lifetime Integrity" }],
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=400&auto=format&fit=crop"
+      }
+    ]
+  },
+  "closing": {
+    "text": "Crafted with intention. Worn with purpose."
+  }
+}

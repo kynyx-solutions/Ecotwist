@@ -2,13 +2,16 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import { motion, useSpring, useMotionValue, useAnimationFrame, useInView, useTransform, animate } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import contact1 from "../assests/contact1.jpeg"
-import contact2 from "../assests/contact2.jpeg"
+import { asset } from '../lib/content';
+import content from '../content/pages/contact.json';
 import { IoSend } from 'react-icons/io5';
 
 /* ════════════════════════════════════════════
    TYPES
 ════════════════════════════════════════════ */
+// Page words and photos: src/content/pages/contact.json (admin → Pages → Contact)
+const { intro, gallery, quote, form, errors: errorText } = content;
+
 type FieldId = 'name' | 'company' | 'email' | 'phone' | 'interest' | 'message';
 
 interface ContactFormData {
@@ -229,7 +232,7 @@ function LandingImageCard({
               <motion.p initial={{ opacity: 0, x: fromLeft ? -18 : 18 }} animate={phase === 'settled' ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.55, delay: 0.12 }} className="font-bold text-base leading-snug mb-2">{label}</motion.p>
               <div className="text-[10px] font-bold uppercase tracking-widest text-brand-olive flex items-center gap-1.5">
-                <motion.span whileHover={{ x: 3 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>View Gallery</motion.span>
+                <motion.span whileHover={{ x: 3 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>{gallery.linkText}</motion.span>
                 <motion.span whileHover={{ rotate: 45, x: 2 }} transition={{ type: 'spring', stiffness: 380, damping: 18 }} style={{ display: 'inline-flex' }}><ArrowRight size={11} /></motion.span>
               </div>
             </motion.div>
@@ -371,28 +374,28 @@ function validateField(id: FieldId, value: string): string {
   const v = value.trim();
   switch (id) {
     case 'name':
-      if (!v) return 'Please enter your name';
-      if (v.length < 2) return 'Name looks too short';
+      if (!v) return errorText.nameRequired;
+      if (v.length < 2) return errorText.nameShort;
       return '';
     case 'company':
-      if (!v) return 'Please enter your company name';
+      if (!v) return errorText.companyRequired;
       return '';
     case 'email':
-      if (!v) return 'Please enter your work email';
-      if (!EMAIL_RE.test(v)) return 'Enter a valid email address';
+      if (!v) return errorText.emailRequired;
+      if (!EMAIL_RE.test(v)) return errorText.emailInvalid;
       return '';
     case 'phone': {
-      if (!v) return 'Please enter your mobile number';
+      if (!v) return errorText.phoneRequired;
       const digits = v.replace(/\D/g, '');
-      if (digits.length < 10 || digits.length > 13) return 'Enter a valid mobile number';
+      if (digits.length < 10 || digits.length > 13) return errorText.phoneInvalid;
       return '';
     }
     case 'interest':
-      if (!v) return 'Please select an area of interest';
+      if (!v) return errorText.interestRequired;
       return '';
     case 'message':
-      if (!v) return 'Tell us a bit about your project';
-      if (v.length < 10) return 'Please add a few more details';
+      if (!v) return errorText.messageRequired;
+      if (v.length < 10) return errorText.messageShort;
       return '';
     default:
       return '';
@@ -411,7 +414,7 @@ async function submitContactForm(data: ContactFormData): Promise<ApiResponse> {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000); // 15s safety timeout
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+    const response = await fetch("/api/lead", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -419,9 +422,9 @@ async function submitContactForm(data: ContactFormData): Promise<ApiResponse> {
       signal: controller.signal,
       body: JSON.stringify({
         ...data,
-        type: "consultation",
-        submittedAt: new Date().toISOString(),
-        submissionId: `ECO-${Date.now()}`, // optional but recommended
+        type: "contact",
+        submissionId: `ECO-${Date.now()}`,
+        sourcePage: window.location.pathname,
       }),
     });
 
@@ -525,7 +528,7 @@ export const Contact = () => {
     } catch (error) {
       console.error('Error:', error);
       setStatus({ state: 'idle' });
-      alert('Something went wrong');
+      alert(form.errorAlert);
     }
   };
 
@@ -553,40 +556,36 @@ export const Contact = () => {
               transition={{ duration: 0.6 }}
               className="text-brand-olive font-medium tracking-[0.3em] uppercase text-xs mb-4 block"
             >
-              Get In Touch
+              {intro.eyebrow}
             </motion.span>
 
             {/* HEADING */}
             <h2 className="text-4xl sm:text-5xl md:text-7xl leading-[1.1] mb-6 font-serif">
               <div className="flex flex-wrap gap-x-4">
-                {['Start', 'the'].map((word) => (
+                {intro.titleLine1.split(' ').map((word) => (
                   <motion.span key={word}>{word}</motion.span>
                 ))}
               </div>
               <div className="flex flex-wrap gap-x-4 italic font-normal">
-                <motion.span>Conversation.</motion.span>
+                <motion.span>{intro.titleLine2}</motion.span>
               </div>
             </h2>
 
             {/* DESCRIPTION */}
             <motion.p className="max-w-md text-base sm:text-lg text-gray-600 leading-relaxed mb-8">
-              Partner with our design experts to create meaningful, sustainable brand experiences that leave a lasting impression.
+              {intro.text}
             </motion.p>
 
             {/* CONTACT INFO */}
             <div className="space-y-5 mb-10">
-              {[
-                { tag: 'Email Us', value: 'info@ecotwist.in', icon: '✉' },
-                { tag: 'Direct Inquiry', value: '+91 70913 23777', icon: '◎' },
-                { tag: 'The Studio', value: '5th Floor, Mauryalok Complex, A-Block, Patna 800001, Bihar', icon: '◈' },
-              ].map((item) => (
+              {intro.contacts.map((item) => (
                 <motion.a
                   key={item.tag}
                   href="#"
                   className="flex items-start gap-4 group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm bg-[#5c7a3e]">
-                    {item.icon}
+                    {item.symbol}
                   </div>
                   <div>
                     <span className="text-[9px] uppercase font-bold text-brand-olive mb-1 block">
@@ -600,11 +599,7 @@ export const Contact = () => {
 
             {/* STATS */}
             <div className="py-5 border-y border-gray-200 grid grid-cols-3 gap-3 mb-10">
-              {[
-                { label: 'Happy Clients', value: '500+' },
-                { label: 'Gifts Delivered', value: '5K+' },
-                { label: 'Satisfaction', value: '98%' },
-              ].map((stat) => (
+              {intro.stats.map((stat) => (
                 <motion.div key={stat.label}>
                   <h4 className="text-lg sm:text-xl font-bold font-serif text-brand-olive">
                     {stat.value}
@@ -619,33 +614,33 @@ export const Contact = () => {
             {/* ✅ IMAGE SECTION — NO CHANGE */}
             <div className="grid grid-cols-2 gap-4">
               <LandingImageCard
-                src={contact1}
-                label="Sustainable Gifting"
-                tag="Eco"
-                accent="#5a8a6e"
+                src={asset(gallery.cards[0].image)}
+                label={gallery.cards[0].label}
+                tag={gallery.cards[0].tag}
+                accent={gallery.cards[0].accent}
                 fromLeft
-                onClick={() => navigate("/products")}
+                onClick={() => navigate(gallery.cards[0].path)}
               />
 
               <LandingImageCard
-                src={contact2}
-                label="Eco Luxury Craft"
-                tag="Artisan"
-                accent="#b5a26a"
+                src={asset(gallery.cards[1].image)}
+                label={gallery.cards[1].label}
+                tag={gallery.cards[1].tag}
+                accent={gallery.cards[1].accent}
                 fromLeft={false}
-                onClick={() => navigate("/solutions")}
+                onClick={() => navigate(gallery.cards[1].path)}
               />
             </div>
 
             {/* QUOTE */}
             <motion.div className="mt-8 pt-6 border-t border-gray-200">
               <p className="italic font-serif text-base sm:text-lg text-brand-dark-olive mb-3">
-                "Sustainability is the ultimate sophistication."
+                {quote.text}
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-6 h-px bg-brand-olive" />
                 <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500">
-                  EcoTwist Studio
+                  {quote.author}
                 </p>
               </div>
             </motion.div>
@@ -693,24 +688,24 @@ export const Contact = () => {
                     animate={{ opacity: 1, y: 0, letterSpacing: '0.22em' }}
                     transition={{ duration: 0.5, delay: 1.0 }}
                     className="text-[10px] uppercase tracking-widest font-bold text-brand-olive mb-3 block"
-                  >Consultation Request</motion.span>
+                  >{form.eyebrow}</motion.span>
 
                   <motion.h3
                     initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.55, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
                     className="text-2xl sm:text-3xl font-serif mb-10"
-                  >Tell Us Your Vision</motion.h3>
+                  >{form.title}</motion.h3>
 
                   <form className="space-y-8" onSubmit={handleSubmit} noValidate>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
                       className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <FormField
-                        label="Full Name" id="name" placeholder="Jane Doe" required
+                        label={form.nameLabel} id="name" placeholder={form.namePlaceholder} required
                         value={formData.name} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.name ? errors.name : ''} disabled={isLoading}
                       />
                       <FormField
-                        label="Company Name" id="company" placeholder="Your Brand" required
+                        label={form.companyLabel} id="company" placeholder={form.companyPlaceholder} required
                         value={formData.company} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.company ? errors.company : ''} disabled={isLoading}
                       />
@@ -718,32 +713,31 @@ export const Contact = () => {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.28 }}
                       className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <FormField
-                        label="Work Email" id="email" type="email" placeholder="jane@company.com" required
+                        label={form.emailLabel} id="email" type="email" placeholder={form.emailPlaceholder} required
                         value={formData.email} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.email ? errors.email : ''} disabled={isLoading}
                       />
                       <FormField
-                        label="Mobile Number" id="phone" type="tel" placeholder="98765 43210" required
+                        label={form.phoneLabel} id="phone" type="tel" placeholder={form.phonePlaceholder} required
                         value={formData.phone} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.phone ? errors.phone : ''} disabled={isLoading}
                       />
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.35 }}>
                       <FormField
-                        label="Area of Interest" id="interest" required
+                        label={form.interestLabel} id="interest" required
                         value={formData.interest} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.interest ? errors.interest : ''} disabled={isLoading}
                       >
-                        <option value="">Select an area...</option>
-                        <option value="corporate">Corporate Gifting (Bulk)</option>
-                        <option value="event">Special Event / Launch</option>
-                        <option value="custom">Bespoke Design Consultancy</option>
-                        <option value="other">General Inquiry</option>
+                        <option value="">{form.interestPlaceholder}</option>
+                        {form.interestOptions.map((option) => (
+                          <option key={option.key} value={option.key}>{option.label}</option>
+                        ))}
                       </FormField>
                     </motion.div>
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.42 }}>
                       <FormField
-                        label="Project Overview" id="message" rows={4} placeholder="Tell us about your gifting goals..." required
+                        label={form.messageLabel} id="message" rows={4} placeholder={form.messagePlaceholder} required
                         value={formData.message} onChange={handleFieldChange} onBlur={handleFieldBlur}
                         error={touched.message ? errors.message : ''} disabled={isLoading}
                       />
@@ -763,10 +757,10 @@ export const Contact = () => {
                         {isLoading ? (
                           <div className="flex items-center justify-center gap-2">
                             <span className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white animate-spin"></span>
-                            <span>Submitting...</span>
+                            <span>{form.submittingText}</span>
                           </div>
                         ) : (
-                          "Submit"
+                          form.submitButton
                         )}
                       </button>
                     </motion.div>
@@ -781,8 +775,8 @@ export const Contact = () => {
                   whileHover={{ rotate: 0, scale: 1.06 }}
                   style={{ position: 'absolute', bottom: -16, right: 16, background: '#fff', border: '1px solid rgba(181,162,106,0.3)', borderRadius: 4, padding: '10px 16px', boxShadow: '0 12px 40px rgba(0,0,0,0.12)', zIndex: 25 }}
                 >
-                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#b5a26a', margin: 0 }}>Response Time</p>
-                  <p style={{ fontSize: 13, fontWeight: 700, margin: '2px 0 0', color: '#333' }}>Within 24 hours</p>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#b5a26a', margin: 0 }}>{form.badgeLabel}</p>
+                  <p style={{ fontSize: 13, fontWeight: 700, margin: '2px 0 0', color: '#333' }}>{form.badgeText}</p>
                 </motion.div>
 
               </motion.div>
@@ -791,7 +785,7 @@ export const Contact = () => {
             {/* Watermark — same as Hero "Studio Edition" */}
             <div className="absolute -bottom-36 -left-4 overflow-visible hidden lg:block pointer-events-none">
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 1.5, duration: 0.8 }}
-                className="font-serif italic text-6xl text-[#e5d3a1] opacity-50">Contact Us</motion.p>
+                className="font-serif italic text-6xl text-[#e5d3a1] opacity-50">{form.watermark}</motion.p>
             </div>
           </motion.div>
 

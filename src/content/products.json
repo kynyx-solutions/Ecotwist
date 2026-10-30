@@ -1,0 +1,858 @@
+{
+  "products": [
+    {
+      "id": "cork-diary",
+      "category": "Cork Collection",
+      "name": "Cork Diary",
+      "description": "A diary bound in natural cork — light, durable and harvested from cork-oak bark without felling a tree.",
+      "tags": [
+        "Natural cork",
+        "Custom branding"
+      ],
+      "image": "/Products/Cork Dairy 1.png",
+      "icon": "BookOpen",
+      "tint": "#d8c19c",
+      "photos": [
+        "/Products/Cork Dairy 1.png"
+      ]
+    },
+    {
+      "id": "cork-diary-fabric",
+      "category": "Cork Collection",
+      "name": "Cork Diary with Fabric",
+      "description": "Natural cork paired with a denim fabric finish for a warmer, textured cover.",
+      "tags": [
+        "Cork + denim",
+        "Custom branding"
+      ],
+      "image": "/Products/Cork Denim Diary 1.png",
+      "icon": "BookOpen",
+      "tint": "#cfb89c",
+      "photos": [
+        "/Products/Cork Denim Diary 1.png",
+        "/Products/Cork Denim Dairy 1.1.png",
+        "/Products/Cork Denim Dairy 1.2.png"
+      ]
+    },
+    {
+      "id": "cork-pen",
+      "category": "Cork Collection",
+      "name": "Cork Pen",
+      "description": "An everyday pen wrapped in natural cork for a light, comfortable grip.",
+      "tags": [
+        "Natural cork",
+        "Custom branding"
+      ],
+      "image": "/Products/Cork Pen.png",
+      "icon": "PenLine",
+      "tint": "#dcc7a6",
+      "photos": [
+        "/Products/Cork Pen.png"
+      ]
+    },
+    {
+      "id": "cork-combo",
+      "category": "Cork Collection",
+      "name": "Cork Diary & Pen Combo",
+      "description": "A cork diary paired with a matching cork pen — a ready-to-gift desk set.",
+      "tags": [
+        "Diary + pen",
+        "Custom branding"
+      ],
+      "image": "/Products/Cork Diary and Cork Pen.png",
+      "icon": "BookOpen",
+      "tint": "#d8c19c",
+      "designs": [
+        {
+          "name": "Cork Diary + Cork Pen",
+          "src": "/Products/Cork Diary and Cork Pen.png"
+        },
+        {
+          "name": "Denim Cork Diary + Cork Pen",
+          "src": "/Products/Denim Cork Diary and Cork Pen.png"
+        }
+      ]
+    },
+    {
+      "id": "cork-keyring",
+      "category": "Cork Collection",
+      "name": "Cork Keyring",
+      "description": "A lightweight, water-resistant cork keyring — a small gift that gets used every day.",
+      "tags": [
+        "Natural cork",
+        "Custom branding"
+      ],
+      "image": "/catalogue/cork-keyring.jpg",
+      "icon": "KeyRound",
+      "tint": "#d3bc98"
+    },
+    {
+      "id": "paper-pen",
+      "category": "Recycled Paper",
+      "name": "Paper Pen",
+      "description": "A pen with a barrel rolled from recycled paper — a simple swap for a plastic pen.",
+      "tags": [
+        "Recycled paper",
+        "Custom branding"
+      ],
+      "image": "/Products/Paper Pen.png",
+      "icon": "PenLine",
+      "tint": "#d0d3bf",
+      "photos": [
+        "/Products/Paper Pen.png"
+      ]
+    },
+    {
+      "id": "paper-pencil",
+      "category": "Recycled Paper",
+      "name": "Paper Pencil",
+      "description": "Pencils rolled from recycled newspaper instead of wood.",
+      "tags": [
+        "Recycled newspaper",
+        "Custom branding"
+      ],
+      "image": "/Products/Paper Pencil.png",
+      "icon": "PenLine",
+      "tint": "#d0d3bf",
+      "photos": [
+        "/Products/Paper Pencil.png"
+      ]
+    },
+    {
+      "id": "recycled-daily-planner",
+      "category": "Recycled Paper",
+      "name": "Recycled Daily Planner",
+      "description": "A day-by-day planner printed on recycled paper to keep priorities on track.",
+      "tags": [
+        "Recycled paper",
+        "Custom branding"
+      ],
+      "image": "/catalogue/recycled-daily-planner.jpg",
+      "icon": "CalendarDays",
+      "tint": "#c9cdb6"
+    },
+    {
+      "id": "recycled-writing-pad",
+      "category": "Recycled Paper",
+      "name": "Recycled Writing Pad",
+      "description": "A writing pad of recycled paper for notes, meetings and to-do lists.",
+      "tags": [
+        "Recycled paper",
+        "Custom branding"
+      ],
+      "image": "/catalogue/recycled-writing-pad.jpg",
+      "icon": "NotebookPen",
+      "tint": "#d0d3bf"
+    },
+    {
+      "id": "bamboo-bottle",
+      "category": "Bamboo Collection",
+      "name": "Bamboo Bottle",
+      "description": "A bamboo-finish bottle with a steel cap and a removable tea infuser.",
+      "tags": [
+        "Bamboo finish",
+        "Tea infuser"
+      ],
+      "image": "/Products/Bamboo Bottle 1.png",
+      "icon": "Gift",
+      "tint": "#d9cfb4",
+      "photos": [
+        "/Products/Bamboo Bottle 1.png",
+        "/Products/Bamboo Bottle 2.png"
+      ]
+    },
+    {
+      "id": "gift-box-2-jar",
+      "category": "Gift Boxes",
+      "name": "2 Jar Gift Boxes",
+      "description": "Printed, velvet, wooden and tin boxes with two jars — ready for dry fruits, sweets or chocolates.",
+      "showDesignCount": true,
+      "tags": [
+        "Jars included"
+      ],
+      "image": "/Products/2 jar gift Box.JPG",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "name": "Printed 2 Jar Gift Box",
+          "src": "/Products/2 jar gift Box.JPG"
+        },
+        {
+          "name": "Printed 2 Jar Gift Box",
+          "src": "/Products/2 jar Gift Box 2.JPG"
+        },
+        {
+          "sku": "9065",
+          "name": "Nandi MGI 2 Jar Box",
+          "src": "/catalogue/nandi-mgi-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9065A",
+          "name": "White MGI 2 Jar Box",
+          "src": "/catalogue/white-mgi-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9065B",
+          "name": "Blue Mystic 2 Jar Box",
+          "src": "/catalogue/blue-mystic-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9065C",
+          "name": "Rajasthan 2 Jar Box",
+          "src": "/catalogue/rajasthan-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7201-R",
+          "name": "Rajasthani Theme 2 Jar Box",
+          "src": "/catalogue/rajasthani-theme-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7201-P",
+          "name": "Peacock Theme 2 Jar Box",
+          "src": "/catalogue/peacock-theme-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7201-F",
+          "name": "Flower Theme 2 Jar Box",
+          "src": "/catalogue/flower-theme-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7201-M",
+          "name": "Mahal Theme 2 Jar Box",
+          "src": "/catalogue/mahal-theme-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7203",
+          "name": "Green Suede 2 Jar Box",
+          "src": "/catalogue/green-suede-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7200",
+          "name": "White Majestic 2 Jar Box",
+          "src": "/catalogue/white-majestic-2-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7009",
+          "name": "Blue Diamond 2 Jar Carry Bag Box",
+          "src": "/catalogue/blue-diamond-2-jar-carry-bag-box-enhanced.webp"
+        },
+        {
+          "sku": "9079",
+          "name": "Wooden Rotating 2 Jar Tray",
+          "src": "/catalogue/wooden-rotating-2-jar-tray-enhanced.webp"
+        },
+        {
+          "sku": "9501",
+          "name": "MGI 2 Tin Jar Bag",
+          "src": "/catalogue/52_9501_MGI-2-Tin-Jar-Bag.jpg"
+        },
+        {
+          "sku": "9026",
+          "name": "2 Jar 2 Chocolate Box",
+          "src": "/catalogue/58_9026_2-Jar-2-Chocolate-Box.jpg"
+        },
+        {
+          "sku": "9022",
+          "name": "Peacock 2 Jar Tin Cavity Box",
+          "src": "/catalogue/61_9022_Peacock-2-Jar-Tin-Cavity-Box.jpg"
+        },
+        {
+          "sku": "9015A",
+          "name": "White 2 Jar Green Theme Box",
+          "src": "/catalogue/62_9015A_White-Jar-Green-Theme-Box.jpg"
+        },
+        {
+          "sku": "9015",
+          "name": "Orange Flower 2 Jar Dome Box",
+          "src": "/catalogue/63_9015_Orange-Flower-2-Jar-Dome-Box.jpg"
+        },
+        {
+          "sku": "9072",
+          "name": "Green Theme 2 Jar Box with Stand",
+          "src": "/catalogue/64_9072_Green-Theme-Box-with-Stand.jpg"
+        },
+        {
+          "sku": "9010",
+          "name": "Floral 2 Jar Cavity Box",
+          "src": "/catalogue/67_9010_Floral-2-Jar-Cavity-Box.jpg"
+        },
+        {
+          "sku": "9010A",
+          "name": "RBG Nandi Fancy Jar Box",
+          "src": "/catalogue/fancy-jar-box-red-palace.png"
+        }
+      ]
+    },
+    {
+      "id": "gift-box-3-jar",
+      "category": "Gift Boxes",
+      "name": "3 Jar Gift Boxes",
+      "description": "Three-jar boxes in velvet, leatherette, printed MDF and tin finishes.",
+      "showDesignCount": true,
+      "tags": [
+        "Jars included"
+      ],
+      "image": "/Products/3 Jar Gift Box.JPG",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "name": "Printed 3 Jar Gift Box",
+          "src": "/Products/3 Jar Gift Box.JPG"
+        },
+        {
+          "sku": "9009",
+          "name": "Nandi 3 Jar Box",
+          "src": "/catalogue/nandi-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9009A",
+          "name": "White MGI 3 Jar Box",
+          "src": "/catalogue/white-mgi-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9009B",
+          "name": "Blue Mystic 3 Jar Box",
+          "src": "/catalogue/blue-mystic-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9009C",
+          "name": "Mahal 3 Jar Long Box",
+          "src": "/catalogue/white-jute-basket-enhanced.webp"
+        },
+        {
+          "sku": "7303",
+          "name": "Blue Velvet 3 Jar Box",
+          "src": "/catalogue/blue-velvet-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7304",
+          "name": "Red Velvet 3 Jar Box",
+          "src": "/catalogue/red-velvet-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7301",
+          "name": "Leatherette 3 Jar Suitcase Box",
+          "src": "/catalogue/regsin-3-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7302",
+          "name": "Orange 3 Jar Sliding Box",
+          "src": "/catalogue/orange-3-jar-sliding-box-enhanced.webp"
+        },
+        {
+          "sku": "9506",
+          "name": "MGI 3 Tin Jar Bag",
+          "src": "/catalogue/52_9506_MGI-3-Tin-Jar-Bag.jpg"
+        },
+        {
+          "sku": "9509",
+          "name": "Pink Triangle 3 Tin Box",
+          "src": "/catalogue/53_9509_Pink-Triangle-3-Tin-Box.jpg"
+        },
+        {
+          "sku": "9011A",
+          "name": "3 Round Jar Cavity Box",
+          "src": "/catalogue/65_9011A_3-Round-Jar-Cavity-Box.jpg"
+        },
+        {
+          "sku": "9011",
+          "name": "Pink White 3 Jar Cavity Box",
+          "src": "/catalogue/66_9011_Pink-White-3-Jar-Cavity-Box.jpg"
+        }
+      ]
+    },
+    {
+      "id": "gift-box-4-jar",
+      "category": "Gift Boxes",
+      "name": "4 Jar Gift Boxes",
+      "description": "Our widest range — lift-open, carry-bag, cavity and pinewood boxes holding four jars.",
+      "showDesignCount": true,
+      "tags": [
+        "Jars included"
+      ],
+      "image": "/catalogue/Ornate Rajasthani Gift Box Collection.png",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "sku": "9003",
+          "name": "Ornate Rajasthani Gift Box Collection",
+          "src": "/catalogue/Ornate Rajasthani Gift Box Collection.png"
+        },
+        {
+          "sku": "9003A",
+          "name": "Ornate Peacock Gift Box Collection",
+          "src": "/catalogue/Ornate Peacock Gift Box Collection.png"
+        },
+        {
+          "sku": "9003B",
+          "name": "Blue Mystic Scodix 4 Jar Box",
+          "src": "/catalogue/blue-mystic-4-jar-box-enhanced.png"
+        },
+        {
+          "sku": "9003C",
+          "name": "Rajasthan Theme 4 Jar Box",
+          "src": "/catalogue/rajasthan-theme-4-jar-box-enhanced.png"
+        },
+        {
+          "sku": "7002",
+          "name": "Orange Theme 4 Jar Box",
+          "src": "/catalogue/orange-theme-4-jar-box-enhanced.png"
+        },
+        {
+          "sku": "4002",
+          "name": "Mahal Theme 4 Jar Box",
+          "src": "/catalogue/mahal-theme-4-jar-box-enhanced.png"
+        },
+        {
+          "sku": "7202",
+          "name": "Blue Peacock 4 Jar Box",
+          "src": "/catalogue/blue-peacock-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7011",
+          "name": "Blue 4 Jar Suitcase Box",
+          "src": "/catalogue/blue-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7007",
+          "name": "White Gold 4 Jar Box",
+          "src": "/catalogue/white-gold-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7601",
+          "name": "Laser Cut Velvet 4 Jar Box",
+          "src": "/catalogue/laser-velvet-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7005",
+          "name": "Green Velvet 4 Jar Box",
+          "src": "/catalogue/green-velvet-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "7006",
+          "name": "Blue Velvet 4 Jar Box",
+          "src": "/catalogue/blue-velvet-4-jar-box-enhanced.webp"
+        },
+        {
+          "sku": "9045",
+          "name": "Blue Theme 4 Jar Lift Box",
+          "src": "/catalogue/blue-theme-4-jar-lift-box-enhanced.webp"
+        },
+        {
+          "sku": "9045A",
+          "name": "Mughal Theme 4 Jar Lift Box",
+          "src": "/catalogue/palace-theme-4-jar-lift-box-enhanced.webp"
+        },
+        {
+          "sku": "7015",
+          "name": "Round D 4 Jar Box Maroon Pink",
+          "src": "/catalogue/35_7015_Round-D-4-Jar-Box-Maroon-Pink.jpg"
+        },
+        {
+          "sku": "7016",
+          "name": "Round D 4 Jar Box",
+          "src": "/catalogue/36_7016_Round-D-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7019",
+          "name": "Blue Round 4 Jar Box",
+          "src": "/catalogue/37_7019_Blue-Round-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7001",
+          "name": "MDF Carry Bag 4 Jar Box",
+          "src": "/catalogue/38_7001_MDF-Carry-Bag-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7802",
+          "name": "Carry Bag 4 Jar Box",
+          "src": "/catalogue/39_7802_Carry-Bag-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7008",
+          "name": "Blue Diamond 4 Jar Carry Bag Box",
+          "src": "/catalogue/40_7008_Blue-Diamond-4-Jar-Carry-Bag-Box.jpg"
+        },
+        {
+          "sku": "7803",
+          "name": "Carry Bag 4 Jar Box Design 2",
+          "src": "/catalogue/41_7803_Carry-Bag-4-Jar-Box-Design-2.jpg"
+        },
+        {
+          "sku": "9091B",
+          "name": "Gate Open 4 Jar Box",
+          "src": "/catalogue/42_9091B_Gate-Open-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7017",
+          "name": "Brown 4 Jar Long Box",
+          "src": "/catalogue/43_7017_Brown-4-Jar-Long-Box.jpg"
+        },
+        {
+          "sku": "7018",
+          "name": "Grey Magnetic File 4 Jar Box",
+          "src": "/catalogue/44_7018_Grey-Magnetic-File-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "7014",
+          "name": "White 4 Jar Kappa Box",
+          "src": "/catalogue/45_7014_White-4-Jar-Kappa-Box.jpg"
+        },
+        {
+          "sku": "1010A",
+          "name": "Pinewood 4 Jar Box",
+          "src": "/catalogue/46_1010A_Pinewood-4-Jar-Box.jpg"
+        },
+        {
+          "sku": "9511",
+          "name": "Pink Triangle 4 Tin Box with Handle",
+          "src": "/catalogue/54_9511_Pink-Triangle-4-Tin-Box-with-Handle.jpg"
+        },
+        {
+          "sku": "9006",
+          "name": "Pink Carving 4 Jar Cavity Box",
+          "src": "/catalogue/56_9006_Pink-Carving-4-Jar-Cavity-Box.jpg"
+        },
+        {
+          "sku": "9064",
+          "name": "Red Pink 4 Jar Cavity Box",
+          "src": "/catalogue/57_9064_Red-Pink-4-Jar-Cavity-Box.jpg"
+        },
+        {
+          "sku": "9046",
+          "name": "Blue 4 Jar Cavity Lift Box",
+          "src": "/catalogue/59_9046_Blue-4-Jar-Cavity-Lift-Box.jpg"
+        },
+        {
+          "sku": "9005",
+          "name": "Purple 4 Jar Cavity Box",
+          "src": "/catalogue/60_9005_Purple-4-Jar-Cavity-Box.jpg"
+        },
+        {
+          "sku": "1010",
+          "name": "Pinewood 4 Jar Box Classic",
+          "src": "/catalogue/69_1010_Pinewood-4-Jar-Box-Classic.jpg"
+        }
+      ]
+    },
+    {
+      "id": "gift-box-5-6-jar",
+      "category": "Gift Boxes",
+      "name": "5 & 6 Jar Gift Boxes",
+      "description": "Leather and velvet suitcase boxes holding five or six jars — our grandest jar hampers.",
+      "showDesignCount": true,
+      "tags": [
+        "Jars included"
+      ],
+      "image": "/catalogue/pink-leather-5-jar-box.png",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "sku": "7606",
+          "name": "Pink Leather 5 Jar Box",
+          "src": "/catalogue/pink-leather-5-jar-box.png"
+        },
+        {
+          "sku": "7605",
+          "name": "Leather 5 Jar Box",
+          "src": "/catalogue/leather-5-jar-box.png"
+        },
+        {
+          "sku": "7607",
+          "name": "Velvet 6 Jar Box with Chocolate Cavity",
+          "src": "/catalogue/velvet-6-jar-cavity-box.png"
+        },
+        {
+          "sku": "7602",
+          "name": "Laser Cut Velvet 6 Jar Box",
+          "src": "/catalogue/laser-velvet-6-jar-box.png"
+        },
+        {
+          "sku": "9001",
+          "name": "Blue Wrinkle 6 Jar Box",
+          "src": "/catalogue/blue-wrinkle-6-jar-box.png"
+        }
+      ]
+    },
+    {
+      "id": "dry-fruit-boxes",
+      "category": "Gift Boxes",
+      "name": "Dry Fruit Boxes & Trays",
+      "description": "Compartment boxes, platters and trays with golden cavities for dry fruits and sweets.",
+      "showDesignCount": true,
+      "tags": [
+        "Golden cavities"
+      ],
+      "image": "/catalogue/regular-4-compartment-dry-fruit-box.png",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "sku": "3401",
+          "name": "Regular 4 Compartment Dry Fruit Box",
+          "src": "/catalogue/regular-4-compartment-dry-fruit-box.png"
+        },
+        {
+          "sku": "8103",
+          "name": "Brown 4 Compartment Dry Fruit Box",
+          "src": "/catalogue/brown-mdf-4-compartment-box.png"
+        },
+        {
+          "sku": "3106",
+          "name": "Nandi 5 Compartment Platter Box",
+          "src": "/catalogue/5-platter-box.png"
+        },
+        {
+          "sku": "8101",
+          "name": "Dry Fruit Tray",
+          "src": "/catalogue/dry-fruit-tray.png"
+        }
+      ]
+    },
+    {
+      "id": "chocolate-boxes",
+      "category": "Gift Boxes",
+      "name": "Chocolate & Hamper Boxes",
+      "description": "Cavity chocolate boxes and printed paper hamper boxes for chocolates, sweets and treats.",
+      "showDesignCount": true,
+      "tags": [
+        "Chocolates & sweets"
+      ],
+      "image": "/catalogue/5-cavity-chocolate-box.png",
+      "icon": "Gift",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "sku": "CH8004",
+          "name": "5 Cavity Chocolate Box",
+          "src": "/catalogue/5-cavity-chocolate-box.png"
+        },
+        {
+          "sku": "CH8001",
+          "name": "8 Cavity Slider Chocolate Box",
+          "src": "/catalogue/8-cavity-yellow-chocolate-box.png"
+        },
+        {
+          "name": "Hamper Paper Box",
+          "src": "/catalogue/hamper-paper-box.png"
+        },
+        {
+          "sku": "CH8000",
+          "name": "Hamper Paper Basket",
+          "src": "/catalogue/hamper-paper-basket.png"
+        }
+      ]
+    },
+    {
+      "id": "soy-wax-candles",
+      "category": "Candles",
+      "name": "Scented Candles",
+      "description": "Soya wax candles in round and heart shapes, gift-boxed in sets of 3, 4 and 6.",
+      "tags": [
+        "Soya wax",
+        "Gift boxed"
+      ],
+      "image": "/Products/4 Candle set Circular.png",
+      "icon": "Flame",
+      "tint": "#ead9c0",
+      "designs": [
+        {
+          "name": "4 Round Candle Set — Gold Box",
+          "src": "/Products/4 Candle set Circular.png"
+        },
+        {
+          "name": "3 Round Candle Set",
+          "src": "/Products/3 Candle set Circular.png"
+        },
+        {
+          "name": "6 Round Candle Set",
+          "src": "/Products/6 Candle set Circular.png"
+        },
+        {
+          "name": "4 Round Candle Set — Maroon Box",
+          "src": "/Products/4-Circular wax Candle 1.JPG"
+        },
+        {
+          "name": "3 Heart Candle Set",
+          "src": "/Products/3-Heart wax Candle 2.JPG"
+        },
+        {
+          "name": "4 Heart Candle Set",
+          "src": "/Products/4-Heart Wax Candle 1.JPG"
+        },
+        {
+          "name": "Bubble Candle",
+          "src": "/Products/Soya wax candle1.png"
+        }
+      ]
+    },
+    {
+      "id": "soy-wax-diyas",
+      "category": "Candles",
+      "name": "Soya Wax Diyas",
+      "description": "Terracotta and hand-painted diyas filled with soya wax — made for Diwali gifting.",
+      "tags": [
+        "Soya wax",
+        "Hand-painted"
+      ],
+      "image": "/Products/Soya wax Circular Diya1.jpg",
+      "icon": "Flame",
+      "tint": "#ead9c0",
+      "designs": [
+        {
+          "name": "Round Pot Diyas",
+          "src": "/Products/Soya wax Circular Diya1.jpg"
+        },
+        {
+          "name": "Paisley Diyas",
+          "src": "/Products/Soya wax Diya 2.jpg"
+        },
+        {
+          "name": "Terracotta Diyas — Yellow",
+          "src": "/Products/Soya wax diya 3.jpg"
+        },
+        {
+          "name": "Terracotta Diyas — Blue",
+          "src": "/Products/Soya wax Diya 4.JPG"
+        },
+        {
+          "name": "Hand-Painted Diya",
+          "src": "/Products/Soya wax Diya1.jpg"
+        },
+        {
+          "name": "Square Diyas",
+          "src": "/Products/Soya wax Square Diya 1.jpg"
+        },
+        {
+          "name": "Square Flower Diya",
+          "src": "/Products/Soya wax square Diya 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hamper-baskets",
+      "category": "Baskets & Packaging",
+      "name": "Hamper Baskets",
+      "description": "Pinewood, jute and net baskets lined with satin and organza — the base for a hand-packed hamper.",
+      "showDesignCount": true,
+      "tags": [
+        "Pinewood & jute"
+      ],
+      "image": "/catalogue/pinewood-jar-basket.png",
+      "icon": "ShoppingBasket",
+      "tint": "#dccfb4",
+      "designs": [
+        {
+          "sku": "1002",
+          "name": "Pinewood Jar Basket",
+          "src": "/catalogue/pinewood-jar-basket.png"
+        },
+        {
+          "sku": "1001",
+          "name": "Pinewood Basket",
+          "src": "/catalogue/pinewood-slatted-basket.png"
+        },
+        {
+          "sku": "1001",
+          "name": "Pinewood Basket",
+          "src": "/catalogue/pinewood-basket.png"
+        },
+        {
+          "sku": "5014",
+          "name": "White Jute Bag with Tin Jars",
+          "src": "/catalogue/white-jute-bag.png"
+        },
+        {
+          "sku": "1906",
+          "name": "Net Basket",
+          "src": "/catalogue/net-basket-regular.png"
+        },
+        {
+          "sku": "1915",
+          "name": "Golden Lace Jute Basket",
+          "src": "/catalogue/golden-lace-jute-basket.png"
+        },
+        {
+          "sku": "1920",
+          "name": "White Jute Basket",
+          "src": "/catalogue/white-jute-basket.png"
+        },
+        {
+          "sku": "1902",
+          "name": "Brown MDF Jute Basket",
+          "src": "/catalogue/brown-mdf-jute-basket.png"
+        },
+        {
+          "sku": "2001",
+          "name": "Hexagon Blue Premium Basket",
+          "src": "/catalogue/hexagon-blue-premium-basket.png"
+        }
+      ]
+    },
+    {
+      "id": "empty-gift-boxes",
+      "category": "Baskets & Packaging",
+      "name": "Ribbon & Magnetic Gift Boxes",
+      "description": "Rigid ribbon, magnetic and lid-and-base gift boxes, supplied empty to fill with your own selection.",
+      "showDesignCount": true,
+      "tags": [
+        "Supplied empty"
+      ],
+      "image": "/catalogue/ribbon-box-9x7.png",
+      "icon": "Package",
+      "tint": "#e3d3c4",
+      "designs": [
+        {
+          "sku": "6010",
+          "name": "Ribbon Box 9x7",
+          "src": "/catalogue/ribbon-box-9x7.png"
+        },
+        {
+          "sku": "6013",
+          "name": "Ribbon Box 12x9",
+          "src": "/catalogue/ribbon-box-12x9.png"
+        },
+        {
+          "sku": "6009",
+          "name": "Ribbon Box 9x7x3",
+          "src": "/catalogue/ribbon-box-9x7x3.png"
+        },
+        {
+          "sku": "6011",
+          "name": "8x8 Magnetic Gift Box",
+          "src": "/catalogue/8x8-magnetic-gift-box.png"
+        },
+        {
+          "sku": "6012",
+          "name": "12x9 Top-Bottom Gift Box",
+          "src": "/catalogue/12x9-top-bottom-gift-box.png"
+        },
+        {
+          "sku": "6006",
+          "name": "6x7 Gift Box",
+          "src": "/catalogue/6x7-gift-box-empty.png"
+        }
+      ]
+    },
+    {
+      "id": "tin-jars",
+      "category": "Baskets & Packaging",
+      "name": "Tin Jars",
+      "description": "Printed tin jars with lids — pack them into a hamper or gift them on their own.",
+      "tags": [
+        "Printed tin",
+        "Reusable"
+      ],
+      "image": "/catalogue/tin-jars.png",
+      "icon": "Package",
+      "tint": "#dccfb4",
+      "photos": [
+        "/catalogue/tin-jars.png"
+      ]
+    }
+  ]
+}

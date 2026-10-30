@@ -1,0 +1,122 @@
+{
+  "_meta": { "label": "Home (Diwali)", "route": "/" },
+  "hero": {
+    "hindiBadge": "शुभ दीपावली",
+    "badge": "Corporate Gifting 2026",
+    "titleLine1": "This Diwali,",
+    "titleLine2": "gift light",
+    "titleHighlight": "that lasts.",
+    "intro": "Sustainable Diwali hampers for your teams, clients and partners — heritage jar boxes, soya wax diyas, cork keepsakes and dry fruit platters, custom-branded and delivered across India.",
+    "primaryButton": "Explore Diwali Collection",
+    "secondaryButton": "Get Proposal",
+    "stats": [
+      { "number": "100+", "label": "Corporate clients" },
+      { "number": "25K+", "label": "Gift boxes delivered" },
+      { "number": "98%", "label": "Client satisfaction" }
+    ],
+    "image": "/diwali-home/hero-hamper.webp",
+    "imageAlt": "Diwali hamper with dry fruits, chocolates, diyas and marigolds",
+    "insetImage": "/diwali-home/hero-inset.webp",
+    "badgeCardLabel": "Custom",
+    "badgeCardText": "Branded hampers"
+  },
+  "marquee": {
+    "items": [
+      { "text": "Shubh Deepavali" },
+      { "text": "Sustainable Gifting" },
+      { "text": "Custom Branding" },
+      { "text": "शुभ दीपावली" },
+      { "text": "Pan-India Delivery" },
+      { "text": "Handcrafted Hampers" },
+      { "text": "Bulk Corporate Orders" }
+    ]
+  },
+  "giftEdit": {
+    "hindi": "उपहार",
+    "eyebrow": "The Diwali Edit",
+    "title": "Gifts that carry",
+    "titleHighlight": "the glow of Diwali",
+    "intro": "Handcrafted, sustainable and ready to carry your brand — pick a favourite or mix them into a hamper of your own.",
+    "linkLabel": "Shop now",
+    "button": "View all products",
+    "items": [
+      { "title": "Heritage Jar Boxes", "category": "Gift Boxes", "image": "/diwali-home/edit-jar-boxes.webp", "blurb": "Two- to six-jar boxes in velvet, MGI and hand-printed finishes, filled with dry fruits or sweets." },
+      { "title": "Soya Wax Diyas", "category": "Candles", "image": "/diwali-home/edit-diyas.webp", "blurb": "Hand-painted terracotta diyas filled with clean-burning soya wax." },
+      { "title": "Scented Candles", "category": "Candles", "image": "/diwali-home/edit-candles.webp", "blurb": "Soya wax candle sets, gift-boxed in threes, fours and sixes." },
+      { "title": "Dry Fruit Hampers", "category": "Gift Boxes", "image": "/diwali-home/edit-dry-fruits.webp", "blurb": "Compartment boxes, platters and trays with golden cavities." },
+      { "title": "Cork Keepsakes", "category": "Cork Collection", "image": "/diwali-home/edit-cork.webp", "blurb": "Cork diaries and pens that carry your brand long after Diwali." },
+      { "title": "Bamboo Bottles", "category": "Bamboo Collection", "image": "/diwali-home/edit-bamboo.webp", "blurb": "Bamboo-finish bottles with a tea infuser, for the year ahead." }
+    ]
+  },
+  "hampers": {
+    "hindi": "सौगात",
+    "eyebrow": "Hamper Collection",
+    "title": "A hamper for",
+    "titleHighlight": "every relationship",
+    "intro": "Curated Diwali hampers for the people who make your year — from the boardroom to every desk.",
+    "button": "View all Diwali hampers",
+    "items": [
+      { "title": "Executive Luxury", "subtitle": "For CXOs & leadership", "tag": "Premium", "image": "/diwali-home/hamper-executive.webp" },
+      { "title": "Employee Delight", "subtitle": "For every team member", "tag": "Popular", "image": "/diwali-home/hamper-employee.webp" },
+      { "title": "Client Appreciation", "subtitle": "For clients & partners", "tag": "Corporate", "image": "/diwali-home/hamper-client.webp" },
+      { "title": "Wellness Collection", "subtitle": "Healthy & sustainable", "tag": "Eco", "image": "/diwali-home/hamper-wellness.webp" },
+      { "title": "Family Celebration", "subtitle": "Traditional festive joy", "tag": "Festive", "image": "/diwali-home/hamper-family.webp" },
+      { "title": "Premium Gourmet", "subtitle": "Artisan treats & delicacies", "tag": "Luxury", "image": "/diwali-home/hamper-gourmet.webp" }
+    ]
+  },
+  "workplace": {
+    "image": "/diwali-home/workplace.webp",
+    "imageAlt": "Office decorated for Diwali with a rangoli, diyas and marigold garlands",
+    "imageBadgeHindi": "रोशनी",
+    "imageBadgeText": "for every desk",
+    "hindi": "रिश्ते",
+    "eyebrow": "For your people",
+    "title": "From the boardroom",
+    "titleHighlight": "to every desk",
+    "intro": "Diwali is when companies say thank you. We plan, brand and deliver the gifting for your whole organisation, so every person on your list feels remembered.",
+    "audiences": [
+      { "icon": "Users", "title": "Employees", "text": "Hampers that thank every member of the team, packed and branded alike." },
+      { "icon": "Handshake", "title": "Clients & partners", "text": "Gifts that strengthen relationships well beyond the festival." },
+      { "icon": "Crown", "title": "Leadership", "text": "Premium keepsakes for CXOs, the board and key stakeholders." }
+    ],
+    "button": "Plan your Diwali gifting"
+  },
+  "promises": {
+    "hindi": "भरोसा",
+    "eyebrow": "Why Ecotwist",
+    "title": "Desi at heart.",
+    "titleHighlight": "Corporate in delivery.",
+    "intro": "The warmth of a Diwali gift from home, with the planning and polish your company expects.",
+    "items": [
+      { "icon": "Leaf", "title": "Sustainable by design", "text": "Cork, bamboo, recycled paper, soya wax and reusable boxes in place of single-use plastic." },
+      { "icon": "PenTool", "title": "Branded your way", "text": "Your logo and message on the boxes, diaries and packaging." },
+      { "icon": "Truck", "title": "Pan-India delivery", "text": "Hampers delivered across India, to one office or many." },
+      { "icon": "Building2", "title": "Made for bulk orders", "text": "Share your budget and quantity and get a proposal tailored to your team." }
+    ]
+  },
+  "process": {
+    "hindi": "प्रक्रिया",
+    "eyebrow": "How it works",
+    "title": "Four diyas to a",
+    "titleHighlight": "brighter Diwali",
+    "intro": "One brief is all it takes. We handle the rest, from curation to delivery.",
+    "stepLabel": "Step",
+    "steps": [
+      { "numeral": "१", "title": "Share your brief", "text": "Tell us your budget, quantity and who you are gifting." },
+      { "numeral": "२", "title": "We curate & brand", "text": "We shortlist hampers and add your branding." },
+      { "numeral": "३", "title": "Approve the proposal", "text": "Review your proposal and confirm the final selection." },
+      { "numeral": "४", "title": "Delivered with care", "text": "Hampers are packed and delivered across India." }
+    ],
+    "button": "Start your brief"
+  },
+  "cta": {
+    "hindi": "शुभ दीपावली",
+    "title": "Make this Diwali",
+    "titleHighlight": "unforgettable",
+    "titleEnd": "for your people",
+    "text": "Browse the Diwali catalogue, or tell us about your team and we will put together a proposal for you.",
+    "catalogueButton": "Download Diwali Catalogue",
+    "proposalButton": "Get Proposal",
+    "contactLink": "Talk to our team"
+  }
+}
