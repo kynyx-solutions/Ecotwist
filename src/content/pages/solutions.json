@@ -19,7 +19,7 @@
     "leftImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop",
     "rightImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=900&auto=format&fit=crop",
     "stats": [
-      { "value": "10+", "label": "Countries Served" },
+      { "value": "5+", "label": "Countries Served" },
       { "value": "5K+", "label": "Gifts Delivered" },
       { "value": "0%", "label": "Plastic Used" }
     ],
@@ -57,7 +57,11 @@
       { "title": "Employee Wellness", "tag": "Wellness", "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop", "path": "/occasions/employee-wellness" },
       { "title": "Work Anniversary", "tag": "Milestone", "image": "", "photoId": "solutions-work-anniversary", "path": "/occasions/work-anniversary" },
       { "title": "Product Launch", "tag": "Brand", "image": "https://images.unsplash.com/photo-1556741533-974f8e62a92d?q=80&w=1974&auto=format&fit=crop", "path": "/occasions/product-launch" },
-      { "title": "Award & Recognition", "tag": "Culture", "image": "", "photoId": "solutions-award-recognition", "path": "/occasions/award-recognition" }
+      { "title": "Award & Recognition", "tag": "Culture", "image": "", "photoId": "solutions-award-recognition", "path": "/occasions/award-recognition" },
+      { "title": "Women's Day Gifting", "tag": "March", "image": "/kits/candles-6.webp", "path": "/occasions/womens-day" },
+      { "title": "Christmas Gifting", "tag": "December", "image": "/kits/jar-box-3-velvet.webp", "path": "/occasions/christmas-gifting" },
+      { "title": "Earth Day & Environment Day", "tag": "CSR", "image": "/kits/seed-pencils.webp", "path": "/occasions/earth-day-gifting" },
+      { "title": "Channel Partner Gifting", "tag": "Partners", "image": "/kits/jar-box-4-navy.webp", "path": "/occasions/channel-partner-gifting" }
     ]
   },
   "capabilities": {
@@ -65,7 +69,7 @@
     "title": "The Scaling",
     "titleHighlight": "Ecosystem",
     "items": [
-      { "number": "01.", "title": "Bulk Delivery", "subtitle": "Omnichannel logistics for teams of 50 to 500.", "text": "Carbon-neutral fulfillment across 10+ countries with real-time tracking dashboards." },
+      { "number": "01.", "title": "Bulk Delivery", "subtitle": "Omnichannel logistics for teams of 50 to 500.", "text": "Carbon-neutral fulfillment across 5+ countries with real-time tracking dashboards." },
       { "number": "02.", "title": "Custom Branding", "subtitle": "Architecture for the brand identity.", "text": "Eco-friendly laser etching and soy-based ink printing that respects the material's integrity." },
       { "number": "03.", "title": "Eco-Packaging", "subtitle": "100% Plastic-Free, Archival Quality.", "text": "Biodegradable materials designed for a second life, presented with a premium unboxing feel." },
       { "number": "04.", "title": "Studio Patna", "subtitle": "Artisanal Craftsmanship at Source.", "text": "Our Patna studio serves as the heart of our design and quality control for regional excellence." }

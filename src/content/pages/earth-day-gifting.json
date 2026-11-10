@@ -1,0 +1,74 @@
+{
+  "_meta": { "label": "Earth Day & Environment Day", "route": "/occasions/earth-day-gifting" },
+  "theme": {
+    "accent": "#8bb35a",
+    "dark": "#16241a",
+    "light": "#f2f5ec"
+  },
+  "hero": {
+    "eyebrow": "Earth Day · 22 April  |  World Environment Day · 5 June",
+    "titleLine1": "Green days deserve",
+    "titleHighlight": "gifts that grow.",
+    "intro": "Plantable seed pencils, cork desk sets and bamboo bottles for Earth Day, World Environment Day and CSR drives, each kit with an impact card your team can share.",
+    "when": "22 April and 5 June · order 3 weeks ahead",
+    "primaryButton": "Plan your green day",
+    "secondaryButton": "See the kits",
+    "image": "/kits/seed-pencils.webp",
+    "imageAlt": "Plantable seed pencils made from recycled newspaper"
+  },
+  "about": {
+    "eyebrow": "Why it matters",
+    "title": "Walk the talk on sustainability.",
+    "text": "Earth Day and World Environment Day are when your sustainability goals meet your people. Gifts made from cork, bamboo and recycled paper show the commitment, and seed pencils literally grow into it.",
+    "points": [
+      { "title": "Plantable", "text": "Seed pencils that grow into herbs and vegetables after use." },
+      { "title": "Made from waste", "text": "Pens and pencils from recycled newspaper." },
+      { "title": "Impact card", "text": "Each kit can carry a card stating the plastic avoided." },
+      { "title": "CSR-ready", "text": "GST invoicing and bulk pricing for CSR budgets." }
+    ]
+  },
+  "kits": {
+    "eyebrow": "Green day kits",
+    "title": "Kits that plant the idea",
+    "intro": "From a giveaway for every attendee to a desk set for every employee.",
+    "priceNote": "Starting prices per kit, including your logo. GST and delivery extra.",
+    "items": [
+      { "title": "Seed & Sketch Pouch", "audience": "For drives & events", "tag": "Under ₹200", "contents": "2 seed pencils, recycled paper pen and a recycled writing pad", "price": "From ₹199", "image": "/kits/seed-pencils.webp" },
+      { "title": "Cork Keepsake Duo", "audience": "For every employee", "tag": "Under ₹300", "contents": "Cork pen and cork keyring in a kraft box", "price": "From ₹249", "image": "/kits/cork-pens.webp" },
+      { "title": "Recycled Paper Set", "audience": "For workshops", "tag": "Recycled", "contents": "Recycled daily planner, writing pad, paper pens and seed pencils", "price": "From ₹349", "image": "/kits/paper-pen.webp" },
+      { "title": "Desk Essentials Kit", "audience": "For every desk", "tag": "Popular", "contents": "Cork diary, cork pen and 2 seed pencils in a kraft box", "price": "From ₹599", "image": "/kits/cork-diary-pen-flatlay.webp" },
+      { "title": "Bamboo Workday Kit", "audience": "For commuters", "tag": "Eco", "contents": "Bamboo bottle with tea infuser, recycled planner, paper pens, seed pencils", "price": "From ₹999", "image": "/kits/bamboo-bottle-infuser.webp" },
+      { "title": "Plastic-Free Desk Set", "audience": "For leaders & CSR partners", "tag": "Premium", "contents": "Cork-and-denim diary, cork pen, bamboo bottle and cork keyring in a magnetic box", "price": "From ₹1,199", "image": "/kits/cork-denim-diary-branded.webp" },
+      { "title": "Desk Plant Kit", "audience": "For every desk", "tag": "Green", "contents": "Succulent in a recycled pot, seed pencils and a care card", "price": "From ₹499", "image": "/site/client-appreciation/the-catalyst.png" },
+      { "title": "Reusable Tote Set", "audience": "For plastic-free shopping", "tag": "Reusable", "contents": "Organic cotton tote, reusable cup and a notebook", "price": "From ₹749", "image": "/site/employee-onboarding/sustainable-tote.png" },
+      { "title": "Recycled Glass Bottle Set", "audience": "For daily refills", "tag": "Refill", "contents": "Recycled glass bottle with sleeve and a bamboo straw", "price": "From ₹899", "image": "/site/employee-onboarding/recycled-glass-bottle.png" }
+    ]
+  },
+  "personalisation": {
+    "eyebrow": "Personalisation",
+    "title": "Your brand on every green gift.",
+    "items": [
+      { "symbol": "🌱", "title": "Impact card", "text": "Plastic avoided per kit, ready to share on LinkedIn." },
+      { "symbol": "◈", "title": "Logo branding", "text": "Your logo printed on pencils, pens, cork and bamboo." },
+      { "symbol": "✉", "title": "Seed-paper note", "text": "A message from leadership that can be planted." },
+      { "symbol": "❀", "title": "Kraft packaging", "text": "Plastic-free kraft boxes and sleeves." }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "How it works",
+    "title": "From brief to the big day",
+    "steps": [
+      { "when": "4 weeks ahead", "title": "Share your brief", "text": "Headcount, budget and the event plan." },
+      { "when": "Within 2 days", "title": "Proposal & mockup", "text": "Kits shown with your branding." },
+      { "when": "3 weeks ahead", "title": "Approve the order", "text": "We start production." },
+      { "when": "Before the day", "title": "Delivered", "text": "To each office or event venue." }
+    ]
+  },
+  "cta": {
+    "title": "Plan a greener",
+    "titleHighlight": "Earth Day",
+    "text": "Tell us about your drive or event and we will send a proposal with your branding.",
+    "primaryButton": "Get a proposal",
+    "secondaryButton": "Talk to our team"
+  }
+}

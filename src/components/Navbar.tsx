@@ -3,17 +3,18 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Menu, X, ChevronDown, ArrowRight,
   Users, Gift, Sparkles, CalendarDays, HeartPulse, Leaf,
-  Cake, Award, Rocket, Trophy, GraduationCap,
+  Cake, Award, Rocket, Trophy, GraduationCap, Flower2, TreePine, Handshake,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { asset } from '../lib/content';
 import content from '../content/pages/navigation.json';
 
 /* ─────────────────────────────────────────────
-   OCCASIONS  — 10 pages, each with icon + desc 
+   OCCASIONS  — one per occasion page, each with icon + desc
 ───────────────────────────────────────────── */
 const ICONS = {
   Gift, Users, Sparkles, CalendarDays, HeartPulse, Cake, Award, Rocket, Trophy, GraduationCap,
+  Flower2, TreePine, Leaf, Handshake,
 };
 
 const { header, megaMenu, toggle, mobile } = content;

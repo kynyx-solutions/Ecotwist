@@ -38,8 +38,11 @@
     "viewAllText": "View All",
     "items": [
       { "name": "Gold Excellence Hamper", "price": "Starting at ₹3,499", "tag": "Luxury", "image": "/site/award-recognition/gold-excellence-hamper.jpeg" },
-      { "name": "Engraved Crystal Trophy", "price": "Starting at ₹2,999", "tag": "Customizable", "image": "/site/award-recognition/engraved-crystal-trophy.jpeg" },
-      { "name": "Premium Leather Portfolio", "price": "Starting at ₹1,999", "tag": "Premium", "image": "/site/award-recognition/premium-leather-portfolio.jpeg" }
+      { "name": "Engraved Crystal Trophy", "price": "Starting at ₹2,999", "tag": "Customizable", "image": "/site/work-anniversary/years-of-service-awards.png" },
+      { "name": "Premium Leather Portfolio", "price": "Starting at ₹1,999", "tag": "Premium", "image": "/site/work-anniversary/leather-folio.png" },
+      { "name": "Recognition Cork Set", "price": "Starting at ₹649", "tag": "Team awards", "image": "/kits/cork-diary-pen.webp" },
+      { "name": "Star Performer Box", "price": "Starting at ₹1,799", "tag": "Bestseller", "image": "/kits/jar-box-2-navy.webp" },
+      { "name": "Executive Cork Collection", "price": "Starting at ₹2,199", "tag": "Luxury", "image": "/kits/jar-box-4-navy.webp" }
     ]
   },
   "customization": {
@@ -53,7 +56,7 @@
       { "symbol": "📦", "title": "Prestige Packaging", "text": "Velvet-lined rigid boxes with magnetic closures and satin ribbons." },
       { "symbol": "🎨", "title": "Brand Alignment", "text": "Awards and packaging perfectly matched to your corporate visual identity." }
     ],
-    "image": "/site/award-recognition/engraved-crystal-trophy.jpeg",
+    "image": "/site/work-anniversary/years-of-service-awards.png",
     "imageAlt": "Award"
   },
   "why": {

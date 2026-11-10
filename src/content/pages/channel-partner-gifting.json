@@ -1,0 +1,74 @@
+{
+  "_meta": { "label": "Channel Partner Gifting", "route": "/occasions/channel-partner-gifting" },
+  "theme": {
+    "accent": "#c5a059",
+    "dark": "#1f1d16",
+    "light": "#f6f3ea"
+  },
+  "hero": {
+    "eyebrow": "Dealers · Distributors · Sales teams",
+    "titleLine1": "Thank the partners",
+    "titleHighlight": "who sell for you.",
+    "intro": "Gifts for dealer meets, distributor rewards and sales-team incentives: cork desk sets, bamboo bottles and dry fruit hampers, branded and delivered to partners across India.",
+    "when": "Dealer meets, festive season and year-end rewards",
+    "primaryButton": "Plan partner gifting",
+    "secondaryButton": "See the kits",
+    "image": "/kits/jar-box-4-navy.webp",
+    "imageAlt": "Velvet box with four jars of premium dry fruits"
+  },
+  "about": {
+    "eyebrow": "Why it matters",
+    "title": "Partners remember who remembered them.",
+    "text": "Your dealers and distributors choose which brand to push every day. A useful branded gift at a dealer meet or a premium hamper for top performers keeps your brand on their counter and in their conversations.",
+    "points": [
+      { "title": "Tiered by performance", "text": "Kits from ₹649 to ₹3,499 to match each partner tier." },
+      { "title": "Your brand on their desk", "text": "Cork diaries, pens and bottles they use daily." },
+      { "title": "Delivered to each partner", "text": "Pan-India delivery to shops, warehouses and homes." },
+      { "title": "GST invoicing", "text": "Clean paperwork for trade-marketing budgets." }
+    ]
+  },
+  "kits": {
+    "eyebrow": "Partner kits",
+    "title": "A kit for every partner tier",
+    "intro": "Mix tiers in one order: we pack and ship each partner their kit.",
+    "priceNote": "Starting prices per kit, including your logo. GST and delivery extra.",
+    "items": [
+      { "title": "Dealer Meet Kit", "audience": "For every attendee", "tag": "Event", "contents": "Cork diary, cork pen, cork keyring and a seed pencil", "price": "From ₹649", "image": "/kits/cork-diary-pen.webp" },
+      { "title": "Partner Desk Set", "audience": "For sales teams", "tag": "Popular", "contents": "Bamboo bottle with tea infuser, recycled planner, paper pens", "price": "From ₹999", "image": "/kits/bamboo-bottle-infuser.webp" },
+      { "title": "Distributor Festive Hamper", "audience": "For festive season", "tag": "Festive", "contents": "Velvet 3-jar dry fruit box with a soya candle set", "price": "From ₹1,299", "image": "/kits/jar-box-3-velvet.webp" },
+      { "title": "Partner Thank-You Box", "audience": "For loyal partners", "tag": "Thank-you", "contents": "Cork diary, cork pen and a 2-jar dry fruit box", "price": "From ₹1,399", "image": "/kits/jar-box-2-white.webp" },
+      { "title": "Top Partner Collection", "audience": "For top performers", "tag": "Premium", "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen, bamboo bottle", "price": "From ₹2,199", "image": "/kits/jar-box-4-navy.webp" },
+      { "title": "Grand Partner Hamper", "audience": "For your best distributors", "tag": "Luxury", "contents": "6-jar dry fruit box, candle set, cork diary and pen in a pinewood basket", "price": "From ₹3,499", "image": "/kits/pinewood-basket.webp" },
+      { "title": "Partner Award Trophy", "audience": "For top dealers", "tag": "Award", "contents": "Crystal or wooden trophy engraved with the partner name and year", "price": "From ₹899", "image": "/site/work-anniversary/years-of-service-awards.png" },
+      { "title": "Executive Leather Set", "audience": "For distributors", "tag": "Executive", "contents": "Eco-leather notebook, metal pen and cardholder in a gift box", "price": "From ₹1,999", "image": "/site/employee-onboarding/eco-leather-notebook.png" },
+      { "title": "Partner Tech Kit", "audience": "For sales leaders", "tag": "Tech", "contents": "Wireless charger, bamboo phone stand, cork mouse pad and notebook", "price": "From ₹2,499", "image": "/site/client-appreciation/custom-tech.png" }
+    ]
+  },
+  "personalisation": {
+    "eyebrow": "Personalisation",
+    "title": "Your brand, their name.",
+    "items": [
+      { "symbol": "◈", "title": "Logo branding", "text": "Your logo on cork, bamboo, boxes and sleeves." },
+      { "symbol": "✿", "title": "Partner names", "text": "The partner's or shop's name printed on the diary." },
+      { "symbol": "✉", "title": "Thank-you note", "text": "A note from your sales head on seed paper." },
+      { "symbol": "▤", "title": "Tier labels", "text": "Gold, silver and bronze sleeves for reward tiers." }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "How it works",
+    "title": "From partner list to delivery",
+    "steps": [
+      { "when": "Today", "title": "Share the list", "text": "Partners, tiers, budget and addresses." },
+      { "when": "Within 2 days", "title": "Proposal & mockup", "text": "Kits per tier with your branding." },
+      { "when": "Week 1", "title": "Approve the order", "text": "We start production." },
+      { "when": "Week 2–3", "title": "Delivered", "text": "Each partner receives their own kit." }
+    ]
+  },
+  "cta": {
+    "title": "Reward the partners",
+    "titleHighlight": "who grow your sales",
+    "text": "Share your partner list and budget, and we will send a tiered proposal.",
+    "primaryButton": "Get a proposal",
+    "secondaryButton": "Talk to our team"
+  }
+}

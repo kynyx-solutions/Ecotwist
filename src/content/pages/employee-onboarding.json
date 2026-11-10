@@ -20,7 +20,7 @@
   "stats": {
     "items": [
       {
-        "value": "50+",
+        "value": "100+",
         "label": "Companies Served"
       },
       {
@@ -104,6 +104,26 @@
         "name": "Artisan Ceramic Mug",
         "subtitle": "Morning Rituals",
         "image": "/site/employee-onboarding/artisan-ceramic-mug.png"
+      },
+      {
+        "name": "Desk Essentials Kit",
+        "subtitle": "From ₹599 · cork diary, cork pen, seed pencils",
+        "image": "/kits/cork-diary-pen-flatlay.webp"
+      },
+      {
+        "name": "Cork 4-in-1 Set",
+        "subtitle": "From ₹649 · cork diary, pen, keyring, seed pencil",
+        "image": "/kits/cork-diary-pen.webp"
+      },
+      {
+        "name": "Bamboo Workday Kit",
+        "subtitle": "From ₹999 · bamboo bottle, planner, pens",
+        "image": "/kits/bamboo-bottle-infuser.webp"
+      },
+      {
+        "name": "Fresh Start Onboarding Kit",
+        "subtitle": "From ₹1,199 · cork-and-denim diary, pen, bottle, keyring",
+        "image": "/kits/cork-denim-diaries.webp"
       }
     ]
   },

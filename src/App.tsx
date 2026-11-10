@@ -8,8 +8,10 @@ import { SeoManager } from './components/SeoManager';
 // ── Core pages (default exports) ──────────────────────
 import { Home } from "./pages/Home";
 import DiwaliHome from "./pages/DiwaliHome";
+import NewYearHome from "./pages/NewYearHome";
 import { DiwaliFooter } from './components/DiwaliFooter';
-import { showDiwaliHome, showDiwaliFooter } from "./config/homepage";
+import { NewYearFooter } from './components/NewYearFooter';
+import { homeTheme } from "./config/homepage";
 import Contact      from './pages/Contact';
 import { Solutions } from "./pages/Solutions";
 import GetProposal  from './pages/GetProposal';
@@ -34,6 +36,14 @@ import RetirementGifting  from './pages/RetirementGifting.tsx';
 import DepawaliGifting from './pages/Depawali.tsx';
 import  ProductList  from './pages/Products.tsx';
 
+// ── Newer occasion pages: one shared layout, one content file each ──
+import OccasionTemplate, { type OccasionContent } from './pages/OccasionTemplate';
+import womensDay       from './content/pages/womens-day.json';
+import christmas       from './content/pages/christmas-gifting.json';
+import earthDay        from './content/pages/earth-day-gifting.json';
+import channelPartners from './content/pages/channel-partner-gifting.json';
+const TEMPLATE_OCCASIONS = [womensDay, christmas, earthDay, channelPartners] as OccasionContent[];
+
 // ── Policy pages ──────────────────────────────────────
 import PrivacyPolicy   from './components/PrivacyPolicy';
 import TermsOfService  from './components/TermsOfService';
@@ -56,6 +66,10 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+/* ========= FESTIVE SWITCH (src/config/homepage.ts) ========= */
+const HOME_PAGES = { default: <Home />, diwali: <DiwaliHome />, newYear: <NewYearHome /> };
+const FOOTERS = { default: <Footer />, diwali: <DiwaliFooter />, newYear: <NewYearFooter /> };
+
 /* ========= ANIMATED ROUTES ========= */
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -65,8 +79,8 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
 
         {/* ── Core routes ── */}
-        {/* "/" shows the Diwali home page or the regular one: switch in src/config/homepage.ts */}
-        <Route path="/"             element={<PageWrapper>{showDiwaliHome() ? <DiwaliHome /> : <Home />}</PageWrapper>} />
+        {/* "/" shows a festive home page or the regular one: switch in src/config/homepage.ts */}
+        <Route path="/"             element={<PageWrapper>{HOME_PAGES[homeTheme()]}</PageWrapper>} />
         <Route path="/contact"      element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/solutions"    element={<PageWrapper><Solutions /></PageWrapper>} />
         <Route path="/get-proposal" element={<PageWrapper><GetProposal /></PageWrapper>} />
@@ -92,6 +106,9 @@ const AnimatedRoutes = () => {
         <Route path="/occasions/award-recognition"   element={<PageWrapper><AwardRecognition /></PageWrapper>} />
         <Route path="/occasions/retirement-gifting"  element={<PageWrapper><RetirementGifting /></PageWrapper>} />
         <Route path="/occasions/depawali-gifting"      element={<PageWrapper><DepawaliGifting /></PageWrapper>} />
+        {TEMPLATE_OCCASIONS.map((c) => (
+          <Route key={c._meta.route} path={c._meta.route} element={<PageWrapper><OccasionTemplate content={c} /></PageWrapper>} />
+        ))}
         <Route path="/products"                      element={<PageWrapper><ProductList /></PageWrapper>} />
 
         {/* ── Policy routes ── */}
@@ -116,8 +133,8 @@ export default function App() {
         <main className="flex-grow">
           <AnimatedRoutes />
         </main>
-        {/* Diwali footer or the regular one: switch in src/config/homepage.ts */}
-        {showDiwaliFooter() ? <DiwaliFooter /> : <Footer />}
+        {/* Festive footer or the regular one: switch in src/config/homepage.ts */}
+        {FOOTERS[homeTheme()]}
       </div>
     </Router>
   );

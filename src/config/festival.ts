@@ -24,6 +24,8 @@ export interface Festival {
 
 // Web-sized Diwali artwork lives in /public/diwali-home
 const diwaliPhoto = (file: string) => `/diwali-home/${file}`;
+// Web-sized New Year photos live in /public/new-year-home
+const newYearPhoto = (file: string) => `/new-year-home/${file}`;
 
 export const FESTIVALS = {
   diwali: {
@@ -70,8 +72,15 @@ export const FESTIVALS = {
     desc: "Start the year with gifts your people will use every day.",
     greeting: "Happy New Year",
     icon: "🎆",
-    accent: ["#1E3A8A", "#C5A059"],
-    tint: "#EFF6FF",
+    accent: ["#437327", "#C5A059"],
+    tint: "#F1F7EA",
+    images: {
+      1: [newYearPhoto("hero-thank-you-box.webp"), newYearPhoto("workplace.webp")],     // Occasion
+      2: [newYearPhoto("kit-leadership.webp"), newYearPhoto("kit-celebration.webp")],   // Budget
+      3: [newYearPhoto("kit-fresh-start.webp"), newYearPhoto("kit-planner.webp")],      // Quantity
+      4: [newYearPhoto("edit-cork-diary.webp"), newYearPhoto("kit-artisan.webp")],      // Branding
+      5: [newYearPhoto("kit-wellness.webp"), newYearPhoto("edit-bamboo.webp")],         // Your details
+    },
   },
   eid: {
     title: "Eid Gifting",
@@ -83,6 +92,6 @@ export const FESTIVALS = {
   },
 } satisfies Record<string, Festival>;
 
-export const ACTIVE_FESTIVAL: keyof typeof FESTIVALS | null = "diwali";
+export const ACTIVE_FESTIVAL: keyof typeof FESTIVALS | null = "newYear";
 
 export const activeFestival: Festival | null = ACTIVE_FESTIVAL ? FESTIVALS[ACTIVE_FESTIVAL] : null;

@@ -28,9 +28,9 @@
     "intro": "Tailored gifting for every stakeholder in your product launch ecosystem.",
     "linkText": "View Collection",
     "items": [
-      { "name": "VIP Launch Kits", "desc": "Exclusive hampers for key stakeholders, investors, and media guests at your product debut.", "accent": "#5b8fa8", "tag": "VIP", "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
-      { "name": "Branded Merchandise", "desc": "Premium custom merch — apparel, bags, and stationery that puts your new product top of mind.", "accent": "#3a6b82", "tag": "Brand", "img": "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=800&q=80" },
-      { "name": "Media & Press Boxes", "desc": "Curated unboxing experiences designed to make your launch go viral on social media.", "accent": "#2e5571", "tag": "Media", "img": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800&q=80" }
+      { "name": "VIP Launch Kits", "desc": "Exclusive hampers for key stakeholders, investors, and media guests at your product debut.", "accent": "#5b8fa8", "tag": "VIP", "img": "/site/client-appreciation/executive-boxes.png" },
+      { "name": "Branded Merchandise", "desc": "Premium custom merch — apparel, bags, and stationery that puts your new product top of mind.", "accent": "#3a6b82", "tag": "Brand", "img": "/kits/cork-denim-diary-branded.webp" },
+      { "name": "Media & Press Boxes", "desc": "Curated unboxing experiences designed to make your launch go viral on social media.", "accent": "#2e5571", "tag": "Media", "img": "/kits/seed-pencils.webp" }
     ]
   },
   "products": {
@@ -38,9 +38,12 @@
     "intro": "The most-loved items in our product launch gifting range.",
     "viewAllText": "View All",
     "items": [
-      { "name": "Launch Day Hamper", "sub": "Starting at ₹1,999", "tag": "Premium", "img": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" },
-      { "name": "Branded Tech Essentials", "sub": "Starting at ₹2,999", "tag": "Customizable", "img": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80" },
-      { "name": "Press Kit Box", "sub": "Starting at ₹3,499", "tag": "Media", "img": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80" }
+      { "name": "Launch Day Hamper", "sub": "Starting at ₹1,999", "tag": "Premium", "img": "/site/client-appreciation/the-catalyst.png" },
+      { "name": "Branded Tech Essentials", "sub": "Starting at ₹2,999", "tag": "Customizable", "img": "/site/client-appreciation/custom-tech.png" },
+      { "name": "Press Kit Box", "sub": "Starting at ₹3,499", "tag": "Media", "img": "/site/diwali-gifting/premium-packaging.png" },
+      { "name": "Media Kit", "sub": "Starting at ₹349", "tag": "Press", "img": "/kits/paper-pen.webp" },
+      { "name": "Launch Reveal Box", "sub": "Starting at ₹1,499", "tag": "Bestseller", "img": "/kits/kraft-gift-box.webp" },
+      { "name": "VIP Launch Hamper", "sub": "Starting at ₹2,199", "tag": "Premium", "img": "/kits/jar-box-4-navy.webp" }
     ]
   },
   "customization": {

@@ -82,7 +82,7 @@
         "Natural cork",
         "Custom branding"
       ],
-      "image": "/catalogue/cork-keyring.jpg",
+      "image": "/placeholder.svg",
       "icon": "KeyRound",
       "tint": "#d3bc98"
     },
@@ -127,7 +127,7 @@
         "Recycled paper",
         "Custom branding"
       ],
-      "image": "/catalogue/recycled-daily-planner.jpg",
+      "image": "/placeholder.svg",
       "icon": "CalendarDays",
       "tint": "#c9cdb6"
     },
@@ -140,7 +140,7 @@
         "Recycled paper",
         "Custom branding"
       ],
-      "image": "/catalogue/recycled-writing-pad.jpg",
+      "image": "/placeholder.svg",
       "icon": "NotebookPen",
       "tint": "#d0d3bf"
     },

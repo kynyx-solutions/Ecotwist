@@ -1,0 +1,74 @@
+{
+  "_meta": { "label": "Christmas Gifting", "route": "/occasions/christmas-gifting" },
+  "theme": {
+    "accent": "#d65a4a",
+    "dark": "#1d2b1f",
+    "light": "#f7f3ec"
+  },
+  "hero": {
+    "eyebrow": "Christmas & Secret Santa · 25 December",
+    "titleLine1": "Christmas gifts that",
+    "titleHighlight": "skip the plastic.",
+    "intro": "Secret Santa gifts, team treats and client boxes for Christmas: cork keepsakes, soya wax candles and dry fruit jar boxes, branded and delivered across India.",
+    "when": "25 December · order by 12 December for branded delivery",
+    "primaryButton": "Plan Christmas gifting",
+    "secondaryButton": "See the kits",
+    "image": "/kits/jar-box-3-velvet.webp",
+    "imageAlt": "Velvet gift box with three jars of dry fruits"
+  },
+  "about": {
+    "eyebrow": "Why it matters",
+    "title": "Small gifts, big team moment.",
+    "text": "Christmas is when teams run Secret Santa and companies thank international clients. Low-cost, useful gifts keep the budget under control and the plastic out of the office bin.",
+    "points": [
+      { "title": "Secret Santa ready", "text": "Gifts under ₹300 that still feel thoughtful." },
+      { "title": "For global clients", "text": "Dry fruit and candle boxes that travel well." },
+      { "title": "Plastic-free", "text": "Cork, bamboo, soya wax and reusable boxes." },
+      { "title": "One order, every office", "text": "Delivered pan-India to each location." }
+    ]
+  },
+  "kits": {
+    "eyebrow": "Christmas kits",
+    "title": "From Secret Santa to key clients",
+    "intro": "Pick a kit as it is, or tell us your budget and we will adapt it.",
+    "priceNote": "Starting prices per kit, including your logo. GST and delivery extra.",
+    "items": [
+      { "title": "Secret Santa Duo", "audience": "For Secret Santa", "tag": "Under ₹300", "contents": "Cork pen and cork keyring in a kraft box", "price": "From ₹249", "image": "/kits/cork-pens.webp" },
+      { "title": "Little Light Box", "audience": "For the whole team", "tag": "Under ₹500", "contents": "Soya wax candle, 2 seed pencils and a Christmas card", "price": "From ₹299", "image": "/kits/candles-4.webp" },
+      { "title": "Desk Essentials Kit", "audience": "For every employee", "tag": "Popular", "contents": "Cork diary, cork pen and 2 seed pencils in a kraft box", "price": "From ₹599", "image": "/kits/cork-diary-pen-flatlay.webp" },
+      { "title": "Christmas Treat Box", "audience": "For clients & partners", "tag": "Treat", "contents": "Two jars of premium dry fruits or chocolates in a keepsake box", "price": "From ₹699", "image": "/kits/jar-box-2-navy.webp" },
+      { "title": "Festive Light Hamper", "audience": "For team leads", "tag": "Festive", "contents": "Velvet 3-jar box with a soya candle set and a card", "price": "From ₹1,299", "image": "/kits/jar-box-3-velvet.webp" },
+      { "title": "Executive Cork Collection", "audience": "For CXOs & key clients", "tag": "Premium", "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen, bamboo bottle", "price": "From ₹2,199", "image": "/kits/jar-box-4-navy.webp" },
+      { "title": "Plum Cake & Cookie Box", "audience": "For the office party", "tag": "Gourmet", "contents": "Plum cake, cookies and chocolates with a Christmas card", "price": "From ₹799", "image": "/site/diwali-gifting/gourmet-hamper.png" },
+      { "title": "Cocoa & Mug Set", "audience": "For cosy evenings", "tag": "Cosy", "contents": "Ceramic mug, hot cocoa mix and cookies", "price": "From ₹999", "image": "/site/employee-onboarding/artisan-ceramic-mug.png" },
+      { "title": "Christmas Celebration Hamper", "audience": "For key clients", "tag": "Premium", "contents": "Bottle, journal, candle and treats in a celebration box", "price": "From ₹2,499", "image": "/site/client-appreciation/grand-celebration.png" }
+    ]
+  },
+  "personalisation": {
+    "eyebrow": "Personalisation",
+    "title": "Branded for the season.",
+    "items": [
+      { "symbol": "✦", "title": "Christmas card", "text": "Your greeting printed on plantable seed paper." },
+      { "symbol": "◈", "title": "Logo branding", "text": "Your logo on cork, bamboo and packaging." },
+      { "symbol": "✿", "title": "Name printing", "text": "Names on cork pens and keyrings for Secret Santa." },
+      { "symbol": "❀", "title": "Festive packaging", "text": "Kraft, magnetic or velvet boxes with a ribbon." }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "How it works",
+    "title": "From brief to 25 December",
+    "steps": [
+      { "when": "Today", "title": "Share your brief", "text": "Headcount, budget and locations." },
+      { "when": "Within 2 days", "title": "Proposal & mockup", "text": "Kits shown with your branding." },
+      { "when": "By 12 December", "title": "Approve the order", "text": "We start production." },
+      { "when": "Before 25 December", "title": "Delivered", "text": "To each office, ready for the party." }
+    ]
+  },
+  "cta": {
+    "title": "Make this Christmas",
+    "titleHighlight": "plastic-free",
+    "text": "Tell us about your team and we will send a Christmas proposal with your branding.",
+    "primaryButton": "Get a proposal",
+    "secondaryButton": "Talk to our team"
+  }
+}

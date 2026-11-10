@@ -40,7 +40,11 @@
       { "name": "Boreal Glass Carafe", "subtitle": "Borosilicate & Bamboo", "image": "/site/events-conferences/glass-carafe.png" },
       { "name": "Zenith Bamboo Journal", "subtitle": "Sustainable FSC Paper", "image": "/site/events-conferences/bamboo-journal.png" },
       { "name": "Terra Ceramic Tumbler", "subtitle": "Artisan Crafted", "image": "/site/events-conferences/ceramic-tumbler.png" },
-      { "name": "Heritage Canvas Tote", "subtitle": "GOTS Certified Cotton", "image": "/site/events-conferences/canvas-tote.png" }
+      { "name": "Heritage Canvas Tote", "subtitle": "GOTS Certified Cotton", "image": "/site/events-conferences/canvas-tote.png" },
+      { "name": "Delegate Kit", "subtitle": "From ₹249 · writing pad, paper pen, seed pencils, cork keyring", "image": "/kits/paper-pen.webp" },
+      { "name": "Cork 4-in-1 Set", "subtitle": "From ₹649 · cork diary, pen, keyring, seed pencil", "image": "/kits/cork-diary-pen.webp" },
+      { "name": "Bamboo Workday Kit", "subtitle": "From ₹999 · bamboo bottle, planner, pens", "image": "/kits/bamboo-bottle-infuser.webp" },
+      { "name": "Speaker Thank-You Box", "subtitle": "From ₹1,399 · cork diary, pen and a 2-jar box", "image": "/kits/jar-box-2-white.webp" }
     ]
   },
   "customization": {

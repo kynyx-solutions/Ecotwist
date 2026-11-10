@@ -178,6 +178,38 @@
       "focusKeyword": "diwali corporate gifts"
     },
     {
+      "route": "/occasions/womens-day",
+      "title": "Women's Day Corporate Gifts for Employees",
+      "description": "Sustainable Women's Day gifts for employees: soya wax candles, cork desk sets and dry fruit boxes, branded with your logo and delivered pan-India.",
+      "image": "/kits/candles-6.webp",
+      "noindex": false,
+      "focusKeyword": "women's day gifts for employees"
+    },
+    {
+      "route": "/occasions/christmas-gifting",
+      "title": "Christmas Corporate Gifts & Secret Santa Ideas",
+      "description": "Plastic-free Christmas corporate gifts: Secret Santa gifts under ₹300, candle sets and dry fruit jar boxes for employees and clients, delivered across India.",
+      "image": "/kits/jar-box-3-velvet.webp",
+      "noindex": false,
+      "focusKeyword": "christmas corporate gifts"
+    },
+    {
+      "route": "/occasions/earth-day-gifting",
+      "title": "Earth Day & World Environment Day Corporate Gifts",
+      "description": "Eco-friendly gifts for Earth Day, World Environment Day and CSR drives: plantable seed pencils, cork desk sets and bamboo bottles with an impact card.",
+      "image": "/kits/seed-pencils.webp",
+      "noindex": false,
+      "focusKeyword": "earth day corporate gifts"
+    },
+    {
+      "route": "/occasions/channel-partner-gifting",
+      "title": "Dealer & Channel Partner Gifts",
+      "description": "Corporate gifts for dealers, distributors and sales teams: cork desk sets, bamboo bottles and dry fruit hampers in tiers from ₹649, branded and delivered pan-India.",
+      "image": "/kits/jar-box-4-navy.webp",
+      "noindex": false,
+      "focusKeyword": "channel partner gifts"
+    },
+    {
       "route": "/blog",
       "title": "Corporate Gifting Ideas & Guides (Blog)",
       "description": "Corporate gifting ideas, guides and trends for India: occasion-wise gift ideas, budgeting tips and ways to make sustainable employee and client gifts count.",

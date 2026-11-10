@@ -491,8 +491,10 @@ interface Flash { x: number; y: number; age: number; color: string; }
  * Canvas fireworks. Runs only while on screen and the tab is visible;
  * renders nothing for visitors who prefer reduced motion.
  */
-export function Fireworks({ className = "", onDark = false, favourRight = false }: {
+export function Fireworks({ className = "", onDark = false, favourRight = false, colors = FIREWORK_COLORS, gold = GOLD }: {
   className?: string; onDark?: boolean; favourRight?: boolean;
+  /** Burst colours and the willow/trail colour. Pass a module-level constant so the effect doesn't restart each render. */
+  colors?: string[]; gold?: string;
 }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const reduceMotion = useReducedMotion();
@@ -525,7 +527,7 @@ export function Fireworks({ className = "", onDark = false, favourRight = false 
       // burst in the upper sky, clear of the toran at the very top
       const ty = rand(Math.min(0.15 * h, 150), Math.max(0.2 * h, Math.min(0.4 * h, 400)));
       const time = rand(0.9, 1.25);
-      rockets.push({ x, y: h + 10, vx: rand(-20, 20), vy: -(h + 10 - ty) / time, ty, color: pick(FIREWORK_COLORS) });
+      rockets.push({ x, y: h + 10, vx: rand(-20, 20), vy: -(h + 10 - ty) / time, ty, color: pick(colors) });
     };
 
     const burst = (r: Rocket, n: number, opts: {
@@ -544,13 +546,13 @@ export function Fireworks({ className = "", onDark = false, favourRight = false 
 
     const explode = (r: Rocket) => {
       const base = Math.max(110, Math.min(240, Math.min(w, h) * 0.3));
-      const second = pick(FIREWORK_COLORS);
+      const second = pick(colors);
       const kind = Math.random();
       if (kind < 0.25) {
         // golden willow: long, drooping, crackling
         burst(r, 70, {
           speed: () => base * rand(0.35, 1),
-          spark: () => ({ color: GOLD, life: rand(1.8, 2.6), size: onDark ? 1.6 : 2, drag: 1.4, gravity: 110, flicker: true }),
+          spark: () => ({ color: gold, life: rand(1.8, 2.6), size: onDark ? 1.6 : 2, drag: 1.4, gravity: 110, flicker: true }),
         });
       } else if (kind < 0.5) {
         // ring with a contrasting core
@@ -604,7 +606,7 @@ export function Fireworks({ className = "", onDark = false, favourRight = false 
         ctx.lineTo(r.x, r.y);
         ctx.stroke();
         if (Math.random() < 0.5 && sparks.length < 700) {
-          sparks.push({ x: r.x, y: r.y, vx: rand(-15, 15), vy: rand(10, 40), age: 0, life: rand(0.3, 0.5), color: GOLD, size: 1.2, drag: 2, gravity: 40, flicker: false });
+          sparks.push({ x: r.x, y: r.y, vx: rand(-15, 15), vy: rand(10, 40), age: 0, life: rand(0.3, 0.5), color: gold, size: 1.2, drag: 2, gravity: 40, flicker: false });
         }
         if (r.y <= r.ty) { explode(r); rockets.splice(i, 1); }
       }
@@ -660,7 +662,7 @@ export function Fireworks({ className = "", onDark = false, favourRight = false 
       intersectionObserver.disconnect();
       document.removeEventListener("visibilitychange", update);
     };
-  }, [reduceMotion, onDark, favourRight]);
+  }, [reduceMotion, onDark, favourRight, colors, gold]);
 
   if (reduceMotion) return null;
   return <canvas ref={ref} aria-hidden className={`pointer-events-none ${className}`} />;

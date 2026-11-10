@@ -10,7 +10,7 @@
     "titleHighlight": "Solutions.",
     "intro": "Make every birthday feel extraordinary with personalised, sustainable gifts your team and clients will cherish for years.",
     "stats": [
-      { "value": "10K+", "label": "Happy Clients" },
+      { "value": "100+", "label": "Happy Clients" },
       { "value": "50+", "label": "Gift Collections" },
       { "value": "Pan-India", "label": "Delivery" }
     ],
@@ -26,7 +26,7 @@
     "paragraph2": "We take the guesswork out of corporate birthday gifting with sustainably curated hampers, personalised keepsakes, and gourmet indulgences.",
     "badgeSymbol": "🎂",
     "badgeText": "100% Personalised — No Two Gifts Alike",
-    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=900&q=80",
+    "image": "/kits/candles-6.webp",
     "imageAlt": "Birthday Gifting"
   },
   "categories": {
@@ -34,9 +34,9 @@
     "intro": "Explore our themed collections designed to make every birthday celebration truly memorable.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Personalised Keepsakes", "desc": "Engraved photo frames, custom journals, and memory boxes.", "accent": "#d4856a", "tag": "Personal", "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80" },
-      { "name": "Gourmet Celebration Kits", "desc": "Artisan chocolates, premium teas, and handcrafted sweets.", "accent": "#c4735d", "tag": "Gourmet", "image": "", "photoId": "birthday-gourmet-kits" },
-      { "name": "Pampering Wellness Sets", "desc": "Luxurious bath salts, aromatherapy candles, and skin-care treats.", "accent": "#a0617a", "tag": "Wellness", "image": "", "photoId": "birthday-wellness-sets" }
+      { "name": "Personalised Keepsakes", "desc": "Engraved photo frames, custom journals, and memory boxes.", "accent": "#d4856a", "tag": "Personal", "image": "/kits/cork-pens.webp" },
+      { "name": "Gourmet Celebration Kits", "desc": "Artisan chocolates, premium teas, and handcrafted sweets.", "accent": "#c4735d", "tag": "Gourmet", "image": "/kits/jar-box-2-white.webp", "photoId": "birthday-gourmet-kits" },
+      { "name": "Pampering Wellness Sets", "desc": "Luxurious bath salts, aromatherapy candles, and skin-care treats.", "accent": "#a0617a", "tag": "Wellness", "image": "/kits/candles-6.webp", "photoId": "birthday-wellness-sets" }
     ]
   },
   "products": {
@@ -44,9 +44,12 @@
     "intro": "The most-loved additions to our corporate birthday programs.",
     "viewAll": "View All",
     "items": [
-      { "name": "Celebration Hamper", "sub": "Starting at ₹1,499", "tag": "Bestseller", "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80" },
-      { "name": "Sweet Indulgence Box", "sub": "Starting at ₹999", "tag": "Customizable", "image": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&q=80" },
-      { "name": "Luxury Candle Set", "sub": "Starting at ₹1,199", "tag": "Eco-friendly", "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" }
+      { "name": "Celebration Hamper", "sub": "Starting at ₹1,499", "tag": "Bestseller", "image": "/site/client-appreciation/grand-celebration.png" },
+      { "name": "Sweet Indulgence Box", "sub": "Starting at ₹999", "tag": "Customizable", "image": "/site/diwali-gifting/gourmet-hamper.png" },
+      { "name": "Luxury Candle Set", "sub": "Starting at ₹1,199", "tag": "Eco-friendly", "image": "/kits/candles-3.webp" },
+      { "name": "Cork Keepsake Duo", "sub": "Starting at ₹249", "tag": "Name printed", "image": "/kits/cork-pens.webp" },
+      { "name": "Little Light Box", "sub": "Starting at ₹299", "tag": "Bestseller", "image": "/kits/candles-4.webp" },
+      { "name": "Birthday Treat Box", "sub": "Starting at ₹899", "tag": "Gourmet", "image": "/kits/jar-box-2-navy.webp" }
     ]
   },
   "customization": {
@@ -60,7 +63,7 @@
       { "symbol": "📸", "title": "Photo Personalisation", "desc": "Custom photo prints incorporated into hamper packaging." },
       { "symbol": "🎨", "title": "Theme Curation", "desc": "Color palettes and products aligned to birthday themes." }
     ],
-    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
+    "image": "/kits/cork-diary-pen-flatlay.webp",
     "imageAlt": "Custom"
   },
   "why": {

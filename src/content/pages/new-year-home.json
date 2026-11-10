@@ -1,0 +1,258 @@
+{
+  "_meta": {
+    "label": "Home (New Year)",
+    "route": "/"
+  },
+  "hero": {
+    "badge": "Year-End & New Year Gifting 2027",
+    "titleLine1": "Close 2026",
+    "titleLine2": "with gifts",
+    "titleHighlight": "they'll use all year.",
+    "intro": "Sustainable New Year gifts for your teams, clients and partners: cork planners, bamboo bottles, recycled-paper stationery and curated gift boxes, branded with your logo and delivered across India.",
+    "primaryButton": "Get a New Year Proposal",
+    "secondaryButton": "Browse the gifts",
+    "deadlineLabel": "Order by",
+    "deadlineDate": "2026-12-12",
+    "deadlineText": "for branded delivery before 1 January",
+    "deadlinePassedText": "Short on time? Ask about express orders for January delivery.",
+    "stats": [
+      {
+        "number": "Your logo",
+        "label": "On every gift"
+      },
+      {
+        "number": "Pan-India",
+        "label": "One office or many"
+      },
+      {
+        "number": "Plastic-free",
+        "label": "Gifts & packaging"
+      }
+    ],
+    "image": "/new-year-home/hero-thank-you-box.webp",
+    "imageAlt": "Black and gold thank-you gift box with a bottle, notebook, pen and candle",
+    "insetImage": "/new-year-home/hero-inset.webp",
+    "badgeCardLabel": "Branded",
+    "badgeCardText": "Thank-you boxes"
+  },
+  "marquee": {
+    "items": [
+      {
+        "text": "Happy New Year 2027"
+      },
+      {
+        "text": "Sustainable Gifting"
+      },
+      {
+        "text": "Custom Branding"
+      },
+      {
+        "text": "Pan-India Delivery"
+      },
+      {
+        "text": "Year-End Client Gifts"
+      },
+      {
+        "text": "Bulk Corporate Orders"
+      }
+    ]
+  },
+  "kits": {
+    "eyebrow": "New Year Kits",
+    "title": "Ready-made kits for",
+    "titleHighlight": "a fresh start",
+    "intro": "Six ready-made sets, from desk essentials to executive gifts. Pick one as it is, or tell us your budget and we will adapt it.",
+    "priceNote": "Starting prices per set, including your logo. GST and delivery extra.",
+    "button": "Get a quote for your team",
+    "items": [
+      {
+        "title": "Desk Essentials Kit",
+        "audience": "For every team member",
+        "tag": "Team",
+        "contents": "Cork diary, cork pen and 2 seed pencils in a kraft box",
+        "price": "From ₹599",
+        "image": "/new-year-home/kit-desk-essentials.webp"
+      },
+      {
+        "title": "Calm Candle Box",
+        "audience": "For a calmer new year",
+        "tag": "Wellness",
+        "contents": "Set of 3 soya wax candles, recycled notepad and a message card",
+        "price": "From ₹699",
+        "image": "/new-year-home/kit-calm-candle.webp"
+      },
+      {
+        "title": "Classic 2-Jar Box",
+        "audience": "For clients & partners",
+        "tag": "Client",
+        "contents": "Two jars of premium dry fruits in a keepsake box, with a seed-pencil greeting card",
+        "price": "From ₹699",
+        "image": "/new-year-home/kit-classic-2-jar.webp"
+      },
+      {
+        "title": "Bamboo Workday Kit",
+        "audience": "For desks and commutes",
+        "tag": "Eco",
+        "contents": "Bamboo bottle with tea infuser, recycled planner, 2 paper pens and seed pencils",
+        "price": "From ₹999",
+        "image": "/new-year-home/kit-bamboo-workday.webp"
+      },
+      {
+        "title": "Fresh Start Onboarding Kit",
+        "audience": "For new joiners in 2027",
+        "tag": "Onboarding",
+        "contents": "Cork-and-denim diary, cork pen, bamboo bottle and cork keyring in a magnetic box",
+        "price": "From ₹1,199",
+        "image": "/new-year-home/kit-onboarding.webp"
+      },
+      {
+        "title": "Executive Cork Collection",
+        "audience": "For CXOs & key clients",
+        "tag": "Premium",
+        "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen, bamboo bottle and a soya candle",
+        "price": "From ₹2,199",
+        "image": "/new-year-home/kit-executive.webp"
+      }
+    ]
+  },
+  "giftEdit": {
+    "eyebrow": "Build your own",
+    "title": "Gifts for",
+    "titleHighlight": "the year ahead",
+    "intro": "Every product can carry your logo. Choose one or mix several into a kit of your own.",
+    "linkLabel": "View range",
+    "button": "View all products",
+    "items": [
+      {
+        "title": "Cork Diaries",
+        "category": "Cork Collection",
+        "image": "/new-year-home/edit-cork-diary.webp",
+        "blurb": "Natural cork covers, harvested without felling a tree. Your logo debossed on the front."
+      },
+      {
+        "title": "Diary & Pen Sets",
+        "category": "Cork Collection",
+        "image": "/new-year-home/edit-cork-combo.webp",
+        "blurb": "A cork diary with a matching cork pen: the everyday desk gift."
+      },
+      {
+        "title": "Bamboo Bottles",
+        "category": "Bamboo Collection",
+        "image": "/new-year-home/edit-bamboo.webp",
+        "blurb": "Bamboo-finish bottles with a tea infuser, for desks and commutes."
+      },
+      {
+        "title": "Recycled Paper Stationery",
+        "category": "Recycled Paper",
+        "image": "/new-year-home/edit-recycled-paper.webp",
+        "blurb": "Pens, pencils and planners made from recycled newspaper."
+      },
+      {
+        "title": "Soya Wax Candles",
+        "category": "Candles",
+        "image": "/new-year-home/edit-candles.webp",
+        "blurb": "Clean-burning candle sets, gift-boxed in threes, fours and sixes."
+      },
+      {
+        "title": "Jar Gift Boxes",
+        "category": "Gift Boxes",
+        "image": "/new-year-home/edit-jar-boxes.webp",
+        "blurb": "Two- to six-jar boxes filled with dry fruits, ready to send to clients."
+      }
+    ]
+  },
+  "workplace": {
+    "image": "/new-year-home/workplace.webp",
+    "imageAlt": "Welcome gift box with a bottle, notebook and plant on a sunlit desk",
+    "imageBadgeText": "A fresh start for every desk",
+    "eyebrow": "For your people",
+    "title": "One brief for",
+    "titleHighlight": "everyone on your list",
+    "intro": "Year-end is when companies thank their people and their clients. We plan, brand and deliver all of it in one order, so nobody on your list is missed.",
+    "audiences": [
+      {
+        "icon": "Users",
+        "title": "Employees",
+        "text": "New Year kits for every member of the team, branded alike and delivered to each office or home."
+      },
+      {
+        "icon": "Handshake",
+        "title": "Clients & partners",
+        "text": "A year-end thank-you that keeps your brand on their desk all of 2027."
+      },
+      {
+        "icon": "Crown",
+        "title": "Leadership",
+        "text": "Premium keepsakes for CXOs, the board and key stakeholders."
+      }
+    ],
+    "button": "Plan your New Year gifting"
+  },
+  "promises": {
+    "eyebrow": "Why Ecotwist",
+    "title": "Gifts that last.",
+    "titleHighlight": "Delivered on time.",
+    "intro": "Useful, sustainable gifts with the planning and polish your company expects.",
+    "items": [
+      {
+        "icon": "Leaf",
+        "title": "Sustainable by design",
+        "text": "Cork, bamboo, recycled paper, soya wax and reusable boxes in place of single-use plastic."
+      },
+      {
+        "icon": "PenTool",
+        "title": "Branded your way",
+        "text": "Your logo and message on the gifts, cards and packaging."
+      },
+      {
+        "icon": "Truck",
+        "title": "Pan-India delivery",
+        "text": "Delivered to one office, many offices or employees' homes."
+      },
+      {
+        "icon": "Building2",
+        "title": "Made for bulk orders",
+        "text": "Share your budget and quantity and get a proposal tailored to your team."
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "From brief to",
+    "titleHighlight": "1 January",
+    "intro": "Order by the deadline and we handle the rest, from curation to delivery.",
+    "stepLabel": "Step",
+    "steps": [
+      {
+        "when": "Today",
+        "title": "Share your brief",
+        "text": "Tell us your budget, quantity and who you are gifting."
+      },
+      {
+        "when": "Within 2 days",
+        "title": "Proposal & mockup",
+        "text": "We shortlist gifts and show them with your branding."
+      },
+      {
+        "when": "By 12 December",
+        "title": "Approve the order",
+        "text": "Confirm the selection and we start production."
+      },
+      {
+        "when": "Before 1 January",
+        "title": "Delivered with care",
+        "text": "Gifts are packed and delivered across India."
+      }
+    ],
+    "button": "Start your brief"
+  },
+  "cta": {
+    "eyebrow": "Happy New Year 2027",
+    "title": "Start 2027 with gifts",
+    "titleHighlight": "that keep giving",
+    "text": "Tell us about your team and we will send a New Year proposal with your branding, or download the catalogue to browse the full range.",
+    "proposalButton": "Get a New Year Proposal",
+    "catalogueButton": "Download Catalogue",
+    "contactLink": "Talk to our team"
+  }
+}

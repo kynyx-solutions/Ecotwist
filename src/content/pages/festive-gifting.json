@@ -25,9 +25,9 @@
     "title": "Curated Collections",
     "buttonText": "View Collection",
     "items": [
-      { "name": "Welcome Kits", "tag": "Onboarding", "text": "Perfect for new arrivals and festive onboarding experiences.", "accent": "#b5a26a", "image": "", "photoId": "festive-welcome-kits" },
-      { "name": "Premium Festive Hampers", "tag": "Seasonal", "text": "A celebration of artisanal flavors and eco-luxury craftsmanship.", "accent": "#c4735d", "image": "", "photoId": "festive-premium-hampers" },
-      { "name": "Custom Merchandise", "tag": "Branded", "text": "Bespoke branding on sustainably sourced lifestyle products.", "accent": "#5a8a6e", "image": "", "photoId": "festive-custom-merchandise" }
+      { "name": "Welcome Kits", "tag": "Onboarding", "text": "Perfect for new arrivals and festive onboarding experiences.", "accent": "#b5a26a", "image": "/kits/cork-diary-pen-flatlay.webp", "photoId": "festive-welcome-kits" },
+      { "name": "Premium Festive Hampers", "tag": "Seasonal", "text": "A celebration of artisanal flavors and eco-luxury craftsmanship.", "accent": "#c4735d", "image": "/site/diwali-gifting/luxury-hamper.png", "photoId": "festive-premium-hampers" },
+      { "name": "Custom Merchandise", "tag": "Branded", "text": "Bespoke branding on sustainably sourced lifestyle products.", "accent": "#5a8a6e", "image": "/kits/cork-denim-diary-branded.webp", "photoId": "festive-custom-merchandise" }
     ]
   },
   "featured": {
@@ -35,10 +35,14 @@
     "intro": "Selected seasonal favorites from our design studio",
     "viewAllText": "View All",
     "items": [
-      { "name": "The Heritage Box", "subtitle": "Traditional meets Sustainable", "image": "", "photoId": "festive-heritage-box" },
-      { "name": "The Wellness Kit", "subtitle": "Mindful Restoration", "image": "", "photoId": "festive-wellness-kit" },
-      { "name": "Gourmet Collection", "subtitle": "Culinary Excellence", "image": "", "photoId": "festive-gourmet-collection" },
-      { "name": "Executive Signature", "subtitle": "Modern Sophistication", "image": "", "photoId": "festive-executive-signature" }
+      { "name": "The Heritage Box", "subtitle": "Traditional meets Sustainable", "image": "/site/diwali-gifting/dry-fruit.png", "photoId": "festive-heritage-box" },
+      { "name": "The Wellness Kit", "subtitle": "Mindful Restoration", "image": "/site/diwali-gifting/wellness-hamper.png", "photoId": "festive-wellness-kit" },
+      { "name": "Gourmet Collection", "subtitle": "Culinary Excellence", "image": "/site/diwali-gifting/gourmet-hamper.png", "photoId": "festive-gourmet-collection" },
+      { "name": "Executive Signature", "subtitle": "Modern Sophistication", "image": "/site/diwali-gifting/premium-packaging.png", "photoId": "festive-executive-signature" },
+      { "name": "Festive Light Hamper", "subtitle": "From ₹1,299 · diyas, candles and a 3-jar box", "image": "/kits/jar-box-3-velvet.webp", "photoId": "festive-heritage-box" },
+      { "name": "Classic 2-Jar Box", "subtitle": "From ₹699 · two jars of premium dry fruits", "image": "/kits/jar-box-2-navy.webp", "photoId": "festive-wellness-kit" },
+      { "name": "Calm Candle Box", "subtitle": "From ₹699 · 3 soya candles and a notepad", "image": "/kits/candles-3.webp", "photoId": "festive-gourmet-collection" },
+      { "name": "Executive Cork Collection", "subtitle": "From ₹2,199 · jar box, cork set and bamboo bottle", "image": "/kits/pinewood-basket.webp", "photoId": "festive-executive-signature" }
     ]
   },
   "customization": {

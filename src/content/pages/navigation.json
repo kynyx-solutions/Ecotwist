@@ -100,6 +100,38 @@
       "desc": "A graceful send-off for a remarkable journey.",
       "accent": "#9c7bb5",
       "tag": "Farewell"
+    },
+    {
+      "label": "Women's Day Gifting",
+      "path": "/occasions/womens-day",
+      "icon": "Flower2",
+      "desc": "Useful, plastic-free gifts for every woman on your team.",
+      "accent": "#d4869c",
+      "tag": "March"
+    },
+    {
+      "label": "Christmas Gifting",
+      "path": "/occasions/christmas-gifting",
+      "icon": "TreePine",
+      "desc": "Secret Santa, team treats and client boxes.",
+      "accent": "#d65a4a",
+      "tag": "December"
+    },
+    {
+      "label": "Earth Day & Environment Day",
+      "path": "/occasions/earth-day-gifting",
+      "icon": "Leaf",
+      "desc": "Plantable and recycled gifts for green days and CSR.",
+      "accent": "#8bb35a",
+      "tag": "CSR"
+    },
+    {
+      "label": "Channel Partner Gifting",
+      "path": "/occasions/channel-partner-gifting",
+      "icon": "Handshake",
+      "desc": "Rewards for dealers, distributors and sales teams.",
+      "accent": "#c5a059",
+      "tag": "Partners"
     }
   ],
   "megaMenu": {
