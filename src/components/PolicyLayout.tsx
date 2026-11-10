@@ -109,7 +109,7 @@ export default function PolicyLayout({
     <div className="pol-root">
       <style>{styles}</style>
       {topLabel && <p className="pol-top-title">{topLabel}</p>}
-      <p className="pol-main-title">{title}</p>
+      <h1 className="pol-main-title">{title}</h1>
       <p className="pol-company">{company}</p>
       {effectiveDate && <p className="pol-effective">{layout.effectiveDateLabel} {effectiveDate}</p>}
       {children}

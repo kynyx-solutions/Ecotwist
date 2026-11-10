@@ -26,121 +26,121 @@
   "pages": [
     {
       "route": "/",
-      "title": "Ecotwist | Sustainable Corporate Gifting in India",
-      "description": "Sustainable corporate gifting in India: eco-friendly gifts custom branded for your team and clients, curated hampers for every occasion, delivered pan-India.",
+      "title": "Eco-Friendly Corporate Gifts India | Bulk Orders",
+      "description": "Sustainable corporate gifting in India: eco-friendly welcome kits, festive hampers and client gifts, custom branded with your logo. 100+ clients, pan-India delivery.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "sustainable corporate gifting"
+      "focusKeyword": "eco-friendly corporate gifts India"
     },
     {
       "route": "/solutions",
-      "title": "Corporate Gifting Solutions & Custom Bundles",
-      "description": "End-to-end corporate gifting: curated eco-friendly bundles, custom branding, white-label packaging and pan-India delivery for teams of 50 to 5,000.",
+      "title": "Corporate Gifting Solutions for Every Occasion",
+      "description": "End-to-end corporate gifting in India: curated eco-friendly kits, custom logo branding, plastic-free packaging and pan-India bulk delivery for teams of 25 to 5,000.",
       "image": "/site/solutions/hero.jpeg",
       "noindex": false,
-      "focusKeyword": "corporate gifting"
+      "focusKeyword": "corporate gifting solutions India"
     },
     {
       "route": "/products",
-      "title": "Sustainable Corporate Gifts Catalogue",
-      "description": "Browse Ecotwist's catalogue of sustainable corporate gifts: bamboo journals, planters, candles, mugs and hampers, all ready for your logo and branding.",
+      "title": "Sustainable Corporate Gift Products Catalogue",
+      "description": "Browse sustainable corporate gift products: cork diaries, bamboo bottles, recycled paper stationery, soya wax candles and dry fruit jar boxes, branded with your logo.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "sustainable corporate gifts"
+      "focusKeyword": "sustainable corporate gift products"
     },
     {
       "route": "/product",
-      "title": "Sustainable Corporate Gifts Catalogue",
-      "description": "Browse Ecotwist's catalogue of sustainable corporate gifts: bamboo journals, planters, candles, mugs and hampers, all ready for your logo and branding.",
+      "title": "Sustainable Corporate Gift Products Catalogue",
+      "description": "Browse sustainable corporate gift products: cork diaries, bamboo bottles, recycled paper stationery, soya wax candles and dry fruit jar boxes, branded with your logo.",
       "image": "",
       "noindex": false,
       "canonical": "/products",
-      "focusKeyword": "sustainable corporate gifts"
+      "focusKeyword": "sustainable corporate gift products"
     },
     {
       "route": "/get-proposal",
-      "title": "Get a Free Corporate Gifting Proposal",
-      "description": "Get a free corporate gifting proposal: tell us your occasion, budget and quantity and we'll suggest sustainable, custom-branded gifts within 24 hours.",
+      "title": "Get a Free Corporate Gifting Proposal & Quote",
+      "description": "Tell us your occasion, budget and quantity and get a free corporate gifting proposal with a branded mockup within 24 hours. Eco-friendly gifts, delivered pan-India.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "corporate gifting proposal"
+      "focusKeyword": "corporate gifting quote"
     },
     {
       "route": "/impact",
-      "title": "Our Impact: Artisans, Plastic-Free Gifting",
-      "description": "See the impact behind every Ecotwist gift: Indian artisan livelihoods, plastic-free packaging and circular materials that make corporate gifting greener.",
+      "title": "Our Impact: Plastic-Free, Artisan-Made Gifting",
+      "description": "How Ecotwist gifting creates impact: plastic-free packaging, artisan-made products, carbon-neutral delivery and ESG-friendly corporate gifts your team can be proud of.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "artisan"
+      "focusKeyword": "ESG corporate gifting"
     },
     {
       "route": "/contact",
-      "title": "Contact Us for Corporate Gifting Enquiries",
-      "description": "Planning corporate gifting for clients or employees? Call, WhatsApp or write to the Ecotwist team for sustainable gift ideas, samples and bulk quotes.",
+      "title": "Contact Ecotwist for Bulk Corporate Gifts",
+      "description": "Talk to Ecotwist about bulk corporate gifts: call or WhatsApp +91 70913 23777 or email info@ecotwist.in. Free consultation and branded mockup within 24 hours.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "corporate gifting"
+      "focusKeyword": "bulk corporate gifts"
     },
     {
       "route": "/thanks",
       "title": "Thank You: Your Proposal Request Is In",
-      "description": "Thanks for your enquiry. The Ecotwist team will review your gifting requirements and send a tailored proposal for sustainable corporate gifts shortly.",
+      "description": "Thank you for your corporate gifting request. Our team will send your proposal and branded mockup within 24 hours.",
       "image": "",
       "noindex": true,
       "focusKeyword": ""
     },
     {
       "route": "/occasions/client-appreciation",
-      "title": "Client Appreciation Gifts, Eco-Friendly",
-      "description": "Thank your clients with premium client appreciation gifts that are sustainable and custom branded. Curated hampers that leave a lasting impression, pan-India.",
+      "title": "Client Appreciation Gifts & Corporate Hampers",
+      "description": "Premium, eco-friendly client appreciation gifts: dry fruit jar boxes, executive cork sets and gourmet hampers, custom branded and delivered pan-India. From ₹699.",
       "image": "",
       "noindex": false,
       "focusKeyword": "client appreciation gifts"
     },
     {
       "route": "/occasions/employee-onboarding",
-      "title": "Employee Onboarding Kits & Welcome Gifts",
-      "description": "Welcome new hires with sustainable onboarding kits: branded bamboo journals, bottles and desk essentials, packed plastic-free and shipped to any city in India.",
+      "title": "Employee Welcome Kits & Onboarding Gifts",
+      "description": "Sustainable employee welcome kits for new joiners: cork diaries, bamboo bottles, totes and mugs with your logo. Bulk onboarding kits from ₹599, delivered pan-India.",
       "image": "/site/employee-onboarding/hero.png",
       "noindex": false,
-      "focusKeyword": "onboarding kits"
+      "focusKeyword": "employee welcome kit"
     },
     {
       "route": "/occasions/festive-gifting",
-      "title": "Festive Gift Hampers for Teams & Clients",
-      "description": "Sustainable festive gift hampers for employees and clients: Diwali, Holi, New Year and more. Artisan-made, custom branded and delivered pan-India on time.",
+      "title": "Festive Corporate Gift Hampers for Employees",
+      "description": "Eco-friendly festive corporate gift hampers for Diwali, Holi, Eid, Christmas and New Year: dry fruits, soya wax diyas and candles, custom branded for teams and clients.",
       "image": "/site/home/festive-gifting.jpg",
       "noindex": false,
-      "focusKeyword": "festive gift hampers"
+      "focusKeyword": "festive corporate gift hampers"
     },
     {
       "route": "/occasions/events-conferences",
-      "title": "Event & Conference Giveaways, Eco-Friendly",
-      "description": "Branded, eco-friendly conference giveaways and event swag for summits and corporate events. Gifts attendees keep, with bulk pricing and fast turnaround.",
+      "title": "Conference Giveaways & Event Swag Kits",
+      "description": "Sustainable conference giveaways and event swag kits: delegate kits from ₹249, cork sets, bamboo bottles and speaker gifts, branded and delivered to your venue.",
       "image": "/site/events-conferences/hero.png",
       "noindex": false,
       "focusKeyword": "conference giveaways"
     },
     {
       "route": "/occasions/employee-wellness",
-      "title": "Employee Wellness Hampers & Self-Care Gifts",
-      "description": "Show your team you care with sustainable wellness hampers: herbal teas, aromatherapy, yoga essentials and mindful self-care gifts, custom branded for you.",
+      "title": "Employee Wellness Gifts & Self-Care Hampers",
+      "description": "Employee wellness gifts and self-care hampers: soya wax candles, tea infuser bottles, journals and yoga mats. Plastic-free wellness kits for teams, from ₹299.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "wellness hampers"
+      "focusKeyword": "employee wellness gifts"
     },
     {
       "route": "/occasions/birthday-gifting",
-      "title": "Employee Birthday Gifts, Sustainable",
-      "description": "Make every employee birthday special with personalised, eco-friendly birthday gifts. Name engraving, curated hampers and doorstep delivery across India.",
+      "title": "Employee Birthday Gifts & Corporate Hampers",
+      "description": "Thoughtful employee birthday gifts: name-printed cork keepsakes, candle sets and treat boxes, sustainable and delivered on time across India. From ₹249.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "birthday gifts"
+      "focusKeyword": "employee birthday gifts"
     },
     {
       "route": "/occasions/work-anniversary",
       "title": "Work Anniversary Gifts for Employees",
-      "description": "Celebrate service milestones with personalised, sustainable work anniversary gifts: engraved keepsakes and curated hampers for every year of service.",
+      "description": "Work anniversary gifts for 1, 3, 5 and 10+ years: name-printed cork sets, leather folios and executive hampers that celebrate loyalty. Eco-friendly, from ₹699.",
       "image": "",
       "noindex": false,
       "focusKeyword": "work anniversary gifts"
@@ -148,39 +148,39 @@
     {
       "route": "/occasions/product-launch",
       "title": "Product Launch Gifts & Branded PR Kits",
-      "description": "Make your launch memorable with sustainable product launch gifts and PR kits: branded gift boxes for media, partners and customers, built around your story.",
+      "description": "Product launch gifts and branded PR kits for media, VIPs and partners: reveal boxes, tech essentials and press kits with QR inserts, delivered pan-India.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "product launch gifts"
+      "focusKeyword": "product launch PR kits"
     },
     {
       "route": "/occasions/award-recognition",
-      "title": "Employee Awards & Recognition Gifts",
-      "description": "Recognise top performers with sustainable awards, engraved trophies and premium recognition gifts that celebrate excellence and reflect your company values.",
+      "title": "Employee Recognition & Award Gifts",
+      "description": "Employee recognition and award gifts: engraved trophies, star performer boxes and premium leather portfolios for R&R programmes. Sustainable, from ₹649.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "recognition gifts"
+      "focusKeyword": "employee recognition gifts"
     },
     {
       "route": "/occasions/retirement-gifting",
-      "title": "Retirement Gifts for Employees, Thoughtful",
-      "description": "Honour a remarkable career with thoughtful retirement gifts: legacy keepsake boxes, memory journals and relaxation hampers, personalised and eco-friendly.",
+      "title": "Retirement Gifts for Employees & Farewell Kits",
+      "description": "Retirement and farewell gifts for employees: legacy keepsake boxes, memory journals and relaxation hampers, personalised with their name and years of service.",
       "image": "/site/home/retirement-gifting.jpg",
       "noindex": false,
-      "focusKeyword": "retirement gifts"
+      "focusKeyword": "retirement gifts for employees"
     },
     {
       "route": "/occasions/depawali-gifting",
-      "title": "Diwali Corporate Gifts & Hampers 2026",
-      "description": "Premium Diwali corporate gifts and hampers for employees, clients and CXOs: dry fruits, diyas and sweets in plastic-free packaging with your branding.",
+      "title": "Diwali Corporate Gifts & Hampers",
+      "description": "Diwali corporate gifts and hampers for employees, clients and CXOs: dry fruit jar boxes, soya wax diyas and sweets in plastic-free packaging with your branding.",
       "image": "/diwali-home/hero-hamper.webp",
       "noindex": false,
       "focusKeyword": "diwali corporate gifts"
     },
     {
       "route": "/occasions/womens-day",
-      "title": "Women's Day Corporate Gifts for Employees",
-      "description": "Sustainable Women's Day gifts for employees: soya wax candles, cork desk sets and dry fruit boxes, branded with your logo and delivered pan-India.",
+      "title": "Women's Day Gifts for Employees",
+      "description": "Women's Day gifts for employees: soya wax candle sets, cork desk sets and self-care boxes, branded with your logo and a message from leadership. From ₹299.",
       "image": "/kits/candles-6.webp",
       "noindex": false,
       "focusKeyword": "women's day gifts for employees"
@@ -188,15 +188,15 @@
     {
       "route": "/occasions/christmas-gifting",
       "title": "Christmas Corporate Gifts & Secret Santa Ideas",
-      "description": "Plastic-free Christmas corporate gifts: Secret Santa gifts under ₹300, candle sets and dry fruit jar boxes for employees and clients, delivered across India.",
+      "description": "Plastic-free Christmas corporate gifts: Secret Santa gifts under ₹300, candle sets, plum cake boxes and dry fruit hampers for employees and clients.",
       "image": "/kits/jar-box-3-velvet.webp",
       "noindex": false,
       "focusKeyword": "christmas corporate gifts"
     },
     {
       "route": "/occasions/earth-day-gifting",
-      "title": "Earth Day & World Environment Day Corporate Gifts",
-      "description": "Eco-friendly gifts for Earth Day, World Environment Day and CSR drives: plantable seed pencils, cork desk sets and bamboo bottles with an impact card.",
+      "title": "Earth Day & Environment Day Corporate Gifts",
+      "description": "Eco-friendly gifts for Earth Day, World Environment Day and CSR drives: plantable seed pencils, cork sets and bamboo bottles with an impact card. From ₹199.",
       "image": "/kits/seed-pencils.webp",
       "noindex": false,
       "focusKeyword": "earth day corporate gifts"
@@ -204,15 +204,15 @@
     {
       "route": "/occasions/channel-partner-gifting",
       "title": "Dealer & Channel Partner Gifts",
-      "description": "Corporate gifts for dealers, distributors and sales teams: cork desk sets, bamboo bottles and dry fruit hampers in tiers from ₹649, branded and delivered pan-India.",
+      "description": "Corporate gifts for dealers, distributors and sales teams: cork desk sets, bamboo bottles, trophies and dry fruit hampers in tiers from ₹649, delivered pan-India.",
       "image": "/kits/jar-box-4-navy.webp",
       "noindex": false,
       "focusKeyword": "channel partner gifts"
     },
     {
       "route": "/shop",
-      "title": "Shop Sustainable Corporate Gifts Online",
-      "description": "Order eco-friendly corporate gift kits online: cork, bamboo, soya wax and dry fruit hampers from 25 to 500+ kits, branded with your logo. Pay securely online.",
+      "title": "Buy Corporate Gifts Online in Bulk",
+      "description": "Buy eco-friendly corporate gifts online in bulk: 86 kits from ₹199, custom logo printing or engraving, live preview, secure checkout and free delivery above ₹999.",
       "image": "/kits/cork-diary-pen-flatlay.webp",
       "noindex": false,
       "focusKeyword": "buy corporate gifts online"
@@ -235,24 +235,24 @@
     },
     {
       "route": "/blog",
-      "title": "Corporate Gifting Ideas & Guides (Blog)",
-      "description": "Corporate gifting ideas, guides and trends for India: occasion-wise gift ideas, budgeting tips and ways to make sustainable employee and client gifts count.",
+      "title": "Corporate Gift Ideas & Gifting Guides",
+      "description": "Corporate gift ideas and guides for HR, admin and procurement teams in India: budgets, sustainable gifting trends, festive planning and employee welcome kits.",
       "image": "",
       "noindex": false,
-      "focusKeyword": "corporate gifting ideas"
+      "focusKeyword": "corporate gift ideas India"
     },
     {
       "route": "/privacy-policy",
-      "title": "Privacy Policy: How We Use Your Data",
-      "description": "How Ecotwist collects, uses and protects your personal information when you browse our website, request a proposal or order sustainable corporate gifts.",
+      "title": "Privacy Policy",
+      "description": "How Ecotwist collects, uses and protects your personal data when you request a proposal, place an order or subscribe to our corporate gifting updates.",
       "image": "",
       "noindex": false,
       "focusKeyword": "privacy policy"
     },
     {
       "route": "/terms-of-service",
-      "title": "Terms of Service for Gift Orders",
-      "description": "The terms and conditions for using the Ecotwist website and ordering sustainable corporate gifts, including orders, payments, customisation and liability.",
+      "title": "Terms of Service",
+      "description": "Terms for corporate gift orders placed with Ecotwist: quotes, branding approval, payment, delivery and cancellations for bulk orders across India.",
       "image": "",
       "noindex": false,
       "focusKeyword": "terms of service"
@@ -260,15 +260,15 @@
     {
       "route": "/refund-policy",
       "title": "Return & Refund Policy",
-      "description": "Ecotwist's return and refund policy for corporate gift orders: valid reasons for returns, timeframes, the step-by-step return process and order cancellation.",
+      "description": "Ecotwist return and refund policy for corporate gift orders: damaged or incorrect items, branded products, replacement timelines and how to raise a request.",
       "image": "",
       "noindex": false,
       "focusKeyword": "refund policy"
     },
     {
       "route": "/shipping-policy",
-      "title": "Shipping Policy & Delivery Times",
-      "description": "Our shipping policy for corporate gifts across India: processing times, shipping charges, bulk and multi-address delivery, tracking and support.",
+      "title": "Shipping & Delivery Policy",
+      "description": "Ecotwist shipping policy: free delivery above ₹999, pan-India and international delivery, dispatch timelines for branded orders and multi-address shipping.",
       "image": "",
       "noindex": false,
       "focusKeyword": "shipping policy"

@@ -1426,7 +1426,7 @@ export default function EmployeeOnboarding() {
               <p className="text-[10px] uppercase tracking-[0.28em] font-bold text-brand-olive mb-3">{products.eyebrow}</p>
               <h2 className="text-5xl font-serif">{products.title}</h2>
             </div>
-            <motion.a whileHover={{ y: -1 }}
+            <motion.a href="/shop?occasion=Onboarding" whileHover={{ y: -1 }}
               className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">
               {products.viewAllText}
             </motion.a>

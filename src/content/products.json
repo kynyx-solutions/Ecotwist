@@ -127,7 +127,7 @@
         "Recycled paper",
         "Custom branding"
       ],
-      "image": "/placeholder.svg",
+      "image": "/kits/recycled-planner-kraft.webp",
       "icon": "CalendarDays",
       "tint": "#c9cdb6"
     },
@@ -140,7 +140,7 @@
         "Recycled paper",
         "Custom branding"
       ],
-      "image": "/placeholder.svg",
+      "image": "/kits/paper-pen.webp",
       "icon": "NotebookPen",
       "tint": "#d0d3bf"
     },

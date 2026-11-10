@@ -1349,6 +1349,8 @@ export default function DiwaliGifting() {
                       transition={{ duration: .7 }}
 
                       src={item.image}
+                      alt={`${item.title} Diwali corporate hamper`}
+                      loading="lazy"
 
                       className="h-[360px] w-full object-cover"
 

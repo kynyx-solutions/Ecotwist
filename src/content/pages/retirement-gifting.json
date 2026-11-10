@@ -21,7 +21,7 @@
     "paragraph2": "We design retirement gifting experiences that feel deeply personal — not like a corporate transaction, but like a heartfelt farewell.",
     "badgeSymbol": "🌅",
     "badgeText": "Heirloom Quality — Made to Last a Lifetime",
-    "image": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=80",
+    "image": "/site/work-anniversary/milestone-memory-box.png",
     "imageAlt": "Retirement"
   },
   "categories": {
@@ -58,7 +58,7 @@
       { "symbol": "✍️", "title": "Team Tribute Booklet", "desc": "Heartfelt messages bound in a premium keepsake booklet." },
       { "symbol": "📦", "title": "Heritage Packaging", "desc": "Heirloom-quality boxes designed to be treasured forever." }
     ],
-    "image": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80",
+    "image": "/site/work-anniversary/leather-folio.png",
     "imageAlt": "Gift"
   },
   "why": {

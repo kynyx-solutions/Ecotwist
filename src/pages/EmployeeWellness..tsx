@@ -861,7 +861,7 @@ export default function EmployeeWellness() {
               <h2 className="text-5xl font-serif mb-2" style={{ color:'#121b16' }}>{products.title}</h2>
               <p className="font-light" style={{ color:'#73736e' }}>{products.intro}</p>
             </div>
-            <motion.a whileHover={{ y:-1 }}
+            <motion.a href="/shop?occasion=Wellness" whileHover={{ y:-1 }}
               className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
               style={{ borderColor:'#2d4337', color:'#121b16' }}>{products.viewAll}</motion.a>
           </motion.div>

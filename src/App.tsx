@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AnalyticsTracker } from './lib/analytics';
 import { SeoManager } from './components/SeoManager';
+import { RelatedLinks } from './components/RelatedLinks';
 
 // ── Core pages (default exports) ──────────────────────
 import { Home } from "./pages/Home";
@@ -143,6 +144,8 @@ export default function App() {
         <main className="flex-grow">
           <AnimatedRoutes />
         </main>
+        {/* Related occasions and keyword links (internal linking) */}
+        <RelatedLinks />
         {/* Festive footer or the regular one: switch in src/config/homepage.ts */}
         {FOOTERS[homeTheme()]}
       </div>

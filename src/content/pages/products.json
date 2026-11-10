@@ -12,7 +12,7 @@
     "intro": "Cork stationery, recycled paper goods, bamboo drinkware, soya wax candles & diyas and handcrafted jar gift boxes — for teams who value craft over consumption.",
     "primaryButton": "Shop All Products",
     "secondaryButton": "View Gift Boxes →",
-    "backgroundImage": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1400&q=60",
+    "backgroundImage": "/kits/onboarding-collection.webp",
     "stats": [
       { "value": "20", "suffix": "+", "label": "Curated Products" },
       { "value": "100", "suffix": "%", "label": "Organic & Recycled" },

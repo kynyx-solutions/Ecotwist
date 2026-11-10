@@ -12,7 +12,7 @@
     "feature2": "Luxury Packaging",
     "feature3": "Corporate Bulk Orders",
     "image": "/site/diwali-gifting/diwali-hamper.png",
-    "imageAlt": "Luxury Diwali Hamper",
+    "imageAlt": "Luxury Diwali corporate gift hamper with dry fruits and diyas",
     "cardOneLabel": "Premium",
     "cardOneTitle": "Eco Luxury",
     "cardTwoLabel": "Handmade",
@@ -40,7 +40,7 @@
     "paragraph2": "Whether you're celebrating your employees, clients, channel partners or distributors, our premium gifting collections combine elegance, craftsmanship and environmental responsibility.",
     "quote": "The finest gifts aren't remembered for their price, but for the emotions they create.",
     "image": "/site/diwali-gifting/diwali-portfolio.png",
-    "imageAlt": "Diwali",
+    "imageAlt": "Sustainable Diwali gift boxes for employees and clients",
     "badgeLabel": "Since",
     "badgeValue": "100%",
     "badgeText": "Sustainable packaging with handcrafted luxury finishes.",
@@ -68,7 +68,7 @@
   },
   "signatureHamper": {
     "image": "/site/diwali-gifting/signature-hamper.png",
-    "imageAlt": "Signature Hamper",
+    "imageAlt": "Ecotwist signature Diwali hamper for clients",
     "badgeLabel": "Bestseller",
     "badgeTitle": "Luxury Box",
     "eyebrow": "Featured Collection",
@@ -106,7 +106,7 @@
       { "title": "Organic Honey", "desc": "Natural & sustainably sourced" }
     ],
     "image": "/site/diwali-gifting/curated-hamper.png",
-    "imageAlt": "Hamper",
+    "imageAlt": "What is inside an Ecotwist Diwali corporate hamper",
     "rightItems": [
       { "title": "Brass Diya", "desc": "Traditional festive décor" },
       { "title": "Soy Wax Candle", "desc": "Hand-poured aromatic candle" },
@@ -126,7 +126,7 @@
     "titleHighlight": "Uniquely Yours",
     "intro": "Every hamper can be customised to reflect your company's identity through premium branding, elegant packaging, personalised messaging and memorable unboxing experiences.",
     "image": "/site/diwali-gifting/branding.png",
-    "imageAlt": "Corporate Branding",
+    "imageAlt": "Diwali hamper custom branded with a company logo",
     "badgeLabel": "Premium Finish",
     "badgeTitle": "Custom Branding",
     "options": [
@@ -148,7 +148,7 @@
     "titleHighlight": "Responsibility",
     "intro": "Every Ecotwist Diwali hamper is designed to celebrate the festival while reducing environmental impact through conscious materials, ethical sourcing and reusable packaging.",
     "image": "/site/diwali-gifting/sustainable.png",
-    "imageAlt": "Sustainability",
+    "imageAlt": "Plastic-free, reusable Diwali gift packaging",
     "points": [
       { "title": "Plastic-Free Packaging", "desc": "Beautiful recyclable packaging crafted with premium paper and reusable materials.", "symbol": "🌿" },
       { "title": "Handcrafted by Artisans", "desc": "Supporting local communities and preserving traditional craftsmanship.", "symbol": "🤝" },

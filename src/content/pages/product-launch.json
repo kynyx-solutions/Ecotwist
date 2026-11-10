@@ -1,7 +1,7 @@
 {
   "_meta": { "label": "Product Launch", "route": "/occasions/product-launch" },
   "hero": {
-    "backgroundImage": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=80",
+    "backgroundImage": "/kits/eco-tech-accessories.webp",
     "backgroundImageAlt": "Product Launch Hero",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Product",
@@ -20,7 +20,7 @@
     "paragraph2": "We design launch gifting experiences that are as innovative as the products they celebrate — sustainable, beautifully crafted, and engineered for maximum brand impact.",
     "badgeSymbol": "🚀",
     "badgeText": "Rapid 7-Day Turnaround Available",
-    "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=900&q=80",
+    "image": "/site/client-appreciation/custom-tech.png",
     "imageAlt": "Product Launch Gifting"
   },
   "categories": {
@@ -57,7 +57,7 @@
       { "symbol": "📦", "title": "Unboxing Experience", "desc": "Magnetic closures, custom tissue, and layered reveal packaging." },
       { "symbol": "🎥", "title": "QR Code Integration", "desc": "Scannable codes linking to launch videos, demos, or microsites." }
     ],
-    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800&q=80",
+    "image": "/kits/branded-kit-dark.webp",
     "imageAlt": "Launch Gift Box"
   },
   "why": {

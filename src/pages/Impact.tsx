@@ -134,7 +134,7 @@ const CinematicImage: React.FC<CinematicImageProps> = ({
 
       {/* IMAGE — src URL as-is, no double query params */}
       <img
-        src={imgError ? 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop' : src}
+        src={imgError ? '/kits/welcome-kit-ecotwist.webp' : src}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -615,26 +615,28 @@ const Impact: React.FC = () => {
             {hero.eyebrow}
           </motion.span>
 
+<h1 style={{ margin: 0, fontWeight: "inherit" }}>
           <div className="overflow-hidden mb-3 md:mb-6">
-            <motion.h1
-              className="font-serif text-[clamp(2.6rem,8vw,9rem)] text-[#f0ead6] leading-[0.95] tracking-tight"
+            <motion.span
+              className="block font-serif text-[clamp(2.6rem,8vw,9rem)] text-[#f0ead6] leading-[0.95] tracking-tight"
               initial={{ y: '110%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               {hero.titleLine1}
-            </motion.h1>
+            </motion.span>
           </div>
           <div className="overflow-hidden mb-7 md:mb-10">
-            <motion.h1
-              className="font-serif italic text-[clamp(2.6rem,8vw,9rem)] text-[#C9A96E] leading-[0.95] font-light"
+            <motion.span
+              className="block font-serif italic text-[clamp(2.6rem,8vw,9rem)] text-[#C9A96E] leading-[0.95] font-light"
               initial={{ y: '110%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               {hero.titleLine2}
-            </motion.h1>
+            </motion.span>
           </div>
+</h1>
 
           <motion.p
             className="text-[#f0ead6]/70 text-sm md:text-lg max-w-2xl mx-auto font-light leading-relaxed px-2"
