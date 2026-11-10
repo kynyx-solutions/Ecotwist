@@ -47,7 +47,8 @@
       "icon": "PenLine",
       "tint": "#dcc7a6",
       "photos": [
-        "/Products/Cork Pen.png"
+        "/Products/Cork Pen.png",
+        "/kits/cork-pen-single.webp"
       ]
     },
     {
@@ -82,9 +83,12 @@
         "Natural cork",
         "Custom branding"
       ],
-      "image": "/placeholder.svg",
+      "image": "/kits/cork-keyring.webp",
       "icon": "KeyRound",
-      "tint": "#d3bc98"
+      "tint": "#d3bc98",
+      "photos": [
+        "/kits/cork-keyring.webp"
+      ]
     },
     {
       "id": "paper-pen",

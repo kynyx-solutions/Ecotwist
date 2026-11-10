@@ -23,6 +23,8 @@ export const MOCKUP_ZONES: Record<string, Zone> = {
   '/kits/cork-diary-pen.webp': Z(47, 45, 15, 30, 'light'),
   '/kits/cork-pens.webp': Z(50, 43, 22, 5, 'light', 58),
   '/kits/paper-pen.webp': Z(44.4, 55.1, 40, 2.4, 'light', -61, true), // same band as the printed text
+  '/kits/cork-keyring.webp': Z(50, 27, 20, 14, 'light'),
+  '/kits/cork-pen-single.webp': Z(50, 50, 30, 4.5, 'light', -55),
   '/kits/seed-pencils.webp': Z(57, 52, 22, 4, 'light', -17),
 
   // Bottles and drinkware

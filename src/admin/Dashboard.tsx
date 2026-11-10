@@ -38,6 +38,8 @@ const greeting = () => {
 const WEBSITE_TODO = [
   { count: siteImages.images.filter((i) => !i.image).length, text: (n: number) => `${n} photo spots still show a placeholder`, to: '/website/edit?path=src%2Fcontent%2Fsite-images.json' },
   { count: testimonials.testimonials.length ? 0 : 1, text: () => 'No client testimonials yet; the reviews sections are hidden', to: '/website/edit?path=src%2Fcontent%2Ftestimonials.json' },
+  { count: (testimonials.testimonials as { approved?: boolean }[]).filter((t) => !t.approved).length,
+    text: (n: number) => `${n} testimonial${n === 1 ? '' : 's'} waiting for client approval; tick "approved" once the client confirms the wording`, to: '/website/edit?path=src%2Fcontent%2Ftestimonials.json' },
   { count: clients.clients.filter((c) => !c.logo).length, text: (n: number) => `${n} client${n === 1 ? '' : 's'} without a logo`, to: '/website/edit?path=src%2Fcontent%2Fclients.json' },
 ].filter((t) => t.count > 0);
 
