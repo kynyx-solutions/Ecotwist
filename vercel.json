@@ -31,7 +31,7 @@
     },
     {
       "source": "/((?!api/|admin).*)",
-      "destination": "/app.html"
+      "destination": "/app"
     }
   ],
   "functions": {
