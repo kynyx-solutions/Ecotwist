@@ -355,12 +355,12 @@ export const Solutions = () => {
             </motion.p>
 
             {/* staggered headline */}
-            <div style={{ perspective: '700px' }}>
+            <h1 style={{ perspective: '700px', margin: 0, fontWeight: 'inherit' }}>
               {[
                 { text: hero.titleLine1, italic: false },
                 { text: hero.titleLine2, italic: true },
               ].map((w, i) => (
-                <motion.div
+                <motion.span
                   key={w.text}
                   initial={{ opacity: 0, y: 55, rotateX: -25 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -369,14 +369,14 @@ export const Solutions = () => {
                     duration: 0.75,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
-                  className={`text-6xl md:text-8xl font-serif leading-tight ${
+                  className={`block text-6xl md:text-8xl font-serif leading-tight ${
                     w.italic ? 'italic font-normal' : ''
                   }`}
                 >
                   {w.text}
-                </motion.div>
+                </motion.span>
               ))}
-            </div>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 25 }}
@@ -427,6 +427,7 @@ export const Solutions = () => {
               />
               <motion.img
                 src={asset(hero.image)}
+                alt="Eco-friendly corporate gift kit with custom branding"
                 className="w-full aspect-[4/5] object-cover"
                 animate={{
                   y: [0, -15, 0],

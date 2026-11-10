@@ -1262,7 +1262,7 @@ export default function WorkAnniversary() {
               <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>{products.title}</h2>
               <p className="font-light" style={{ color: '#73736e' }}>{products.intro}</p>
             </div>
-            <motion.a whileHover={{ y: -1 }}
+            <motion.a href="/shop?occasion=Work%20Anniversary" whileHover={{ y: -1 }}
               className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
               style={{ borderColor: ACCENT, color: ACCENT_DARK }}>{products.viewAllText}</motion.a>
           </motion.div>
@@ -1302,7 +1302,7 @@ export default function WorkAnniversary() {
             <div className="absolute inset-0 rounded-3xl opacity-40"
               style={{ background: ACCENT, transform: 'rotate(3deg) scale(0.95)' }} />
             <div className="relative rounded-3xl overflow-hidden p-6" style={{ background: '#ebf3ec' }}>
-              <img src={asset(customization.image)}
+              <img src={asset(customization.image)} alt="Work anniversary gift personalised with name and years of service" loading="lazy"
                 className="w-full rounded-2xl shadow-xl" style={{ aspectRatio: '1', objectFit: 'cover' }} />
             </div>
           </motion.div>

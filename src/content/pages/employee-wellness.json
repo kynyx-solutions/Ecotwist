@@ -38,9 +38,12 @@
     "intro": "The most-loved additions to our corporate wellness programs.",
     "viewAll": "View All",
     "items": [
-      { "name": "Corporate Wellness Saver Combo", "price": "Starting at $125.00", "tag": "Eco-friendly", "image": "/site/employee-wellness/wellness-combo.webp" },
-      { "name": "Artisanal Tea Press", "price": "Starting at $85.00", "tag": "Customizable", "image": "/site/employee-wellness/tea-press.png" },
-      { "name": "Recycled Yoga Mat", "price": "Starting at $110.00", "tag": "Eco-friendly", "image": "/site/employee-wellness/yoga-mat.png" }
+      { "name": "Corporate Wellness Saver Combo", "price": "Starting at ₹1,499", "tag": "Eco-friendly", "image": "/site/client-appreciation/the-catalyst.png" },
+      { "name": "Artisanal Tea Press", "price": "Starting at ₹999", "tag": "Customizable", "image": "/site/employee-wellness/tea-press.png" },
+      { "name": "Recycled Yoga Mat", "price": "Starting at ₹1,299", "tag": "Eco-friendly", "image": "/site/employee-wellness/yoga-mat.png" },
+      { "name": "Little Light Box", "price": "Starting at ₹299", "tag": "Under ₹500", "image": "/kits/candles-4.webp" },
+      { "name": "Calm Candle Box", "price": "Starting at ₹699", "tag": "Eco-friendly", "image": "/kits/candles-3.webp" },
+      { "name": "Wellness Reset Kit", "price": "Starting at ₹1,099", "tag": "Bestseller", "image": "/kits/bamboo-bottle-infuser.webp" }
     ]
   },
   "customization": {

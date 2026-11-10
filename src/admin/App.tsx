@@ -9,6 +9,7 @@ import { LeadDetail, LeadList, NewLead } from './Leads';
 import { Settings } from './Settings';
 import { CustomerDetail, CustomerList } from './Customers';
 import { OrderDetail, OrderList } from './Orders';
+import { StoreProducts } from './StoreProducts';
 import { Staff } from './Staff';
 import { websiteRoutes } from './website/routes';
 import { messagingRoutes } from './messaging/routes';
@@ -55,6 +56,7 @@ function Gate() {
         <Route path="/customers/:id" element={<CustomerDetail />} />
         <Route path="/orders" element={<OrderList />} />
         <Route path="/orders/:id" element={<OrderDetail />} />
+        <Route path="/store" element={<StoreProducts />} />
         {websiteRoutes.map((r) => <Route key={r.path} {...r} />)}
         {messagingRoutes.map((r) => <Route key={r.path} {...r} />)}
         {seoRoutes.map((r) => <Route key={r.path} {...r} />)}

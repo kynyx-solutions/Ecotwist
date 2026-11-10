@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, FileText, Plus, Send, Trash2, X } from 'lucide-react';
+import { ArrowLeft, CreditCard, Download, FileText, Globe, Plus, Send, Trash2, X } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import { isAdmin, useAuth } from './lib/auth';
-import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus } from './lib/types';
+import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus, type Payment } from './lib/types';
 import catalogue from '../content/products.json';
 import { ComposeMessage, MessageHistory, type MessageCategory } from './messaging/routes';
 import { Button, Card, Field, Input, ORDER_STATUS_LABEL, OrderStatusBadge, PageHeader, Select, Spinner, Textarea, formatDate, formatMoney, orderNumber, useToast } from './ui';
@@ -96,7 +96,8 @@ export function OrderList() {
               <tbody className="divide-y divide-gray-100">
                 {rows.map((o) => (
                   <tr key={o.id} className="hover:bg-brand-off-white">
-                    <td className="px-4 py-3"><Link to={`/orders/${o.id}`} className="font-medium hover:underline">{orderNumber(o.number)}</Link><p className="text-xs text-gray-500">{o.occasion}</p></td>
+                    <td className="px-4 py-3"><Link to={`/orders/${o.id}`} className="font-medium hover:underline">{orderNumber(o.number)}</Link>
+                      <p className="flex items-center gap-1 text-xs text-gray-500">{o.source === 'store' && <Globe size={12} className="text-brand-olive" />}{o.occasion}</p></td>
                     <td className="px-4 py-3 text-gray-600">{o.customer?.name}{o.customer?.company && <p className="text-xs">{o.customer.company}</p>}</td>
                     <td className="px-4 py-3">{formatMoney(o.total_amount)}</td>
                     <td className="px-4 py-3">{formatMoney(Math.max(0, o.total_amount - o.advance_paid))}</td>
@@ -122,7 +123,7 @@ export function OrderList() {
 
 /* ── Create / edit ────────────────────────────────────────────── */
 
-type OrderForm = Pick<Order, 'customer_id' | 'status' | 'occasion' | 'items' | 'gst_rate' | 'advance_paid' | 'delivery_date' | 'delivery_address' | 'notes'>;
+type OrderForm = Pick<Order, 'customer_id' | 'status' | 'occasion' | 'items' | 'gst_rate' | 'advance_paid' | 'delivery_date' | 'delivery_address' | 'notes'> & { delivery_fee: number };
 
 const EMPTY_ITEM: OrderItem = { product: '', quantity: 1, unit_price: 0 };
 
@@ -135,6 +136,7 @@ export function OrderDetail() {
   const toast = useToast();
   const [form, setForm] = useState<OrderForm | null>(null);
   const [meta, setMeta] = useState<Pick<Order, 'number' | 'created_at'> | null>(null);
+  const [extra, setExtra] = useState<Pick<Order, 'source' | 'contact' | 'payment_link' | 'payments'>>({});
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [saving, setSaving] = useState(false);
   const [composing, setComposing] = useState<MessageCategory | null>(null);
@@ -145,7 +147,7 @@ export function OrderDetail() {
     if (isNew) {
       setForm({
         customer_id: params.get('customer') ?? '', status: 'quote', occasion: '', items: [{ ...EMPTY_ITEM }],
-        gst_rate: 18, advance_paid: 0, delivery_date: null, delivery_address: '', notes: '',
+        gst_rate: 18, delivery_fee: 0, advance_paid: 0, delivery_date: null, delivery_address: '', notes: '',
       });
       return;
     }
@@ -153,9 +155,10 @@ export function OrderDetail() {
       if (!data) return navigate('/orders', { replace: true });
       const o = data as Order;
       setMeta({ number: o.number, created_at: o.created_at });
+      setExtra({ source: o.source, contact: o.contact, payment_link: o.payment_link, payments: o.payments });
       setForm({
         customer_id: o.customer_id, status: o.status, occasion: o.occasion, items: o.items.length ? o.items : [{ ...EMPTY_ITEM }],
-        gst_rate: Number(o.gst_rate), advance_paid: Number(o.advance_paid), delivery_date: o.delivery_date,
+        gst_rate: Number(o.gst_rate), delivery_fee: Number(o.delivery_fee ?? 0), advance_paid: Number(o.advance_paid), delivery_date: o.delivery_date,
         delivery_address: o.delivery_address, notes: o.notes,
       });
     });
@@ -165,7 +168,7 @@ export function OrderDetail() {
   if (!form) return <Spinner />;
 
   const gst = (subtotal * (Number(form.gst_rate) || 0)) / 100;
-  const total = Math.round((subtotal + gst) * 100) / 100;
+  const total = Math.round((subtotal + gst + (Number(form.delivery_fee) || 0)) * 100) / 100;
   const balance = Math.max(0, total - (Number(form.advance_paid) || 0));
   const customer = customers.find((c) => c.id === form.customer_id);
 
@@ -183,7 +186,8 @@ export function OrderDetail() {
     if (!form.customer_id) return toast('Choose a customer', true);
     const items = form.items
       .filter((i) => i.product.trim())
-      .map((i) => ({ product: i.product.trim(), quantity: Number(i.quantity) || 0, unit_price: Number(i.unit_price) || 0 }));
+      // keep branding, logo and other website-store fields on each item
+      .map((i) => ({ ...i, product: i.product.trim(), quantity: Number(i.quantity) || 0, unit_price: Number(i.unit_price) || 0 }));
     const row = { ...form, items, total_amount: total, delivery_date: form.delivery_date || null };
     setSaving(true);
     const { data, error } = isNew
@@ -266,9 +270,17 @@ export function OrderDetail() {
                 </dt>
                 <dd>{formatMoney(gst)}</dd>
               </div>
+              <div className="flex items-center justify-between gap-2">
+                <dt className="flex items-center gap-2">Delivery ₹
+                  <Input type="number" min={0} step="1" value={form.delivery_fee} onChange={(e) => setForm({ ...form, delivery_fee: Number(e.target.value) })} className="!w-24 !py-1" aria-label="Delivery charge" />
+                </dt>
+                <dd>{form.delivery_fee ? formatMoney(form.delivery_fee) : 'Free'}</dd>
+              </div>
               <div className="flex justify-between text-base font-semibold"><dt>Total</dt><dd>{formatMoney(total)}</dd></div>
             </dl>
           </Card>
+
+          {!isNew && <StoreDetails items={form.items} contact={extra.source === 'store' ? extra.contact : undefined} />}
 
           <Card className="grid gap-4 p-5 sm:grid-cols-2">
             <Field label="Delivery date">
@@ -295,6 +307,7 @@ export function OrderDetail() {
             </div>
             <Button type="submit" disabled={saving} className="w-full">{saving ? 'Saving…' : isNew ? 'Create order' : 'Save order'}</Button>
           </Card>
+          {!isNew && extra.source === 'store' && <PaymentCard payments={extra.payments ?? []} balance={balance} total={total} />}
           {!isNew && isAdmin(profile) && (
             <Button type="button" variant="danger" onClick={remove} className="w-full"><Trash2 size={16} /> Delete order</Button>
           )}
@@ -327,5 +340,75 @@ export function OrderDetail() {
         />
       )}
     </>
+  );
+}
+
+/* ── Website store: branding, logos and checkout details ───────── */
+
+function StoreDetails({ items, contact }: { items: OrderItem[]; contact?: Record<string, string> }) {
+  const toast = useToast();
+  const branded = items.filter((i) => i.branding || i.logo_path || i.brand_text);
+  if (!branded.length && !contact) return null;
+
+  const openLogo = async (path: string) => {
+    const { data, error } = await supabase.storage.from('order-logos').createSignedUrl(path, 600, { download: true });
+    if (error || !data) return toast(error?.message ?? 'Could not open the logo', true);
+    window.open(data.signedUrl, '_blank', 'noopener');
+  };
+
+  return (
+    <Card className="p-5">
+      <h2 className="mb-3 font-semibold">Branding &amp; logos</h2>
+      {branded.length > 0 && (
+        <ul className="divide-y divide-gray-100 text-sm">
+          {branded.map((i, n) => (
+            <li key={n} className="flex flex-wrap items-center gap-x-4 gap-y-1 py-2.5">
+              <span className="font-medium">{i.product}</span>
+              <span className="text-gray-500">{i.quantity_label ?? i.quantity} kits{i.quote_only ? ' · quote' : ''}</span>
+              <span className="text-gray-600">{i.branding || 'No branding'}{i.brand_text ? ` · “${i.brand_text}”` : ''}</span>
+              <span className="ml-auto">
+                {i.logo_path
+                  ? <Button type="button" variant="secondary" className="!py-1" onClick={() => openLogo(i.logo_path!)}><Download size={14} /> Logo</Button>
+                  : /logo/i.test(i.branding ?? '') ? <span className="text-xs font-medium text-amber-700">Logo not uploaded yet</span> : null}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {contact && (
+        <dl className="mt-4 grid gap-x-6 gap-y-1.5 border-t border-gray-100 pt-4 text-sm sm:grid-cols-2">
+          {[['Name', contact.name], ['Company', contact.company], ['Email', contact.email], ['Phone', contact.phone],
+            ['GST number', contact.gstin], ['Needed by', contact.deliveryDate], ['City', contact.city], ['PIN code', contact.pincode]]
+            .filter(([, v]) => v)
+            .map(([k, v]) => <div key={k} className="flex gap-2"><dt className="w-24 shrink-0 text-gray-500">{k}</dt><dd className="break-all">{v}</dd></div>)}
+        </dl>
+      )}
+    </Card>
+  );
+}
+
+/* ── Online payments (Razorpay checkout) ──────────────────────── */
+
+function PaymentCard({ payments, balance, total }: { payments: Payment[]; balance: number; total: number }) {
+  const paid = payments.reduce((s, p) => s + Number(p.amount), 0);
+  return (
+    <Card className="space-y-3 p-5">
+      <h2 className="flex items-center gap-2 font-semibold"><CreditCard size={16} /> Online payment</h2>
+      {payments.length ? (
+        <ul className="space-y-1 text-sm">
+          {payments.map((p) => (
+            <li key={p.id} className="flex justify-between gap-2">
+              <span>{formatDate(p.paid_at)} · {p.method || 'online'}<span className="block text-xs text-gray-400">{p.id}</span></span>
+              <span className="font-medium">{formatMoney(p.amount)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="text-sm text-gray-500">No online payment yet.</p>}
+      <div className="rounded-lg bg-brand-off-white p-3 text-sm">
+        <div className="flex justify-between"><span>Paid online</span><span>{formatMoney(paid)}</span></div>
+        <div className="flex justify-between font-semibold"><span>Balance due</span><span>{formatMoney(balance)}</span></div>
+      </div>
+      {payments.length > 0 && paid >= total && <p className="text-xs text-emerald-700">Paid in full through Razorpay. Refunds are made from the Razorpay dashboard.</p>}
+    </Card>
   );
 }

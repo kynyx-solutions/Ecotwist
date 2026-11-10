@@ -20,7 +20,7 @@
     "paragraph2": "Our anniversary gifting solutions go beyond the generic. We craft meaningful, personalised experiences that make your people feel genuinely valued — strengthening the bond between individual and organisation.",
     "badgeSymbol": "🌿",
     "badgeText": "100% Sustainably Sourced — B-Corp Certified",
-    "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80",
+    "image": "/site/work-anniversary/executive-gifting-set.png",
     "imageAlt": "Work Anniversary Gifting"
   },
   "categories": {
@@ -40,7 +40,10 @@
     "items": [
       { "name": "Milestone Memory Box", "sub": "Starting at ₹1,799", "tag": "Premium", "img": "/site/work-anniversary/milestone-memory-box.png" },
       { "name": "Heritage Leather Folio", "sub": "Starting at ₹2,499", "tag": "Customizable", "img": "/site/work-anniversary/leather-folio.png" },
-      { "name": "Premium Desk Planter", "sub": "Starting at ₹999", "tag": "Eco-friendly", "img": "/site/work-anniversary/desk-planter.png" }
+      { "name": "Premium Desk Planter", "sub": "Starting at ₹999", "tag": "Eco-friendly", "img": "/site/work-anniversary/desk-planter.png" },
+      { "name": "Anniversary Treat Box", "sub": "Starting at ₹699", "tag": "1–3 years", "img": "/kits/jar-box-2-navy.webp" },
+      { "name": "Milestone Cork Set", "sub": "Starting at ₹1,299", "tag": "5 years", "img": "/kits/cork-denim-diaries.webp" },
+      { "name": "Executive Cork Collection", "sub": "Starting at ₹2,199", "tag": "10+ years", "img": "/kits/jar-box-4-navy.webp" }
     ]
   },
   "customization": {

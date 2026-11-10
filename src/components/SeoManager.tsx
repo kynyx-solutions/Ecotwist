@@ -49,7 +49,7 @@ function setJsonLd(data: unknown) {
 }
 
 // A single blog post: its page sets its own title and tags
-const isBlogPost = (path: string) => /^\/blog\/[^/]+/.test(path);
+const isBlogPost = (path: string) => /^\/blog\/[^/]+/.test(path) || /^\/shop\/[^/]+/.test(path); // store product pages too
 
 export function SeoManager() {
   const { pathname } = useLocation();

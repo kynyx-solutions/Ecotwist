@@ -1161,7 +1161,7 @@ export default function AwardRecognition() {
               <h2 className="text-5xl font-serif mb-2" style={{ color: ACCENT_DARK }}>{products.title}</h2>
               <p className="font-light" style={{ color: '#73736e' }}>{products.intro}</p>
             </div>
-            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
+            <motion.a href="/shop?occasion=Awards" whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
               style={{ borderColor: ACCENT, color: ACCENT_DARK }}>{products.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"

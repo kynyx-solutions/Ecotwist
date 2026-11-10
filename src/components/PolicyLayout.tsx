@@ -4,7 +4,6 @@ import content from "../content/pages/policy-layout.json";
 const { layout } = content;
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
   .pol-root {
     max-width: 860px;
@@ -109,7 +108,7 @@ export default function PolicyLayout({
     <div className="pol-root">
       <style>{styles}</style>
       {topLabel && <p className="pol-top-title">{topLabel}</p>}
-      <p className="pol-main-title">{title}</p>
+      <h1 className="pol-main-title">{title}</h1>
       <p className="pol-company">{company}</p>
       {effectiveDate && <p className="pol-effective">{layout.effectiveDateLabel} {effectiveDate}</p>}
       {children}

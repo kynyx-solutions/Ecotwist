@@ -11,7 +11,7 @@ import siteImages from '../content/site-images.json';
 import testimonials from '../content/testimonials.json';
 import clients from '../content/clients.json';
 import {
-  Button, Card, CardTitle, Input, SOURCE_LABEL, Spinner, StatCard, StatusBadge, followUpLabel, formatMoney, orderNumber, timeAgo,
+  Button, Card, CardTitle, Input, OrderStatusBadge, SOURCE_LABEL, Spinner, StatCard, StatusBadge, followUpLabel, formatMoney, orderNumber, timeAgo,
 } from './ui';
 
 const OPEN_ORDERS = ['confirmed', 'in_production', 'dispatched'];
@@ -26,6 +26,7 @@ interface Data {
   deliveries: Order[] | null; // null when the orders table isn't set up yet
   bySource: [LeadSource, number][];
   latest: Lead[];
+  storeNew: Order[];
 }
 
 const greeting = () => {
@@ -37,6 +38,8 @@ const greeting = () => {
 const WEBSITE_TODO = [
   { count: siteImages.images.filter((i) => !i.image).length, text: (n: number) => `${n} photo spots still show a placeholder`, to: '/website/edit?path=src%2Fcontent%2Fsite-images.json' },
   { count: testimonials.testimonials.length ? 0 : 1, text: () => 'No client testimonials yet; the reviews sections are hidden', to: '/website/edit?path=src%2Fcontent%2Ftestimonials.json' },
+  { count: (testimonials.testimonials as { approved?: boolean }[]).filter((t) => !t.approved).length,
+    text: (n: number) => `${n} testimonial${n === 1 ? '' : 's'} waiting for client approval; tick "approved" once the client confirms the wording`, to: '/website/edit?path=src%2Fcontent%2Ftestimonials.json' },
   { count: clients.clients.filter((c) => !c.logo).length, text: (n: number) => `${n} client${n === 1 ? '' : 's'} without a logo`, to: '/website/edit?path=src%2Fcontent%2Fclients.json' },
 ].filter((t) => t.count > 0);
 
@@ -60,7 +63,8 @@ export function Dashboard() {
         .gte('delivery_date', day()).lte('delivery_date', day(7)).order('delivery_date').limit(6),
       supabase.from('leads').select('source').neq('type', 'newsletter').gte('created_at', new Date(Date.now() - 30 * 864e5).toISOString()),
       leads().order('created_at', { ascending: false }).limit(6),
-    ]).then(([week, follow, won, proposals, deliveries, sources, latest]) => {
+      supabase.from('orders').select('*, customer:customers(id, name, company)').eq('source', 'store').in('status', ['new', 'confirmed']).order('created_at', { ascending: false }).limit(8),
+    ]).then(([week, follow, won, proposals, deliveries, sources, latest, storeNew]) => {
       const counts = new Map<LeadSource, number>();
       for (const { source } of (sources.data ?? []) as { source: LeadSource }[]) counts.set(source, (counts.get(source) ?? 0) + 1);
       const weekLeads = (week.data as Lead[]) ?? [];
@@ -73,6 +77,7 @@ export function Dashboard() {
         deliveries: deliveries.error ? null : ((deliveries.data as Order[]) ?? []),
         bySource: [...counts].sort((a, b) => b[1] - a[1]),
         latest: (latest.data as Lead[]) ?? [],
+        storeNew: storeNew.error ? [] : ((storeNew.data as Order[]) ?? []),
       });
     });
   }, []);
@@ -113,6 +118,28 @@ export function Dashboard() {
           note={data.deliveries ? formatMoney(data.deliveries.reduce((s, o) => s + Number(o.total_amount), 0)) : 'Set up orders first'} /></Link>
         <Link to="/leads?status=won&view=list"><StatCard label="Won this month" value={data.wonThisMonth} note={`Out of ${data.proposalsThisMonth} proposals`} /></Link>
       </div>
+
+      {data.storeNew.length > 0 && (
+        <Card className="mt-6 overflow-hidden border-l-4 !border-l-rose-400">
+          <CardTitle action={<Link to="/orders?status=confirmed" className="hover:underline">All paid orders →</Link>}>
+            Website orders to act on · send the mockup
+          </CardTitle>
+          <ul className="divide-y divide-gray-100 text-sm">
+            {data.storeNew.map((o) => (
+              <li key={o.id}>
+                <Link to={`/orders/${o.id}`} className="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-3 hover:bg-brand-off-white">
+                  <span className="font-medium">{orderNumber(o.number)}</span>
+                  <span className="text-gray-600">{o.customer?.company || o.customer?.name}</span>
+                  <span className="text-gray-500">{o.items.length} {o.items.length === 1 ? 'item' : 'items'}</span>
+                  <OrderStatusBadge status={o.status} />
+                  <span className="ml-auto font-medium">{formatMoney(Number(o.total_amount))}</span>
+                  <span className="w-20 text-right text-xs text-gray-500">{timeAgo(o.created_at)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       <Card className="mt-6 overflow-hidden">
         <CardTitle action={<Link to="/leads" className="hover:underline">Open pipeline →</Link>}>New leads</CardTitle>

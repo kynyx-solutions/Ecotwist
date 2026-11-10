@@ -20,7 +20,11 @@
       { "title": "Work Anniversary", "image": "/site/home/work-anniversary.avif", "accent": "#7a9e7e", "tag": "Milestone", "path": "/occasions/work-anniversary" },
       { "title": "Product Launch", "image": "/site/home/product-launch.avif", "accent": "#5b8fa8", "tag": "Brand", "path": "/occasions/product-launch" },
       { "title": "Award & Recognition", "image": "/site/home/award-recognition.webp", "accent": "#c4a23a", "tag": "Culture", "path": "/occasions/award-recognition" },
-      { "title": "Retirement Gifting", "image": "/site/home/retirement-gifting.jpg", "accent": "#9c7bb5", "tag": "Farewell", "path": "/occasions/retirement-gifting" }
+      { "title": "Retirement Gifting", "image": "/site/home/retirement-gifting.jpg", "accent": "#9c7bb5", "tag": "Farewell", "path": "/occasions/retirement-gifting" },
+      { "title": "Women's Day Gifting", "image": "/kits/candles-6.webp", "accent": "#d4869c", "tag": "March", "path": "/occasions/womens-day" },
+      { "title": "Christmas Gifting", "image": "/kits/jar-box-3-velvet.webp", "accent": "#d65a4a", "tag": "December", "path": "/occasions/christmas-gifting" },
+      { "title": "Earth Day & Environment Day", "image": "/kits/seed-pencils.webp", "accent": "#8bb35a", "tag": "CSR", "path": "/occasions/earth-day-gifting" },
+      { "title": "Channel Partner Gifting", "image": "/kits/jar-box-4-navy.webp", "accent": "#c5a059", "tag": "Partners", "path": "/occasions/channel-partner-gifting" }
     ]
   },
   "process": {

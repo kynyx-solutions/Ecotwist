@@ -989,7 +989,7 @@ export default function FestiveGifting(){
               <h2 className="text-5xl font-serif mb-2">{featured.title}</h2>
               <p className="text-gray-500">{featured.intro}</p>
             </div>
-            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">{featured.viewAllText}</motion.a>
+            <motion.a href="/shop?occasion=Festive" whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 border-brand-olive pb-1 cursor-pointer">{featured.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"
             style={{scrollSnapType:'x mandatory',msOverflowStyle:'none',scrollbarWidth:'none'}}>

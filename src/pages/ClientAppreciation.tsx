@@ -716,9 +716,10 @@ export default function ClientAppreciation() {
             <span style={{display:"inline-block",width:36,height:1,background:"rgba(201,169,110,0.55)"}}/>
           </motion.p>
 
+<h1 style={{ margin: 0, fontWeight: "inherit" }}>
           {/* CLIENT */}
           <div style={{overflow:"hidden",marginBottom:"0.4rem"}}>
-            <motion.h1 initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
+            <motion.span initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
               transition={{duration:1.1,delay:0.5,ease:EASE}}
               style={{fontSize:"clamp(2.2rem,5vw,5rem)",lineHeight:1.0,fontFamily:"serif",fontWeight:700,
                 color:"#fff",margin:0,textShadow:"0 0 60px rgba(201,169,110,0.4)",letterSpacing:"-1px",
@@ -727,12 +728,12 @@ export default function ClientAppreciation() {
                 transition={{duration:3.2,repeat:Infinity,ease:"easeInOut"}}
                 style={{fontSize:"0.52em",filter:"drop-shadow(0 0 10px rgba(255,215,0,0.8))"}}></motion.span>
               {hero.titleLine1}
-            </motion.h1>
+            </motion.span>
           </div>
 
           {/* APPRECIATION */}
           <div style={{overflow:"hidden",marginBottom:"0.4rem"}}>
-            <motion.h1 initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
+            <motion.span initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
               transition={{duration:1.1,delay:0.65,ease:EASE}}
               style={{fontSize:"clamp(2.2rem,5vw,5rem)",lineHeight:1.0,fontFamily:"serif",fontWeight:700,
                 color:"#fff",margin:0,textShadow:"0 0 60px rgba(201,169,110,0.4)",letterSpacing:"-1px",
@@ -741,12 +742,12 @@ export default function ClientAppreciation() {
               <motion.span animate={{rotate:[0,360],scale:[1,1.25,1]}}
                 transition={{duration:5,repeat:Infinity,ease:"linear"}}
                 style={{fontSize:"0.44em",filter:"drop-shadow(0 0 12px rgba(255,215,0,0.9))"}}></motion.span>
-            </motion.h1>
+            </motion.span>
           </div>
 
           {/* GIFTING SOLUTIONS */}
           <div style={{overflow:"hidden",marginBottom:"0.6rem"}}>
-            <motion.h1 initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
+            <motion.span initial={{y:"110%",opacity:0}} animate={{y:0,opacity:1}}
               transition={{duration:1.1,delay:0.8,ease:EASE}}
               style={{fontSize:"clamp(3rem,8vw,7rem)",lineHeight:1.5,fontFamily:"serif",fontWeight:400,
                 fontStyle:"italic",color:"rgba(201,169,110,0.92)",margin:0,
@@ -759,8 +760,9 @@ export default function ClientAppreciation() {
               <motion.span animate={{opacity:[0.4,1,0.4],scale:[0.8,1.35,0.8]}}
                 transition={{duration:2.2,repeat:Infinity,ease:"easeInOut",delay:1.1}}
                 style={{fontSize:"0.5em",filter:"drop-shadow(0 0 10px rgba(255,200,80,0.9))"}}></motion.span>
-            </motion.h1>
+            </motion.span>
           </div>
+</h1>
 
           <motion.p initial={{opacity:0,y:24,filter:"blur(8px)"}} animate={{opacity:1,y:0,filter:"blur(0px)"}}
             transition={{duration:0.9,delay:1.05}}
@@ -836,7 +838,7 @@ export default function ClientAppreciation() {
             <motion.p variants={vFadeUp} className="text-gray-600 text-lg leading-relaxed mb-10">
               {about.text}
             </motion.p>
-            <motion.a variants={vFadeUp} whileHover={{x:4,transition:{type:"spring",stiffness:340,damping:22}}}
+            <motion.a href="/shop?occasion=Client%20Appreciation" variants={vFadeUp} whileHover={{x:4,transition:{type:"spring",stiffness:340,damping:22}}}
               className="inline-flex items-center gap-2 font-bold text-[11px] uppercase tracking-widest border-b-2 pb-1 cursor-pointer"
               style={{borderColor:"rgba(0,0,0,0.15)"}}>
               {about.linkText} <ArrowRight size={13}/>
@@ -870,7 +872,7 @@ export default function ClientAppreciation() {
               <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{color:"#065f46"}}>{products.eyebrow}</p>
               <h2 className="text-5xl font-serif">{products.title}</h2>
             </div>
-            <motion.a whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{borderColor:"#b5a26a"}}>{products.viewAllText}</motion.a>
+            <motion.a href="/shop?occasion=Client%20Appreciation" whileHover={{y:-1}} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{borderColor:"#b5a26a"}}>{products.viewAllText}</motion.a>
           </motion.div>
           <div className="flex gap-6 overflow-x-auto pb-4"
             style={{scrollSnapType:"x mandatory",msOverflowStyle:"none",scrollbarWidth:"none"} as React.CSSProperties}>

@@ -1283,7 +1283,7 @@ export default function EventsConferences() {
               <p className="text-[10px] uppercase tracking-[0.28em] font-bold mb-3" style={{ color: '#708156' }}>{products.eyebrow}</p>
               <h2 className="text-4xl font-serif" style={{ color: '#3d3a34' }}>{products.title}</h2>
             </div>
-            <motion.a whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: '#708156', color: '#3d3a34' }}>{products.viewAll}</motion.a>
+            <motion.a href="/shop?occasion=Events" whileHover={{ y: -1 }} className="font-bold text-xs uppercase tracking-widest border-b-2 pb-1 cursor-pointer" style={{ borderColor: '#708156', color: '#3d3a34' }}>{products.viewAll}</motion.a>
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {PRODUCTS.map((p, i) => <ProductCard key={p.name} item={p} index={i} />)}

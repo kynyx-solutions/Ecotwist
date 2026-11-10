@@ -980,24 +980,26 @@ export default function ExecutiveGiftPage() {
 
             {/* 3D split text headline */}
             <div className="mb-2" style={{ perspective: "600px" }}>
+<h1 style={{ margin: 0, fontWeight: "inherit" }}>
               <div className="overflow-hidden">
-                <h1 className="font-display font-light leading-[1.1]"
+                <span className="block font-display font-light leading-[1.1]"
                   style={{ fontSize: "clamp(2.5rem,5.5vw,4.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.3s both" : "none" }}>
                   {hero.titleLine1}
-                </h1>
+                </span>
               </div>
               <div className="overflow-hidden">
-                <h1 className="font-display font-light leading-[1.05] italic text-[#c8a96e]"
+                <span className="block font-display font-light leading-[1.05] italic text-[#c8a96e]"
                   style={{ fontSize: "clamp(3rem,7vw,5.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.45s both" : "none" }}>
                   {hero.titleHighlight}
-                </h1>
+                </span>
               </div>
               <div className="overflow-hidden">
-                <h1 className="font-display font-light leading-[1.1]"
+                <span className="block font-display font-light leading-[1.1]"
                   style={{ fontSize: "clamp(2.5rem,5.5vw,4.5rem)", animation: heroVisible ? "heroLineBlur 0.8s ease 0.6s both" : "none" }}>
                   {hero.titleLine2}
-                </h1>
+                </span>
               </div>
+</h1>
             </div>
 
             {/* Animated divider line */}

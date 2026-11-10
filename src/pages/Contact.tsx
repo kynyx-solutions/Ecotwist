@@ -560,7 +560,7 @@ export const Contact = () => {
             </motion.span>
 
             {/* HEADING */}
-            <h2 className="text-4xl sm:text-5xl md:text-7xl leading-[1.1] mb-6 font-serif">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl leading-[1.1] mb-6 font-serif">
               <div className="flex flex-wrap gap-x-4">
                 {intro.titleLine1.split(' ').map((word) => (
                   <motion.span key={word}>{word}</motion.span>
@@ -569,7 +569,7 @@ export const Contact = () => {
               <div className="flex flex-wrap gap-x-4 italic font-normal">
                 <motion.span>{intro.titleLine2}</motion.span>
               </div>
-            </h2>
+            </h1>
 
             {/* DESCRIPTION */}
             <motion.p className="max-w-md text-base sm:text-lg text-gray-600 leading-relaxed mb-8">
@@ -581,7 +581,8 @@ export const Contact = () => {
               {intro.contacts.map((item) => (
                 <motion.a
                   key={item.tag}
-                  href="#"
+                  href={item.value.includes('@') ? `mailto:${item.value}` : /^\+?[\d\s-]{8,}$/.test(item.value) ? `tel:${item.value.replace(/\s/g, '')}` : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.value)}`}
+                  {...(!item.value.includes('@') && !/^\+?[\d\s-]{8,}$/.test(item.value) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className="flex items-start gap-4 group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm bg-[#5c7a3e]">

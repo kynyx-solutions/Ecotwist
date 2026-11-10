@@ -35,6 +35,7 @@ export function apiPlugin(env) {
             req.on('end', () => resolve(data));
             req.on('error', reject);
           });
+          req.rawBody = raw; // exact bytes, e.g. for webhook signature checks
           req.query = Object.fromEntries(url.searchParams);
           req.body = raw && String(req.headers['content-type']).includes('application/json') ? JSON.parse(raw) : raw;
 

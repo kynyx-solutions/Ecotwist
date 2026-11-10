@@ -4,121 +4,121 @@
       "id": "retirement-hero",
       "page": "Retirement Gifting",
       "place": "Hero background (behind the headline)",
-      "image": ""
+      "image": "/kits/branded-kit-dark.webp"
     },
     {
       "id": "retirement-legacy-keepsake-box",
       "page": "Retirement Gifting",
       "place": "Product card: Legacy Keepsake Box",
-      "image": ""
+      "image": "/site/client-appreciation/personalization.png"
     },
     {
       "id": "retirement-relaxation-hamper",
       "page": "Retirement Gifting",
       "place": "Product card: Relaxation Hamper",
-      "image": ""
+      "image": "/site/diwali-gifting/wellness-hamper.png"
     },
     {
       "id": "retirement-memory-journal-set",
       "page": "Retirement Gifting",
       "place": "Product card: Memory Journal Set",
-      "image": ""
+      "image": "/site/employee-onboarding/eco-leather-notebook.png"
     },
     {
       "id": "retirement-legacy-tribute-gifts",
       "page": "Retirement Gifting",
       "place": "Collection card: Legacy Tribute Gifts",
-      "image": ""
+      "image": "/kits/jar-box-3-velvet.webp"
     },
     {
       "id": "retirement-relaxation-leisure",
       "page": "Retirement Gifting",
       "place": "Collection card: Relaxation & Leisure",
-      "image": ""
+      "image": "/kits/candles-6.webp"
     },
     {
       "id": "solutions-festive-gifting",
       "page": "Solutions",
       "place": "Occasion card: Festive Gifting",
-      "image": ""
+      "image": "/site/home/festive-gifting.jpg"
     },
     {
       "id": "solutions-work-anniversary",
       "page": "Solutions",
       "place": "Occasion card: Work Anniversary",
-      "image": ""
+      "image": "/site/work-anniversary/years-of-service-awards.png"
     },
     {
       "id": "solutions-award-recognition",
       "page": "Solutions",
       "place": "Occasion card: Award & Recognition",
-      "image": ""
+      "image": "/site/award-recognition/top-performer-awards.avif"
     },
     {
       "id": "festive-welcome-kits",
       "page": "Festive Gifting",
       "place": "Collection card: Welcome Kits",
-      "image": ""
+      "image": "/kits/welcome-kit-ecotwist.webp"
     },
     {
       "id": "festive-premium-hampers",
       "page": "Festive Gifting",
       "place": "Collection card: Premium Festive Hampers",
-      "image": ""
+      "image": "/kits/premium-hampers-ecotwist.webp"
     },
     {
       "id": "festive-custom-merchandise",
       "page": "Festive Gifting",
       "place": "Collection card: Custom Merchandise",
-      "image": ""
+      "image": "/kits/branded-kit-dark.webp"
     },
     {
       "id": "festive-heritage-box",
       "page": "Festive Gifting",
       "place": "Product card: The Heritage Box",
-      "image": ""
+      "image": "/site/diwali-gifting/dry-fruit.png"
     },
     {
       "id": "festive-wellness-kit",
       "page": "Festive Gifting",
       "place": "Product card: The Wellness Kit",
-      "image": ""
+      "image": "/site/diwali-gifting/wellness-hamper.png"
     },
     {
       "id": "festive-gourmet-collection",
       "page": "Festive Gifting",
       "place": "Product card: Gourmet Collection",
-      "image": ""
+      "image": "/site/diwali-gifting/gourmet-hamper.png"
     },
     {
       "id": "festive-executive-signature",
       "page": "Festive Gifting",
       "place": "Product card: Executive Signature",
-      "image": ""
+      "image": "/site/diwali-gifting/premium-packaging.png"
     },
     {
       "id": "festive-about",
       "page": "Festive Gifting",
       "place": "About section photo (a Diwali celebration scene)",
-      "image": ""
+      "image": "/site/diwali-gifting/festive-workspace.png"
     },
     {
       "id": "festive-cta-background",
       "page": "Festive Gifting",
       "place": "Faint background behind the closing call to action",
-      "image": ""
+      "image": "/site/diwali-gifting/diwali-hamper.png"
     },
     {
       "id": "birthday-gourmet-kits",
       "page": "Birthday Gifting",
       "place": "Collection card: Gourmet Celebration Kits",
-      "image": ""
+      "image": "/kits/jar-box-2-white.webp"
     },
     {
       "id": "birthday-wellness-sets",
       "page": "Birthday Gifting",
       "place": "Collection card: Pampering Wellness Sets",
-      "image": ""
+      "image": "/kits/candles-6.webp"
     }
   ]
 }

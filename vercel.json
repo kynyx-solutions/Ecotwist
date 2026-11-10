@@ -31,12 +31,19 @@
     },
     {
       "source": "/((?!api/|admin).*)",
-      "destination": "/"
+      "destination": "/app.html"
     }
   ],
   "functions": {
     "api/sitemap.js": {
-      "includeFiles": "src/content/seo.json"
+      "includeFiles": "src/content/{seo,store}.json"
+    },
+    "api/store/order.js": {
+      "includeFiles": "src/content/store.json"
+    },
+    "api/store/upload-url.js": {
+      "includeFiles": "src/content/store.json"
     }
-  }
+  },
+  "cleanUrls": true
 }

@@ -142,7 +142,10 @@ export function followUpLabel(date: string | null): { text: string; overdue: boo
 /* ── Order status ─────────────────────────────────────────────── */
 
 export const ORDER_STATUS_LABEL: Record<OrderStatus, string> = {
+  awaiting_payment: 'Awaiting payment',
+  new: 'Quote request (website)',
   quote: 'Quote sent',
+  mockup_sent: 'Mockup sent',
   confirmed: 'Confirmed',
   in_production: 'In production',
   dispatched: 'Dispatched',
@@ -151,7 +154,10 @@ export const ORDER_STATUS_LABEL: Record<OrderStatus, string> = {
 };
 
 const ORDER_STATUS_STYLE: Record<OrderStatus, string> = {
+  awaiting_payment: 'bg-gray-100 text-gray-500',
+  new: 'bg-rose-100 text-rose-800',
   quote: 'bg-amber-100 text-amber-800',
+  mockup_sent: 'bg-orange-100 text-orange-800',
   confirmed: 'bg-sky-100 text-sky-800',
   in_production: 'bg-violet-100 text-violet-800',
   dispatched: 'bg-indigo-100 text-indigo-800',
