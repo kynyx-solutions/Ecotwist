@@ -26,6 +26,7 @@ interface Data {
   deliveries: Order[] | null; // null when the orders table isn't set up yet
   bySource: [LeadSource, number][];
   latest: Lead[];
+  storeNew: Order[];
 }
 
 const greeting = () => {
@@ -60,7 +61,8 @@ export function Dashboard() {
         .gte('delivery_date', day()).lte('delivery_date', day(7)).order('delivery_date').limit(6),
       supabase.from('leads').select('source').neq('type', 'newsletter').gte('created_at', new Date(Date.now() - 30 * 864e5).toISOString()),
       leads().order('created_at', { ascending: false }).limit(6),
-    ]).then(([week, follow, won, proposals, deliveries, sources, latest]) => {
+      supabase.from('orders').select('*, customer:customers(id, name, company)').eq('source', 'store').eq('status', 'new').order('created_at', { ascending: false }).limit(8),
+    ]).then(([week, follow, won, proposals, deliveries, sources, latest, storeNew]) => {
       const counts = new Map<LeadSource, number>();
       for (const { source } of (sources.data ?? []) as { source: LeadSource }[]) counts.set(source, (counts.get(source) ?? 0) + 1);
       const weekLeads = (week.data as Lead[]) ?? [];
@@ -73,6 +75,7 @@ export function Dashboard() {
         deliveries: deliveries.error ? null : ((deliveries.data as Order[]) ?? []),
         bySource: [...counts].sort((a, b) => b[1] - a[1]),
         latest: (latest.data as Lead[]) ?? [],
+        storeNew: storeNew.error ? [] : ((storeNew.data as Order[]) ?? []),
       });
     });
   }, []);
@@ -113,6 +116,27 @@ export function Dashboard() {
           note={data.deliveries ? formatMoney(data.deliveries.reduce((s, o) => s + Number(o.total_amount), 0)) : 'Set up orders first'} /></Link>
         <Link to="/leads?status=won&view=list"><StatCard label="Won this month" value={data.wonThisMonth} note={`Out of ${data.proposalsThisMonth} proposals`} /></Link>
       </div>
+
+      {data.storeNew.length > 0 && (
+        <Card className="mt-6 overflow-hidden border-l-4 !border-l-rose-400">
+          <CardTitle action={<Link to="/orders?status=new" className="hover:underline">All new orders →</Link>}>
+            New website orders · send the mockup
+          </CardTitle>
+          <ul className="divide-y divide-gray-100 text-sm">
+            {data.storeNew.map((o) => (
+              <li key={o.id}>
+                <Link to={`/orders/${o.id}`} className="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-3 hover:bg-brand-off-white">
+                  <span className="font-medium">{orderNumber(o.number)}</span>
+                  <span className="text-gray-600">{o.customer?.company || o.customer?.name}</span>
+                  <span className="text-gray-500">{o.items.length} {o.items.length === 1 ? 'item' : 'items'}</span>
+                  <span className="ml-auto font-medium">{formatMoney(Number(o.total_amount))}</span>
+                  <span className="w-20 text-right text-xs text-gray-500">{timeAgo(o.created_at)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       <Card className="mt-6 overflow-hidden">
         <CardTitle action={<Link to="/leads" className="hover:underline">Open pipeline →</Link>}>New leads</CardTitle>

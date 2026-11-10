@@ -62,6 +62,19 @@ export default async function handler(req, res) {
   </url>`;
   });
 
+  // Store product pages (src/content/store.json)
+  let storeProducts = [];
+  try {
+    storeProducts = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/content/store.json'), 'utf8')).products.filter((p) => p.active);
+  } catch (err) {
+    console.error('[sitemap] could not read src/content/store.json', err);
+  }
+  const productEntries = storeProducts.map((p) => `  <url>
+    <loc>${BASE_URL}/shop/${xmlEscape(p.id)}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>${p.image ? `\n    <image:image>\n      <image:loc>${BASE_URL}${xmlEscape(encodeURI(p.image))}</image:loc>\n      <image:title>${xmlEscape(p.name)}</image:title>\n    </image:image>` : ''}
+  </url>`);
+
   const postEntries = (await publishedPosts()).map((p) => {
     const lastmod = (p.updated_at || p.published_at || '').slice(0, 10);
     const image = p.cover_image
@@ -79,7 +92,7 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
   res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${[...pageEntries, ...postEntries].join('\n')}
+${[...pageEntries, ...productEntries, ...postEntries].join('\n')}
 </urlset>
 `);
 }

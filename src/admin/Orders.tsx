@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, FileText, Plus, Send, Trash2, X } from 'lucide-react';
+import { ArrowLeft, Copy, CreditCard, Download, FileText, Globe, Plus, Send, Trash2, X } from 'lucide-react';
+import { api } from './lib/api';
 import { supabase } from './lib/supabase';
 import { isAdmin, useAuth } from './lib/auth';
-import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus } from './lib/types';
+import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus, type Payment, type PaymentLink } from './lib/types';
 import catalogue from '../content/products.json';
 import { ComposeMessage, MessageHistory, type MessageCategory } from './messaging/routes';
 import { Button, Card, Field, Input, ORDER_STATUS_LABEL, OrderStatusBadge, PageHeader, Select, Spinner, Textarea, formatDate, formatMoney, orderNumber, useToast } from './ui';
@@ -96,7 +97,8 @@ export function OrderList() {
               <tbody className="divide-y divide-gray-100">
                 {rows.map((o) => (
                   <tr key={o.id} className="hover:bg-brand-off-white">
-                    <td className="px-4 py-3"><Link to={`/orders/${o.id}`} className="font-medium hover:underline">{orderNumber(o.number)}</Link><p className="text-xs text-gray-500">{o.occasion}</p></td>
+                    <td className="px-4 py-3"><Link to={`/orders/${o.id}`} className="font-medium hover:underline">{orderNumber(o.number)}</Link>
+                      <p className="flex items-center gap-1 text-xs text-gray-500">{o.source === 'store' && <Globe size={12} className="text-brand-olive" />}{o.occasion}</p></td>
                     <td className="px-4 py-3 text-gray-600">{o.customer?.name}{o.customer?.company && <p className="text-xs">{o.customer.company}</p>}</td>
                     <td className="px-4 py-3">{formatMoney(o.total_amount)}</td>
                     <td className="px-4 py-3">{formatMoney(Math.max(0, o.total_amount - o.advance_paid))}</td>
@@ -135,6 +137,7 @@ export function OrderDetail() {
   const toast = useToast();
   const [form, setForm] = useState<OrderForm | null>(null);
   const [meta, setMeta] = useState<Pick<Order, 'number' | 'created_at'> | null>(null);
+  const [extra, setExtra] = useState<Pick<Order, 'source' | 'contact' | 'payment_link' | 'payments'>>({});
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [saving, setSaving] = useState(false);
   const [composing, setComposing] = useState<MessageCategory | null>(null);
@@ -153,6 +156,7 @@ export function OrderDetail() {
       if (!data) return navigate('/orders', { replace: true });
       const o = data as Order;
       setMeta({ number: o.number, created_at: o.created_at });
+      setExtra({ source: o.source, contact: o.contact, payment_link: o.payment_link, payments: o.payments });
       setForm({
         customer_id: o.customer_id, status: o.status, occasion: o.occasion, items: o.items.length ? o.items : [{ ...EMPTY_ITEM }],
         gst_rate: Number(o.gst_rate), advance_paid: Number(o.advance_paid), delivery_date: o.delivery_date,
@@ -183,7 +187,8 @@ export function OrderDetail() {
     if (!form.customer_id) return toast('Choose a customer', true);
     const items = form.items
       .filter((i) => i.product.trim())
-      .map((i) => ({ product: i.product.trim(), quantity: Number(i.quantity) || 0, unit_price: Number(i.unit_price) || 0 }));
+      // keep branding, logo and other website-store fields on each item
+      .map((i) => ({ ...i, product: i.product.trim(), quantity: Number(i.quantity) || 0, unit_price: Number(i.unit_price) || 0 }));
     const row = { ...form, items, total_amount: total, delivery_date: form.delivery_date || null };
     setSaving(true);
     const { data, error } = isNew
@@ -270,6 +275,8 @@ export function OrderDetail() {
             </dl>
           </Card>
 
+          {!isNew && <StoreDetails items={form.items} contact={extra.source === 'store' ? extra.contact : undefined} />}
+
           <Card className="grid gap-4 p-5 sm:grid-cols-2">
             <Field label="Delivery date">
               <Input type="date" value={form.delivery_date ?? ''} onChange={(e) => setForm({ ...form, delivery_date: e.target.value || null })} />
@@ -295,6 +302,18 @@ export function OrderDetail() {
             </div>
             <Button type="submit" disabled={saving} className="w-full">{saving ? 'Saving…' : isNew ? 'Create order' : 'Save order'}</Button>
           </Card>
+          {!isNew && (
+            <PaymentCard
+              orderId={id!}
+              balance={balance}
+              link={extra.payment_link ?? null}
+              payments={extra.payments ?? []}
+              onLink={(link, status) => {
+                setExtra({ ...extra, payment_link: link });
+                if (status) setForm({ ...form, status: status as OrderStatus });
+              }}
+            />
+          )}
           {!isNew && isAdmin(profile) && (
             <Button type="button" variant="danger" onClick={remove} className="w-full"><Trash2 size={16} /> Delete order</Button>
           )}
@@ -327,5 +346,119 @@ export function OrderDetail() {
         />
       )}
     </>
+  );
+}
+
+/* ── Website store: branding, logos and checkout details ───────── */
+
+function StoreDetails({ items, contact }: { items: OrderItem[]; contact?: Record<string, string> }) {
+  const toast = useToast();
+  const branded = items.filter((i) => i.branding || i.logo_path || i.brand_text);
+  if (!branded.length && !contact) return null;
+
+  const openLogo = async (path: string) => {
+    const { data, error } = await supabase.storage.from('order-logos').createSignedUrl(path, 600, { download: true });
+    if (error || !data) return toast(error?.message ?? 'Could not open the logo', true);
+    window.open(data.signedUrl, '_blank', 'noopener');
+  };
+
+  return (
+    <Card className="p-5">
+      <h2 className="mb-3 font-semibold">Branding &amp; logos</h2>
+      {branded.length > 0 && (
+        <ul className="divide-y divide-gray-100 text-sm">
+          {branded.map((i, n) => (
+            <li key={n} className="flex flex-wrap items-center gap-x-4 gap-y-1 py-2.5">
+              <span className="font-medium">{i.product}</span>
+              <span className="text-gray-500">{i.quantity_label ?? i.quantity} kits{i.quote_only ? ' · quote' : ''}</span>
+              <span className="text-gray-600">{i.branding || 'No branding'}{i.brand_text ? ` · “${i.brand_text}”` : ''}</span>
+              <span className="ml-auto">
+                {i.logo_path
+                  ? <Button type="button" variant="secondary" className="!py-1" onClick={() => openLogo(i.logo_path!)}><Download size={14} /> Logo</Button>
+                  : /logo/i.test(i.branding ?? '') ? <span className="text-xs font-medium text-amber-700">Logo not uploaded yet</span> : null}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {contact && (
+        <dl className="mt-4 grid gap-x-6 gap-y-1.5 border-t border-gray-100 pt-4 text-sm sm:grid-cols-2">
+          {[['Name', contact.name], ['Company', contact.company], ['Email', contact.email], ['Phone', contact.phone],
+            ['GST number', contact.gstin], ['Needed by', contact.deliveryDate], ['City', contact.city], ['PIN code', contact.pincode]]
+            .filter(([, v]) => v)
+            .map(([k, v]) => <div key={k} className="flex gap-2"><dt className="w-24 shrink-0 text-gray-500">{k}</dt><dd className="break-all">{v}</dd></div>)}
+        </dl>
+      )}
+    </Card>
+  );
+}
+
+/* ── Razorpay payment link ────────────────────────────────────── */
+
+function PaymentCard({ orderId, balance, link, payments, onLink }: {
+  orderId: string; balance: number; link: PaymentLink | null; payments: Payment[];
+  onLink: (link: PaymentLink, status?: string) => void;
+}) {
+  const toast = useToast();
+  const [amount, setAmount] = useState(Math.round(balance));
+  const [busy, setBusy] = useState(false);
+  useEffect(() => setAmount(Math.round(balance)), [balance]);
+
+  const create = async () => {
+    if (!(amount >= 1)) return toast('Enter an amount of at least ₹1', true);
+    if (link && link.status !== 'paid' && !confirm('A payment link was already sent. Create a new one?')) return;
+    setBusy(true);
+    try {
+      const res = await api<{ link: PaymentLink; status: string }>('/api/admin/payment-link', { body: { orderId, amount } });
+      onLink(res.link, res.status);
+      toast('Payment link created. Razorpay has emailed and texted it to the customer.');
+    } catch (e) {
+      toast((e as Error).message, true);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Card className="space-y-4 p-5">
+      <h2 className="flex items-center gap-2 font-semibold"><CreditCard size={16} /> Payment</h2>
+      {link && (
+        <div className="rounded-lg bg-brand-off-white p-3 text-sm">
+          <div className="flex items-center justify-between gap-2">
+            <span>{formatMoney(link.amount)} link</span>
+            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${link.status === 'paid' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+              {link.status === 'paid' ? 'Paid' : 'Waiting'}
+            </span>
+          </div>
+          <a href={link.url} target="_blank" rel="noopener noreferrer" className="mt-1 block truncate text-brand-olive underline">{link.url}</a>
+          <div className="mt-2 flex gap-2">
+            <Button type="button" variant="secondary" className="!py-1" onClick={() => { navigator.clipboard?.writeText(link.url); toast('Link copied'); }}><Copy size={14} /> Copy</Button>
+            <a href={`https://wa.me/?text=${encodeURIComponent(`Here is the secure payment link for your Ecotwist order: ${link.url}`)}`} target="_blank" rel="noopener noreferrer">
+              <Button type="button" variant="secondary" className="!py-1">WhatsApp</Button>
+            </a>
+          </div>
+        </div>
+      )}
+      {balance > 0 ? (
+        <>
+          <Field label="Amount to collect (₹)" hint="Full balance, or an advance such as 50%">
+            <Input type="number" min={1} step="1" value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
+          </Field>
+          <div className="flex gap-2 text-xs">
+            <button type="button" className="underline" onClick={() => setAmount(Math.round(balance))}>Full balance</button>
+            <button type="button" className="underline" onClick={() => setAmount(Math.round(balance / 2))}>50% advance</button>
+          </div>
+          <Button type="button" onClick={create} disabled={busy} className="w-full">{busy ? 'Creating…' : 'Send Razorpay payment link'}</Button>
+        </>
+      ) : <p className="text-sm text-emerald-700">Fully paid.</p>}
+      {payments.length > 0 && (
+        <ul className="space-y-1 border-t border-gray-100 pt-3 text-sm">
+          {payments.map((p) => (
+            <li key={p.id} className="flex justify-between"><span>{formatDate(p.paid_at)} · {p.method || 'online'}</span><span className="font-medium">{formatMoney(p.amount)}</span></li>
+          ))}
+        </ul>
+      )}
+      <p className="text-xs text-gray-500">Paid links are recorded here automatically and the order moves to Confirmed.</p>
+    </Card>
   );
 }

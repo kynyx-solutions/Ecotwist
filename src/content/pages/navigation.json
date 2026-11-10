@@ -5,6 +5,7 @@
     "logoAlt": "Ecotwist",
     "occasionsLabel": "Occasions",
     "links": [
+      { "name": "Shop", "path": "/shop" },
       { "name": "Corporate Solutions", "path": "/solutions" },
       { "name": "Impact", "path": "/impact" },
       { "name": "Blog", "path": "/blog" },

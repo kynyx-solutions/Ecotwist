@@ -68,13 +68,37 @@ export interface Customer {
   source_lead_id: string | null;
 }
 
-export const ORDER_STATUSES = ['quote', 'confirmed', 'in_production', 'dispatched', 'delivered', 'cancelled'] as const;
+export const ORDER_STATUSES = ['new', 'quote', 'mockup_sent', 'confirmed', 'in_production', 'dispatched', 'delivered', 'cancelled'] as const;
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
 export interface OrderItem {
   product: string;
   quantity: number;
   unit_price: number;
+  // Website store orders also carry:
+  product_id?: string;
+  quantity_label?: string; // "500+" for quote-only lines
+  quote_only?: boolean;
+  branding?: string;
+  brand_text?: string;
+  logo_path?: string; // private "order-logos" storage path
+  notes?: string;
+}
+
+export interface PaymentLink {
+  id: string;
+  url: string;
+  amount: number;
+  status: string;
+  created_at: string;
+}
+
+export interface Payment {
+  id: string;
+  amount: number;
+  method: string;
+  paid_at: string;
+  link_id: string;
 }
 
 export interface Order {
@@ -93,6 +117,10 @@ export interface Order {
   delivery_address: string;
   notes: string;
   created_by: string | null;
+  source?: 'admin' | 'store';
+  contact?: Record<string, string>;
+  payment_link?: PaymentLink | null;
+  payments?: Payment[];
   customer?: Pick<Customer, 'id' | 'name' | 'company'> | null;
 }
 

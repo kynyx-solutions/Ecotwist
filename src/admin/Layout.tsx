@@ -19,7 +19,14 @@ const GROUPS: { title: string; items: Item[] }[] = [
     items: [
       { to: '/leads', label: 'Leads', badge: 'leads', match: (p) => p.startsWith('/leads') },
       { to: '/customers', label: 'Customers', match: (p) => p.startsWith('/customers') },
-      { to: '/orders', label: 'Orders', match: (p) => p.startsWith('/orders') },
+      { to: '/orders', label: 'Orders', match: (p, q) => p.startsWith('/orders') && !q.includes('status=new') },
+    ],
+  },
+  {
+    title: 'Store',
+    items: [
+      { to: '/orders?status=new', label: 'Website orders', match: (p, q) => p === '/orders' && q.includes('status=new') },
+      { to: '/store', label: 'Products & prices', match: (p) => p.startsWith('/store') },
     ],
   },
   {

@@ -3,8 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Menu, X, ChevronDown, ArrowRight,
   Users, Gift, Sparkles, CalendarDays, HeartPulse, Leaf,
-  Cake, Award, Rocket, Trophy, GraduationCap, Flower2, TreePine, Handshake,
+  Cake, Award, Rocket, Trophy, GraduationCap, Flower2, TreePine, Handshake, ShoppingBag,
 } from 'lucide-react';
+import { useCart } from '../lib/store';
 import { motion, AnimatePresence } from 'motion/react';
 import { asset } from '../lib/content';
 import content from '../content/pages/navigation.json';
@@ -18,6 +19,21 @@ const ICONS = {
 };
 
 const { header, megaMenu, toggle, mobile } = content;
+
+/* Cart icon with the number of lines in the store cart */
+function CartLink({ color, onClick }: { color: string; onClick: () => void }) {
+  const count = useCart().length;
+  return (
+    <Link to="/cart" onClick={onClick} aria-label={`Cart${count ? `, ${count} items` : ''}`} className="relative flex items-center" style={{ color }}>
+      <ShoppingBag size={22} />
+      {count > 0 && (
+        <span className="absolute -right-2 -top-1.5 grid h-[18px] min-w-[18px] place-items-center rounded-full px-1 text-[10px] font-bold text-white" style={{ background: '#444f36' }}>
+          {count}
+        </span>
+      )}
+    </Link>
+  );
+}
 
 const OCCASIONS = content.occasions.map((o) => ({
   ...o,
@@ -470,6 +486,8 @@ export const Navbar = () => {
                 {header.proposalButton}
               </Link>
             </motion.div>
+
+            <CartLink color={isTransparent ? 'white' : '#262624'} onClick={handleClose} />
 
             <button
               onClick={() => setIsOpen((v) => !v)}

@@ -210,6 +210,30 @@
       "focusKeyword": "channel partner gifts"
     },
     {
+      "route": "/shop",
+      "title": "Shop Sustainable Corporate Gifts Online",
+      "description": "Order eco-friendly corporate gift kits online: cork, bamboo, soya wax and dry fruit hampers from 25 to 500+ kits, branded with your logo. Free mockup before you pay.",
+      "image": "/kits/cork-diary-pen-flatlay.webp",
+      "noindex": false,
+      "focusKeyword": "buy corporate gifts online"
+    },
+    {
+      "route": "/cart",
+      "title": "Your Cart",
+      "description": "Review your Ecotwist corporate gift order.",
+      "image": "",
+      "noindex": true,
+      "focusKeyword": ""
+    },
+    {
+      "route": "/order-placed",
+      "title": "Order Placed",
+      "description": "Thank you for your Ecotwist order.",
+      "image": "",
+      "noindex": true,
+      "focusKeyword": ""
+    },
+    {
       "route": "/blog",
       "title": "Corporate Gifting Ideas & Guides (Blog)",
       "description": "Corporate gifting ideas, guides and trends for India: occasion-wise gift ideas, budgeting tips and ways to make sustainable employee and client gifts count.",

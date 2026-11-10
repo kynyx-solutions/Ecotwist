@@ -35,6 +35,10 @@ import AwardRecognition   from './pages/AwardRecognition.tsx';
 import RetirementGifting  from './pages/RetirementGifting.tsx';
 import DepawaliGifting from './pages/Depawali.tsx';
 import  ProductList  from './pages/Products.tsx';
+import Shop        from './pages/shop/Shop';
+import ProductPage from './pages/shop/ProductPage';
+import Cart        from './pages/shop/Cart';
+import OrderPlaced from './pages/shop/OrderPlaced';
 
 // ── Newer occasion pages: one shared layout, one content file each ──
 import OccasionTemplate, { type OccasionContent } from './pages/OccasionTemplate';
@@ -110,6 +114,12 @@ const AnimatedRoutes = () => {
           <Route key={c._meta.route} path={c._meta.route} element={<PageWrapper><OccasionTemplate content={c} /></PageWrapper>} />
         ))}
         <Route path="/products"                      element={<PageWrapper><ProductList /></PageWrapper>} />
+
+        {/* ── Online store ── */}
+        <Route path="/shop"          element={<PageWrapper><Shop /></PageWrapper>} />
+        <Route path="/shop/:id"      element={<PageWrapper><ProductPage /></PageWrapper>} />
+        <Route path="/cart"          element={<PageWrapper><Cart /></PageWrapper>} />
+        <Route path="/order-placed"  element={<PageWrapper><OrderPlaced /></PageWrapper>} />
 
         {/* ── Policy routes ── */}
         <Route path="/privacy-policy"   element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
