@@ -1,4 +1,5 @@
-// Website store checkout → a new order in the admin, plus emails to the team and the customer.
+// Website store checkout → a new order in the admin and a Razorpay order to pay it.
+// Carts with a 500+ line are saved as quote requests instead (no online payment).
 //
 // POST /api/store/order {
 //   items: [{ id, quantity: 25|50|100|200|500|"500+", branding, brandText, logoPath, notes }],
@@ -6,9 +7,12 @@
 //   website  // hidden honeypot: people leave it empty
 // }
 // Prices are worked out here from src/content/store.json; any price sent by the browser is ignored.
-// Needs VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY; RESEND_API_KEY / ALERT_FROM_EMAIL for emails.
+// Needs VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RAZORPAY_KEY_ID/SECRET; RESEND_API_KEY for emails.
+// Emails for paid orders go out once the payment is verified (/api/store/verify-payment).
 import { serviceClient } from '../_lib/admin.js';
 import { clientIp, rateLimiter, storeData, unitPrice } from '../_lib/store.js';
+import { razorpay, razorpayKeys } from '../_lib/razorpay.js';
+import { sendOrderEmails } from '../_lib/order-emails.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const GSTIN_RE = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/;
@@ -121,11 +125,16 @@ export default async function handler(req, res) {
     customerId = created.id;
   }
 
+  // Priced orders are paid now through Razorpay; carts with a 500+ line are quote requests
+  const quoteRequest = items.some((i) => i.quote_only);
+  if (!quoteRequest && !razorpayKeys()) return fail(res, 500, 'Online payment is not set up yet. Please email info@ecotwist.in.');
+  if (!quoteRequest && total < 1) return fail(res, 400, 'Your order total is zero.');
+
   const { data: order, error } = await db.from('orders').insert({
     customer_id: customerId,
     source: 'store',
-    status: 'new',
-    occasion: 'Website store',
+    status: quoteRequest ? 'new' : 'awaiting_payment',
+    occasion: quoteRequest ? 'Website quote request' : 'Website store',
     items,
     gst_rate: gstRate,
     total_amount: total,
@@ -133,78 +142,41 @@ export default async function handler(req, res) {
     delivery_address: `${contact.address}\n${contact.city} ${contact.pincode}`,
     notes: contact.notes,
     contact: { ...contact, userAgent: String(req.headers['user-agent'] ?? '').slice(0, 300) },
-  }).select('id, number').single();
+  }).select('*').single();
 
   if (error) {
     console.error('[store/order] order insert failed', error);
     return fail(res, 500, 'Could not place your order. Please try again.');
   }
-
   const orderNo = `ECO-${order.number}`;
-  await sendEmails(db, orderNo, order.id, contact, items, subtotal, gstRate, total).catch((e) => console.error('[store/order] email failed', e));
-  return res.status(200).json({ success: true, order: orderNo, total, quoteOnly: items.some((i) => i.quote_only) });
-}
 
-/* ── Emails ───────────────────────────────────────────────────── */
-
-const inr = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
-const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-
-function itemRows(items) {
-  return items.map((i) => `<tr>
-    <td style="padding:8px 12px 8px 0;border-bottom:1px solid #eee"><b>${esc(i.product)}</b><br><span style="color:#666;font-size:13px">${esc(i.branding)}${i.brand_text ? ` · "${esc(i.brand_text)}"` : ''}${i.logo_path ? ' · logo uploaded' : ''}</span></td>
-    <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right">${esc(i.quantity_label)}</td>
-    <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right">${i.quote_only ? 'Quote' : inr(i.quantity * i.unit_price)}</td></tr>`).join('');
-}
-
-async function send(apiKey, payload) {
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
-}
-
-async function sendEmails(db, orderNo, orderId, contact, items, subtotal, gstRate, total) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
-  const quote = items.some((i) => i.quote_only);
-  const table = `<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%;max-width:560px">
-    <tr><th align="left" style="padding-bottom:6px">Item</th><th align="right" style="padding:0 12px 6px">Qty</th><th align="right" style="padding-bottom:6px">Amount</th></tr>
-    ${itemRows(items)}
-    <tr><td colspan="2" style="padding:8px 12px 0 0;text-align:right">Subtotal</td><td style="padding-top:8px;text-align:right">${inr(subtotal)}</td></tr>
-    <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right">GST ${gstRate}%</td><td style="padding-top:4px;text-align:right">${inr(total - subtotal)}</td></tr>
-    <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right"><b>Total${quote ? ' (excl. quoted items)' : ''}</b></td><td style="padding-top:4px;text-align:right"><b>${inr(total)}</b></td></tr></table>`;
-
-  const { data } = await db.from('settings').select('value').eq('key', 'lead_alert_emails').maybeSingle();
-  const team = Array.isArray(data?.value) ? data.value.filter((e) => EMAIL_RE.test(e)) : [];
-  if (team.length) {
-    await send(apiKey, {
-      from: process.env.ALERT_FROM_EMAIL || 'Ecotwist <onboarding@resend.dev>',
-      to: team,
-      reply_to: contact.email,
-      subject: `New store order ${orderNo}: ${contact.company} (${inr(total)})`,
-      html: `<h2 style="font-family:sans-serif">New website order ${orderNo}</h2>
-        <p style="font-family:sans-serif">${esc(contact.name)} · ${esc(contact.company)} · ${esc(contact.email)} · ${esc(contact.phone)}${contact.gstin ? ` · GST ${esc(contact.gstin)}` : ''}</p>
-        ${table}
-        <p style="font-family:sans-serif"><a href="https://ecotwist.in/admin/orders/${orderId}">Open the order in admin</a> to download logos and send the mockup.</p>`,
-    });
+  if (quoteRequest) {
+    await sendOrderEmails(db, order, { paid: false }).catch((e) => console.error('[store/order] email failed', e));
+    return res.status(200).json({ success: true, order: orderNo, quote: true });
   }
 
-  await send(apiKey, {
-    from: process.env.MAIL_FROM || process.env.ALERT_FROM_EMAIL || 'Ecotwist <onboarding@resend.dev>',
-    to: [contact.email],
-    reply_to: team[0],
-    subject: `We've received your order ${orderNo}`,
-    html: `<div style="font-family:sans-serif;font-size:15px;line-height:1.6;max-width:560px">
-      <h2>Thank you, ${esc(contact.name.split(' ')[0])}!</h2>
-      <p>We've received order <b>${orderNo}</b> for ${esc(contact.company)}. Here's what happens next:</p>
-      <ol><li>Within 2 working days we send you a mockup with your branding${quote ? ' and a quote for the 500+ items' : ''}.</li>
-      <li>You approve it, and we send a secure payment link (UPI, cards, net banking or bank transfer).</li>
-      <li>We produce and deliver your gifts, with a GST invoice.</li></ol>
-      ${table}
-      <p>Nothing is charged until you approve the mockup. Questions? Just reply to this email or WhatsApp +91 70913 23777.</p>
-      <p>Team Ecotwist</p></div>`,
-  });
+  // Razorpay order for the exact total (in paise); the browser opens Checkout with it
+  try {
+    const rzp = await razorpay('/orders', {
+      method: 'POST',
+      body: { amount: Math.round(total * 100), currency: 'INR', receipt: orderNo, notes: { order_id: order.id, order_no: orderNo, company: contact.company.slice(0, 200) } },
+    });
+    await db.from('orders').update({ razorpay_order_id: rzp.id }).eq('id', order.id);
+    return res.status(200).json({
+      success: true,
+      order: orderNo,
+      payment: {
+        orderId: order.id,
+        key: razorpayKeys().id,
+        razorpayOrderId: rzp.id,
+        amount: rzp.amount,
+        currency: rzp.currency,
+        prefill: { name: contact.name, email: contact.email, contact: contact.phone },
+      },
+    });
+  } catch (e) {
+    console.error('[store/order] razorpay order failed', e);
+    await db.from('orders').update({ status: 'cancelled', notes: `${contact.notes}\n[Payment could not start: ${e.message}]`.trim() }).eq('id', order.id);
+    return fail(res, 502, 'Online payment could not start. Please try again in a minute or email info@ecotwist.in.');
+  }
 }

@@ -1,15 +1,19 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ChevronDown, FileCheck2, Loader2, ShoppingBag, Trash2, Upload } from 'lucide-react';
+import { ChevronDown, FileCheck2, Loader2, Lock, ShieldCheck, ShoppingBag, Trash2, Upload } from 'lucide-react';
 import { asset } from '../../lib/content';
 import { BRANDING, QUANTITY_OPTIONS, cart, cartTotals, inr, productById, settings, unitPrice, useCart, type CartLine } from '../../lib/store';
 import { LOGO_ACCEPT, uploadLogo } from '../../lib/logoUpload';
 import { quantityLabel } from './ProductPage';
+import { payWithRazorpay, type PaymentStart } from '../../lib/razorpayCheckout';
 
 /* ============================
-   Cart and checkout (/cart). Placing the order sends it to /api/store/order,
-   which re-prices it on the server and saves it in the admin. Nothing is
-   charged here: payment follows the approved mockup.
+   Cart and checkout (/cart).
+   1. /api/store/order re-prices the cart on the server, saves the order and
+      creates a Razorpay order for the exact total.
+   2. Razorpay Checkout opens (UPI, cards, net banking, wallets).
+   3. /api/store/verify-payment checks the payment and confirms the order.
+   Carts with a 500+ line are sent as a quote request instead (no payment).
 ============================ */
 
 const C = { ink: '#1f2a17', olive: '#38461B', leaf: '#4A5D23', muted: '#5f6655', line: '#e6e0cf', cream: '#FAF9F6' };
@@ -93,13 +97,41 @@ export default function Cart() {
   const navigate = useNavigate();
   const totals = cartTotals(lines);
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', gstin: '', address: '', city: '', pincode: '', deliveryDate: '', notes: '', website: '' });
-  const [sending, setSending] = useState(false);
+  const [step, setStep] = useState<'idle' | 'saving' | 'paying' | 'verifying'>('idle');
   const [error, setError] = useState('');
+  // An order already created whose payment window was closed: "Pay now" reopens it
+  const [pending, setPending] = useState<{ orderNo: string; payment: PaymentStart; cartKey: string } | null>(null);
+  const cartKey = JSON.stringify(lines.map((l) => [l.id, l.quantity, l.branding, l.brandText, l.logoPath]));
+  useEffect(() => { if (pending && pending.cartKey !== cartKey) setPending(null); }, [cartKey, pending]);
+  const quoteOnly = totals.quoteItems > 0;
+  const busy = step !== 'idle';
   const set = (k: keyof typeof form) => (e: { target: { value: string } }) => setForm({ ...form, [k]: e.target.value });
+
+  const pay = async (orderNo: string, payment: PaymentStart) => {
+    setStep('paying');
+    const result = await payWithRazorpay(payment, orderNo).catch((e: Error) => { setError(e.message); return null; });
+    if (!result) {
+      setStep('idle');
+      setPending({ orderNo, payment, cartKey });
+      return;
+    }
+    setStep('verifying');
+    const res = await fetch('/api/store/verify-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ orderId: payment.orderId, ...result }),
+    });
+    const json = await res.json().catch(() => ({}));
+    cart.clear();
+    // Paid either way; if the check failed, the webhook confirms it within minutes
+    navigate(`/order-placed?order=${encodeURIComponent(orderNo)}&email=${encodeURIComponent(form.email)}&paid=1${res.ok ? '' : `&pending=1&msg=${encodeURIComponent(json.error ?? '')}`}`);
+  };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    setError(''); setSending(true);
+    setError('');
+    if (pending) return pay(pending.orderNo, pending.payment);
+    setStep('saving');
     try {
       const { website, ...contact } = form;
       const res = await fetch('/api/store/order', {
@@ -113,12 +145,14 @@ export default function Cart() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok || !json.success) throw new Error(json.error ?? 'Could not place your order. Please try again or email info@ecotwist.in.');
-      cart.clear();
-      navigate(`/order-placed?order=${encodeURIComponent(json.order)}&email=${encodeURIComponent(form.email)}`);
+      if (json.quote) {
+        cart.clear();
+        return navigate(`/order-placed?order=${encodeURIComponent(json.order)}&email=${encodeURIComponent(form.email)}&quote=1`);
+      }
+      await pay(json.order, json.payment);
     } catch (err) {
       setError((err as Error).message);
-    } finally {
-      setSending(false);
+      setStep('idle');
     }
   };
 
@@ -165,20 +199,33 @@ export default function Cart() {
               <div className="flex justify-between"><dt>Subtotal</dt><dd>{inr(totals.subtotal)}</dd></div>
               <div className="flex justify-between"><dt>GST {settings.gstRate}%</dt><dd>{inr(totals.gst)}</dd></div>
               <div className="flex justify-between" style={{ color: C.muted }}><dt>Delivery</dt><dd>Quoted with mockup</dd></div>
-              <div className="flex justify-between border-t pt-3 text-lg font-semibold" style={{ borderColor: C.line }}><dt>Estimated total</dt><dd>{inr(totals.total)}</dd></div>
+              <div className="flex justify-between border-t pt-3 text-lg font-semibold" style={{ borderColor: C.line }}><dt>{quoteOnly ? 'Estimated total' : 'Total payable'}</dt><dd>{inr(totals.total)}</dd></div>
               {totals.quoteItems > 0 && <p className="text-sm" style={{ color: C.muted }}>Plus {totals.quoteItems} {totals.quoteItems === 1 ? 'item' : 'items'} we will quote for.</p>}
             </dl>
+            {pending && !busy && (
+              <p className="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+                Payment not completed. Your order <b>{pending.orderNo}</b> is saved. Pay now to confirm it.
+              </p>
+            )}
             {error && <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-800">{error}</p>}
-            <button type="submit" disabled={sending}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full py-4 text-[15px] font-bold uppercase tracking-[0.14em] text-white transition hover:opacity-90 disabled:opacity-60" style={{ background: C.olive }}>
-              {sending && <Loader2 size={18} className="animate-spin" />} {sending ? 'Placing order…' : 'Place order'}
+            <button type="submit" disabled={busy}
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full py-4 text-[15px] font-bold uppercase tracking-[0.12em] text-white transition hover:opacity-90 disabled:opacity-60" style={{ background: C.olive }}>
+              {busy ? <Loader2 size={18} className="animate-spin" /> : quoteOnly ? null : <Lock size={16} />}
+              {step === 'saving' ? 'Saving your order…' : step === 'paying' ? 'Waiting for payment…' : step === 'verifying' ? 'Confirming payment…'
+                : quoteOnly ? 'Request quote' : `Pay ${inr(totals.total)} securely`}
             </button>
-            <ol className="mt-6 space-y-2 text-sm leading-6" style={{ color: C.muted }}>
-              <li><b style={{ color: C.ink }}>1.</b> We email a branded mockup within 2 working days.</li>
-              <li><b style={{ color: C.ink }}>2.</b> You approve it and pay by secure link or bank transfer.</li>
-              <li><b style={{ color: C.ink }}>3.</b> We produce and deliver, with a GST invoice.</li>
+            {quoteOnly ? (
+              <p className="mt-3 text-center text-xs" style={{ color: C.muted }}>Your cart has a 500+ item, so we will email a quote instead of taking payment now.</p>
+            ) : (
+              <div className="mt-3 flex items-center justify-center gap-1.5 text-xs" style={{ color: C.muted }}>
+                <ShieldCheck size={14} style={{ color: C.leaf }} /> Secured by Razorpay · UPI, cards, net banking, wallets
+              </div>
+            )}
+            <ol className="mt-6 space-y-2 border-t pt-5 text-sm leading-6" style={{ color: C.muted, borderColor: C.line }}>
+              <li><b style={{ color: C.ink }}>1.</b> {quoteOnly ? 'We email your quote and a branded mockup within 2 working days.' : 'Pay now; your order is confirmed instantly.'}</li>
+              <li><b style={{ color: C.ink }}>2.</b> {quoteOnly ? 'You approve and pay; we start production.' : 'We email a branded mockup within 2 working days.'}</li>
+              <li><b style={{ color: C.ink }}>3.</b> {quoteOnly ? 'We deliver, with a GST invoice.' : 'You approve it, and we produce and deliver with a GST invoice.'}</li>
             </ol>
-            <p className="mt-4 text-xs" style={{ color: C.muted }}>Nothing is charged when you place the order.</p>
           </div>
         </aside>
       </form>

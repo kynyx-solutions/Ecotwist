@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, Copy, CreditCard, Download, FileText, Globe, Plus, Send, Trash2, X } from 'lucide-react';
-import { api } from './lib/api';
+import { ArrowLeft, CreditCard, Download, FileText, Globe, Plus, Send, Trash2, X } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import { isAdmin, useAuth } from './lib/auth';
-import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus, type Payment, type PaymentLink } from './lib/types';
+import { ORDER_STATUSES, type Customer, type Order, type OrderItem, type OrderStatus, type Payment } from './lib/types';
 import catalogue from '../content/products.json';
 import { ComposeMessage, MessageHistory, type MessageCategory } from './messaging/routes';
 import { Button, Card, Field, Input, ORDER_STATUS_LABEL, OrderStatusBadge, PageHeader, Select, Spinner, Textarea, formatDate, formatMoney, orderNumber, useToast } from './ui';
@@ -302,18 +301,7 @@ export function OrderDetail() {
             </div>
             <Button type="submit" disabled={saving} className="w-full">{saving ? 'Saving…' : isNew ? 'Create order' : 'Save order'}</Button>
           </Card>
-          {!isNew && (
-            <PaymentCard
-              orderId={id!}
-              balance={balance}
-              link={extra.payment_link ?? null}
-              payments={extra.payments ?? []}
-              onLink={(link, status) => {
-                setExtra({ ...extra, payment_link: link });
-                if (status) setForm({ ...form, status: status as OrderStatus });
-              }}
-            />
-          )}
+          {!isNew && extra.source === 'store' && <PaymentCard payments={extra.payments ?? []} balance={balance} total={total} />}
           {!isNew && isAdmin(profile) && (
             <Button type="button" variant="danger" onClick={remove} className="w-full"><Trash2 size={16} /> Delete order</Button>
           )}
@@ -393,72 +381,28 @@ function StoreDetails({ items, contact }: { items: OrderItem[]; contact?: Record
   );
 }
 
-/* ── Razorpay payment link ────────────────────────────────────── */
+/* ── Online payments (Razorpay checkout) ──────────────────────── */
 
-function PaymentCard({ orderId, balance, link, payments, onLink }: {
-  orderId: string; balance: number; link: PaymentLink | null; payments: Payment[];
-  onLink: (link: PaymentLink, status?: string) => void;
-}) {
-  const toast = useToast();
-  const [amount, setAmount] = useState(Math.round(balance));
-  const [busy, setBusy] = useState(false);
-  useEffect(() => setAmount(Math.round(balance)), [balance]);
-
-  const create = async () => {
-    if (!(amount >= 1)) return toast('Enter an amount of at least ₹1', true);
-    if (link && link.status !== 'paid' && !confirm('A payment link was already sent. Create a new one?')) return;
-    setBusy(true);
-    try {
-      const res = await api<{ link: PaymentLink; status: string }>('/api/admin/payment-link', { body: { orderId, amount } });
-      onLink(res.link, res.status);
-      toast('Payment link created. Razorpay has emailed and texted it to the customer.');
-    } catch (e) {
-      toast((e as Error).message, true);
-    } finally {
-      setBusy(false);
-    }
-  };
-
+function PaymentCard({ payments, balance, total }: { payments: Payment[]; balance: number; total: number }) {
+  const paid = payments.reduce((s, p) => s + Number(p.amount), 0);
   return (
-    <Card className="space-y-4 p-5">
-      <h2 className="flex items-center gap-2 font-semibold"><CreditCard size={16} /> Payment</h2>
-      {link && (
-        <div className="rounded-lg bg-brand-off-white p-3 text-sm">
-          <div className="flex items-center justify-between gap-2">
-            <span>{formatMoney(link.amount)} link</span>
-            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${link.status === 'paid' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
-              {link.status === 'paid' ? 'Paid' : 'Waiting'}
-            </span>
-          </div>
-          <a href={link.url} target="_blank" rel="noopener noreferrer" className="mt-1 block truncate text-brand-olive underline">{link.url}</a>
-          <div className="mt-2 flex gap-2">
-            <Button type="button" variant="secondary" className="!py-1" onClick={() => { navigator.clipboard?.writeText(link.url); toast('Link copied'); }}><Copy size={14} /> Copy</Button>
-            <a href={`https://wa.me/?text=${encodeURIComponent(`Here is the secure payment link for your Ecotwist order: ${link.url}`)}`} target="_blank" rel="noopener noreferrer">
-              <Button type="button" variant="secondary" className="!py-1">WhatsApp</Button>
-            </a>
-          </div>
-        </div>
-      )}
-      {balance > 0 ? (
-        <>
-          <Field label="Amount to collect (₹)" hint="Full balance, or an advance such as 50%">
-            <Input type="number" min={1} step="1" value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
-          </Field>
-          <div className="flex gap-2 text-xs">
-            <button type="button" className="underline" onClick={() => setAmount(Math.round(balance))}>Full balance</button>
-            <button type="button" className="underline" onClick={() => setAmount(Math.round(balance / 2))}>50% advance</button>
-          </div>
-          <Button type="button" onClick={create} disabled={busy} className="w-full">{busy ? 'Creating…' : 'Send Razorpay payment link'}</Button>
-        </>
-      ) : <p className="text-sm text-emerald-700">Fully paid.</p>}
-      {payments.length > 0 && (
-        <ul className="space-y-1 border-t border-gray-100 pt-3 text-sm">
+    <Card className="space-y-3 p-5">
+      <h2 className="flex items-center gap-2 font-semibold"><CreditCard size={16} /> Online payment</h2>
+      {payments.length ? (
+        <ul className="space-y-1 text-sm">
           {payments.map((p) => (
-            <li key={p.id} className="flex justify-between"><span>{formatDate(p.paid_at)} · {p.method || 'online'}</span><span className="font-medium">{formatMoney(p.amount)}</span></li>
+            <li key={p.id} className="flex justify-between gap-2">
+              <span>{formatDate(p.paid_at)} · {p.method || 'online'}<span className="block text-xs text-gray-400">{p.id}</span></span>
+              <span className="font-medium">{formatMoney(p.amount)}</span>
+            </li>
           ))}
         </ul>
-      )}
-      <p className="text-xs text-gray-500">Paid links are recorded here automatically and the order moves to Confirmed.</p>
+      ) : <p className="text-sm text-gray-500">No online payment yet.</p>}
+      <div className="rounded-lg bg-brand-off-white p-3 text-sm">
+        <div className="flex justify-between"><span>Paid online</span><span>{formatMoney(paid)}</span></div>
+        <div className="flex justify-between font-semibold"><span>Balance due</span><span>{formatMoney(balance)}</span></div>
+      </div>
+      {payments.length > 0 && paid >= total && <p className="text-xs text-emerald-700">Paid in full through Razorpay. Refunds are made from the Razorpay dashboard.</p>}
     </Card>
   );
 }

@@ -89,7 +89,7 @@ export default function ProductPage() {
     if (!product) return;
     const url = `${SITE_URL}/shop/${product.id}`;
     const title = `${product.name}: Branded Corporate Gift Kit | Ecotwist`;
-    const description = `${product.contents}. Custom branded with your logo, from 25 to 500+ kits${product.price != null ? `, from ₹${product.price} per kit` : ''}. Free mockup before you pay.`.slice(0, 300);
+    const description = `${product.contents}. Custom branded with your logo, from 25 to 500+ kits${product.price != null ? `, from ₹${product.price} per kit` : ''}. Free mockup before production.`.slice(0, 300);
     const image = absoluteUrl(encodeURI(product.image));
     return applyHead({
       title, description, canonical: url,
@@ -209,7 +209,7 @@ export default function ProductPage() {
             <div className="mt-5">{priceBlock}</div>
 
             <ul className="mt-6 space-y-2.5 border-t pt-6" style={{ borderColor: C.line }}>
-              {[`Inside: ${product.contents}`, 'Branded with your logo or company name', 'Plastic-free, gift-ready packaging', 'Free branded mockup before you pay'].map((t) => (
+              {[`Inside: ${product.contents}`, 'Branded with your logo or company name', 'Plastic-free, gift-ready packaging', 'Free branded mockup before production'].map((t) => (
                 <li key={t} className="flex gap-3 text-[15px] leading-6" style={{ color: C.ink }}>
                   <Leaf size={16} className="mt-1 shrink-0" style={{ color: C.leaf }} /> {t}
                 </li>
@@ -296,7 +296,7 @@ export default function ProductPage() {
               <div className="flex gap-3 overflow-x-auto pb-1">
                 {(discountTiers.length
                   ? discountTiers.map((q) => ({ t: `${q}+ kits: ${discountFor(String(q))}% off`, s: product.price != null ? `${inr(Math.round(product.price * (1 - discountFor(String(q)) / 100)))} per kit` : 'Applied at checkout' }))
-                  : [{ t: 'Free branded mockup', s: 'See your logo on the gift first' }, { t: 'Pay after approval', s: 'Nothing is charged at checkout' }, { t: 'GST invoice', s: 'With every order' }]
+                  : [{ t: 'Free branded mockup', s: 'See your logo on the gift first' }, { t: 'Pay securely online', s: 'UPI, cards & net banking via Razorpay' }, { t: 'GST invoice', s: 'With every order' }]
                 ).map((o) => (
                   <div key={o.t} className="min-w-[200px] flex-1 rounded-xl border bg-white p-4" style={{ borderColor: C.line }}>
                     <p className="flex items-center gap-2 text-sm font-semibold" style={{ color: C.ink }}><Sparkles size={15} style={{ color: C.gold }} /> {o.t}</p>
@@ -325,7 +325,7 @@ export default function ProductPage() {
                 <p>We deliver pan-India and to 5+ countries, to a single office or to every employee's address. Delivery charges are quoted with your mockup. Need it by a date? Add it at checkout.</p>
               </Accordion>
               <Accordion title="Payment & invoicing" icon={<ShieldCheck size={18} />}>
-                <p>After you approve the mockup we send a secure payment link (UPI, cards, net banking) or bank details. A GST invoice comes with every order. See our <Link to="/refund-policy" className="underline">refund policy</Link>.</p>
+                <p>Pay securely at checkout with UPI, cards, net banking or wallets through Razorpay. Your order is confirmed instantly, and we send a mockup for your approval before production. A GST invoice comes with every order. For 500+ kits we email a quote instead. See our <Link to="/refund-policy" className="underline">refund policy</Link>.</p>
               </Accordion>
             </div>
 

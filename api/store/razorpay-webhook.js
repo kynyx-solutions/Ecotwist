@@ -1,9 +1,10 @@
-// Razorpay → "payment_link.paid": records the payment on the order and moves it to Confirmed.
-//   Razorpay Dashboard → Settings → Webhooks → URL https://ecotwist.in/api/store/razorpay-webhook,
-//   event payment_link.paid, and a secret saved here as RAZORPAY_WEBHOOK_SECRET.
+// Razorpay webhook: confirms orders even when the customer closes the browser right after paying.
+//   Razorpay Dashboard → Account & Settings → Webhooks → URL https://ecotwist.in/api/store/razorpay-webhook,
+//   events "order.paid" and "payment.captured", with a secret saved here as RAZORPAY_WEBHOOK_SECRET.
 // The signature is checked on the raw body, so a forged request can't mark an order paid.
 import crypto from 'crypto';
 import { serviceClient } from '../_lib/admin.js';
+import { markOrderPaid } from '../_lib/razorpay.js';
 
 export const config = { api: { bodyParser: false } };
 
@@ -27,31 +28,25 @@ export default async function handler(req, res) {
   if (!ok) return res.status(401).json({ error: 'Bad signature' });
 
   const event = JSON.parse(body);
-  if (event.event !== 'payment_link.paid') return res.status(200).json({ ignored: event.event });
+  if (!['order.paid', 'payment.captured'].includes(event.event)) return res.status(200).json({ ignored: event.event });
 
-  const link = event.payload?.payment_link?.entity ?? {};
   const payment = event.payload?.payment?.entity ?? {};
-  const orderId = link.notes?.order_id;
-  if (!orderId || !payment.id) return res.status(200).json({ ignored: 'no order' });
+  const rzpOrderId = payment.order_id ?? event.payload?.order?.entity?.id;
+  if (!payment.id || !rzpOrderId || payment.status !== 'captured') return res.status(200).json({ ignored: 'not a captured order payment' });
 
   const db = serviceClient();
-  const { data: order } = await db.from('orders').select('id, status, advance_paid, payments, payment_link').eq('id', orderId).maybeSingle();
+  const { data: order } = await db.from('orders').select('*').eq('razorpay_order_id', rzpOrderId).maybeSingle();
   if (!order) return res.status(200).json({ ignored: 'order not found' });
+  if (Number(payment.amount) !== Math.round(Number(order.total_amount) * 100)) {
+    console.error('[razorpay-webhook] amount mismatch', order.number, payment.amount, order.total_amount);
+    return res.status(200).json({ ignored: 'amount mismatch' });
+  }
 
-  const payments = Array.isArray(order.payments) ? order.payments : [];
-  if (payments.some((p) => p.id === payment.id)) return res.status(200).json({ duplicate: true });
-
-  const amount = Number(payment.amount ?? link.amount_paid ?? 0) / 100;
-  const update = {
-    payments: [...payments, { id: payment.id, amount, method: payment.method ?? '', paid_at: new Date((payment.created_at ?? Date.now() / 1000) * 1000).toISOString(), link_id: link.id }],
-    advance_paid: Math.round((Number(order.advance_paid) + amount) * 100) / 100,
-    ...(order.payment_link?.id === link.id ? { payment_link: { ...order.payment_link, status: 'paid' } } : {}),
-    ...(['new', 'quote', 'mockup_sent'].includes(order.status) ? { status: 'confirmed' } : {}),
-  };
-  const { error } = await db.from('orders').update(update).eq('id', order.id);
-  if (error) {
-    console.error('[razorpay-webhook] update failed', error);
+  try {
+    await markOrderPaid(db, order, payment);
+    return res.status(200).json({ ok: true });
+  } catch (e) {
+    console.error('[razorpay-webhook] update failed', e);
     return res.status(500).json({ error: 'save failed' }); // Razorpay retries
   }
-  return res.status(200).json({ ok: true });
 }

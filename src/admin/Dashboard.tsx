@@ -11,7 +11,7 @@ import siteImages from '../content/site-images.json';
 import testimonials from '../content/testimonials.json';
 import clients from '../content/clients.json';
 import {
-  Button, Card, CardTitle, Input, SOURCE_LABEL, Spinner, StatCard, StatusBadge, followUpLabel, formatMoney, orderNumber, timeAgo,
+  Button, Card, CardTitle, Input, OrderStatusBadge, SOURCE_LABEL, Spinner, StatCard, StatusBadge, followUpLabel, formatMoney, orderNumber, timeAgo,
 } from './ui';
 
 const OPEN_ORDERS = ['confirmed', 'in_production', 'dispatched'];
@@ -61,7 +61,7 @@ export function Dashboard() {
         .gte('delivery_date', day()).lte('delivery_date', day(7)).order('delivery_date').limit(6),
       supabase.from('leads').select('source').neq('type', 'newsletter').gte('created_at', new Date(Date.now() - 30 * 864e5).toISOString()),
       leads().order('created_at', { ascending: false }).limit(6),
-      supabase.from('orders').select('*, customer:customers(id, name, company)').eq('source', 'store').eq('status', 'new').order('created_at', { ascending: false }).limit(8),
+      supabase.from('orders').select('*, customer:customers(id, name, company)').eq('source', 'store').in('status', ['new', 'confirmed']).order('created_at', { ascending: false }).limit(8),
     ]).then(([week, follow, won, proposals, deliveries, sources, latest, storeNew]) => {
       const counts = new Map<LeadSource, number>();
       for (const { source } of (sources.data ?? []) as { source: LeadSource }[]) counts.set(source, (counts.get(source) ?? 0) + 1);
@@ -119,8 +119,8 @@ export function Dashboard() {
 
       {data.storeNew.length > 0 && (
         <Card className="mt-6 overflow-hidden border-l-4 !border-l-rose-400">
-          <CardTitle action={<Link to="/orders?status=new" className="hover:underline">All new orders →</Link>}>
-            New website orders · send the mockup
+          <CardTitle action={<Link to="/orders?status=confirmed" className="hover:underline">All paid orders →</Link>}>
+            Website orders to act on · send the mockup
           </CardTitle>
           <ul className="divide-y divide-gray-100 text-sm">
             {data.storeNew.map((o) => (
@@ -129,6 +129,7 @@ export function Dashboard() {
                   <span className="font-medium">{orderNumber(o.number)}</span>
                   <span className="text-gray-600">{o.customer?.company || o.customer?.name}</span>
                   <span className="text-gray-500">{o.items.length} {o.items.length === 1 ? 'item' : 'items'}</span>
+                  <OrderStatusBadge status={o.status} />
                   <span className="ml-auto font-medium">{formatMoney(Number(o.total_amount))}</span>
                   <span className="w-20 text-right text-xs text-gray-500">{timeAgo(o.created_at)}</span>
                 </Link>

@@ -63,7 +63,7 @@ export default function Shop() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: '#8a6f2e' }}>Ecotwist store</p>
           <h1 className="mt-3 font-serif text-4xl sm:text-5xl" style={{ color: C.ink }}>Shop sustainable corporate gifts</h1>
           <p className="mt-4 text-base leading-7" style={{ color: C.muted }}>
-            Choose a kit, add your logo and pick a quantity from 25 to 500+. We send a free branded mockup, and you pay only after you approve it.
+            Choose a kit, add your logo and pick a quantity from 25 to 500+. Pay securely online, and we send a free branded mockup for your approval before production.
           </p>
         </header>
 

@@ -68,7 +68,7 @@ export interface Customer {
   source_lead_id: string | null;
 }
 
-export const ORDER_STATUSES = ['new', 'quote', 'mockup_sent', 'confirmed', 'in_production', 'dispatched', 'delivered', 'cancelled'] as const;
+export const ORDER_STATUSES = ['awaiting_payment', 'new', 'quote', 'mockup_sent', 'confirmed', 'in_production', 'dispatched', 'delivered', 'cancelled'] as const;
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
 export interface OrderItem {

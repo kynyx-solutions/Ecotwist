@@ -6,7 +6,7 @@
     "discounts": { "25": 0, "50": 0, "100": 0, "200": 0, "500": 0 },
     "gstRate": 18,
     "brandingOptions": ["Logo print", "Logo engraving", "Company name only", "No branding"],
-    "note": "Prices are per kit and include standard logo branding. GST is added at checkout; delivery is quoted with your branded mockup."
+    "note": "Prices are per kit and include standard logo branding. GST is added at checkout, and you pay securely online through Razorpay."
   },
   "products": [
     {
