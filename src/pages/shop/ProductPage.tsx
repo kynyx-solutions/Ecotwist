@@ -309,7 +309,7 @@ export default function ProductPage() {
             {/* Delivery */}
             <div className="mt-5 rounded-xl p-5" style={{ background: '#eef1e8' }}>
               <p className="flex items-center gap-2 text-[15px] font-semibold" style={{ color: C.ink }}><Truck size={18} style={{ color: C.leaf }} /> Delivery across India and 5+ countries</p>
-              <p className="mt-1.5 text-sm leading-6" style={{ color: C.muted }}>Ship to one office or many addresses. Branded orders are usually dispatched within 7–10 working days of mockup approval.</p>
+              <p className="mt-1.5 text-sm leading-6" style={{ color: C.muted }}><b style={{ color: C.ink }}>Free delivery on orders above {inr(settings.freeDeliveryAbove)}</b>, otherwise a flat {inr(settings.deliveryFee)}. Ship to one office or many addresses; branded orders are usually dispatched within 7–10 working days of mockup approval.</p>
             </div>
 
             {/* Details */}
@@ -322,7 +322,7 @@ export default function ProductPage() {
                 <p>Choose logo print, logo engraving or your company name. Upload your logo in a high-resolution file (vector AI, EPS, SVG or PDF is best). We send a free mockup showing exactly how it will look, and nothing is produced until you approve it.</p>
               </Accordion>
               <Accordion title="Shipping & delivery" icon={<Truck size={18} />}>
-                <p>We deliver pan-India and to 5+ countries, to a single office or to every employee's address. Delivery charges are quoted with your mockup. Need it by a date? Add it at checkout.</p>
+                <p>We deliver pan-India and to 5+ countries, to a single office or to every employee's address. Delivery is free on orders above {inr(settings.freeDeliveryAbove)}, otherwise a flat {inr(settings.deliveryFee)}. Need it by a date? Add it at checkout.</p>
               </Accordion>
               <Accordion title="Payment & invoicing" icon={<ShieldCheck size={18} />}>
                 <p>Pay securely at checkout with UPI, cards, net banking or wallets through Razorpay. Your order is confirmed instantly, and we send a mockup for your approval before production. A GST invoice comes with every order. For 500+ kits we email a quote instead. See our <Link to="/refund-policy" className="underline">refund policy</Link>.</p>

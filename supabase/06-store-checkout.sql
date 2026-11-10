@@ -15,3 +15,7 @@ alter table public.orders add constraint orders_status_check
 -- The Razorpay order this website order is paid through
 alter table public.orders add column if not exists razorpay_order_id text;
 create unique index if not exists orders_razorpay_order_id on public.orders (razorpay_order_id) where razorpay_order_id is not null;
+
+-- Delivery charge on the order (rupees, already inside total_amount).
+-- Website rule (Admin → Store → Products & prices): free above the threshold, otherwise a flat fee.
+alter table public.orders add column if not exists delivery_fee numeric(12, 2) not null default 0;

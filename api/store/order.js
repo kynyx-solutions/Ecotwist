@@ -10,7 +10,7 @@
 // Needs VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RAZORPAY_KEY_ID/SECRET; RESEND_API_KEY for emails.
 // Emails for paid orders go out once the payment is verified (/api/store/verify-payment).
 import { serviceClient } from '../_lib/admin.js';
-import { clientIp, rateLimiter, storeData, unitPrice } from '../_lib/store.js';
+import { clientIp, deliveryFor, rateLimiter, storeData, unitPrice } from '../_lib/store.js';
 import { razorpay, razorpayKeys } from '../_lib/razorpay.js';
 import { sendOrderEmails } from '../_lib/order-emails.js';
 
@@ -106,7 +106,9 @@ export default async function handler(req, res) {
 
   const gstRate = Number(settings.gstRate ?? 18);
   const subtotal = items.reduce((s, i) => s + i.quantity * i.unit_price, 0);
-  const total = Math.round(subtotal * (1 + gstRate / 100));
+  // Delivery: free above the threshold (on the subtotal before GST), otherwise a flat fee; quotes are priced later
+  const deliveryFee = items.some((i) => i.quote_only) ? 0 : deliveryFor(subtotal, settings);
+  const total = Math.round(subtotal * (1 + gstRate / 100)) + deliveryFee;
 
   // ── Customer: match by email, otherwise create ──
   let customerId;
@@ -137,6 +139,7 @@ export default async function handler(req, res) {
     occasion: quoteRequest ? 'Website quote request' : 'Website store',
     items,
     gst_rate: gstRate,
+    delivery_fee: deliveryFee,
     total_amount: total,
     delivery_date: contact.deliveryDate || null,
     delivery_address: `${contact.address}\n${contact.city} ${contact.pincode}`,

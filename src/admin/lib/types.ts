@@ -111,6 +111,7 @@ export interface Order {
   occasion: string;
   items: OrderItem[];
   gst_rate: number;
+  delivery_fee?: number;
   total_amount: number;
   advance_paid: number;
   delivery_date: string | null;

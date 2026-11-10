@@ -5,8 +5,10 @@
     "quoteOnlyLabel": "500+",
     "discounts": { "25": 0, "50": 0, "100": 0, "200": 0, "500": 0 },
     "gstRate": 18,
+    "freeDeliveryAbove": 999,
+    "deliveryFee": 150,
     "brandingOptions": ["Logo print", "Logo engraving", "Company name only", "No branding"],
-    "note": "Prices are per kit and include standard logo branding. GST is added at checkout, and you pay securely online through Razorpay."
+    "note": "Prices are per kit and include standard logo branding. GST is added at checkout. Delivery is free on orders above ₹999, otherwise ₹150."
   },
   "products": [
     {

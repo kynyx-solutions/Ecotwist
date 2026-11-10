@@ -37,6 +37,13 @@ export function unitPrice(p: StoreProduct, qty: string): number | null {
   return Math.round(p.price * (1 - discountFor(qty) / 100));
 }
 
+/** Delivery in rupees: free above the threshold (subtotal before GST), otherwise a flat fee. */
+export function deliveryFor(subtotal: number) {
+  if (!(subtotal > 0)) return 0;
+  return subtotal > settings.freeDeliveryAbove ? 0 : settings.deliveryFee;
+}
+export const FREE_DELIVERY_ABOVE = settings.freeDeliveryAbove;
+
 export const inr = (n: number) => '₹' + Math.round(n).toLocaleString('en-IN');
 
 export const productImages = (p: StoreProduct) => [p.image, ...(p.images ?? [])].filter(Boolean);
@@ -123,5 +130,6 @@ export function cartTotals(cartLines: CartLine[]) {
     else subtotal += u * Number(l.quantity);
   }
   const gst = Math.round((subtotal * settings.gstRate) / 100);
-  return { subtotal, gst, total: subtotal + gst, quoteItems };
+  const delivery = quoteItems ? 0 : deliveryFor(subtotal);
+  return { subtotal, gst, delivery, total: subtotal + gst + delivery, quoteItems };
 }

@@ -20,6 +20,7 @@ function table(order) {
   const subtotal = items.reduce((s, i) => s + Number(i.quantity) * Number(i.unit_price), 0);
   const total = Number(order.total_amount);
   const quote = items.some((i) => i.quote_only);
+  const delivery = Number(order.delivery_fee ?? 0);
   const rows = items.map((i) => `<tr>
     <td style="padding:8px 12px 8px 0;border-bottom:1px solid #eee"><b>${esc(i.product)}</b><br><span style="color:#666;font-size:13px">${esc(i.branding)}${i.brand_text ? ` · "${esc(i.brand_text)}"` : ''}${i.logo_path ? ' · logo uploaded' : ''}</span></td>
     <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right">${esc(i.quantity_label ?? i.quantity)}</td>
@@ -28,7 +29,8 @@ function table(order) {
     <tr><th align="left" style="padding-bottom:6px">Item</th><th align="right" style="padding:0 12px 6px">Qty</th><th align="right" style="padding-bottom:6px">Amount</th></tr>
     ${rows}
     <tr><td colspan="2" style="padding:8px 12px 0 0;text-align:right">Subtotal</td><td style="padding-top:8px;text-align:right">${inr(subtotal)}</td></tr>
-    <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right">GST ${Number(order.gst_rate)}%</td><td style="padding-top:4px;text-align:right">${inr(total - subtotal)}</td></tr>
+    <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right">GST ${Number(order.gst_rate)}%</td><td style="padding-top:4px;text-align:right">${inr(total - subtotal - delivery)}</td></tr>
+    <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right">Delivery</td><td style="padding-top:4px;text-align:right">${quote ? 'Quoted' : delivery ? inr(delivery) : 'Free'}</td></tr>
     <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right"><b>${quote ? 'Total (excl. quoted items)' : 'Total'}</b></td><td style="padding-top:4px;text-align:right"><b>${inr(total)}</b></td></tr></table>`;
 }
 

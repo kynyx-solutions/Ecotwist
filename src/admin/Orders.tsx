@@ -123,7 +123,7 @@ export function OrderList() {
 
 /* ── Create / edit ────────────────────────────────────────────── */
 
-type OrderForm = Pick<Order, 'customer_id' | 'status' | 'occasion' | 'items' | 'gst_rate' | 'advance_paid' | 'delivery_date' | 'delivery_address' | 'notes'>;
+type OrderForm = Pick<Order, 'customer_id' | 'status' | 'occasion' | 'items' | 'gst_rate' | 'advance_paid' | 'delivery_date' | 'delivery_address' | 'notes'> & { delivery_fee: number };
 
 const EMPTY_ITEM: OrderItem = { product: '', quantity: 1, unit_price: 0 };
 
@@ -147,7 +147,7 @@ export function OrderDetail() {
     if (isNew) {
       setForm({
         customer_id: params.get('customer') ?? '', status: 'quote', occasion: '', items: [{ ...EMPTY_ITEM }],
-        gst_rate: 18, advance_paid: 0, delivery_date: null, delivery_address: '', notes: '',
+        gst_rate: 18, delivery_fee: 0, advance_paid: 0, delivery_date: null, delivery_address: '', notes: '',
       });
       return;
     }
@@ -158,7 +158,7 @@ export function OrderDetail() {
       setExtra({ source: o.source, contact: o.contact, payment_link: o.payment_link, payments: o.payments });
       setForm({
         customer_id: o.customer_id, status: o.status, occasion: o.occasion, items: o.items.length ? o.items : [{ ...EMPTY_ITEM }],
-        gst_rate: Number(o.gst_rate), advance_paid: Number(o.advance_paid), delivery_date: o.delivery_date,
+        gst_rate: Number(o.gst_rate), delivery_fee: Number(o.delivery_fee ?? 0), advance_paid: Number(o.advance_paid), delivery_date: o.delivery_date,
         delivery_address: o.delivery_address, notes: o.notes,
       });
     });
@@ -168,7 +168,7 @@ export function OrderDetail() {
   if (!form) return <Spinner />;
 
   const gst = (subtotal * (Number(form.gst_rate) || 0)) / 100;
-  const total = Math.round((subtotal + gst) * 100) / 100;
+  const total = Math.round((subtotal + gst + (Number(form.delivery_fee) || 0)) * 100) / 100;
   const balance = Math.max(0, total - (Number(form.advance_paid) || 0));
   const customer = customers.find((c) => c.id === form.customer_id);
 
@@ -269,6 +269,12 @@ export function OrderDetail() {
                   <Input type="number" min={0} step="0.01" value={form.gst_rate} onChange={(e) => setForm({ ...form, gst_rate: Number(e.target.value) })} className="!w-20 !py-1" aria-label="GST rate" />%
                 </dt>
                 <dd>{formatMoney(gst)}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <dt className="flex items-center gap-2">Delivery ₹
+                  <Input type="number" min={0} step="1" value={form.delivery_fee} onChange={(e) => setForm({ ...form, delivery_fee: Number(e.target.value) })} className="!w-24 !py-1" aria-label="Delivery charge" />
+                </dt>
+                <dd>{form.delivery_fee ? formatMoney(form.delivery_fee) : 'Free'}</dd>
               </div>
               <div className="flex justify-between text-base font-semibold"><dt>Total</dt><dd>{formatMoney(total)}</dd></div>
             </dl>

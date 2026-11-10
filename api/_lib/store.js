@@ -17,6 +17,12 @@ export function unitPrice(product, quantity, settings) {
   return Math.round(product.price * (1 - pct / 100));
 }
 
+// Delivery charge in rupees: free when the subtotal (before GST) is above the threshold
+export function deliveryFor(subtotal, settings) {
+  if (!(subtotal > 0)) return 0;
+  return subtotal > Number(settings.freeDeliveryAbove ?? 0) ? 0 : Number(settings.deliveryFee ?? 0);
+}
+
 export const LOGO_TYPES = {
   png: 'image/png',
   jpg: 'image/jpeg',

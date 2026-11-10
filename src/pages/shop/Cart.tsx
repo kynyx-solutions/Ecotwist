@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown, FileCheck2, Loader2, Lock, ShieldCheck, ShoppingBag, Trash2, Upload } from 'lucide-react';
 import { asset } from '../../lib/content';
-import { BRANDING, QUANTITY_OPTIONS, cart, cartTotals, inr, productById, settings, unitPrice, useCart, type CartLine } from '../../lib/store';
+import { BRANDING, FREE_DELIVERY_ABOVE, QUANTITY_OPTIONS, cart, cartTotals, inr, productById, settings, unitPrice, useCart, type CartLine } from '../../lib/store';
 import { LOGO_ACCEPT, uploadLogo } from '../../lib/logoUpload';
 import { quantityLabel } from './ProductPage';
 import { payWithRazorpay, type PaymentStart } from '../../lib/razorpayCheckout';
@@ -198,7 +198,11 @@ export default function Cart() {
             <dl className="mt-5 space-y-2.5 text-[15px]" style={{ color: C.ink }}>
               <div className="flex justify-between"><dt>Subtotal</dt><dd>{inr(totals.subtotal)}</dd></div>
               <div className="flex justify-between"><dt>GST {settings.gstRate}%</dt><dd>{inr(totals.gst)}</dd></div>
-              <div className="flex justify-between" style={{ color: C.muted }}><dt>Delivery</dt><dd>Quoted with mockup</dd></div>
+              <div className="flex justify-between"><dt>Delivery</dt>
+                <dd>{quoteOnly ? <span style={{ color: C.muted }}>Quoted with your order</span> : totals.delivery ? inr(totals.delivery) : <span className="font-semibold" style={{ color: C.leaf }}>Free</span>}</dd></div>
+              {!quoteOnly && totals.delivery > 0 && (
+                <p className="text-xs" style={{ color: C.muted }}>Add {inr(FREE_DELIVERY_ABOVE - totals.subtotal + 1)} more for free delivery (orders above {inr(FREE_DELIVERY_ABOVE)}).</p>
+              )}
               <div className="flex justify-between border-t pt-3 text-lg font-semibold" style={{ borderColor: C.line }}><dt>{quoteOnly ? 'Estimated total' : 'Total payable'}</dt><dd>{inr(totals.total)}</dd></div>
               {totals.quoteItems > 0 && <p className="text-sm" style={{ color: C.muted }}>Plus {totals.quoteItems} {totals.quoteItems === 1 ? 'item' : 'items'} we will quote for.</p>}
             </dl>

@@ -20,7 +20,7 @@ interface Product {
 }
 interface StoreFile {
   _meta: unknown;
-  settings: { quantities: number[]; quoteOnlyLabel: string; discounts: Record<string, number>; gstRate: number; brandingOptions: string[]; note: string };
+  settings: { quantities: number[]; quoteOnlyLabel: string; discounts: Record<string, number>; gstRate: number; freeDeliveryAbove: number; deliveryFee: number; brandingOptions: string[]; note: string };
   products: Product[];
 }
 
@@ -123,6 +123,15 @@ export function StoreProducts() {
             ))}
           </div>
         </div>
+        <div className="flex flex-wrap gap-3">
+        <label className="w-36 text-sm">
+          <span className="font-semibold">Free delivery above</span>
+          <Input type="number" min={0} value={s.freeDeliveryAbove} onChange={(e) => setSettings({ freeDeliveryAbove: Math.max(0, Number(e.target.value) || 0) })} className="mt-1" aria-label="Free delivery above (₹)" />
+        </label>
+        <label className="w-28 text-sm">
+          <span className="font-semibold">Delivery fee ₹</span>
+          <Input type="number" min={0} value={s.deliveryFee} onChange={(e) => setSettings({ deliveryFee: Math.max(0, Number(e.target.value) || 0) })} className="mt-1" aria-label="Delivery fee (₹)" />
+        </label>
         <label className="w-28 text-sm">
           <span className="font-semibold">GST</span>
           <div className="relative mt-1">
@@ -130,6 +139,7 @@ export function StoreProducts() {
             <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400">%</span>
           </div>
         </label>
+        </div>
       </Card>
 
       <div className="mb-3 flex flex-wrap gap-3">
