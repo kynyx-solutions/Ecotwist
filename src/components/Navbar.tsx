@@ -413,15 +413,15 @@ export const Navbar = () => {
           borderBottom:    isTransparent ? 'none'        : '1px solid rgba(181,162,106,0.15)',
         }}
       >
-        <div className="w-full px-10 h-16 flex items-center justify-between" style={{ maxWidth: 1400, margin: '0 auto' }}>
+        <div className="w-full px-5 sm:px-10 h-16 flex items-center justify-between gap-6" style={{ maxWidth: 1400, margin: '0 auto' }}>
 
           {/* LOGO */}
           <Link to="/" onClick={handleClose} className="flex items-center flex-shrink-0">
-            <img src={asset(isTransparent ? header.logoOnDark : header.logo)} alt={header.logoAlt} width={500} height={128} className="h-11 w-auto lg:h-[52px]" />
+            <img src={asset(isTransparent ? header.logoOnDark : header.logo)} alt={header.logoAlt} width={500} height={128} className="h-11 w-auto xl:h-12" />
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden lg:flex items-center gap-9">
+          <nav className="hidden xl:flex items-center gap-6 2xl:gap-9">
 
             {/* ── Occasions trigger ── */}
             <div className="relative" onMouseEnter={openDD} onMouseLeave={closeDD}>
@@ -493,7 +493,7 @@ export const Navbar = () => {
               onClick={() => setIsOpen((v) => !v)}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
-              className="lg:hidden"
+              className="xl:hidden"
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: isTransparent ? 'white' : '#262624' }}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
