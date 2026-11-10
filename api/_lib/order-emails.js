@@ -66,7 +66,7 @@ export async function sendOrderEmails(db, order, { paid, invoice = false }) {
       <h2>Thank you, ${esc(String(c.name ?? '').split(' ')[0])}!</h2>
       ${paid
         ? `<p>We've received your payment of <b>${inr(order.total_amount)}</b> for order <b>${orderNo}</b> (${esc(c.company)}). Here's what happens next:</p>
-           <ol><li>Within 2 working days we email a mockup showing your branding.</li>
+           <ol><li>Within 24 hrs, we email a mockup showing your branding.</li>
            <li>Once you approve it, we produce your gifts.</li>
            <li>We deliver them with a GST invoice.</li></ol>`
         : invoice

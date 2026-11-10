@@ -12,6 +12,7 @@ import {
 } from '../../lib/store';
 import { LOGO_ACCEPT, LOGO_MAX_MB, uploadLogo } from '../../lib/logoUpload';
 import { SITE_URL, absoluteUrl, applyHead } from '../../lib/head';
+import { BrandPreview } from './BrandPreview';
 
 /* ============================
    Product page for the online store (/shop/:id).
@@ -72,6 +73,10 @@ export default function ProductPage() {
   const [brandText, setBrandText] = useState('');
   const [quantity, setQuantity] = useState(QUANTITY_OPTIONS[0]);
   const [logo, setLogo] = useState<{ name: string; path: string } | null>(null);
+  // Instant preview from the customer's own file (images only; PDF/AI/EPS can't be drawn in the browser)
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [photoEl, setPhotoEl] = useState<HTMLImageElement | null>(null);
+  useEffect(() => () => { if (logoPreview) URL.revokeObjectURL(logoPreview); }, [logoPreview]);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState('');
   const [added, setAdded] = useState(false);
@@ -80,7 +85,7 @@ export default function ProductPage() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setActive(0); setLogo(null); setBrandText(''); setAdded(false); setUploadError('');
+    setActive(0); setLogo(null); setLogoPreview(null); setBrandText(''); setAdded(false); setUploadError('');
     window.scrollTo(0, 0);
   }, [id]);
 
@@ -124,12 +129,17 @@ export default function ProductPage() {
   if (!product) return <Navigate to="/shop" replace />;
 
   const unit = unitPrice(product, quantity);
+  const previewLogo = needsLogo(branding) ? logoPreview : null;
+  const previewText = needsText(branding) ? brandText : '';
+  const showPreview = !!(previewLogo || previewText.trim());
   const lineTotal = unit == null ? null : unit * Number(quantity);
   const discountTiers = settings.quantities.filter((q) => discountFor(String(q)) > 0);
 
   const onFile = async (file?: File) => {
     if (!file) return;
     setUploadError(''); setUploading(true);
+    setLogoPreview(/^image\/(png|jpe?g|svg\+xml|webp)$/.test(file.type) ? URL.createObjectURL(file) : null);
+    setActive(0);
     try {
       const path = await uploadLogo(file);
       setLogo({ name: file.name, path });
@@ -195,7 +205,15 @@ export default function ProductPage() {
               </div>
             )}
             <div className="relative flex-1 overflow-hidden rounded-2xl" style={{ background: C.sand }}>
-              <img src={asset(images[active])} alt={product.name} className="aspect-[4/4.4] w-full object-cover" fetchPriority="high" />
+              <img ref={setPhotoEl} src={asset(images[active])} alt={product.name} className="aspect-[4/4.4] w-full object-cover" fetchPriority="high" />
+              {showPreview && (
+                <>
+                  <BrandPreview image={images[active]} imgEl={photoEl} logoUrl={previewLogo} text={previewText} style={/engrav/i.test(branding) ? 'engrave' : 'print'} />
+                  <span className="absolute bottom-3 left-3 rounded-full bg-black/55 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
+                    Live preview · final mockup by our designers
+                  </span>
+                </>
+              )}
               {product.featured && (
                 <span className="absolute left-4 top-4 rounded-md px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white" style={{ background: C.olive }}>Bestseller</span>
               )}
@@ -243,7 +261,7 @@ export default function ProductPage() {
                   <div className="mt-2 flex items-center gap-3 rounded-xl border bg-white px-4 py-3" style={{ borderColor: C.line }}>
                     <FileCheck2 size={18} style={{ color: C.leaf }} />
                     <span className="flex-1 truncate text-sm" style={{ color: C.ink }}>{logo.name}</span>
-                    <button type="button" onClick={() => setLogo(null)} aria-label="Remove logo" style={{ color: C.muted }}><X size={16} /></button>
+                    <button type="button" onClick={() => { setLogo(null); setLogoPreview(null); }} aria-label="Remove logo" style={{ color: C.muted }}><X size={16} /></button>
                   </div>
                 ) : (
                   <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading}
@@ -256,7 +274,8 @@ export default function ProductPage() {
                 )}
                 <input ref={fileRef} type="file" accept={LOGO_ACCEPT} className="hidden" onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ''; }} />
                 {uploadError && <p className="mt-2 text-sm text-red-700">{uploadError} You can still add to cart and send the logo later.</p>}
-                {!logo && !uploadError && <p className="mt-2 text-xs" style={{ color: C.muted }}>No logo handy? Add to cart now and send it after ordering.</p>}
+                {!logo && !uploadError && <p className="mt-2 text-xs" style={{ color: C.muted }}>See it on the product instantly. No logo handy? Add to cart now and send it after ordering.</p>}
+                {logo && !logoPreview && <p className="mt-2 text-xs" style={{ color: C.muted }}>PDF, AI and EPS files can't be previewed here; our designers will place it on your mockup.</p>}
               </div>
             )}
 

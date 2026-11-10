@@ -30,7 +30,7 @@ export default function OrderPlaced() {
             ? 'Within 1 working day we will email a GST invoice with our bank details. Once the payment arrives, we send your branded mockup and start production.'
           : pending
             ? 'Your bank confirmed the payment and we are finishing the check. This usually takes a few minutes; there is no need to pay again.'
-            : 'Within 2 working days we will email a branded mockup for your approval, then produce and deliver your gifts with a GST invoice.'}
+            : 'Within 24 hrs, we will email a branded mockup for your approval, then produce and deliver your gifts with a GST invoice.'}
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link to="/shop" className="rounded-full px-8 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-white" style={{ background: C.olive }}>Continue shopping</Link>

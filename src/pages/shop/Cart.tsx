@@ -235,7 +235,7 @@ export default function Cart() {
                 ? ['We email your quote and a branded mockup within 2 working days.', 'You approve and pay; we start production.', 'We deliver, with a GST invoice.']
                 : invoiceOnly
                   ? ['We email a GST invoice with bank details within 1 working day.', 'Once paid, we send your branded mockup.', 'You approve it, and we produce and deliver.']
-                  : ['Pay now; your order is confirmed instantly.', 'We email a branded mockup within 2 working days.', 'You approve it, and we produce and deliver with a GST invoice.']
+                  : ['Pay now; your order is confirmed instantly.', 'We email a branded mockup within 24 hrs.', 'You approve it, and we produce and deliver with a GST invoice.']
               ).map((t, i) => <li key={i}><b style={{ color: C.ink }}>{i + 1}.</b> {t}</li>)}
             </ol>
           </div>
