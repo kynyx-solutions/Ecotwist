@@ -417,7 +417,7 @@ export const Navbar = () => {
 
           {/* LOGO */}
           <Link to="/" onClick={handleClose} className="flex items-center flex-shrink-0">
-            <img src={asset(header.logo)} alt={header.logoAlt} className="h-12" />
+            <img src={asset(isTransparent ? header.logoOnDark : header.logo)} alt={header.logoAlt} width={500} height={128} className="h-11 w-auto lg:h-[52px]" />
           </Link>
 
           {/* DESKTOP NAV */}

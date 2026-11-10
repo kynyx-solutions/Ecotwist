@@ -142,8 +142,7 @@ export const DiwaliFooter = () => {
           {/* Brand & social */}
           <div className="lg:col-span-3">
             <Link to="/" className="group mb-8 flex w-fit flex-col items-start">
-              <img src={asset(brand.logo)} alt={brand.logoAlt} className="h-16 w-auto object-contain transition group-hover:scale-105 sm:h-20" />
-              <span className="mt-2 font-serif text-xl font-bold uppercase tracking-widest text-white sm:text-2xl">{brand.name}</span>
+              <img src={asset(brand.logo)} alt={brand.logoAlt} width={257} height={240} className="h-28 w-auto object-contain transition group-hover:scale-105 sm:h-32" />
             </Link>
             <p className="mb-8 max-w-sm text-sm leading-relaxed text-white/55">
               {brand.description}
@@ -218,7 +217,7 @@ export const DiwaliFooter = () => {
       {/* Bottom bar */}
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 border-t border-[#E9C46A]/15 px-6 pb-10 pt-8 md:flex-row">
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-white/40">
-          <span>{bottomBar.copyright}</span>
+          <span className="inline-block py-2 normal-case tracking-[0.12em]">{bottomBar.copyright}</span>
           {bottomBar.legalLinks.map((link) => (
             <Link key={link.path} to={link.path} className={linkClass}>{link.label}</Link>
           ))}

@@ -75,13 +75,10 @@ export const Footer = () => {
               <img
                 src={asset(brand.logo)}
                 alt={brand.logoAlt}
-                className="h-16 sm:h-20 w-auto object-contain group-hover:scale-105 transition"
+                width={257}
+                height={240}
+                className="h-28 sm:h-32 w-auto object-contain group-hover:scale-105 transition"
               />
-
-              {/* TEXT BELOW LOGO */}
-              <span className="mt-2 font-bold tracking-widest text-xl sm:text-2xl font-serif text-white uppercase">
-                {brand.name}
-              </span>
 
             </Link>
 
@@ -184,7 +181,7 @@ export const Footer = () => {
       </div>
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-[11px] uppercase tracking-[0.2em] text-gray-400 flex flex-wrap justify-center gap-x-6 gap-y-1">
-          <span>{bottomBar.copyright}</span>
+          <span className="inline-block py-2 normal-case tracking-[0.12em]">{bottomBar.copyright}</span>
           {bottomBar.legalLinks.map((link) => (
             <Link key={link.path} to={link.path} className="inline-block py-2 hover:text-white transition-colors">{link.label}</Link>
           ))}

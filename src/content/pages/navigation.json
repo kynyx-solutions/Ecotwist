@@ -1,7 +1,8 @@
 {
   "_meta": { "label": "Navigation menu" },
   "header": {
-    "logo": "/site/navigation/logo-192.webp",
+    "logo": "/site/navigation/logo-lockup.webp",
+    "logoOnDark": "/site/navigation/logo-lockup-white.webp",
     "logoAlt": "Ecotwist",
     "occasionsLabel": "Occasions",
     "links": [
