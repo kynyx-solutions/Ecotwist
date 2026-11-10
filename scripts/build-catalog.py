@@ -87,6 +87,17 @@ TIERS = [
 ]
 
 def chunks(lst, n): return [lst[i:i + n] for i in range(0, len(lst), n)]
+
+def grid(n):
+    """Columns/rows that fill the page with no gaps: 9 -> 3x3, 10 -> 5x2, 8 -> 4x2, 6 -> 3x2."""
+    if n <= 3: return n, 1
+    best = min((c for c in (3, 4, 5) if -(-n // c) <= 3),
+               key=lambda c: (-(-n // c) * c - n, abs(c - 4)))
+    return best, -(-n // best)
+
+def cards_html(cards):
+    c, r = grid(len(cards))
+    return f'<div class="fill" style="grid-template-columns:repeat({c},1fr);grid-template-rows:repeat({r},1fr)">{"".join(cards)}</div>'
 pages = []
 LOGO = img('/site/navigation/logo.png')
 
@@ -113,19 +124,19 @@ pages.append(f'''<section class="page about"><div class="col">
 for pair in chunks(TIERS, 2):
     body = ''
     for name, sub, items in pair:
-        body += f'<div class="tier"><div class="tier-h"><h3>{e(name)}</h3><p>{e(sub)}</p></div><div class="row r{len(items)}">' + \
-            ''.join(card(t, name, c, p, i) for t, c, p, i in items) + '</div></div>'
+        body += f'<div class="tier"><div class="tier-h"><h3>{e(name)}</h3><p>{e(sub)}</p></div>' + \
+            cards_html([card(t, name, c, p, i) for t, c, p, i in items]) + '</div>'
     pages.append(f'<section class="page"><header class="ph-h"><p class="eye">Signature range</p><h2>Ready-made kits by budget</h2></header>{body}</section>')
 
 pages.append('''<section class="page divider"><p class="eye">Part two</p><h2>Gifts by occasion</h2>
  <p class="lead">Kits curated for every moment in the corporate calendar. Mix and match across pages, or tell us your budget and we will build one for you.</p></section>''')
 
 for o in occ:
-    for i, group in enumerate(chunks(o['cards'], 12)):
+    for i, group in enumerate(chunks(o['cards'], 15)):
         head = (f'<header class="occ-h"><div><p class="eye">{e(o["when"])}</p><h2>{e(o["name"])}</h2></div>'
                 f'<p class="intro">{e(o["intro"])}</p></header>') if i == 0 else \
                f'<header class="occ-h small"><h2>{e(o["name"])} <span>continued</span></h2></header>'
-        pages.append(f'<section class="page">{head}<div class="row r3 two{' five' if len(group) > 8 else ''}">{"".join(group)}</div></section>')
+        pages.append(f'<section class="page">{head}{cards_html(group)}</section>')
 
 pages.append(f'''<section class="page about"><div class="col">
  <p class="eye">Personalisation</p><h2>Make every gift<br><em>unmistakably yours.</em></h2>
@@ -175,8 +186,8 @@ em { color: #8a6f2e; }
 .row { display: grid; gap: 5mm; } .r2 { grid-template-columns: repeat(4, 1fr); } .r3 { grid-template-columns: repeat(4, 1fr); } .r4 { grid-template-columns: repeat(4, 1fr); }
 .row.two { grid-template-columns: repeat(4, 1fr); gap: 4mm 4.5mm; margin-top: 4.5mm; } .row.two .ph img { aspect-ratio: 16 / 8.2; } .row.two.five { grid-template-columns: repeat(5, 1fr); gap: 4mm 3.5mm; } .row.five .ph img { aspect-ratio: 16 / 10; } .row.five .cb h4 { font-size: 10pt; } .row.two .ct { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .card { background: #fff; border-radius: 3.5mm; overflow: hidden; border: 1px solid #ece6d3; display: flex; flex-direction: column; }
-.tier .card { flex-direction: row; height: 27mm; } .tier .card .ph { width: 34mm; flex: none; } .tier .card .ph img { height: 27mm; aspect-ratio: auto; } .tier .card .cb { padding: 2.4mm 3.5mm; }
-.tier .row { grid-template-columns: repeat(2, 1fr); gap: 3.5mm 5mm; }
+
+
 .ph { position: relative; background: #f1ede2; } .ph img { width: 100%; aspect-ratio: 16 / 9.6; object-fit: cover; display: block; }
 .tag { position: absolute; left: 2.5mm; top: 2.5mm; background: #4A5D23; color: #fff; font-size: 6pt; letter-spacing: .15em; text-transform: uppercase; padding: 1mm 2mm; border-radius: 3mm; }
 .cb { padding: 3mm 3.5mm 3.2mm; display: flex; flex-direction: column; flex: 1; }
@@ -194,7 +205,15 @@ em { color: #8a6f2e; }
 .contact { background: #1a2412; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .contact h2 { color: #fff; font-size: 30pt; margin: 8mm 0 9mm; } .contact::after { color: rgba(255,255,255,.4); }
 .ci { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5mm 18mm; text-align: left; } .ci p { font-size: 10.5pt; color: rgba(255,255,255,.85); } .ci b { display: block; font-size: 7pt; letter-spacing: .25em; text-transform: uppercase; color: #d9bf7c; margin-bottom: 1mm; }
-.thanks { margin-top: 12mm; color: #d9bf7c; font-family: "Playfair Display"; font-style: italic; font-size: 12pt; }'''
+.thanks { margin-top: 12mm; color: #d9bf7c; font-family: "Playfair Display"; font-style: italic; font-size: 12pt; }
+.page:not(.cover):not(.about):not(.divider):not(.contact) { display: flex; flex-direction: column; padding-bottom: 13mm; }
+.fill { display: grid; gap: 4mm; flex: 1; min-height: 0; margin-top: 4mm; }
+.fill .card { min-height: 0; }
+.fill .ph { flex: 1; min-height: 0; } .fill .ph img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+.fill .cb { flex: none; } .fill .ct { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.tier { flex: 1; display: flex; flex-direction: column; min-height: 0; margin-top: 4mm; } .tier .fill { margin-top: 0; }
+.occ-h, .ph-h, .tier-h { flex: none; }
+'''
 
 open(os.path.join(OUT, 'catalog.html'), 'w').write(f'<!doctype html><html><head><meta charset="utf-8"><title>Ecotwist Corporate Gifting Catalogue 2027</title><style>{CSS}</style></head><body>{"".join(pages)}</body></html>')
 print(len(pages), 'pages')
