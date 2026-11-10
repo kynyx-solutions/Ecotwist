@@ -1,7 +1,7 @@
 {
   "_meta": { "label": "Christmas Gifting", "route": "/occasions/christmas-gifting" },
   "theme": {
-    "accent": "#d65a4a",
+    "accent": "#e8867b",
     "dark": "#1d2b1f",
     "light": "#f7f3ec"
   },

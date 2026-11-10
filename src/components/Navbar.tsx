@@ -491,6 +491,8 @@ export const Navbar = () => {
 
             <button
               onClick={() => setIsOpen((v) => !v)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
               className="lg:hidden"
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: isTransparent ? 'white' : '#262624' }}
             >

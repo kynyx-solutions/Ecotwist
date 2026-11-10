@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -7,42 +7,43 @@ import { SeoManager } from './components/SeoManager';
 import { RelatedLinks } from './components/RelatedLinks';
 
 // ── Core pages (default exports) ──────────────────────
-import { Home } from "./pages/Home";
-import DiwaliHome from "./pages/DiwaliHome";
-import NewYearHome from "./pages/NewYearHome";
-import { DiwaliFooter } from './components/DiwaliFooter';
-import { NewYearFooter } from './components/NewYearFooter';
+const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
+const DiwaliHome = lazy(() => import("./pages/DiwaliHome"));
+const NewYearHome = lazy(() => import("./pages/NewYearHome"));
+const DiwaliFooter = lazy(() => import('./components/DiwaliFooter').then((m) => ({ default: m.DiwaliFooter })));
+const NewYearFooter = lazy(() => import('./components/NewYearFooter').then((m) => ({ default: m.NewYearFooter })));
 import { homeTheme } from "./config/homepage";
-import Contact      from './pages/Contact';
-import { Solutions } from "./pages/Solutions";
-import GetProposal  from './pages/GetProposal';
-import Impact       from './pages/Impact';
-import  ThankYou  from './pages/ThankYou';
-import Blog         from './pages/Blog';
-import BlogPost     from './pages/BlogPost';
+const Contact = lazy(() => import('./pages/Contact'));
+const Solutions = lazy(() => import("./pages/Solutions").then((m) => ({ default: m.Solutions })));
+const GetProposal = lazy(() => import('./pages/GetProposal'));
+const Impact = lazy(() => import('./pages/Impact'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 
 // ── Original 5 Occasion pages ─────────────────────────
-import ClientAppreciation from './pages/ClientAppreciation';
-import EmployeeOnboarding from './pages/EmployeeOnboarding';
-import FestiveGifting     from './pages/FestiveGifting.';
-import EventsConferences  from './pages/EventsConferences..tsx';
-import EmployeeWellness   from './pages/EmployeeWellness..tsx';
+const ClientAppreciation = lazy(() => import('./pages/ClientAppreciation'));
+const EmployeeOnboarding = lazy(() => import('./pages/EmployeeOnboarding'));
+const FestiveGifting = lazy(() => import('./pages/FestiveGifting.'));
+const EventsConferences = lazy(() => import('./pages/EventsConferences..tsx'));
+const EmployeeWellness = lazy(() => import('./pages/EmployeeWellness..tsx'));
 
 // ── New 5 Occasion pages ──────────────────────────────
-import BirthdayGifting    from './pages/BirthdayGifting.tsx';
-import WorkAnniversary    from './pages/WorkAnniversary.tsx';
-import ProductLaunch      from './pages/ProductLaunch.tsx';
-import AwardRecognition   from './pages/AwardRecognition.tsx';
-import RetirementGifting  from './pages/RetirementGifting.tsx';
-import DepawaliGifting from './pages/Depawali.tsx';
-import  ProductList  from './pages/Products.tsx';
-import Shop        from './pages/shop/Shop';
-import ProductPage from './pages/shop/ProductPage';
-import Cart        from './pages/shop/Cart';
-import OrderPlaced from './pages/shop/OrderPlaced';
+const BirthdayGifting = lazy(() => import('./pages/BirthdayGifting.tsx'));
+const WorkAnniversary = lazy(() => import('./pages/WorkAnniversary.tsx'));
+const ProductLaunch = lazy(() => import('./pages/ProductLaunch.tsx'));
+const AwardRecognition = lazy(() => import('./pages/AwardRecognition.tsx'));
+const RetirementGifting = lazy(() => import('./pages/RetirementGifting.tsx'));
+const DepawaliGifting = lazy(() => import('./pages/Depawali.tsx'));
+const ProductList = lazy(() => import('./pages/Products.tsx'));
+const Shop = lazy(() => import('./pages/shop/Shop'));
+const ProductPage = lazy(() => import('./pages/shop/ProductPage'));
+const Cart = lazy(() => import('./pages/shop/Cart'));
+const OrderPlaced = lazy(() => import('./pages/shop/OrderPlaced'));
 
 // ── Newer occasion pages: one shared layout, one content file each ──
-import OccasionTemplate, { type OccasionContent } from './pages/OccasionTemplate';
+import type { OccasionContent } from './pages/OccasionTemplate';
+const OccasionTemplate = lazy(() => import('./pages/OccasionTemplate'));
 import womensDay       from './content/pages/womens-day.json';
 import christmas       from './content/pages/christmas-gifting.json';
 import earthDay        from './content/pages/earth-day-gifting.json';
@@ -50,26 +51,33 @@ import channelPartners from './content/pages/channel-partner-gifting.json';
 const TEMPLATE_OCCASIONS = [womensDay, christmas, earthDay, channelPartners] as OccasionContent[];
 
 // ── Policy pages ──────────────────────────────────────
-import PrivacyPolicy   from './components/PrivacyPolicy';
-import TermsOfService  from './components/TermsOfService';
-import RefundPolicy    from './components/RefundPolicy';
-import ShippingPolicy  from './components/ShippingPolicy';
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./components/TermsOfService'));
+const RefundPolicy = lazy(() => import('./components/RefundPolicy'));
+const ShippingPolicy = lazy(() => import('./components/ShippingPolicy'));
 // ──────────────────────────────────────────────────────
 
 import { motion, AnimatePresence } from 'framer-motion';
 
 
 /* ========= PAGE TRANSITION WRAPPER ========= */
-const PageWrapper = ({ children }: { children: React.ReactNode }) => (
+// The first page a visitor lands on shows straight away (no fade-in), so it
+// paints as early as possible; later page changes keep the transition.
+let firstPage = true;
+const PageWrapper = ({ children }: { children: React.ReactNode }) => {
+  const initial = firstPage ? false : { opacity: 0, y: 20, filter: 'blur(10px)' };
+  firstPage = false;
+  return (
   <motion.div
-    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+    initial={initial}
     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
     exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
   >
     {children}
   </motion.div>
-);
+  );
+};
 
 /* ========= FESTIVE SWITCH (src/config/homepage.ts) ========= */
 const HOME_PAGES = { default: <Home />, diwali: <DiwaliHome />, newYear: <NewYearHome /> };
@@ -80,6 +88,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
+    <Suspense fallback={<div className="min-h-screen" />}>
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
 
@@ -130,6 +139,7 @@ const AnimatedRoutes = () => {
 
       </Routes>
     </AnimatePresence>
+    </Suspense>
   );
 };
 
@@ -147,7 +157,7 @@ export default function App() {
         {/* Related occasions and keyword links (internal linking) */}
         <RelatedLinks />
         {/* Festive footer or the regular one: switch in src/config/homepage.ts */}
-        {FOOTERS[homeTheme()]}
+        <Suspense fallback={null}>{FOOTERS[homeTheme()]}</Suspense>
       </div>
     </Router>
   );

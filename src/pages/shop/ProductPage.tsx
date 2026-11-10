@@ -51,7 +51,7 @@ export function ProductCard({ p }: { p: StoreProduct }) {
         {p.featured && <span className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white" style={{ background: C.olive }}>Bestseller</span>}
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: C.gold }}>{p.occasions[0]}</p>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: '#7d6428' }}>{p.occasions[0]}</p>
         <h3 className="mt-1 font-serif text-lg leading-snug" style={{ color: C.ink }}>{p.name}</h3>
         <p className="mt-1 line-clamp-2 flex-1 text-[13px] leading-5" style={{ color: C.muted }}>{p.contents}</p>
         <p className="mt-3 font-semibold" style={{ color: C.ink }}>

@@ -130,7 +130,7 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
           className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr]"
         >
           <motion.div variants={fadeUp}>
-            <Eyebrow color={accent}>{about.eyebrow}</Eyebrow>
+            <Eyebrow color={dark}>{about.eyebrow}</Eyebrow>
             <h2 className="mt-5 font-serif leading-tight" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", color: dark }}>{about.title}</h2>
             <p className="mt-5 text-base leading-7 text-[#4a4a44] sm:text-lg sm:leading-8">{about.text}</p>
           </motion.div>
@@ -149,7 +149,7 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
       {/* ── Kits ── */}
       <section id="kits" className="scroll-mt-24 bg-white px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="flex justify-center"><Eyebrow color={accent}>{kits.eyebrow}</Eyebrow></div>
+          <div className="flex justify-center"><Eyebrow color={dark}>{kits.eyebrow}</Eyebrow></div>
           <h2 className="mt-5 font-serif leading-tight" style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: dark }}>{kits.title}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#4a4a44] sm:text-lg">{kits.intro}</p>
         </div>
@@ -199,13 +199,13 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
             </motion.div>
           ))}
         </motion.div>
-        {kits.items.some((k) => k.price) && <p className="mt-6 text-center text-xs text-[#7a7a72]">{kits.priceNote}</p>}
+        {kits.items.some((k) => k.price) && <p className="mt-6 text-center text-xs text-[#5f6655]">{kits.priceNote}</p>}
       </section>
 
       {/* ── Personalisation ── */}
       <section className="px-5 py-24 sm:px-8 lg:px-12" style={{ background: light }}>
         <div className="mx-auto max-w-7xl">
-          <Eyebrow color={accent}>{personalisation.eyebrow}</Eyebrow>
+          <Eyebrow color={dark}>{personalisation.eyebrow}</Eyebrow>
           <h2 className="mt-5 max-w-2xl font-serif leading-tight" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", color: dark }}>{personalisation.title}</h2>
           <motion.div
             variants={stagger}
@@ -229,7 +229,7 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
       <section className="bg-white px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <div className="flex justify-center"><Eyebrow color={accent}>{timeline.eyebrow}</Eyebrow></div>
+            <div className="flex justify-center"><Eyebrow color={dark}>{timeline.eyebrow}</Eyebrow></div>
             <h2 className="mt-5 font-serif leading-tight" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", color: dark }}>{timeline.title}</h2>
           </div>
           <motion.ol

@@ -108,7 +108,7 @@ export const Footer = () => {
           <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-2 gap-8">
             {columns.map((column) => (
             <div key={column.heading}>
-              <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">{column.heading}</h5>
+              <h3 className="font-bold mb-6 uppercase tracking-widest text-[11px] text-[#a9bd72]">{column.heading}</h3>
               <ul className="space-y-4 text-sm text-gray-400">
                 {column.links.map((link) => (
                   <li key={link.label}>
@@ -121,7 +121,7 @@ export const Footer = () => {
             </div>
             ))}
             {/* <div>
-              <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">Support</h5>
+              <h3 className="font-bold mb-6 uppercase tracking-widest text-[11px] text-[#a9bd72]">Support</h3>
               <ul className="space-y-4 text-sm text-gray-400">
                 <li><Link to="/shipping-policy" className="hover:text-white transition-colors">Shipping</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
@@ -138,7 +138,7 @@ export const Footer = () => {
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <h5 className="font-bold mb-6 uppercase tracking-widest text-[10px] text-brand-olive">{newsletter.heading}</h5>
+            <h3 className="font-bold mb-6 uppercase tracking-widest text-[11px] text-[#a9bd72]">{newsletter.heading}</h3>
             <p className="text-xs text-gray-400 mb-6 leading-relaxed">{newsletter.text}</p>
             <form
               onSubmit={handleSubscribe}
@@ -183,13 +183,13 @@ export const Footer = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 flex flex-wrap justify-center gap-x-8 gap-y-2">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-gray-400 flex flex-wrap justify-center gap-x-6 gap-y-1">
           <span>{bottomBar.copyright}</span>
           {bottomBar.legalLinks.map((link) => (
-            <Link key={link.path} to={link.path} className="hover:text-white transition-colors">{link.label}</Link>
+            <Link key={link.path} to={link.path} className="inline-block py-2 hover:text-white transition-colors">{link.label}</Link>
           ))}
         </div>
-        <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 text-center">
+        <div className="text-[11px] uppercase tracking-[0.2em] text-gray-400 text-center">
           {bottomBar.tagline}
         </div>
       </div>
