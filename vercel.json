@@ -31,7 +31,7 @@
     },
     {
       "source": "/((?!api/|admin).*)",
-      "destination": "/"
+      "destination": "/app.html"
     }
   ],
   "functions": {
@@ -44,5 +44,6 @@
     "api/store/upload-url.js": {
       "includeFiles": "src/content/store.json"
     }
-  }
+  },
+  "cleanUrls": true
 }

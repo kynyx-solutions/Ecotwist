@@ -89,7 +89,7 @@ const AnimatedRoutes = () => {
 
   return (
     <Suspense fallback={<div className="min-h-screen" />}>
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
 
         {/* ── Core routes ── */}
@@ -144,9 +144,11 @@ const AnimatedRoutes = () => {
 };
 
 /* ========= MAIN APP ========= */
-export default function App() {
+// Everything inside the router. The browser wraps it in <BrowserRouter> (below);
+// the build-time pre-renderer (src/entry-server.tsx) wraps it in a <StaticRouter>.
+export function AppShell() {
   return (
-    <Router>
+    <>
       <AnalyticsTracker />
       <SeoManager />
       <div className="flex flex-col min-h-screen">
@@ -159,6 +161,14 @@ export default function App() {
         {/* Festive footer or the regular one: switch in src/config/homepage.ts */}
         <Suspense fallback={null}>{FOOTERS[homeTheme()]}</Suspense>
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppShell />
     </Router>
   );
 }

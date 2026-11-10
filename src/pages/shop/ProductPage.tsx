@@ -81,6 +81,8 @@ export default function ProductPage() {
   const [uploadError, setUploadError] = useState('');
   const [added, setAdded] = useState(false);
   const [showBar, setShowBar] = useState(false);
+  const [mounted, setMounted] = useState(false); // the sticky bar lives in <body>, which only exists in the browser
+  useEffect(() => setMounted(true), []);
   const buyRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -370,7 +372,7 @@ export default function ProductPage() {
       </div>
 
       {/* Sticky buy bar (in <body>: the page-transition wrapper is transformed, which breaks position: fixed) */}
-      {createPortal(<div className={`fixed inset-x-0 bottom-0 z-40 border-t bg-white/95 backdrop-blur transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`} style={{ borderColor: C.line }}>
+      {mounted && createPortal(<div className={`fixed inset-x-0 bottom-0 z-40 border-t bg-white/95 backdrop-blur transition-transform duration-300 ${showBar ? 'translate-y-0' : 'translate-y-full'}`} style={{ borderColor: C.line }}>
         <div className="mx-auto flex max-w-[1280px] items-center gap-3 px-4 py-3 sm:px-8">
           <img src={asset(product.image)} alt="" className="hidden h-12 w-12 rounded-lg object-cover sm:block" />
           <div className="min-w-0 flex-1">

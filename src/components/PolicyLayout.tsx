@@ -4,7 +4,6 @@ import content from "../content/pages/policy-layout.json";
 const { layout } = content;
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
   .pol-root {
     max-width: 860px;
