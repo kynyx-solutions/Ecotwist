@@ -7,6 +7,7 @@
     "gstRate": 18,
     "freeDeliveryAbove": 999,
     "deliveryFee": 150,
+    "maxOnlinePayment": 500000,
     "brandingOptions": ["Logo print", "Logo engraving", "Company name only", "No branding"],
     "note": "Prices are per kit and include standard logo branding. GST is added at checkout. Delivery is free on orders above ₹999, otherwise ₹150."
   },

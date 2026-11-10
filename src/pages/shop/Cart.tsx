@@ -104,6 +104,9 @@ export default function Cart() {
   const cartKey = JSON.stringify(lines.map((l) => [l.id, l.quantity, l.branding, l.brandText, l.logoPath]));
   useEffect(() => { if (pending && pending.cartKey !== cartKey) setPending(null); }, [cartKey, pending]);
   const quoteOnly = totals.quoteItems > 0;
+  // Above the online payment limit: the order is placed and paid by bank transfer against a GST invoice
+  const invoiceOnly = !quoteOnly && settings.maxOnlinePayment > 0 && totals.total > settings.maxOnlinePayment;
+  const offline = quoteOnly || invoiceOnly;
   const busy = step !== 'idle';
   const set = (k: keyof typeof form) => (e: { target: { value: string } }) => setForm({ ...form, [k]: e.target.value });
 
@@ -145,9 +148,9 @@ export default function Cart() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok || !json.success) throw new Error(json.error ?? 'Could not place your order. Please try again or email info@ecotwist.in.');
-      if (json.quote) {
+      if (json.quote || json.invoice) {
         cart.clear();
-        return navigate(`/order-placed?order=${encodeURIComponent(json.order)}&email=${encodeURIComponent(form.email)}&quote=1`);
+        return navigate(`/order-placed?order=${encodeURIComponent(json.order)}&email=${encodeURIComponent(form.email)}&${json.quote ? 'quote' : 'invoice'}=1`);
       }
       await pay(json.order, json.payment);
     } catch (err) {
@@ -214,21 +217,26 @@ export default function Cart() {
             {error && <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-800">{error}</p>}
             <button type="submit" disabled={busy}
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-full py-4 text-[15px] font-bold uppercase tracking-[0.12em] text-white transition hover:opacity-90 disabled:opacity-60" style={{ background: C.olive }}>
-              {busy ? <Loader2 size={18} className="animate-spin" /> : quoteOnly ? null : <Lock size={16} />}
+              {busy ? <Loader2 size={18} className="animate-spin" /> : offline ? null : <Lock size={16} />}
               {step === 'saving' ? 'Saving your order…' : step === 'paying' ? 'Waiting for payment…' : step === 'verifying' ? 'Confirming payment…'
-                : quoteOnly ? 'Request quote' : `Pay ${inr(totals.total)} securely`}
+                : quoteOnly ? 'Request quote' : invoiceOnly ? 'Place order · pay by invoice' : `Pay ${inr(totals.total)} securely`}
             </button>
             {quoteOnly ? (
               <p className="mt-3 text-center text-xs" style={{ color: C.muted }}>Your cart has a 500+ item, so we will email a quote instead of taking payment now.</p>
+            ) : invoiceOnly ? (
+              <p className="mt-3 text-center text-xs" style={{ color: C.muted }}>Orders above {inr(settings.maxOnlinePayment)} are paid by bank transfer. We email a GST invoice within 1 working day.</p>
             ) : (
               <div className="mt-3 flex items-center justify-center gap-1.5 text-xs" style={{ color: C.muted }}>
                 <ShieldCheck size={14} style={{ color: C.leaf }} /> Secured by Razorpay · UPI, cards, net banking, wallets
               </div>
             )}
             <ol className="mt-6 space-y-2 border-t pt-5 text-sm leading-6" style={{ color: C.muted, borderColor: C.line }}>
-              <li><b style={{ color: C.ink }}>1.</b> {quoteOnly ? 'We email your quote and a branded mockup within 2 working days.' : 'Pay now; your order is confirmed instantly.'}</li>
-              <li><b style={{ color: C.ink }}>2.</b> {quoteOnly ? 'You approve and pay; we start production.' : 'We email a branded mockup within 2 working days.'}</li>
-              <li><b style={{ color: C.ink }}>3.</b> {quoteOnly ? 'We deliver, with a GST invoice.' : 'You approve it, and we produce and deliver with a GST invoice.'}</li>
+              {(quoteOnly
+                ? ['We email your quote and a branded mockup within 2 working days.', 'You approve and pay; we start production.', 'We deliver, with a GST invoice.']
+                : invoiceOnly
+                  ? ['We email a GST invoice with bank details within 1 working day.', 'Once paid, we send your branded mockup.', 'You approve it, and we produce and deliver.']
+                  : ['Pay now; your order is confirmed instantly.', 'We email a branded mockup within 2 working days.', 'You approve it, and we produce and deliver with a GST invoice.']
+              ).map((t, i) => <li key={i}><b style={{ color: C.ink }}>{i + 1}.</b> {t}</li>)}
             </ol>
           </div>
         </aside>

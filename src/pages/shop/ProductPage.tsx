@@ -142,7 +142,7 @@ export default function ProductPage() {
 
   const addToCart = (goToCart = false) => {
     cart.add({
-      id: product.id, quantity, branding, brandText: needsText(branding) ? brandText.trim() : '',
+      id: product.id, quantity: QUANTITY_OPTIONS.includes(quantity) ? quantity : QUANTITY_OPTIONS[0], branding, brandText: needsText(branding) ? brandText.trim() : '',
       logoPath: needsLogo(branding) ? logo?.path ?? '' : '', logoName: needsLogo(branding) ? logo?.name ?? '' : '', notes: '',
     });
     if (goToCart) navigate('/cart');

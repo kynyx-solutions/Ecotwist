@@ -11,6 +11,7 @@ export const config = { api: { bodyParser: false } };
 // Read the request stream before touching req.body: Vercel parses req.body lazily,
 // and parsing consumes the stream (the signature needs the exact original bytes).
 async function rawBody(req) {
+  if (typeof req.rawBody === 'string') return req.rawBody; // dev server (scripts/vite-plugin-api.js) already read it
   const chunks = [];
   for await (const c of req) chunks.push(typeof c === 'string' ? Buffer.from(c) : c);
   return Buffer.concat(chunks).toString('utf8');

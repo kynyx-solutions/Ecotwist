@@ -25,6 +25,15 @@ const REQUIRED = ['name', 'company', 'email', 'phone', 'address', 'city', 'pinco
 
 const limited = rateLimiter(5, 10 * 60 * 1000); // 5 orders per IP per 10 minutes
 
+// Razorpay prefills the mobile only in +<country><number> form; 10-digit numbers are Indian
+const phoneE164 = (p) => {
+  const d = String(p ?? '').replace(/[^\d+]/g, '');
+  if (d.startsWith('+')) return d;
+  if (/^0?[6-9]\d{9}$/.test(d)) return '+91' + d.slice(-10);
+  if (/^91[6-9]\d{9}$/.test(d)) return '+' + d;
+  return d;
+};
+
 const fail = (res, status, error) => res.status(status).json({ success: false, error });
 const str = (v, max) => {
   const s = v == null ? '' : String(v).trim();
@@ -129,14 +138,18 @@ export default async function handler(req, res) {
 
   // Priced orders are paid now through Razorpay; carts with a 500+ line are quote requests
   const quoteRequest = items.some((i) => i.quote_only);
-  if (!quoteRequest && !razorpayKeys()) return fail(res, 500, 'Online payment is not set up yet. Please email info@ecotwist.in.');
-  if (!quoteRequest && total < 1) return fail(res, 400, 'Your order total is zero.');
+  // Above the Razorpay per-payment limit: save it and send a GST invoice for bank transfer instead
+  const maxOnline = Number(settings.maxOnlinePayment ?? 0);
+  let invoiceRequest = !quoteRequest && maxOnline > 0 && total > maxOnline;
+  const offline = () => quoteRequest || invoiceRequest;
+  if (!offline() && !razorpayKeys()) return fail(res, 500, 'Online payment is not set up yet. Please email info@ecotwist.in.');
+  if (!offline() && total < 1) return fail(res, 400, 'Your order total is zero.');
 
   const { data: order, error } = await db.from('orders').insert({
     customer_id: customerId,
     source: 'store',
-    status: quoteRequest ? 'new' : 'awaiting_payment',
-    occasion: quoteRequest ? 'Website quote request' : 'Website store',
+    status: offline() ? 'new' : 'awaiting_payment',
+    occasion: quoteRequest ? 'Website quote request' : invoiceRequest ? 'Website order (invoice / bank transfer)' : 'Website store',
     items,
     gst_rate: gstRate,
     delivery_fee: deliveryFee,
@@ -153,10 +166,11 @@ export default async function handler(req, res) {
   }
   const orderNo = `ECO-${order.number}`;
 
-  if (quoteRequest) {
-    await sendOrderEmails(db, order, { paid: false }).catch((e) => console.error('[store/order] email failed', e));
-    return res.status(200).json({ success: true, order: orderNo, quote: true });
-  }
+  const offlineReply = async (row) => {
+    await sendOrderEmails(db, row, { paid: false, invoice: invoiceRequest }).catch((e) => console.error('[store/order] email failed', e));
+    return res.status(200).json({ success: true, order: orderNo, quote: quoteRequest, invoice: invoiceRequest });
+  };
+  if (offline()) return offlineReply(order);
 
   // Razorpay order for the exact total (in paise); the browser opens Checkout with it
   try {
@@ -174,11 +188,17 @@ export default async function handler(req, res) {
         razorpayOrderId: rzp.id,
         amount: rzp.amount,
         currency: rzp.currency,
-        prefill: { name: contact.name, email: contact.email, contact: contact.phone },
+        prefill: { name: contact.name, email: contact.email, contact: phoneE164(contact.phone) },
       },
     });
   } catch (e) {
     console.error('[store/order] razorpay order failed', e);
+    // Razorpay's own per-payment limit can be lower than our setting: fall back to an invoice
+    if (/maximum amount/i.test(e.message)) {
+      invoiceRequest = true;
+      const { data: row } = await db.from('orders').update({ status: 'new', occasion: 'Website order (invoice / bank transfer)' }).eq('id', order.id).select('*').single();
+      return offlineReply(row ?? order);
+    }
     await db.from('orders').update({ status: 'cancelled', notes: `${contact.notes}\n[Payment could not start: ${e.message}]`.trim() }).eq('id', order.id);
     return fail(res, 502, 'Online payment could not start. Please try again in a minute or email info@ecotwist.in.');
   }

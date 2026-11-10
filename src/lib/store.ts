@@ -68,7 +68,10 @@ let lines: CartLine[] = read();
 function read(): CartLine[] {
   try {
     const raw = JSON.parse(localStorage.getItem(KEY) ?? '[]');
-    return Array.isArray(raw) ? raw.filter((l) => productById(l.id)) : [];
+    // Drop removed products; fix quantities that are no longer offered
+    return Array.isArray(raw)
+      ? raw.filter((l) => productById(l.id)).map((l) => (QUANTITY_OPTIONS.includes(String(l.quantity)) ? l : { ...l, quantity: QUANTITY_OPTIONS[0] }))
+      : [];
   } catch {
     return [];
   }

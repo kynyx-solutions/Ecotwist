@@ -49,7 +49,8 @@ export async function payWithRazorpay(p: PaymentStart, orderNo: string): Promise
       currency: p.currency,
       name: 'Ecotwist',
       description: `Order ${orderNo}`,
-      image: `${location.origin}/site/navigation/logo.png`,
+      // Razorpay fetches the logo itself, so it must be a public address (not localhost)
+      image: 'https://ecotwist.in/site/navigation/logo.png',
       prefill: p.prefill,
       notes: { order_no: orderNo },
       theme: { color: '#38461B' },

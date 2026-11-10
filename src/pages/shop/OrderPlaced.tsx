@@ -12,19 +12,22 @@ export default function OrderPlaced() {
   const order = params.get('order') ?? '';
   const email = params.get('email') ?? '';
   const quote = params.get('quote') === '1';
+  const invoice = params.get('invoice') === '1';
   const pending = params.get('pending') === '1';
   const Icon = pending ? Clock : CheckCircle2;
   return (
     <div className="flex min-h-[75vh] flex-col items-center justify-center px-4 pb-20 pt-32 text-center" style={{ background: C.cream }}>
       <Icon size={48} style={{ color: C.olive }} />
       <h1 className="mt-5 font-serif text-4xl sm:text-5xl" style={{ color: C.ink }}>
-        {quote ? 'Quote request received' : pending ? 'Payment received, confirming…' : 'Payment successful'}
+        {quote ? 'Quote request received' : invoice ? 'Order received' : pending ? 'Payment received, confirming…' : 'Payment successful'}
       </h1>
       {order && <p className="mt-3 text-lg" style={{ color: C.ink }}>Order <b>{order}</b></p>}
       <p className="mt-4 max-w-lg leading-7" style={{ color: C.muted }}>
-        {email ? <>{quote || !pending ? 'A confirmation is on its way to ' : 'You will get a confirmation at '}<b>{email}</b>. </> : null}
+        {email ? <>{quote || invoice || !pending ? 'A confirmation is on its way to ' : 'You will get a confirmation at '}<b>{email}</b>. </> : null}
         {quote
           ? 'Within 2 working days we will email you a quote and a branded mockup.'
+          : invoice
+            ? 'Within 1 working day we will email a GST invoice with our bank details. Once the payment arrives, we send your branded mockup and start production.'
           : pending
             ? 'Your bank confirmed the payment and we are finishing the check. This usually takes a few minutes; there is no need to pay again.'
             : 'Within 2 working days we will email a branded mockup for your approval, then produce and deliver your gifts with a GST invoice.'}

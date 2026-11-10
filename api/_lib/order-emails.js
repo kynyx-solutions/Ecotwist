@@ -34,7 +34,7 @@ function table(order) {
     <tr><td colspan="2" style="padding:4px 12px 0 0;text-align:right"><b>${quote ? 'Total (excl. quoted items)' : 'Total'}</b></td><td style="padding-top:4px;text-align:right"><b>${inr(total)}</b></td></tr></table>`;
 }
 
-export async function sendOrderEmails(db, order, { paid }) {
+export async function sendOrderEmails(db, order, { paid, invoice = false }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
   const c = order.contact ?? {};
@@ -48,8 +48,8 @@ export async function sendOrderEmails(db, order, { paid }) {
       from: process.env.ALERT_FROM_EMAIL || 'Ecotwist <onboarding@resend.dev>',
       to: team,
       reply_to: c.email,
-      subject: paid ? `Paid order ${orderNo}: ${c.company} (${inr(order.total_amount)})` : `Quote request ${orderNo}: ${c.company}`,
-      html: `<h2 style="font-family:sans-serif">${paid ? `New paid order ${orderNo}` : `New 500+ quote request ${orderNo}`}</h2>
+      subject: paid ? `Paid order ${orderNo}: ${c.company} (${inr(order.total_amount)})` : invoice ? `Invoice needed ${orderNo}: ${c.company} (${inr(order.total_amount)}, bank transfer)` : `Quote request ${orderNo}: ${c.company}`,
+      html: `<h2 style="font-family:sans-serif">${paid ? `New paid order ${orderNo}` : invoice ? `New order ${orderNo}: send a GST invoice for bank transfer (above the online payment limit)` : `New 500+ quote request ${orderNo}`}</h2>
         <p style="font-family:sans-serif">${esc(c.name)} · ${esc(c.company)} · ${esc(c.email)} · ${esc(c.phone)}${c.gstin ? ` · GST ${esc(c.gstin)}` : ''}</p>
         ${table(order)}
         <p style="font-family:sans-serif"><a href="https://ecotwist.in/admin/orders/${order.id}">Open the order in admin</a> to download logos and send the mockup.</p>`,
@@ -61,7 +61,7 @@ export async function sendOrderEmails(db, order, { paid }) {
     from: process.env.MAIL_FROM || process.env.ALERT_FROM_EMAIL || 'Ecotwist <onboarding@resend.dev>',
     to: [c.email],
     reply_to: team[0],
-    subject: paid ? `Payment received: your Ecotwist order ${orderNo}` : `We've received your quote request ${orderNo}`,
+    subject: paid ? `Payment received: your Ecotwist order ${orderNo}` : invoice ? `We've received your order ${orderNo}` : `We've received your quote request ${orderNo}`,
     html: `<div style="font-family:sans-serif;font-size:15px;line-height:1.6;max-width:560px">
       <h2>Thank you, ${esc(String(c.name ?? '').split(' ')[0])}!</h2>
       ${paid
@@ -69,7 +69,9 @@ export async function sendOrderEmails(db, order, { paid }) {
            <ol><li>Within 2 working days we email a mockup showing your branding.</li>
            <li>Once you approve it, we produce your gifts.</li>
            <li>We deliver them with a GST invoice.</li></ol>`
-        : `<p>We've received your quote request <b>${orderNo}</b> for ${esc(c.company)}. We will email you a quote and a branded mockup within 2 working days.</p>`}
+        : invoice
+          ? `<p>We've received order <b>${orderNo}</b> for ${esc(c.company)} (${inr(order.total_amount)}). Within 1 working day we will email a GST invoice with our bank details. Once the payment arrives, we send your branded mockup and start production.</p>`
+          : `<p>We've received your quote request <b>${orderNo}</b> for ${esc(c.company)}. We will email you a quote and a branded mockup within 2 working days.</p>`}
       ${table(order)}
       <p>Questions? Just reply to this email or WhatsApp +91 70913 23777.</p>
       <p>Team Ecotwist</p></div>`,
