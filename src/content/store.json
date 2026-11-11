@@ -1,14 +1,34 @@
 {
-  "_meta": { "label": "Online store", "route": "/shop" },
+  "_meta": {
+    "label": "Online store",
+    "route": "/shop"
+  },
   "settings": {
-    "quantities": [25, 50, 100, 200, 500],
+    "quantities": [
+      25,
+      50,
+      100,
+      200,
+      500
+    ],
     "quoteOnlyLabel": "500+",
-    "discounts": { "25": 0, "50": 0, "100": 0, "200": 0, "500": 0 },
+    "discounts": {
+      "25": 0,
+      "50": 0,
+      "100": 0,
+      "200": 0,
+      "500": 0
+    },
     "gstRate": 18,
     "freeDeliveryAbove": 999,
     "deliveryFee": 150,
     "maxOnlinePayment": 500000,
-    "brandingOptions": ["Logo print", "Logo engraving", "Company name only", "No branding"],
+    "brandingOptions": [
+      "Logo print",
+      "Logo engraving",
+      "Company name only",
+      "No branding"
+    ],
     "note": "Prices are per kit and include standard logo branding. GST is added at checkout. Delivery is free on orders above ₹999, otherwise ₹150."
   },
   "products": [
@@ -18,7 +38,12 @@
       "contents": "Cork diary, cork pen and 2 seed pencils in a kraft box",
       "image": "/new-year-home/kit-desk-essentials.webp",
       "price": 599,
-      "occasions": ["New Year", "Earth Day", "Christmas", "Onboarding"],
+      "occasions": [
+        "New Year",
+        "Earth Day",
+        "Christmas",
+        "Onboarding"
+      ],
       "active": true,
       "featured": true
     },
@@ -28,7 +53,12 @@
       "contents": "Set of 3 soya wax candles, recycled notepad and a message card",
       "image": "/new-year-home/kit-calm-candle.webp",
       "price": 699,
-      "occasions": ["New Year", "Women's Day", "Festive", "Wellness"],
+      "occasions": [
+        "New Year",
+        "Women's Day",
+        "Festive",
+        "Wellness"
+      ],
       "active": true,
       "featured": true
     },
@@ -38,7 +68,11 @@
       "contents": "Two jars of premium dry fruits in a keepsake box, with a seed-pencil greeting card",
       "image": "/new-year-home/kit-classic-2-jar.webp",
       "price": 699,
-      "occasions": ["New Year", "Client Appreciation", "Festive"],
+      "occasions": [
+        "New Year",
+        "Client Appreciation",
+        "Festive"
+      ],
       "active": true,
       "featured": true
     },
@@ -48,7 +82,12 @@
       "contents": "Bamboo bottle with tea infuser, recycled planner, 2 paper pens and seed pencils",
       "image": "/new-year-home/kit-bamboo-workday.webp",
       "price": 999,
-      "occasions": ["New Year", "Earth Day", "Onboarding", "Events"],
+      "occasions": [
+        "New Year",
+        "Earth Day",
+        "Onboarding",
+        "Events"
+      ],
       "active": true,
       "featured": true
     },
@@ -58,7 +97,10 @@
       "contents": "Cork-and-denim diary, cork pen, bamboo bottle and cork keyring in a magnetic box",
       "image": "/new-year-home/kit-onboarding.webp",
       "price": 1199,
-      "occasions": ["New Year", "Onboarding"],
+      "occasions": [
+        "New Year",
+        "Onboarding"
+      ],
       "active": true,
       "featured": true
     },
@@ -68,7 +110,14 @@
       "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen, bamboo bottle and a soya candle",
       "image": "/new-year-home/kit-executive.webp",
       "price": 2199,
-      "occasions": ["New Year", "Christmas", "Client Appreciation", "Festive", "Work Anniversary", "Awards"],
+      "occasions": [
+        "New Year",
+        "Christmas",
+        "Client Appreciation",
+        "Festive",
+        "Work Anniversary",
+        "Awards"
+      ],
       "active": true,
       "featured": true
     },
@@ -78,7 +127,12 @@
       "contents": "Soya wax candle, 2 seed pencils and a Christmas card",
       "image": "/kits/candles-4.webp",
       "price": 299,
-      "occasions": ["Women's Day", "Christmas", "Wellness", "Birthday"],
+      "occasions": [
+        "Women's Day",
+        "Christmas",
+        "Wellness",
+        "Birthday"
+      ],
       "active": true,
       "featured": true
     },
@@ -88,7 +142,9 @@
       "contents": "Cork-and-denim diary, cork pen, seed pencils and a card",
       "image": "/kits/cork-diary-pen-flatlay.webp",
       "price": 749,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -98,7 +154,10 @@
       "contents": "Bamboo bottle with tea infuser, 3 soya candles and a recycled journal",
       "image": "/kits/bamboo-bottle-infuser.webp",
       "price": 1099,
-      "occasions": ["Women's Day", "Wellness"],
+      "occasions": [
+        "Women's Day",
+        "Wellness"
+      ],
       "active": true,
       "featured": false
     },
@@ -108,7 +167,9 @@
       "contents": "Two jars of premium dry fruits, a 3-candle set and a card",
       "image": "/kits/jar-box-2-palace.webp",
       "price": 1199,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -118,7 +179,9 @@
       "contents": "Velvet 3-jar dry fruit box, cork diary and pen, candle set",
       "image": "/kits/jar-box-3-velvet.webp",
       "price": 1999,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -128,7 +191,9 @@
       "contents": "Organic cotton tote, insulated tumbler and a notebook",
       "image": "/site/employee-onboarding/sustainable-tote.png",
       "price": 899,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -138,7 +203,9 @@
       "contents": "Handmade ceramic mug, herbal tea, coaster and a soya candle",
       "image": "/site/client-appreciation/artisanal-curations.png",
       "price": 1299,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -148,7 +215,9 @@
       "contents": "Bath salts, scented candle, face towel and herbal tea in a gift box",
       "image": "/site/diwali-gifting/wellness-hamper.png",
       "price": 1499,
-      "occasions": ["Women's Day"],
+      "occasions": [
+        "Women's Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -158,7 +227,9 @@
       "contents": "2 seed pencils, recycled paper pen and a recycled writing pad",
       "image": "/kits/seed-pencils.webp",
       "price": 199,
-      "occasions": ["Earth Day"],
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -168,7 +239,10 @@
       "contents": "Cork pen and cork keyring in a kraft box",
       "image": "/kits/cork-pens.webp",
       "price": 249,
-      "occasions": ["Earth Day", "Birthday"],
+      "occasions": [
+        "Earth Day",
+        "Birthday"
+      ],
       "active": true,
       "featured": false
     },
@@ -177,8 +251,10 @@
       "name": "Recycled Paper Set",
       "contents": "Recycled daily planner, writing pad, paper pens and seed pencils",
       "image": "/kits/paper-pen.webp",
-      "price": 349,
-      "occasions": ["Earth Day"],
+      "price": 1,
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -188,7 +264,9 @@
       "contents": "Cork-and-denim diary, cork pen, bamboo bottle and cork keyring in a magnetic box",
       "image": "/kits/cork-denim-diary-branded.webp",
       "price": 1199,
-      "occasions": ["Earth Day"],
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -198,7 +276,9 @@
       "contents": "Succulent in a recycled pot, seed pencils and a care card",
       "image": "/site/client-appreciation/the-catalyst.png",
       "price": 499,
-      "occasions": ["Earth Day"],
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -208,7 +288,9 @@
       "contents": "Organic cotton tote, reusable cup and a notebook",
       "image": "/site/employee-onboarding/sustainable-tote.png",
       "price": 749,
-      "occasions": ["Earth Day"],
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -218,7 +300,9 @@
       "contents": "Recycled glass bottle with sleeve and a bamboo straw",
       "image": "/site/employee-onboarding/recycled-glass-bottle.png",
       "price": 899,
-      "occasions": ["Earth Day"],
+      "occasions": [
+        "Earth Day"
+      ],
       "active": true,
       "featured": false
     },
@@ -228,7 +312,9 @@
       "contents": "Cork pen and cork keyring in a kraft box",
       "image": "/kits/cork-pens.webp",
       "price": 249,
-      "occasions": ["Christmas"],
+      "occasions": [
+        "Christmas"
+      ],
       "active": true,
       "featured": false
     },
@@ -238,7 +324,9 @@
       "contents": "Two jars of premium dry fruits or chocolates in a keepsake box",
       "image": "/kits/jar-box-2-navy.webp",
       "price": 699,
-      "occasions": ["Christmas"],
+      "occasions": [
+        "Christmas"
+      ],
       "active": true,
       "featured": false
     },
@@ -248,7 +336,10 @@
       "contents": "Velvet 3-jar box with a soya candle set and a card",
       "image": "/kits/jar-box-3-velvet.webp",
       "price": 1299,
-      "occasions": ["Christmas", "Festive"],
+      "occasions": [
+        "Christmas",
+        "Festive"
+      ],
       "active": true,
       "featured": true
     },
@@ -258,7 +349,9 @@
       "contents": "Plum cake, cookies and chocolates with a Christmas card",
       "image": "/site/diwali-gifting/gourmet-hamper.png",
       "price": 799,
-      "occasions": ["Christmas"],
+      "occasions": [
+        "Christmas"
+      ],
       "active": true,
       "featured": false
     },
@@ -268,7 +361,9 @@
       "contents": "Ceramic mug, hot cocoa mix and cookies",
       "image": "/site/employee-onboarding/artisan-ceramic-mug.png",
       "price": 999,
-      "occasions": ["Christmas"],
+      "occasions": [
+        "Christmas"
+      ],
       "active": true,
       "featured": false
     },
@@ -278,7 +373,9 @@
       "contents": "Bottle, journal, candle and treats in a celebration box",
       "image": "/site/client-appreciation/grand-celebration.png",
       "price": 2499,
-      "occasions": ["Christmas"],
+      "occasions": [
+        "Christmas"
+      ],
       "active": true,
       "featured": false
     },
@@ -288,7 +385,9 @@
       "contents": "Cork diary, cork pen, cork keyring and a seed pencil",
       "image": "/kits/cork-diary-pen.webp",
       "price": 649,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -298,7 +397,9 @@
       "contents": "Bamboo bottle with tea infuser, recycled planner, paper pens",
       "image": "/kits/bamboo-bottle-infuser.webp",
       "price": 999,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -308,7 +409,9 @@
       "contents": "Velvet 3-jar dry fruit box with a soya candle set",
       "image": "/kits/jar-box-3-velvet.webp",
       "price": 1299,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -318,7 +421,9 @@
       "contents": "Cork diary, cork pen and a 2-jar dry fruit box",
       "image": "/kits/jar-box-2-white.webp",
       "price": 1399,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -328,7 +433,9 @@
       "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen, bamboo bottle",
       "image": "/kits/jar-box-4-navy.webp",
       "price": 2199,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -338,7 +445,9 @@
       "contents": "6-jar dry fruit box, candle set, cork diary and pen in a pinewood basket",
       "image": "/kits/pinewood-basket.webp",
       "price": 3499,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -348,7 +457,9 @@
       "contents": "Crystal or wooden trophy engraved with the partner name and year",
       "image": "/site/work-anniversary/years-of-service-awards.png",
       "price": 899,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -358,7 +469,9 @@
       "contents": "Eco-leather notebook, metal pen and cardholder in a gift box",
       "image": "/site/employee-onboarding/eco-leather-notebook.png",
       "price": 1999,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -368,7 +481,9 @@
       "contents": "Wireless charger, bamboo phone stand, cork mouse pad and notebook",
       "image": "/site/client-appreciation/custom-tech.png",
       "price": 2499,
-      "occasions": ["Channel Partners"],
+      "occasions": [
+        "Channel Partners"
+      ],
       "active": true,
       "featured": false
     },
@@ -378,7 +493,9 @@
       "contents": "Organic Linen & Essential Oils",
       "image": "/site/diwali-gifting/wellness-hamper.png",
       "price": 2499,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -388,7 +505,9 @@
       "contents": "Artisanal Coffee & Copper Press",
       "image": "/site/client-appreciation/morning-ritual.jpg",
       "price": 1999,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -398,7 +517,9 @@
       "contents": "Recycled Leather & Brass Stylus",
       "image": "/site/client-appreciation/the-catalyst.png",
       "price": 1499,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -408,7 +529,9 @@
       "contents": "Vintage Cuvee & Cocoa Nib Truffles",
       "image": "/site/client-appreciation/grand-celebration.png",
       "price": 3499,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -418,7 +541,9 @@
       "contents": "Cork diary, cork pen and a 2-jar dry fruit box",
       "image": "/kits/jar-box-2-white.webp",
       "price": 1399,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -428,7 +553,9 @@
       "contents": "6-jar dry fruits, candles, cork diary and pen in a pinewood basket",
       "image": "/kits/pinewood-basket.webp",
       "price": 3499,
-      "occasions": ["Client Appreciation"],
+      "occasions": [
+        "Client Appreciation"
+      ],
       "active": true,
       "featured": false
     },
@@ -438,7 +565,9 @@
       "contents": "Sustainable Craftsmanship",
       "image": "/site/employee-onboarding/eco-leather-notebook.png",
       "price": null,
-      "occasions": ["Onboarding"],
+      "occasions": [
+        "Onboarding"
+      ],
       "active": true,
       "featured": false
     },
@@ -448,7 +577,9 @@
       "contents": "Mindful Hydration",
       "image": "/site/employee-onboarding/recycled-glass-bottle.png",
       "price": null,
-      "occasions": ["Onboarding"],
+      "occasions": [
+        "Onboarding"
+      ],
       "active": true,
       "featured": false
     },
@@ -458,7 +589,9 @@
       "contents": "Daily Versatility",
       "image": "/site/employee-onboarding/sustainable-tote.png",
       "price": null,
-      "occasions": ["Onboarding"],
+      "occasions": [
+        "Onboarding"
+      ],
       "active": true,
       "featured": false
     },
@@ -468,7 +601,9 @@
       "contents": "Morning Rituals",
       "image": "/site/employee-onboarding/artisan-ceramic-mug.png",
       "price": null,
-      "occasions": ["Onboarding"],
+      "occasions": [
+        "Onboarding"
+      ],
       "active": true,
       "featured": false
     },
@@ -478,7 +613,10 @@
       "contents": "cork diary, pen, keyring, seed pencil",
       "image": "/kits/cork-diary-pen.webp",
       "price": 649,
-      "occasions": ["Onboarding", "Events"],
+      "occasions": [
+        "Onboarding",
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -488,7 +626,9 @@
       "contents": "Traditional meets Sustainable",
       "image": "/site/diwali-gifting/dry-fruit.png",
       "price": null,
-      "occasions": ["Festive"],
+      "occasions": [
+        "Festive"
+      ],
       "active": true,
       "featured": false
     },
@@ -498,7 +638,9 @@
       "contents": "Mindful Restoration",
       "image": "/site/diwali-gifting/wellness-hamper.png",
       "price": null,
-      "occasions": ["Festive"],
+      "occasions": [
+        "Festive"
+      ],
       "active": true,
       "featured": false
     },
@@ -508,7 +650,9 @@
       "contents": "Culinary Excellence",
       "image": "/site/diwali-gifting/gourmet-hamper.png",
       "price": null,
-      "occasions": ["Festive"],
+      "occasions": [
+        "Festive"
+      ],
       "active": true,
       "featured": false
     },
@@ -518,7 +662,9 @@
       "contents": "Modern Sophistication",
       "image": "/site/diwali-gifting/premium-packaging.png",
       "price": null,
-      "occasions": ["Festive"],
+      "occasions": [
+        "Festive"
+      ],
       "active": true,
       "featured": false
     },
@@ -528,7 +674,9 @@
       "contents": "Borosilicate & Bamboo",
       "image": "/site/events-conferences/glass-carafe.png",
       "price": null,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -538,7 +686,9 @@
       "contents": "Sustainable FSC Paper",
       "image": "/site/events-conferences/bamboo-journal.png",
       "price": null,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -548,7 +698,9 @@
       "contents": "Artisan Crafted",
       "image": "/site/events-conferences/ceramic-tumbler.png",
       "price": null,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -558,7 +710,9 @@
       "contents": "GOTS Certified Cotton",
       "image": "/site/events-conferences/canvas-tote.png",
       "price": null,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -568,7 +722,9 @@
       "contents": "writing pad, paper pen, seed pencils, cork keyring",
       "image": "/kits/paper-pen.webp",
       "price": 249,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -578,7 +734,9 @@
       "contents": "cork diary, pen and a 2-jar box",
       "image": "/kits/jar-box-2-white.webp",
       "price": 1399,
-      "occasions": ["Events"],
+      "occasions": [
+        "Events"
+      ],
       "active": true,
       "featured": false
     },
@@ -588,7 +746,9 @@
       "contents": "Insulated bottle, notebook, succulent, candle and herbal tea in a gift box",
       "image": "/site/client-appreciation/the-catalyst.png",
       "price": 1499,
-      "occasions": ["Wellness"],
+      "occasions": [
+        "Wellness"
+      ],
       "active": true,
       "featured": false
     },
@@ -598,7 +758,9 @@
       "contents": "Glass tea press with bamboo lid, loose-leaf tea and a ceramic cup",
       "image": "/site/employee-wellness/tea-press.png",
       "price": 999,
-      "occasions": ["Wellness"],
+      "occasions": [
+        "Wellness"
+      ],
       "active": true,
       "featured": false
     },
@@ -608,7 +770,9 @@
       "contents": "Recycled-material yoga mat with a cotton carry strap",
       "image": "/site/employee-wellness/yoga-mat.png",
       "price": 1299,
-      "occasions": ["Wellness"],
+      "occasions": [
+        "Wellness"
+      ],
       "active": true,
       "featured": false
     },
@@ -618,7 +782,9 @@
       "contents": "Bottle, journal, scented candle and treats in a celebration box",
       "image": "/site/client-appreciation/grand-celebration.png",
       "price": 1499,
-      "occasions": ["Birthday"],
+      "occasions": [
+        "Birthday"
+      ],
       "active": true,
       "featured": false
     },
@@ -628,7 +794,9 @@
       "contents": "Artisan chocolates, cookies and dry fruits in a keepsake box",
       "image": "/site/diwali-gifting/gourmet-hamper.png",
       "price": 999,
-      "occasions": ["Birthday"],
+      "occasions": [
+        "Birthday"
+      ],
       "active": true,
       "featured": false
     },
@@ -638,7 +806,9 @@
       "contents": "Set of 3 hand-poured soya wax candles in a gift box",
       "image": "/kits/candles-3.webp",
       "price": 1199,
-      "occasions": ["Birthday"],
+      "occasions": [
+        "Birthday"
+      ],
       "active": true,
       "featured": false
     },
@@ -648,7 +818,9 @@
       "contents": "Two jars of premium dry fruits with a birthday card from the team",
       "image": "/kits/jar-box-2-navy.webp",
       "price": 899,
-      "occasions": ["Birthday"],
+      "occasions": [
+        "Birthday"
+      ],
       "active": true,
       "featured": false
     },
@@ -658,7 +830,9 @@
       "contents": "Keepsake box with a journal, photo card, pen and a personal note",
       "image": "/site/work-anniversary/milestone-memory-box.png",
       "price": 1799,
-      "occasions": ["Work Anniversary"],
+      "occasions": [
+        "Work Anniversary"
+      ],
       "active": true,
       "featured": false
     },
@@ -668,7 +842,9 @@
       "contents": "Leather folio with notepad and pen, name debossed on the cover",
       "image": "/site/work-anniversary/leather-folio.png",
       "price": 2499,
-      "occasions": ["Work Anniversary"],
+      "occasions": [
+        "Work Anniversary"
+      ],
       "active": true,
       "featured": false
     },
@@ -678,7 +854,9 @@
       "contents": "Live desk plant in a ceramic planter with your logo",
       "image": "/site/work-anniversary/desk-planter.png",
       "price": 999,
-      "occasions": ["Work Anniversary"],
+      "occasions": [
+        "Work Anniversary"
+      ],
       "active": true,
       "featured": false
     },
@@ -688,7 +866,9 @@
       "contents": "Two jars of premium dry fruits with a milestone card",
       "image": "/kits/jar-box-2-navy.webp",
       "price": 699,
-      "occasions": ["Work Anniversary"],
+      "occasions": [
+        "Work Anniversary"
+      ],
       "active": true,
       "featured": false
     },
@@ -698,7 +878,9 @@
       "contents": "Cork-and-denim diary and cork pen with the name and years printed",
       "image": "/kits/cork-denim-diaries.webp",
       "price": 1299,
-      "occasions": ["Work Anniversary"],
+      "occasions": [
+        "Work Anniversary"
+      ],
       "active": true,
       "featured": false
     },
@@ -708,7 +890,9 @@
       "contents": "Premium dry fruits, chocolates, candle and an award card in a gift box",
       "image": "/site/award-recognition/gold-excellence-hamper.jpeg",
       "price": 3499,
-      "occasions": ["Awards"],
+      "occasions": [
+        "Awards"
+      ],
       "active": true,
       "featured": false
     },
@@ -718,7 +902,9 @@
       "contents": "Crystal or wooden trophy engraved with the name, award and year",
       "image": "/site/work-anniversary/years-of-service-awards.png",
       "price": 2999,
-      "occasions": ["Awards"],
+      "occasions": [
+        "Awards"
+      ],
       "active": true,
       "featured": false
     },
@@ -728,7 +914,9 @@
       "contents": "Leather portfolio with notepad, card slots and a metal pen",
       "image": "/site/work-anniversary/leather-folio.png",
       "price": 1999,
-      "occasions": ["Awards"],
+      "occasions": [
+        "Awards"
+      ],
       "active": true,
       "featured": false
     },
@@ -738,7 +926,9 @@
       "contents": "Cork diary, cork pen, cork keyring and a seed pencil",
       "image": "/kits/cork-diary-pen.webp",
       "price": 649,
-      "occasions": ["Awards"],
+      "occasions": [
+        "Awards"
+      ],
       "active": true,
       "featured": false
     },
@@ -748,7 +938,9 @@
       "contents": "Velvet jar box of dry fruits with a cork diary and pen",
       "image": "/kits/jar-box-2-navy.webp",
       "price": 1799,
-      "occasions": ["Awards"],
+      "occasions": [
+        "Awards"
+      ],
       "active": true,
       "featured": false
     },
@@ -758,7 +950,9 @@
       "contents": "Insulated bottle, notebook, plant and treats with your launch card",
       "image": "/site/client-appreciation/the-catalyst.png",
       "price": 1999,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -768,7 +962,9 @@
       "contents": "Wireless charger, power bank and cable organiser with your logo",
       "image": "/site/client-appreciation/custom-tech.png",
       "price": 2999,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -778,7 +974,9 @@
       "contents": "Branded box with notebook, pen, product card and a QR-code insert",
       "image": "/site/diwali-gifting/premium-packaging.png",
       "price": 3499,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -788,7 +986,9 @@
       "contents": "Recycled writing pad, paper pens, seed pencils and a press note",
       "image": "/kits/paper-pen.webp",
       "price": 349,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -798,7 +998,9 @@
       "contents": "Kraft reveal box with bottle, notebook and candle around your product",
       "image": "/kits/kraft-gift-box.webp",
       "price": 1499,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -808,7 +1010,9 @@
       "contents": "4-jar dry fruit box, cork-and-denim diary, cork pen and bamboo bottle",
       "image": "/kits/jar-box-4-navy.webp",
       "price": 2199,
-      "occasions": ["Product Launch"],
+      "occasions": [
+        "Product Launch"
+      ],
       "active": true,
       "featured": false
     },
@@ -818,7 +1022,9 @@
       "contents": "Leather notebook, mug, pen and a keepsake box with the name and years",
       "image": "/site/client-appreciation/personalization.png",
       "price": 3999,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     },
@@ -828,7 +1034,9 @@
       "contents": "Insulated bottle, herbal tea, candle and a hand towel in a gift box",
       "image": "/site/diwali-gifting/wellness-hamper.png",
       "price": 2499,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     },
@@ -838,7 +1046,9 @@
       "contents": "Leather journal with messages from the team and a pen",
       "image": "/site/employee-onboarding/eco-leather-notebook.png",
       "price": 1799,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     },
@@ -848,7 +1058,9 @@
       "contents": "6-jar dry fruit box, candle set, cork diary and pen in a pinewood basket",
       "image": "/kits/pinewood-basket.webp",
       "price": 2499,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     },
@@ -858,7 +1070,9 @@
       "contents": "Set of 6 soya wax candles with dry fruits and a farewell card",
       "image": "/kits/candles-6.webp",
       "price": 1499,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     },
@@ -868,7 +1082,9 @@
       "contents": "Cork-and-denim diary with a page of messages from the team",
       "image": "/kits/cork-denim-diaries.webp",
       "price": 899,
-      "occasions": ["Retirement"],
+      "occasions": [
+        "Retirement"
+      ],
       "active": true,
       "featured": false
     }
