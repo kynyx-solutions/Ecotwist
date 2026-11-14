@@ -5,7 +5,7 @@ import type { Variants } from "framer-motion";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import OurClients from "../components/client";
 import type { OrderProduct } from "./GetProposal";
-import { asset } from "../lib/content";
+import { asset, responsive } from "../lib/content";
 
 /* ============================
    Shared layout for the newer occasion pages (Women's Day, Christmas,
@@ -113,7 +113,7 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
           >
             <div className="rounded-t-full rounded-b-3xl p-[3px]" style={{ background: `linear-gradient(180deg, ${accent}, ${accent}22)` }}>
               <div className="overflow-hidden rounded-t-full rounded-b-[22px] bg-white">
-                <img src={asset(hero.image)} alt={hero.imageAlt} className="aspect-[4/5] w-full object-cover" fetchPriority="high" />
+                <img {...responsive(hero.image, '(min-width: 1024px) 40vw, 90vw')} alt={hero.imageAlt} className="aspect-[4/5] w-full object-cover" fetchPriority="high" />
               </div>
             </div>
           </motion.div>
@@ -171,7 +171,7 @@ export default function OccasionTemplate({ content }: { content: OccasionContent
               >
                 <div className="relative overflow-hidden" style={{ background: light }}>
                   <img
-                    src={asset(kit.image)}
+                    {...responsive(kit.image, '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw')}
                     alt={kit.title}
                     loading="lazy"
                     className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"

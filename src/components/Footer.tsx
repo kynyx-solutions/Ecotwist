@@ -77,6 +77,7 @@ export const Footer = () => {
                 alt={brand.logoAlt}
                 width={257}
                 height={240}
+                loading="lazy"
                 className="h-28 sm:h-32 w-auto object-contain group-hover:scale-105 transition"
               />
 

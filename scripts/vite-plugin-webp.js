@@ -13,6 +13,10 @@
    Heavy photos that are already WebP in public/ (over HEAVY_WEBP bytes) are
    re-encoded the same way in dist/ under the same name, when that saves 15%+.
 
+   Every photo in public/ also gets smaller copies for phones and tablets,
+   <name>.w480.webp, .w768.webp and .w1200.webp, used through srcset by responsive()
+   in src/lib/content.ts. In `npm run dev` those names serve the original.
+
    Converted files are cached in node_modules/.cache/webp, so later builds
    only convert new or changed images.
 ============================ */
@@ -25,6 +29,10 @@ import sharp from 'sharp';
 const MAX_WIDTH = 1600; // px; wider images are scaled down, never up (sharp on a 1440px screen)
 const QUALITY = 80;     // WebP quality: visually the same as the original at normal viewing size
 const HEAVY_WEBP = 150 * 1024;
+const VARIANT_WIDTHS = [480, 768, 1200];
+const VARIANT_QUALITY = 72; // phone/tablet copies: lighter, still clean at that size // keep in sync with RESPONSIVE_WIDTHS in src/lib/content.ts
+const VARIANT_RE = /\.w\d+\.webp$/i;
+const variantName = (rel, w) => rel.replace(/\.(png|jpe?g|webp)$/i, `.w${w}.webp`);
 const IMAGE_RE = /\.(png|jpe?g)$/i;
 const CACHE_DIR = path.resolve('node_modules/.cache/webp');
 const SETTINGS = `w${MAX_WIDTH}-q${QUALITY}`;
@@ -55,6 +63,18 @@ async function toWebp(source, minSaving = 0) {
   return out;
 }
 
+// A smaller copy at one width (never enlarged), cached like the others
+async function toVariant(source, width) {
+  const hash = crypto.createHash('sha1').update(`variant-w${width}-q${VARIANT_QUALITY}`).update(source).digest('hex');
+  const cached = path.join(CACHE_DIR, `${hash}.webp`);
+  if (fs.existsSync(cached)) return fs.readFileSync(cached);
+  const out = await sharp(source).rotate().resize({ width, withoutEnlargement: true })
+    .webp({ quality: VARIANT_QUALITY, alphaQuality: 90, smartSubsample: true, effort: 4 }).toBuffer();
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+  fs.writeFileSync(cached, out);
+  return out;
+}
+
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
     const full = path.join(dir, e.name);
@@ -67,6 +87,7 @@ export function webpPlugin() {
   let publicDir = '';
   let publicFiles = []; // { rel, webp: Buffer }
   let heavyWebps = [];  // { rel, webp: Buffer }: smaller copies of public .webp files, written over the copied originals
+  let variants = [];    // { rel, webp: Buffer }: phone/tablet copies, <name>.w480.webp / .w960.webp
   let renames = [];     // [RegExp, replacement] for public file names
   const stats = { files: 0, before: 0, after: 0 };
 
@@ -118,6 +139,18 @@ export function webpPlugin() {
         return webp && { rel: path.relative(publicDir, file).split(path.sep).join('/'), webp };
       }))).filter(Boolean);
 
+      // Phone and tablet copies of every photo (a few at a time to limit memory)
+      const photos = walk(publicDir).filter((f) => /\.(png|jpe?g|webp)$/i.test(f) && !VARIANT_RE.test(f) && !f.includes(`${path.sep}fonts${path.sep}`));
+      variants = [];
+      for (let i = 0; i < photos.length; i += 8) {
+        const batch = await Promise.all(photos.slice(i, i + 8).map(async (file) => {
+          const source = fs.readFileSync(file);
+          const rel = path.relative(publicDir, file).split(path.sep).join('/');
+          return Promise.all(VARIANT_WIDTHS.map(async (w) => ({ rel: variantName(rel, w), webp: await toVariant(source, w) })));
+        }));
+        variants.push(...batch.flat());
+      }
+
       publicFiles = results
         .filter((r) => r.webp)
         .map((r) => ({ rel: path.relative(publicDir, r.file).split(path.sep).join('/'), webp: r.webp }));
@@ -156,7 +189,7 @@ export function webpPlugin() {
       }
 
       if (stats.files) {
-        this.info(`${heavyWebps.length} heavy WebP photos re-encoded smaller`);
+        this.info(`${heavyWebps.length} heavy WebP photos re-encoded smaller; ${variants.length} phone/tablet copies`);
         const mb = (n) => (n / 1024 / 1024).toFixed(1);
         this.info(`${stats.files} images as WebP: ${mb(stats.before)} MB -> ${mb(stats.after)} MB`);
       }
@@ -165,10 +198,35 @@ export function webpPlugin() {
     // Vite copies public/ as-is; replace the heavy WebPs with their smaller copies
     writeBundle(options) {
       const outDir = options.dir ?? 'dist';
+      for (const { rel, webp } of variants) {
+        const dest = path.join(outDir, rel);
+        if (fs.existsSync(path.dirname(dest)) && outDir !== 'dist-ssr' && !outDir.endsWith('dist-ssr')) fs.writeFileSync(dest, webp);
+      }
       for (const { rel, webp } of heavyWebps) {
         const dest = path.join(outDir, rel);
         if (fs.existsSync(dest)) fs.writeFileSync(dest, webp); // only where public/ was copied (not the pre-render build)
       }
+    },
+  };
+}
+
+// `npm run dev`: the phone/tablet copies only exist after a build, so serve the original
+/** @returns {import('vite').Plugin} */
+export function responsiveDevPlugin() {
+  return {
+    name: 'responsive-dev-fallback',
+    apply: 'serve',
+    configureServer(server) {
+      const publicDir = server.config.publicDir;
+      server.middlewares.use((req, _res, next) => {
+        const m = req.url?.match(/^([^?#]*)\.w\d+\.webp(\?.*)?$/i);
+        if (m) {
+          const base = decodeURIComponent(m[1]);
+          const ext = ['.webp', '.png', '.jpg', '.jpeg'].find((e) => fs.existsSync(path.join(publicDir, base + e)));
+          if (ext) req.url = encodeURI(base + ext);
+        }
+        next();
+      });
     },
   };
 }
