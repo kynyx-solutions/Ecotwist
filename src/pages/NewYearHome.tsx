@@ -355,19 +355,21 @@ function GiftEdit() {
           <motion.div key={item.title} variants={fadeUp}>
             <Link
               to={`/products?category=${encodeURIComponent(item.category)}`}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_60px_-28px_rgba(21,38,15,.45)]"
+              className="group flex h-full flex-col transition duration-500 hover:-translate-y-1"
             >
-              {/* The photo as it is: a plain rectangle, no frame */}
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#EFEAE0]">
-                <img
-                  {...responsive(item.image, "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw")}
-                  alt={item.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                />
+              {/* Arched photo with a gold-to-green rim (same look as the "For your people" image) */}
+              <div className="rounded-t-full rounded-b-lg bg-gradient-to-b from-[#E6C77A] to-[#1F3A16] p-[3px] shadow-[0_30px_60px_-34px_rgba(21,38,15,.55)]">
+                <div className="aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[5px] bg-[#EFEAE0]">
+                  <img
+                    {...responsive(item.image, "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw")}
+                    alt={item.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                </div>
               </div>
-              {/* Text card directly below the photo */}
-              <div className="flex flex-1 flex-col rounded-b-2xl border border-t-0 border-[#E6DCC3] bg-white px-6 pb-6 pt-5">
+              {/* Rectangular text box below the photo */}
+              <div className="mt-4 flex flex-1 flex-col rounded-lg border border-[#E6DCC3] bg-white px-6 pb-6 pt-5 transition group-hover:border-[#E6C77A] group-hover:shadow-[0_20px_40px_-28px_rgba(21,38,15,.4)]">
                 <p className="text-[10px] uppercase tracking-[0.25em] text-[#8A6A2E]">{item.category}</p>
                 <h3 className="mt-1 font-serif text-2xl text-[#17220F]">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-[#4E5A45]">{item.blurb}</p>

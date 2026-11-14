@@ -131,7 +131,7 @@ export function SeoSpeed() {
     // Both at once: each takes 15–40 seconds
     await Promise.all((['mobile', 'desktop'] as Strategy[]).map(async (strategy) => {
       try {
-        const r = await api<SpeedReport>(`/api/admin/pagespeed?url=${encodeURIComponent(url)}&strategy=${strategy}`);
+        const r = await api<SpeedReport>(`/api/admin/seo?tool=pagespeed&url=${encodeURIComponent(url)}&strategy=${strategy}`);
         setReports((prev) => ({ ...prev, [strategy]: r }));
         if (strategy === 'mobile') remember(r);
       } catch (err) {

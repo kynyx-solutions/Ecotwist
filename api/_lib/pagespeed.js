@@ -1,12 +1,8 @@
 // Google PageSpeed Insights for the admin SEO → Speed screen.
-//   GET /api/admin/pagespeed?url=https://ecotwist.in/...&strategy=mobile|desktop
+//   GET /api/admin/seo?tool=pagespeed&url=https://ecotwist.in/...&strategy=mobile|desktop
+// (Routed through api/admin/seo.js, which checks the staff login first.)
 // Returns a trimmed report: scores, Core Web Vitals, top opportunities, failed SEO audits.
 // PAGESPEED_API_KEY (optional) raises Google's rate limit; without it the shared quota is used.
-import { requireStaff } from '../_lib/admin.js';
-
-// PageSpeed often takes 20–40 s
-export const config = { maxDuration: 60 };
-
 const ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 const CATEGORIES = ['performance', 'seo', 'accessibility', 'best-practices'];
 const VITALS = [
@@ -19,9 +15,7 @@ const VITALS = [
 
 const stripLinks = (s = '') => s.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim();
 
-export default async function handler(req, res) {
-  const ctx = await requireStaff(req, res);
-  if (!ctx) return;
+export async function pagespeed(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).json({ error: 'Method not allowed' });
