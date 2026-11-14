@@ -29,6 +29,7 @@ export interface SeoPage {
   image: string;
   noindex: boolean;
   focusKeyword?: string;
+  keywords?: string[]; // other target and trending searches; used in meta keywords and llms.txt
   canonical?: string; // another route this page duplicates, e.g. "/products"
 }
 

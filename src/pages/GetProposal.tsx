@@ -306,7 +306,7 @@ export const GetProposal = () => {
             {product && step !== 1 && (
               <div className="mb-8 flex items-center gap-4 border border-brand-dark-olive/10 bg-white p-3 pr-5 w-fit max-w-full">
                 {product.image && (
-                  <img src={product.image} alt="" className="w-12 h-12 object-cover flex-shrink-0"
+                  <img src={product.image} alt={product.name} className="w-12 h-12 object-cover flex-shrink-0"
                     onError={e => (e.currentTarget.style.display = 'none')} />
                 )}
                 <div className="min-w-0">
@@ -611,7 +611,7 @@ export const GetProposal = () => {
 
                 <img
                   src={img1}
-                  alt=""
+                  alt="Sustainable corporate gift hamper by Ecotwist"
                   className="w-full h-full object-cover"
                   style={{ filter:'grayscale(15%) contrast(1.04)', transition:'filter .9s ease, transform .8s ease' }}
                   onMouseEnter={e => { (e.target as HTMLImageElement).style.filter='grayscale(0%) contrast(1.1)'; (e.target as HTMLImageElement).style.transform='scale(1.05)'; }}
@@ -637,7 +637,7 @@ export const GetProposal = () => {
 
                 <img
                   src={img2}
-                  alt=""
+                  alt="Eco-friendly branded corporate gift set by Ecotwist"
                   className="w-full h-full object-cover"
                   style={{ filter:'grayscale(15%) contrast(1.04)', transition:'filter .9s ease, transform .8s ease' }}
                   onMouseEnter={e => { (e.target as HTMLImageElement).style.filter='grayscale(0%) contrast(1.1)'; (e.target as HTMLImageElement).style.transform='scale(1.05)'; }}

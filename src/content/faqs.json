@@ -1,0 +1,96 @@
+{
+  "_meta": { "label": "FAQs (shown above the footer and given to Google and AI search)" },
+  "heading": "Frequently asked questions",
+  "pages": {
+    "/": [
+      { "q": "What is Ecotwist?", "a": "Ecotwist is a sustainable corporate gifting company based in Patna, India. We design eco-friendly corporate gifts and hampers (cork diaries, bamboo bottles, recycled paper stationery, soya wax candles and dry fruit boxes), brand them with your logo and deliver them across India. 100+ companies in 5+ countries have gifted with us." },
+      { "q": "What is the minimum order for corporate gifts?", "a": "The minimum order is 25 kits. You can buy 25, 50, 100, 200 or 500 kits directly in our online shop, and request a quote for 500+ kits. Every price includes standard logo branding." },
+      { "q": "Can you print or engrave our company logo on the gifts?", "a": "Yes. Every kit can carry your logo as a print or an engraving, or just your company name. Upload your logo in the shop and you will see a live preview on the product; we then email a branded mockup for your approval within 24 hours, before anything is produced." },
+      { "q": "How long does delivery take?", "a": "Custom branded orders are produced in 3–7 business days after you approve the mockup, and delivery takes 3–7 business days across India. Delivery is free on orders above ₹999, otherwise a flat ₹150. We also ship internationally." },
+      { "q": "Which occasions do you make corporate gifts for?", "a": "Employee onboarding, Diwali and festive gifting, New Year, Christmas, client appreciation, events and conferences, employee wellness, birthdays, work anniversaries, awards and recognition, retirement, product launches, Women's Day, Earth Day and dealer or channel partner gifting." },
+      { "q": "Why choose eco-friendly corporate gifts?", "a": "Sustainable gifts are useful for longer, avoid single-use plastic and support your company's ESG and CSR goals. Ecotwist uses plastic-free packaging and artisan-made, natural materials such as cork, bamboo, jute and recycled paper, so the gift reflects well on your brand." }
+    ],
+    "/shop": [
+      { "q": "How do I buy corporate gifts online in bulk?", "a": "Choose a kit, pick a quantity (25, 50, 100, 200 or 500), add your logo or company name, and pay securely by UPI, card or net banking. Within 24 hours we email a branded mockup for your approval, then produce and deliver your gifts with a GST invoice." },
+      { "q": "Are prices per kit, and is GST included?", "a": "Prices are per kit and include standard logo branding. GST at 18% is added at checkout, and you receive a GST invoice for input tax credit." },
+      { "q": "Do you have corporate gifts under ₹500?", "a": "Yes. Kits start at ₹199, and there are several corporate gifts under ₹500, including plantable seed pencil sets, cork keepsakes, Secret Santa duos and conference delegate kits. Use the 'Under ₹500' filter in the shop." },
+      { "q": "What if I need more than 500 kits?", "a": "Choose '500+' as the quantity and send the request. Our team will reply with a custom quote, a branded mockup and a delivery plan; nothing is charged until you approve." }
+    ],
+    "/products": [
+      { "q": "What are your gifts made from?", "a": "Natural and recycled materials: cork, bamboo, jute, recycled paper, soya wax, glass and pinewood, packed without single-use plastic. Many products are made by Indian artisans." },
+      { "q": "Can I order a single product instead of a kit?", "a": "Yes. Any product in the catalogue can be branded and ordered on its own from 25 units. Tell us the product and quantity in a proposal request and we will quote within 24 hours." },
+      { "q": "Can you source a product that isn't listed?", "a": "Yes. We source items to your brief, so if you need a specific product, colour or packaging, share it in your proposal request and we will add it to your kit." }
+    ],
+    "/solutions": [
+      { "q": "What does a corporate gifting service include?", "a": "Ecotwist handles the whole programme: choosing gifts for your budget and occasion, custom logo branding, plastic-free packaging, a branded mockup for approval, production, and pan-India delivery for teams from 25 to 5,000 people." },
+      { "q": "Can you deliver to remote teams and multiple cities?", "a": "Yes. We deliver across India and internationally (we have served clients in 5+ countries). Share your delivery list and we will plan dispatch to each location." },
+      { "q": "Do you help with ESG and CSR gifting?", "a": "Yes. Our gifts use natural and recycled materials and plastic-free packaging, and we can include an impact card explaining the materials, which helps your gifting support ESG and CSR commitments." }
+    ],
+    "/get-proposal": [
+      { "q": "How quickly will I get a proposal?", "a": "Within 24 hours, with gift suggestions for your budget and a branded mockup showing your logo on the products." },
+      { "q": "Is the proposal free?", "a": "Yes. The proposal and mockup are free and you are under no obligation to order." }
+    ],
+    "/occasions/employee-onboarding": [
+      { "q": "What should an employee welcome kit include?", "a": "A good welcome kit (joining kit) mixes daily-use items with your branding: a cork or eco-leather diary, a bamboo or glass bottle, a pen, a tote bag and a welcome card. Ecotwist onboarding kits cost ₹599–₹1,199 per kit with your logo." },
+      { "q": "Can you send welcome kits to remote new joiners?", "a": "Yes. We deliver onboarding kits across India and internationally, so new hires receive them at home before or on their first day." },
+      { "q": "What is the minimum order for onboarding kits?", "a": "25 kits. Many companies order a batch and keep kits ready for each new joiner." }
+    ],
+    "/occasions/client-appreciation": [
+      { "q": "What are good client appreciation gifts in India?", "a": "Premium, useful gifts that carry your brand: dry fruit jar boxes, executive cork sets, gourmet hampers and candle sets. Ecotwist client gifts cost ₹699–₹3,499 per kit, with your logo and a personalised note." },
+      { "q": "Can you add a personal message for each client?", "a": "Yes. We can include a printed thank-you card with your message in every hamper." },
+      { "q": "How much should I spend on a client gift?", "a": "Most companies spend ₹700–₹1,500 per client, and ₹2,000–₹3,500 for key accounts and CXOs. We can suggest gifts for each tier." }
+    ],
+    "/occasions/festive-gifting": [
+      { "q": "Which festivals do you make corporate gift hampers for?", "a": "Diwali, Holi, Raksha Bandhan, Eid, Christmas, New Year and Pongal or Makar Sankranti. Festive hampers cost ₹699–₹2,199 per kit, branded with your logo." },
+      { "q": "When should we order festive corporate gifts?", "a": "3–4 weeks before the festival for a comfortable timeline; allow more for 500+ kits. That leaves time for mockup approval, production in 3–7 business days, and delivery in 3–7 business days." },
+      { "q": "Are your festive hampers eco-friendly?", "a": "Yes. They use soya wax diyas and candles, reusable jars and boxes, and plastic-free packaging." }
+    ],
+    "/occasions/events-conferences": [
+      { "q": "What are good conference giveaways?", "a": "Practical items attendees keep: bamboo journals, ceramic tumblers, glass carafes, recycled pens and tote bags. Ecotwist event kits cost ₹249–₹1,399 each with your event branding." },
+      { "q": "Can you deliver event kits to the venue?", "a": "Yes. We can deliver directly to your venue or office before the event." },
+      { "q": "Do you make speaker and VIP gifts?", "a": "Yes. Premium speaker and VIP hampers are available alongside delegate kits, so all attendee tiers are covered in one order." }
+    ],
+    "/occasions/employee-wellness": [
+      { "q": "What are good employee wellness gifts?", "a": "Self-care and mindful items: soya wax candles, tea infuser bottles, herbal teas, journals and yoga accessories. Ecotwist wellness kits cost ₹299–₹1,499 per kit." },
+      { "q": "Can wellness kits be branded?", "a": "Yes. Every kit can carry your logo, and we can include a card from your HR or leadership team." }
+    ],
+    "/occasions/birthday-gifting": [
+      { "q": "What are good employee birthday gifts?", "a": "Small, personal gifts: name-printed cork keepsakes, candle sets and treat boxes. Ecotwist birthday gifts cost ₹249–₹1,499 per kit." },
+      { "q": "Can you print each employee's name?", "a": "Yes. We can personalise gifts with each employee's name alongside your company logo." },
+      { "q": "Can you manage birthday gifting all year?", "a": "Yes. Order a batch of kits and we can personalise and dispatch them as birthdays come up." }
+    ],
+    "/occasions/work-anniversary": [
+      { "q": "What should I give for a work anniversary?", "a": "Gifts that mark the milestone: name-printed cork sets for 1 year, desk planters and leather folios for 3–5 years, and executive hampers for 10+ years. Ecotwist work anniversary gifts cost ₹699–₹2,499." },
+      { "q": "Can you engrave the years of service?", "a": "Yes. We can engrave or print the employee's name and years of service with your logo." }
+    ],
+    "/occasions/award-recognition": [
+      { "q": "What are good employee recognition gifts?", "a": "Engraved trophies, star performer boxes and premium leather portfolios for R&R programmes. Ecotwist award gifts cost ₹649–₹3,499 each." },
+      { "q": "Can trophies be engraved with names?", "a": "Yes. Each trophy or award can be engraved with the winner's name, the award title and your logo." }
+    ],
+    "/occasions/retirement-gifting": [
+      { "q": "What is a thoughtful retirement gift for an employee?", "a": "A keepsake that celebrates their years with you: a legacy box, a memory journal signed by the team, or a relaxation hamper. Ecotwist retirement gifts cost ₹899–₹3,999 and can be personalised with their name and years of service." },
+      { "q": "Can the team add messages?", "a": "Yes. Our team memory diary has space for colleagues' messages, or we can print messages you send us." }
+    ],
+    "/occasions/product-launch": [
+      { "q": "What goes in a product launch PR kit?", "a": "A reveal box with your product or sample, branded essentials, a launch note and a QR code linking to the launch. Ecotwist launch kits and media kits cost ₹349–₹3,499." },
+      { "q": "Can you deliver PR kits to media and influencers?", "a": "Yes. Share the address list and we will dispatch to each recipient across India." }
+    ],
+    "/occasions/womens-day": [
+      { "q": "What are good Women's Day gifts for employees?", "a": "Self-care and desk gifts: soya wax candle sets, cork desk sets and wellness boxes, with a note from leadership. Ecotwist Women's Day kits cost ₹299–₹1,999 each." },
+      { "q": "When should we order Women's Day gifts?", "a": "By mid-February for delivery before 8 March, allowing for mockup approval, production and delivery." }
+    ],
+    "/occasions/christmas-gifting": [
+      { "q": "What are good Christmas gifts for employees?", "a": "Candle sets, plum cake boxes, dry fruit hampers and desk kits. Ecotwist Christmas gifts cost ₹249–₹2,499 per kit, all plastic-free and branded with your logo." },
+      { "q": "Do you have Secret Santa gifts under ₹500?", "a": "Yes. Our Secret Santa duo and small candle boxes are under ₹500 each, with a minimum order of 25." },
+      { "q": "When should we order Christmas corporate gifts?", "a": "By the end of November for delivery before 25 December." }
+    ],
+    "/occasions/earth-day-gifting": [
+      { "q": "What are good gifts for Earth Day or World Environment Day?", "a": "Plantable seed pencils, recycled paper sets, cork keepsakes and bamboo bottles with an impact card. Ecotwist Earth Day kits cost ₹199–₹1,199 each." },
+      { "q": "Can these support our CSR or ESG reporting?", "a": "Yes. We can share the materials used in each kit so you can describe the gifting in your CSR or ESG communication." }
+    ],
+    "/occasions/channel-partner-gifting": [
+      { "q": "What gifts work for dealers and channel partners?", "a": "Tiered gifts that match partner value: dealer meet kits, desk sets, bamboo bottles, trophies and dry fruit hampers. Ecotwist partner gifts cost ₹649–₹3,499 each." },
+      { "q": "Can you deliver to dealers in many cities?", "a": "Yes. We deliver to partner locations across India; share the list and we will plan dispatch." }
+    ]
+  }
+}

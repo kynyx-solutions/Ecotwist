@@ -776,7 +776,7 @@ export const Contact = () => {
                   whileHover={{ rotate: 0, scale: 1.06 }}
                   style={{ position: 'absolute', bottom: -16, right: 16, background: '#fff', border: '1px solid rgba(181,162,106,0.3)', borderRadius: 4, padding: '10px 16px', boxShadow: '0 12px 40px rgba(0,0,0,0.12)', zIndex: 25 }}
                 >
-                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#b5a26a', margin: 0 }}>{form.badgeLabel}</p>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a6f2e', margin: 0 }}>{form.badgeLabel}</p>
                   <p style={{ fontSize: 13, fontWeight: 700, margin: '2px 0 0', color: '#333' }}>{form.badgeText}</p>
                 </motion.div>
 

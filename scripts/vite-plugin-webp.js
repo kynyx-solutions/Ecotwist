@@ -10,6 +10,9 @@
    only swapped when its WebP is smaller. Large photos are scaled down to
    MAX_WIDTH; smaller ones keep their size.
 
+   Heavy photos that are already WebP in public/ (over HEAVY_WEBP bytes) are
+   re-encoded the same way in dist/ under the same name, when that saves 15%+.
+
    Converted files are cached in node_modules/.cache/webp, so later builds
    only convert new or changed images.
 ============================ */
@@ -19,8 +22,9 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const MAX_WIDTH = 2000; // px; wider images are scaled down, never up
-const QUALITY = 82;     // WebP quality: visually the same as the original at normal viewing size
+const MAX_WIDTH = 1600; // px; wider images are scaled down, never up (sharp on a 1440px screen)
+const QUALITY = 80;     // WebP quality: visually the same as the original at normal viewing size
+const HEAVY_WEBP = 150 * 1024;
 const IMAGE_RE = /\.(png|jpe?g)$/i;
 const CACHE_DIR = path.resolve('node_modules/.cache/webp');
 const SETTINGS = `w${MAX_WIDTH}-q${QUALITY}`;
@@ -29,7 +33,7 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const webpName = (file) => file.replace(IMAGE_RE, '.webp');
 
 // Returns the WebP bytes, or null when the WebP would not be smaller
-async function toWebp(source) {
+async function toWebp(source, minSaving = 0) {
   const hash = crypto.createHash('sha1').update(SETTINGS).update(source).digest('hex');
   const cached = path.join(CACHE_DIR, `${hash}.webp`);
   const skipped = path.join(CACHE_DIR, `${hash}.skip`);
@@ -43,7 +47,7 @@ async function toWebp(source) {
     .toBuffer();
 
   fs.mkdirSync(CACHE_DIR, { recursive: true });
-  if (out.length >= source.length) {
+  if (out.length >= source.length * (1 - minSaving)) {
     fs.writeFileSync(skipped, '');
     return null;
   }
@@ -62,6 +66,7 @@ function walk(dir) {
 export function webpPlugin() {
   let publicDir = '';
   let publicFiles = []; // { rel, webp: Buffer }
+  let heavyWebps = [];  // { rel, webp: Buffer }: smaller copies of public .webp files, written over the copied originals
   let renames = [];     // [RegExp, replacement] for public file names
   const stats = { files: 0, before: 0, after: 0 };
 
@@ -105,6 +110,14 @@ export function webpPlugin() {
         byName.set(name, (byName.get(name) ?? true) && r.webp !== null);
       }
 
+      const heavy = walk(publicDir).filter((f) => /\.webp$/i.test(f) && fs.statSync(f).size > HEAVY_WEBP);
+      heavyWebps = (await Promise.all(heavy.map(async (file) => {
+        const source = fs.readFileSync(file);
+        const webp = await toWebp(source, 0.15);
+        if (webp) count(source.length, webp.length);
+        return webp && { rel: path.relative(publicDir, file).split(path.sep).join('/'), webp };
+      }))).filter(Boolean);
+
       publicFiles = results
         .filter((r) => r.webp)
         .map((r) => ({ rel: path.relative(publicDir, r.file).split(path.sep).join('/'), webp: r.webp }));
@@ -143,8 +156,18 @@ export function webpPlugin() {
       }
 
       if (stats.files) {
+        this.info(`${heavyWebps.length} heavy WebP photos re-encoded smaller`);
         const mb = (n) => (n / 1024 / 1024).toFixed(1);
         this.info(`${stats.files} images as WebP: ${mb(stats.before)} MB -> ${mb(stats.after)} MB`);
+      }
+    },
+
+    // Vite copies public/ as-is; replace the heavy WebPs with their smaller copies
+    writeBundle(options) {
+      const outDir = options.dir ?? 'dist';
+      for (const { rel, webp } of heavyWebps) {
+        const dest = path.join(outDir, rel);
+        if (fs.existsSync(dest)) fs.writeFileSync(dest, webp); // only where public/ was copied (not the pre-render build)
       }
     },
   };

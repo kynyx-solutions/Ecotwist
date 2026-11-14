@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { AnalyticsTracker } from './lib/analytics';
 import { SeoManager } from './components/SeoManager';
 import { RelatedLinks } from './components/RelatedLinks';
+import { FaqSection } from './components/FaqSection';
 
 // ── Core pages (default exports) ──────────────────────
 const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
@@ -156,6 +157,8 @@ export function AppShell() {
         <main className="flex-grow">
           <AnimatedRoutes />
         </main>
+        {/* Questions buyers (and AI search) ask about this page: src/content/faqs.json */}
+        <FaqSection />
         {/* Related occasions and keyword links (internal linking) */}
         <RelatedLinks />
         {/* Festive footer or the regular one: switch in src/config/homepage.ts */}

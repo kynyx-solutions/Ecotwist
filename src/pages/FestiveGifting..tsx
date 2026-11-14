@@ -1075,7 +1075,7 @@ export default function FestiveGifting(){
       <section ref={ctaRef} className="py-32 px-8 relative overflow-hidden text-center">
         <div className="absolute inset-0" style={{background:'#14532d'}}>
           {(cta.backgroundImage || hasSiteImage(cta.photoId)) && <img src={cta.backgroundImage ? asset(cta.backgroundImage) : siteImage(cta.photoId)}
-            alt="" className="w-full h-full object-cover" style={{opacity:0.18,mixBlendMode:'overlay'}}/>}
+            alt="" aria-hidden="true" className="w-full h-full object-cover" style={{opacity:0.18,mixBlendMode:'overlay'}}/>}
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-white">
           <motion.h2 initial={{opacity:0,letterSpacing:'-0.05em',y:20}}

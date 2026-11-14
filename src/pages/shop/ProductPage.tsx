@@ -201,7 +201,7 @@ export default function ProductPage() {
                   <button key={src} onClick={() => setActive(i)} aria-label={`Photo ${i + 1}`}
                     className="aspect-[4/5] w-16 overflow-hidden rounded-xl border-2 sm:w-full"
                     style={{ borderColor: i === active ? C.olive : 'transparent', opacity: i === active ? 1 : 0.7 }}>
-                    <img src={asset(src)} alt="" className="h-full w-full object-cover" />
+                    <img src={asset(src)} alt={`${product.name}, photo ${i + 1}`} className="h-full w-full object-cover" />
                   </button>
                 ))}
               </div>

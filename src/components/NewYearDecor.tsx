@@ -150,7 +150,7 @@ export function DeadlineBadge({ label, date, text, passedText, dark = true }: {
   return (
     <div className={`inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3 backdrop-blur-sm ${tone}`}>
       <span className="flex items-baseline gap-2">
-        <span className={`text-[10px] font-semibold uppercase tracking-[0.25em] ${dark ? "text-[#E6C77A]" : "text-[#B8934A]"}`}>{label}</span>
+        <span className={`text-[10px] font-semibold uppercase tracking-[0.25em] ${dark ? "text-[#E6C77A]" : "text-[#8A6A2E]"}`}>{label}</span>
         <span className="font-serif text-xl">{formatDeadline(date)}</span>
       </span>
       <span className={`hidden h-6 w-px sm:block ${dark ? "bg-white/20" : "bg-[#17220F]/15"}`} />

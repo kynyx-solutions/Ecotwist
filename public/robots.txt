@@ -1,12 +1,43 @@
+# Ecotwist: sustainable corporate gifts, India
+# Search engines and AI assistants are welcome to read and cite this site.
+
 User-agent: *
 Allow: /
-
-# Disallow confirmation / private routes
-Disallow: /thanks
 Disallow: /admin/
+Disallow: /api/
+Disallow: /cart
+Disallow: /order-placed
+Disallow: /thanks
 
-# Host
-Host: https://ecotwist.in
+# AI search and assistants (listed explicitly so no default blocks them)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: GoogleOther
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: bingbot
+User-agent: DuckAssistBot
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: YouBot
+User-agent: CCBot
+User-agent: xAI-Bot
+User-agent: Grok
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cart
+Disallow: /order-placed
+Disallow: /thanks
 
-# Sitemap location
 Sitemap: https://ecotwist.in/sitemap.xml
+
+# A plain-text guide to this site for AI assistants: https://ecotwist.in/llms.txt
