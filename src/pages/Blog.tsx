@@ -104,6 +104,8 @@ export default function Blog() {
             Ideas, guides and behind-the-scenes stories on sustainable corporate gifting, and the artisans who make it.
           </motion.p>
 
+          {/* Keep room for the topic buttons while posts load, so the page doesn't jump */}
+          {posts === null && <div className="mt-10 h-[30px]" aria-hidden="true" />}
           {tags.length > 0 && (
             <div className="mt-10 flex flex-wrap gap-2" role="toolbar" aria-label="Filter by topic">
               {['', ...tags].map((t) => {
