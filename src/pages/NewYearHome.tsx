@@ -77,11 +77,11 @@ function SectionHeading({ eyebrow, title, body, dark = false }: {
     >
       <motion.div variants={fadeUp} className="flex items-center justify-center gap-3">
         <span className={`h-px w-8 sm:w-12 ${rule}`} />
-        <StarMark className={dark ? "text-[#E6C77A]" : "text-[#B8934A]"} />
+        <StarMark className={dark ? "text-[#E6C77A]" : "text-[#8A6A2E]"} />
         <span className={`text-[10px] font-semibold uppercase tracking-[0.3em] ${dark ? "text-white/65" : "text-[#4E5A45]"}`}>
           {eyebrow}
         </span>
-        <StarMark className={dark ? "text-[#E6C77A]" : "text-[#B8934A]"} />
+        <StarMark className={dark ? "text-[#E6C77A]" : "text-[#8A6A2E]"} />
         <span className={`h-px w-8 sm:w-12 ${rule}`} />
       </motion.div>
       <motion.h2
@@ -219,7 +219,7 @@ function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -left-6 bottom-10 w-24 overflow-hidden rounded-full border-4 border-[#E6C77A] shadow-2xl sm:-left-10 sm:w-32"
           >
-            <img src={asset(hero.insetImage)} alt="" className="aspect-square w-full object-cover" />
+            <img src={asset(hero.insetImage)} alt={hero.insetImageAlt} className="aspect-square w-full object-cover" />
           </motion.div>
 
           <motion.div
@@ -340,7 +340,7 @@ function GiftEdit() {
     <section className="relative overflow-hidden bg-[#F8F5EE] px-5 pb-24 pt-28 sm:px-8 sm:pb-32 lg:px-12">
       <SectionHeading
         eyebrow={giftEdit.eyebrow}
-        title={<>{giftEdit.title} <span className="italic text-[#B8934A]">{giftEdit.titleHighlight}</span></>}
+        title={<>{giftEdit.title} <span className="italic text-[#8A6A2E]">{giftEdit.titleHighlight}</span></>}
         body={giftEdit.intro}
       />
 
@@ -367,7 +367,7 @@ function GiftEdit() {
                 <div className="pointer-events-none absolute inset-2 rounded-t-full rounded-b-xl border border-white/60" />
               </div>
               <div className="flex flex-1 flex-col px-3 pb-3 pt-5">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-[#B8934A]">{item.category}</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#8A6A2E]">{item.category}</p>
                 <h3 className="mt-1 font-serif text-2xl text-[#17220F]">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-[#4E5A45]">{item.blurb}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#1F3A16]">
@@ -422,7 +422,7 @@ function Workplace() {
 
         <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
           <motion.div variants={fadeUp} className="flex items-center gap-3">
-            <StarMark className="text-[#B8934A]" />
+            <StarMark className="text-[#8A6A2E]" />
             <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#4E5A45]">{workplace.eyebrow}</span>
             <span className="h-px w-12 bg-[#B8934A]/40" />
           </motion.div>
@@ -431,7 +431,7 @@ function Workplace() {
             className="mt-5 font-serif leading-tight text-[#17220F]"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            {workplace.title} <span className="italic text-[#B8934A]">{workplace.titleHighlight}</span>
+            {workplace.title} <span className="italic text-[#8A6A2E]">{workplace.titleHighlight}</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 max-w-xl text-base leading-7 text-[#4E5A45] sm:text-lg sm:leading-8">
             {workplace.intro}
@@ -471,7 +471,7 @@ function Promises() {
     <section className="relative overflow-hidden bg-[#F8F5EE] px-5 pb-24 pt-28 sm:px-8 sm:pb-32 lg:px-12">
       <SectionHeading
         eyebrow={promises.eyebrow}
-        title={<>{promises.title} <span className="italic text-[#B8934A]">{promises.titleHighlight}</span></>}
+        title={<>{promises.title} <span className="italic text-[#8A6A2E]">{promises.titleHighlight}</span></>}
         body={promises.intro}
       />
 
@@ -501,7 +501,7 @@ function Process() {
     <section className="relative overflow-hidden bg-white px-5 pb-24 pt-28 sm:px-8 sm:pb-32 lg:px-12">
       <SectionHeading
         eyebrow={process.eyebrow}
-        title={<>{process.title} <span className="italic text-[#B8934A]">{process.titleHighlight}</span></>}
+        title={<>{process.title} <span className="italic text-[#8A6A2E]">{process.titleHighlight}</span></>}
         body={process.intro}
       />
 
@@ -521,7 +521,7 @@ function Process() {
             <span className="relative mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#0E1A0B] font-serif text-xl text-[#E6C77A] ring-4 ring-white">
               {i + 1}
             </span>
-            <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#B8934A]">{step.when}</p>
+            <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8A6A2E]">{step.when}</p>
             <h3 className="mt-2 font-serif text-2xl text-[#17220F]">{step.title}</h3>
             <p className="mx-auto mt-2 max-w-[16rem] text-sm leading-6 text-[#4E5A45]">{step.text}</p>
           </motion.li>

@@ -270,7 +270,7 @@ function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -left-6 bottom-10 w-24 overflow-hidden rounded-full border-4 border-[#E9C46A] shadow-2xl sm:-left-10 sm:w-32"
           >
-            <img src={asset(hero.insetImage)} alt="" className="aspect-square w-full object-cover" />
+            <img src={asset(hero.insetImage)} alt={hero.insetImageAlt} className="aspect-square w-full object-cover" />
           </motion.div>
 
           <motion.div

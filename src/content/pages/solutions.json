@@ -18,6 +18,8 @@
     "intro": "From the studio floor in Patna to boardrooms across the world — every piece we create carries a story of intention, craftsmanship, and zero compromise.",
     "leftImage": "/kits/onboarding-collection.webp",
     "rightImage": "/kits/premium-hampers-ecotwist.webp",
+    "leftImageAlt": "Ecotwist employee onboarding collection: branded notebook, bottle and desk essentials",
+    "rightImageAlt": "Premium Ecotwist corporate gift hampers in branded boxes",
     "stats": [
       { "value": "5+", "label": "Countries Served" },
       { "value": "5K+", "label": "Gifts Delivered" },

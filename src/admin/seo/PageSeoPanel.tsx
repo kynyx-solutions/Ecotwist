@@ -14,6 +14,14 @@ export function PageSeoFields({ site, page, onChange }: { site: SeoSite; page: S
       <Field label="Focus keyword" hint="The search phrase this page should rank for, e.g. “diwali corporate gifts”.">
         <Input value={page.focusKeyword ?? ''} onChange={(e) => onChange({ focusKeyword: e.target.value })} placeholder="e.g. employee onboarding kits" />
       </Field>
+      <Field label="Other keywords" hint="More searches this page should appear for, separated by commas. Use them naturally in the page text too.">
+        <Input
+          value={(page.keywords ?? []).join(', ')}
+          onChange={(e) => onChange({ keywords: e.target.value.split(',').map((k) => k.trimStart()).filter((k, i, a) => k || i === a.length - 1) })}
+          onBlur={(e) => onChange({ keywords: e.target.value.split(',').map((k) => k.trim()).filter(Boolean) })}
+          placeholder="e.g. joining kit for employees, welcome kit for new joiners"
+        />
+      </Field>
       <div>
         <div className="mb-1.5 flex items-center justify-between gap-2">
           <span className="text-sm font-semibold text-brand-charcoal">SEO title</span>

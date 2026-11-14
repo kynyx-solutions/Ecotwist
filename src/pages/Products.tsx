@@ -454,7 +454,7 @@ function SignatureCard({ item, index, onOpenGallery, onOrder }: {
       <div className="p-5 flex flex-col flex-1">
         <p className="font-body text-[10px] tracking-widest uppercase text-[#7a9e7e] mb-1">{item.category}</p>
         <h3 className="font-display text-[17px] font-light text-[#1c2b1e] leading-snug mb-1">{item.name}</h3>
-        <p className="font-body text-xs text-[#8c8880] leading-relaxed mb-3">{item.description}</p>
+        <p className="font-body text-xs text-[#6b675f] leading-relaxed mb-3">{item.description}</p>
         <p className="font-body text-[10px] tracking-widest uppercase text-[#c8a96e] mb-4">{item.tags.join(" · ")}</p>
         <div className="mt-auto flex justify-end">
           <RippleBtn
@@ -516,10 +516,10 @@ function DesignGallery({ item, onClose, onOrder }: {
             </div>
             <div className="flex items-center gap-4">
               {designs.length > 1 && (
-                <span className="font-body text-xs text-[#8c8880] whitespace-nowrap">{active + 1} / {designs.length}</span>
+                <span className="font-body text-xs text-[#6b675f] whitespace-nowrap">{active + 1} / {designs.length}</span>
               )}
               <button onClick={onClose} aria-label={galleryText.closeLabel}
-                className="text-[#8c8880] hover:text-[#1c2b1e] text-3xl leading-none"
+                className="text-[#6b675f] hover:text-[#1c2b1e] text-3xl leading-none"
                 style={{ transition: "transform 0.25s ease, color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "rotate(90deg) scale(1.2)")}
                 onMouseLeave={e => (e.currentTarget.style.transform = "rotate(0deg) scale(1)")}>×</button>
@@ -551,7 +551,7 @@ function DesignGallery({ item, onClose, onOrder }: {
               {item.designs ? (
                 <>
                   <p className="font-display text-xl font-light text-[#1c2b1e] leading-snug">{current.name}</p>
-                  {current.sku && <p className="font-body text-[10px] tracking-widest uppercase text-[#8c8880] mt-0.5">{galleryText.skuLabel} {current.sku}</p>}
+                  {current.sku && <p className="font-body text-[10px] tracking-widest uppercase text-[#6b675f] mt-0.5">{galleryText.skuLabel} {current.sku}</p>}
                 </>
               ) : (
                 <>
@@ -578,7 +578,7 @@ function DesignGallery({ item, onClose, onOrder }: {
                     opacity: i === active ? 1 : 0.6,
                     transition: "opacity 0.2s, outline-color 0.2s",
                   }}>
-                  <img src={d.src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                  <img src={d.src} alt={d.name} loading="lazy" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -1068,7 +1068,7 @@ export default function ExecutiveGiftPage() {
                 <p className="font-display text-3xl font-light text-[#c8a96e]">
                   {statsVisible ? <AnimatedCounter target={parseInt(n)} suffix={s} /> : "0"}
                 </p>
-                <p className="font-body text-[10px] tracking-widest uppercase text-[#8c8880] mt-1">{l}</p>
+                <p className="font-body text-[10px] tracking-widest uppercase text-[#6b675f] mt-1">{l}</p>
               </div>
             ))}
           </div>
@@ -1104,7 +1104,7 @@ export default function ExecutiveGiftPage() {
           {/* Logo */}
           <div className="flex-shrink-0 logo-reveal">
             <span className="font-display text-xl tracking-widest text-[#1c2b1e]">{navbar.brandName}</span>
-            <span className="font-body text-xs tracking-[0.3em] text-[#8c8880] ml-2 uppercase hidden sm:inline">{navbar.brandTagline}</span>
+            <span className="font-body text-xs tracking-[0.3em] text-[#6b675f] ml-2 uppercase hidden sm:inline">{navbar.brandTagline}</span>
           </div>
           {/* Search */}
           <div className="flex-1 max-w-xs hidden md:flex items-center border border-[#e8e4dd] bg-white px-4 py-2 gap-2"
@@ -1118,7 +1118,7 @@ export default function ExecutiveGiftPage() {
           </div>
           {/* Links */}
           <div className="flex items-center gap-5">
-            <div className="hidden md:flex gap-5 font-body text-xs tracking-widest uppercase text-[#8c8880]">
+            <div className="hidden md:flex gap-5 font-body text-xs tracking-widest uppercase text-[#6b675f]">
               {(clientStories.length ? [navbar.shopLink, navbar.reviewsLink] : [navbar.shopLink]).map((link, i) => (
                 <a key={link} href={link === navbar.shopLink ? "#products" : "#testimonials"}
                   className="nav-link hover:text-[#1c2b1e] transition-colors"
@@ -1169,7 +1169,7 @@ export default function ExecutiveGiftPage() {
           <div className="flex flex-wrap gap-2">
             {categories.map((cat, i) => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`cat-btn font-body text-[10px] tracking-widest uppercase px-4 py-2 border transition-colors duration-200 ${activeCategory === cat ? "active bg-[#1c2b1e] text-white border-[#1c2b1e]" : "text-[#8c8880] border-[#e8e4dd] hover:text-white"
+                className={`cat-btn font-body text-[10px] tracking-widest uppercase px-4 py-2 border transition-colors duration-200 ${activeCategory === cat ? "active bg-[#1c2b1e] text-white border-[#1c2b1e]" : "text-[#6b675f] border-[#e8e4dd] hover:text-white"
                   }`}
                 style={{ transition: "all 0.3s cubic-bezier(0.22,1,0.36,1)", transitionDelay: `${i * 30}ms` }}>
                 <span>{cat === "All" ? productGrid.allTab : cat}</span>
@@ -1177,7 +1177,7 @@ export default function ExecutiveGiftPage() {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <span className="font-body text-xs text-[#8c8880]">{filtered.length} {productGrid.countLabel}</span>
+            <span className="font-body text-xs text-[#6b675f]">{filtered.length} {productGrid.countLabel}</span>
           </div>
         </div>
 
@@ -1193,9 +1193,9 @@ export default function ExecutiveGiftPage() {
         {filtered.length === 0 ? (
           <div className="text-center py-24" style={{ animation: "heroLine 0.5s ease both" }}>
             <p className="text-5xl mb-4" style={{ animation: "float 3s ease-in-out infinite" }}>{productGrid.noResultsSymbol}</p>
-            <p className="font-body text-[#8c8880]">{productGrid.noResultsText} "{searchQuery}"</p>
+            <p className="font-body text-[#6b675f]">{productGrid.noResultsText} "{searchQuery}"</p>
             <button onClick={() => setSearchQuery("")}
-              className="mt-4 font-body text-xs tracking-widest uppercase border border-[#e8e4dd] px-5 py-2.5 text-[#8c8880] hover:text-[#1c2b1e] hover:border-[#1c2b1e] transition-colors">
+              className="mt-4 font-body text-xs tracking-widest uppercase border border-[#e8e4dd] px-5 py-2.5 text-[#6b675f] hover:text-[#1c2b1e] hover:border-[#1c2b1e] transition-colors">
               {productGrid.clearSearch}
             </button>
           </div>
@@ -1246,7 +1246,7 @@ export default function ExecutiveGiftPage() {
                   </div>
                   <div>
                     <p className="font-body text-xs font-medium text-[#1c2b1e]">{t.author}</p>
-                    <p className="font-body text-[10px] text-[#8c8880]">{t.role}</p>
+                    <p className="font-body text-[10px] text-[#6b675f]">{t.role}</p>
                   </div>
                 </div>
               </div>

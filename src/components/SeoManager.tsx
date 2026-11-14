@@ -5,7 +5,7 @@
    Mount once inside the <Router>. Blog posts (/blog/<slug>) set their own tags.
 ============================ */
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import seoData from '../content/seo.json';
 import { absoluteUrl, canonicalUrl, findSeoPage, fullTitle, normalizeRoute, siteJsonLd, type SeoFile } from '../lib/seo';
@@ -53,8 +53,17 @@ const isBlogPost = (path: string) => /^\/blog\/[^/]+/.test(path) || /^\/shop\/[^
 
 export function SeoManager() {
   const { pathname } = useLocation();
+  const firstPage = useRef(true);
 
   useEffect(() => {
+    // The pre-rendered HTML carries this page's full structured data (#page-jsonld:
+    // organisation, breadcrumbs, FAQ, product). Keep it on the first page; after
+    // navigating it describes the previous page, so remove it.
+    const prerendered = document.getElementById('page-jsonld');
+    if (prerendered && !firstPage.current) prerendered.remove();
+    const keepPrerendered = !!prerendered && firstPage.current;
+    firstPage.current = false;
+
     const path = normalizeRoute(pathname);
     if (isBlogPost(path)) return;
 
@@ -85,7 +94,7 @@ export function SeoManager() {
     setMeta('name', 'robots', page?.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
     setMeta('name', 'google-site-verification', site.googleSiteVerification.trim());
 
-    setJsonLd(siteJsonLd(site));
+    if (!keepPrerendered) setJsonLd(siteJsonLd(site));
   }, [pathname]);
 
   return null;

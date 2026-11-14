@@ -21,8 +21,8 @@
   "charges": {
     "heading": "Shipping Charges: Keeping it Simple",
     "text": "We offer",
-    "textHighlight": "free shipping on all prepaid orders of ₹499 and above",
-    "textEnd": ". For orders below that amount, applicable shipping charges will be shown at checkout."
+    "textHighlight": "free delivery on all orders above ₹999",
+    "textEnd": ". Orders of ₹999 or less have a flat delivery charge of ₹150, shown at checkout."
   },
   "sections": [
     {

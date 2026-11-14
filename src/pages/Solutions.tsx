@@ -96,6 +96,7 @@ const MagneticBtn = ({
    ================================================================ */
 const LandingImage = ({
   src,
+  alt,
   delay = 0,
   fromX = '0%',
   fromY = '-180%',
@@ -103,6 +104,7 @@ const LandingImage = ({
   className = '',
 }: {
   src: string;
+  alt: string;
   delay?: number;
   fromX?: string | number;
   fromY?: string | number;
@@ -132,7 +134,7 @@ const LandingImage = ({
         viewport={{ once: false }}
         transition={{ delay: delay + 1.0, duration: 0.45 }}
       />
-      <img src={src} className="w-full h-full object-cover" alt="" />
+      <img src={src} className="w-full h-full object-cover" alt={alt} loading="lazy" />
     </motion.div>
   );
 };
@@ -237,7 +239,7 @@ const CapRow = ({
           {cap.title}
         </h4>
         <p className="text-2xl font-serif leading-snug mb-4">{cap.sub}</p>
-        <p className="text-sm opacity-50 font-light max-w-sm leading-relaxed">{cap.desc}</p>
+        <p className="text-sm opacity-80 font-light max-w-sm leading-relaxed">{cap.desc}</p>
       </div>
       <motion.div
         className="mt-1 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -502,7 +504,7 @@ export const Solutions = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-gray-500 font-light text-sm leading-relaxed max-w-sm"
+              className="text-gray-600 font-light text-sm leading-relaxed max-w-sm"
             >
               {ecosystem.intro}
             </motion.p>
@@ -517,6 +519,7 @@ export const Solutions = () => {
               {/* Image — lands from top-left */}
               <LandingImage
                 src={asset(ecosystem.leftImage)}
+                alt={ecosystem.leftImageAlt}
                 delay={0}
                 fromX="-55%"
                 fromY="-130%"
@@ -544,7 +547,7 @@ export const Solutions = () => {
                     <p className="font-serif text-3xl font-bold mb-1 text-brand-dark-olive group-hover:text-brand-beige transition-colors duration-300">
                       {stat.value}
                     </p>
-                    <p className="text-[9px] uppercase tracking-widest text-gray-400 group-hover:text-brand-beige/60 transition-colors duration-300">
+                    <p className="text-[9px] uppercase tracking-widest text-gray-600 group-hover:text-brand-beige/60 transition-colors duration-300">
                       {stat.label}
                     </p>
                   </motion.div>
@@ -559,7 +562,7 @@ export const Solutions = () => {
                 transition={{ delay: 0.75, duration: 0.6 }}
                 className="flex flex-col gap-3"
               >
-                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/40 mb-1">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/70 mb-1">
                   {ecosystem.processTitle}
                 </p>
                 {ecosystem.process.map((p, i) => (
@@ -575,7 +578,7 @@ export const Solutions = () => {
                     <span className="text-brand-olive text-base group-hover:scale-125 transition-transform duration-200">
                       {p.symbol}
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/30 min-w-[2rem]">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/65 min-w-[2rem]">
                       {p.step}
                     </span>
                     <span className="text-sm font-medium text-brand-charcoal">{p.text}</span>
@@ -591,6 +594,7 @@ export const Solutions = () => {
               {/* Image — lands from top-right */}
               <LandingImage
                 src={asset(ecosystem.rightImage)}
+                alt={ecosystem.rightImageAlt}
                 delay={0.28}
                 fromX="55%"
                 fromY="-110%"
@@ -606,7 +610,7 @@ export const Solutions = () => {
                 transition={{ delay: 0.9, duration: 0.72, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="bg-brand-dark-olive text-brand-beige p-10 rounded-sm shadow-2xl"
               >
-                <p className="text-[10px] uppercase tracking-widest text-brand-olive font-bold mb-4">
+                <p className="text-[10px] uppercase tracking-widest text-brand-beige/80 font-bold mb-4">
                   {ecosystem.quoteLabel}
                 </p>
                 <p className="font-serif text-2xl leading-relaxed mb-6">
@@ -618,7 +622,7 @@ export const Solutions = () => {
                   </div>
                   <div>
                     <p className="text-sm font-bold">{ecosystem.quoteAuthor}</p>
-                    <p className="text-[10px] opacity-50 uppercase tracking-widest">
+                    <p className="text-[10px] opacity-75 uppercase tracking-widest">
                       {ecosystem.quoteRole}
                     </p>
                   </div>
@@ -633,7 +637,7 @@ export const Solutions = () => {
                 transition={{ delay: 1.1, duration: 0.65 }}
                 className="border border-brand-charcoal/10 rounded-sm p-6"
               >
-                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/40 mb-5">
+                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/70 mb-5">
                   {ecosystem.certificationsTitle}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
