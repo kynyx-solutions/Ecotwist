@@ -8,11 +8,12 @@ const { hero, metrics, artisans, blueprint, closing } = content;
 
 /* ─── MOBILE HOOK ────────────────────────────────────────────── */
 const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== 'undefined' ? window.innerWidth < 768 : false
-  );
+  // Starts false on the server and in the browser's first render (they must match
+  // for the pre-rendered page to hydrate), then switches right after
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handler = () => setIsMobile(window.innerWidth < 768);
+    handler();
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
   }, []);
