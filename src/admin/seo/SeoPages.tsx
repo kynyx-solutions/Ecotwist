@@ -81,7 +81,7 @@ export function SeoPages() {
   const toggle = (route: string) => setParams(open === route ? {} : { route }, { replace: true });
 
   const header = (
-    <PageHeader eyebrow="SEO" title="Titles & descriptions" subtitle="What Google and share previews show for each page. Saved changes go live in a couple of minutes."
+    <PageHeader eyebrow="SEO" title="Titles & descriptions" subtitle="What Google and share previews show for each page. Saved changes go live when you press “Publish changes”."
       actions={<Button onClick={() => save()} disabled={!dirty || saving}><Save size={16} /> {saving ? 'Saving…' : dirty ? 'Save changes' : 'Saved'}</Button>} />
   );
 

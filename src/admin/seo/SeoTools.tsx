@@ -68,7 +68,7 @@ export function SeoTools() {
               <li>Choose <strong>URL prefix</strong> and enter <code className="rounded bg-admin-muted px-1">{BASE}/</code>.</li>
               <li>Under <strong>Other verification methods</strong>, pick <strong>HTML tag</strong>. Copy only the code inside <code className="rounded bg-admin-muted px-1">content="…"</code>.</li>
               <li>Paste it in <Link to="/seo/pages" className="font-semibold text-brand-olive hover:underline">SEO → Pages → Site settings → Google verification code</Link> and save.</li>
-              <li>Wait about 2 minutes for the site to update, then click <strong>Verify</strong> in Search Console.</li>
+              <li>Press <strong>Publish changes</strong> in the sidebar, wait about 2 minutes for the site to update, then click <strong>Verify</strong> in Search Console.</li>
               <li>Then submit the sitemap (below).</li>
             </ol>
             <p className="text-xs text-gray-500">If the domain is already verified with a DNS record (e.g. in your domain provider), you can skip the code.</p>

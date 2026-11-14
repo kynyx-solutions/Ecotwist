@@ -6,7 +6,7 @@ import { Card, PageHeader, Spinner, useToast } from '../ui';
 import { loadSiteSeo } from '../seo/data';
 import { ScoreBadge } from '../seo/shared';
 
-export type ContentFile = { path: string; label: string; group: string; route?: string };
+export type ContentFile = { path: string; label: string; group: string; route?: string; draft?: boolean };
 
 const GROUPS = [
   { name: 'Pages', icon: FileText, blurb: 'Words and photos on each page of the site.' },
@@ -41,7 +41,7 @@ export function WebsiteHome() {
 
   return (
     <>
-      <PageHeader title="Website" subtitle="Change the words and photos on the site. Saved changes go live in a couple of minutes." />
+      <PageHeader title="Website" subtitle="Change the words and photos on the site. Saved changes wait as drafts until you press “Publish changes” in the sidebar." />
       {error ? (
         <Card className="p-5 text-sm text-red-700">{error}</Card>
       ) : files === null ? (
@@ -64,7 +64,10 @@ export function WebsiteHome() {
                   {rows.map((f) => (
                     <li key={f.path} className="flex items-center justify-between gap-4 px-5 py-3 hover:bg-brand-off-white">
                       <Link to={editLink(f.path)} className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium hover:underline">{f.label}</p>
+                        <p className="truncate text-sm font-medium hover:underline">
+                          {f.label}
+                          {f.draft && <span className="ml-2 rounded-full bg-brand-gold/15 px-2 py-0.5 text-[11px] font-semibold text-[#8a6f2e]">Draft: not live yet</span>}
+                        </p>
                         {f.route && <p className="truncate text-xs text-gray-500">{f.route}</p>}
                       </Link>
                       {scores.has(f.path) && (

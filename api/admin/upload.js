@@ -1,10 +1,14 @@
 // Photo upload for the Website editor.
-//   POST /api/admin/upload { folder, filename, dataBase64 } → { url: "/site/uploads/<folder>/<name>" }
+//   POST /api/admin/upload { folder, filename, dataBase64 } → { url: "/site/uploads/<folder>/<name>", preview }
+// The photo waits in the "content-drafts" bucket and goes to the site with the
+// next "Publish changes" (api/admin/publish.js).
 import crypto from 'crypto';
 import { readJson, requireStaff } from '../_lib/admin.js';
-import { StorageError, assertStorage, exists, savedMessage, writeFile } from '../_lib/storage.js';
+import { StorageError, assertStorage, exists } from '../_lib/storage.js';
+import { BUCKET, getDraft, savePhotoDraft } from '../_lib/drafts.js';
 
 const TYPES = ['png', 'jpg', 'jpeg', 'webp', 'avif', 'svg'];
+const MIME = { png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', avif: 'image/avif', svg: 'image/svg+xml' };
 const MAX_BYTES = 4 * 1024 * 1024; // Vercel's request limit is 4.5 MB including base64 overhead
 
 const slug = (s) =>
@@ -42,11 +46,12 @@ export default async function handler(req, res) {
     const dir = `public/site/uploads/${slug(folder) || 'misc'}`;
     const base = slug(name.slice(0, dot)) || 'photo';
     let file = `${base}.${ext}`;
-    if (await exists(`${dir}/${file}`)) file = `${base}-${crypto.randomBytes(3).toString('hex')}.${ext}`;
+    if ((await exists(`${dir}/${file}`)) || (await getDraft(ctx.db, `${dir}/${file}`))) file = `${base}-${crypto.randomBytes(3).toString('hex')}.${ext}`;
 
     const who = ctx.profile.email || ctx.user.email || 'staff';
-    await writeFile(`${dir}/${file}`, data, { sha: null, message: `Upload ${file} from the admin (by ${who})` });
-    return res.status(200).json({ url: `${dir.replace(/^public/, '')}/${file}`, message: savedMessage() });
+    await savePhotoDraft(ctx.db, `${dir}/${file}`, data, MIME[ext], who);
+    const preview = ctx.db.storage.from(BUCKET).getPublicUrl(`${dir}/${file}`).data.publicUrl;
+    return res.status(200).json({ url: `${dir.replace(/^public/, '')}/${file}`, preview, message: 'Not live yet: press "Publish changes" when you are done.' });
   } catch (err) {
     if (err instanceof StorageError) return res.status(err.status).json({ error: err.message });
     console.error('[admin/upload]', err);

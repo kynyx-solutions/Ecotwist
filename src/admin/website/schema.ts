@@ -55,6 +55,10 @@ export function itemImage(item: Json): string {
 // Site paths contain spaces; full URLs and blob: previews pass through
 export const previewUrl = (src: string) => (/^(https?:|blob:|data:)/.test(src) ? src : encodeURI(src));
 
+// An uploaded photo that hasn't been published yet lives in the drafts bucket
+export const draftPhotoUrl = (src: string) =>
+  `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/content-drafts/public${encodeURI(src)}`;
+
 export const slugify = (s: string) =>
   s
     .toLowerCase()
