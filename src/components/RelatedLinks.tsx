@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import nav from '../content/pages/navigation.json';
 import home from '../content/pages/home.json';
 import { inr, productById, products } from '../lib/store';
-import { asset } from '../lib/content';
+import { asset, responsive } from '../lib/content';
 
 /* ============================
    "Explore more" block above the footer on every page: related occasions
@@ -96,7 +96,7 @@ export function RelatedLinks() {
             <article key={c.path} className="flex flex-col overflow-hidden rounded-2xl border border-[#e6e0cf] bg-white">
               <Link to={c.path} className="group block">
                 <div className="aspect-[4/3] overflow-hidden bg-[#efeadf]">
-                  {c.image && <img src={asset(c.image)} alt={`${c.label} corporate gifts`} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />}
+                  {c.image && <img {...responsive(c.image, '(min-width: 1024px) 25vw, 50vw')} alt={`${c.label} corporate gifts`} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />}
                 </div>
                 <div className="p-4 pb-2">
                   <h3 className="font-serif text-lg leading-snug text-[#1f2a17] group-hover:underline">{c.label}</h3>

@@ -17,7 +17,7 @@ import {
   goldText,
 } from "../components/NewYearDecor";
 import type { OrderProduct } from "./GetProposal";
-import { asset } from "../lib/content";
+import { asset, responsive } from "../lib/content";
 import content from "../content/pages/new-year-home.json";
 
 /* ============================
@@ -205,7 +205,7 @@ function Hero() {
           >
             <div className="overflow-hidden rounded-t-full rounded-b-2xl">
               <img
-                src={asset(hero.image)}
+                {...responsive(hero.image, "(min-width: 1024px) 40vw, 90vw")}
                 alt={hero.imageAlt}
                 className="aspect-[3/4] w-full object-cover"
                 fetchPriority="high"

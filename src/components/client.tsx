@@ -44,6 +44,7 @@ export default function OurClients() {
                   <img
                     src={client.logo}
                     alt={client.name}
+                    loading="lazy"
                     className="
                       h-10 sm:h-14 md:h-20
                       object-contain

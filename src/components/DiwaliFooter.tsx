@@ -142,7 +142,7 @@ export const DiwaliFooter = () => {
           {/* Brand & social */}
           <div className="lg:col-span-3">
             <Link to="/" className="group mb-8 flex w-fit flex-col items-start">
-              <img src={asset(brand.logo)} alt={brand.logoAlt} width={257} height={240} className="h-28 w-auto object-contain transition group-hover:scale-105 sm:h-32" />
+              <img src={asset(brand.logo)} alt={brand.logoAlt} width={257} height={240} loading="lazy" className="h-28 w-auto object-contain transition group-hover:scale-105 sm:h-32" />
             </Link>
             <p className="mb-8 max-w-sm text-sm leading-relaxed text-white/55">
               {brand.description}

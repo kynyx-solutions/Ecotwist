@@ -5,7 +5,7 @@ import {
   Check, ChevronDown, ChevronRight, FileCheck2, Leaf, Loader2, Minus, PackageCheck, Plus, ShieldCheck,
   Sparkles, Truck, Upload, X,
 } from 'lucide-react';
-import { asset } from '../../lib/content';
+import { asset, responsive } from '../../lib/content';
 import {
   BRANDING, QUANTITY_OPTIONS, QUOTE, cart, discountFor, inr, productById, productImages, products, settings, unitPrice,
   type StoreProduct,
@@ -47,7 +47,7 @@ export function ProductCard({ p }: { p: StoreProduct }) {
   return (
     <Link to={`/shop/${p.id}`} className="group flex flex-col overflow-hidden rounded-2xl border bg-white transition hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(0,0,0,.35)]" style={{ borderColor: C.line }}>
       <div className="relative aspect-[4/3.4] overflow-hidden" style={{ background: C.sand }}>
-        <img src={asset(p.image)} alt={p.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+        <img {...responsive(p.image, '(min-width: 1024px) 25vw, 50vw')} alt={p.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
         {p.featured && <span className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white" style={{ background: C.olive }}>Bestseller</span>}
       </div>
       <div className="flex flex-1 flex-col p-4">
@@ -207,7 +207,7 @@ export default function ProductPage() {
               </div>
             )}
             <div className="relative flex-1 overflow-hidden rounded-2xl" style={{ background: C.sand }}>
-              <img ref={setPhotoEl} src={asset(images[active])} alt={product.name} className="aspect-[4/4.4] w-full object-cover" fetchPriority="high" />
+              <img ref={setPhotoEl} {...responsive(images[active], '(min-width: 1024px) 45vw, 100vw')} alt={product.name} className="aspect-[4/4.4] w-full object-cover" fetchPriority="high" />
               {showPreview && (
                 <>
                   <BrandPreview image={images[active]} imgEl={photoEl} logoUrl={previewLogo} text={previewText} style={/engrav/i.test(branding) ? 'engrave' : 'print'} />
