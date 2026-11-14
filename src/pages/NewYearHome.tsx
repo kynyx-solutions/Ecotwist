@@ -355,18 +355,19 @@ function GiftEdit() {
           <motion.div key={item.title} variants={fadeUp}>
             <Link
               to={`/products?category=${encodeURIComponent(item.category)}`}
-              className="group flex h-full flex-col rounded-[28px] bg-white p-3 ring-1 ring-[#E6C77A]/40 transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_60px_-28px_rgba(21,38,15,.45)]"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_60px_-28px_rgba(21,38,15,.45)]"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-2xl bg-[#EFEAE0]">
+              {/* The photo as it is: a plain rectangle, no frame */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#EFEAE0]">
                 <img
-                  src={asset(item.image)}
+                  {...responsive(item.image, "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw")}
                   alt={item.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="pointer-events-none absolute inset-2 rounded-t-full rounded-b-xl border border-white/60" />
               </div>
-              <div className="flex flex-1 flex-col px-3 pb-3 pt-5">
+              {/* Text card directly below the photo */}
+              <div className="flex flex-1 flex-col rounded-b-2xl border border-t-0 border-[#E6DCC3] bg-white px-6 pb-6 pt-5">
                 <p className="text-[10px] uppercase tracking-[0.25em] text-[#8A6A2E]">{item.category}</p>
                 <h3 className="mt-1 font-serif text-2xl text-[#17220F]">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-[#4E5A45]">{item.blurb}</p>

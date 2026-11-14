@@ -6,7 +6,7 @@
       "role": "Founder & CEO",
       "company": "DigiGini Corp",
       "logo": "/site/uploads/clients/digigini-logo.webp",
-      "approved": false
+      "approved": true
     },
     {
       "quote": "Ecotwist made our Diwali gifting for employees simple. They understood our budget, shared a branded mockup quickly and delivered on time. The gifts felt premium and sustainable.",
@@ -14,7 +14,7 @@
       "role": "Founder & CEO",
       "company": "Turant Logistics",
       "logo": "/site/uploads/clients/logo-turant.webp",
-      "approved": false
+      "approved": true
     },
     {
       "quote": "As a brand built on sustainability, we wanted Diwali gifts that matched our values. Ecotwist's hampers for our clients and the nutritionists we work with did exactly that: thoughtful, plastic-free and beautifully branded.",
@@ -22,7 +22,7 @@
       "role": "Founder & CEO",
       "company": "GhaasPaat Microgreens",
       "logo": "/site/uploads/clients/logo-ghaaspaat.webp",
-      "approved": false
+      "approved": true
     }
   ]
 }
