@@ -1,26 +1,62 @@
 {
-  "_meta": { "label": "Contact", "route": "/contact" },
+  "_meta": {
+    "label": "Contact",
+    "route": "/contact"
+  },
   "intro": {
     "eyebrow": "Get In Touch",
-    "titleLine1": "Start the",
-    "titleLine2": "Conversation.",
-    "text": "Partner with our design experts to create meaningful, sustainable brand experiences that leave a lasting impression.",
+    "titleLine1": "Bulk corporate gifts,",
+    "titleLine2": "start the conversation.",
+    "text": "Planning bulk corporate gifts for your team or clients? Partner with our design experts to create meaningful, sustainable brand experiences that leave a lasting impression.",
     "contacts": [
-      { "tag": "Email Us", "value": "info@ecotwist.in", "symbol": "✉" },
-      { "tag": "Direct Inquiry", "value": "+91 70913 23777", "symbol": "◎" },
-      { "tag": "The Studio", "value": "5th Floor, Mauryalok Complex, A-Block, Patna 800001, Bihar", "symbol": "◈" }
+      {
+        "tag": "Email Us",
+        "value": "info@ecotwist.in",
+        "symbol": "✉"
+      },
+      {
+        "tag": "Direct Inquiry",
+        "value": "+91 70913 23777",
+        "symbol": "◎"
+      },
+      {
+        "tag": "The Studio",
+        "value": "5th Floor, Mauryalok Complex, A-Block, Patna 800001, Bihar",
+        "symbol": "◈"
+      }
     ],
     "stats": [
-      { "label": "Happy Clients", "value": "100+" },
-      { "label": "Gifts Delivered", "value": "5K+" },
-      { "label": "Satisfaction", "value": "98%" }
+      {
+        "label": "Happy Clients",
+        "value": "100+"
+      },
+      {
+        "label": "Gifts Delivered",
+        "value": "5K+"
+      },
+      {
+        "label": "Satisfaction",
+        "value": "98%"
+      }
     ]
   },
   "gallery": {
     "linkText": "View Gallery",
     "cards": [
-      { "label": "Sustainable Gifting", "tag": "Eco", "accent": "#5a8a6e", "image": "/site/contact/contact1.jpeg", "path": "/products" },
-      { "label": "Eco Luxury Craft", "tag": "Artisan", "accent": "#b5a26a", "image": "/site/contact/contact2.jpeg", "path": "/solutions" }
+      {
+        "label": "Sustainable Gifting",
+        "tag": "Eco",
+        "accent": "#5a8a6e",
+        "image": "/site/contact/contact1.jpeg",
+        "path": "/products"
+      },
+      {
+        "label": "Eco Luxury Craft",
+        "tag": "Artisan",
+        "accent": "#b5a26a",
+        "image": "/site/contact/contact2.jpeg",
+        "path": "/solutions"
+      }
     ]
   },
   "quote": {
@@ -41,10 +77,22 @@
     "interestLabel": "Area of Interest",
     "interestPlaceholder": "Select an area...",
     "interestOptions": [
-      { "key": "corporate", "label": "Corporate Gifting (Bulk)" },
-      { "key": "event", "label": "Special Event / Launch" },
-      { "key": "custom", "label": "Bespoke Design Consultancy" },
-      { "key": "other", "label": "General Inquiry" }
+      {
+        "key": "corporate",
+        "label": "Corporate Gifting (Bulk)"
+      },
+      {
+        "key": "event",
+        "label": "Special Event / Launch"
+      },
+      {
+        "key": "custom",
+        "label": "Bespoke Design Consultancy"
+      },
+      {
+        "key": "other",
+        "label": "General Inquiry"
+      }
     ],
     "messageLabel": "Project Overview",
     "messagePlaceholder": "Tell us about your gifting goals...",

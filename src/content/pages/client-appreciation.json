@@ -1,17 +1,35 @@
 {
-  "_meta": { "label": "Client Appreciation", "route": "/occasions/client-appreciation" },
+  "_meta": {
+    "label": "Client Appreciation",
+    "route": "/occasions/client-appreciation"
+  },
   "hero": {
     "eyebrow": "Corporate Gifting Solutions",
     "titleLine1": "Client",
     "titleLine2": "Appreciation",
-    "titleLine3": "Gifting Solutions.",
-    "intro": "Strengthen partnerships with artisanal, earth-conscious luxury. Curated experiences that reflect your brand's commitment to quality and sustainability.",
+    "titleLine3": "Gifts.",
+    "intro": "Strengthen partnerships with client appreciation gifts in artisanal, earth-conscious luxury: dry fruit jar boxes, executive cork sets and gourmet hampers that reflect your brand's commitment to quality.",
     "tags": [
-      { "symbol": "", "label": "Curated Gifts" },
-      { "symbol": "💎", "label": "Premium Quality" },
-      { "symbol": "🌿", "label": "Eco Certified" },
-      { "symbol": "💼", "label": "Corporate Orders" },
-      { "symbol": "🎀", "label": "Custom Wrapping" }
+      {
+        "symbol": "",
+        "label": "Curated Gifts"
+      },
+      {
+        "symbol": "💎",
+        "label": "Premium Quality"
+      },
+      {
+        "symbol": "🌿",
+        "label": "Eco Certified"
+      },
+      {
+        "symbol": "💼",
+        "label": "Corporate Orders"
+      },
+      {
+        "symbol": "🎀",
+        "label": "Custom Wrapping"
+      }
     ],
     "primaryButton": "Explore Gifts",
     "secondaryButton": "Request Quote",
@@ -19,7 +37,7 @@
   },
   "about": {
     "image": "/site/client-appreciation/philosophy.jpg",
-    "imageAlt": "About",
+    "imageAlt": "Artisan-made sustainable client appreciation gifts arranged on a linen table",
     "eyebrow": "Our Philosophy",
     "titleLine1": "Elevated Intentions",
     "titleLine2": "for Lasting Impressions",
@@ -31,9 +49,27 @@
     "intro": "Discover the perfect alignment for your brand's aesthetic and values.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Executive Boxes", "text": "Sophisticated essentials for the modern C-suite leader.", "accent": "#b5a26a", "tag": "Executive", "image": "/site/client-appreciation/executive-boxes.png" },
-      { "name": "Artisanal Curations", "text": "Handmade ceramics and small-batch treats from local makers.", "accent": "#c4735d", "tag": "Artisan", "image": "/site/client-appreciation/artisanal-curations.png" },
-      { "name": "Custom Tech", "text": "Seamlessly integrated technology in eco-conscious housing.", "accent": "#5a8a6e", "tag": "Tech", "image": "/site/client-appreciation/custom-tech.png" }
+      {
+        "name": "Executive Boxes",
+        "text": "Sophisticated essentials for the modern C-suite leader.",
+        "accent": "#b5a26a",
+        "tag": "Executive",
+        "image": "/site/client-appreciation/executive-boxes.png"
+      },
+      {
+        "name": "Artisanal Curations",
+        "text": "Handmade ceramics and small-batch treats from local makers.",
+        "accent": "#c4735d",
+        "tag": "Artisan",
+        "image": "/site/client-appreciation/artisanal-curations.png"
+      },
+      {
+        "name": "Custom Tech",
+        "text": "Seamlessly integrated technology in eco-conscious housing.",
+        "accent": "#5a8a6e",
+        "tag": "Tech",
+        "image": "/site/client-appreciation/custom-tech.png"
+      }
     ]
   },
   "products": {
@@ -42,14 +78,54 @@
     "viewAllText": "View All",
     "buttonText": "Order Now",
     "items": [
-      { "name": "The Wellness Suite", "subtitle": "Organic Linen & Essential Oils", "price": "From ₹2,499", "image": "/site/diwali-gifting/wellness-hamper.png" },
-      { "name": "Morning Ritual", "subtitle": "Artisanal Coffee & Copper Press", "price": "From ₹1,999", "image": "/site/client-appreciation/morning-ritual.jpg" },
-      { "name": "The Catalyst", "subtitle": "Recycled Leather & Brass Stylus", "price": "From ₹1,499", "image": "/site/client-appreciation/the-catalyst.png" },
-      { "name": "Grand Celebration", "subtitle": "Vintage Cuvee & Cocoa Nib Truffles", "price": "From ₹3,499", "image": "/site/client-appreciation/grand-celebration.png" },
-      { "name": "Classic 2-Jar Box", "subtitle": "Two jars of premium dry fruits in a keepsake box", "price": "From ₹699", "image": "/kits/jar-box-2-navy.webp" },
-      { "name": "Client Thank-You Box", "subtitle": "Cork diary, cork pen and a 2-jar dry fruit box", "price": "From ₹1,399", "image": "/kits/jar-box-2-white.webp" },
-      { "name": "Executive Cork Collection", "subtitle": "4-jar dry fruits, cork diary and pen, bamboo bottle, candle", "price": "From ₹2,199", "image": "/kits/jar-box-4-navy.webp" },
-      { "name": "Grand Client Hamper", "subtitle": "6-jar dry fruits, candles, cork diary and pen in a pinewood basket", "price": "From ₹3,499", "image": "/kits/pinewood-basket.webp" }
+      {
+        "name": "The Wellness Suite",
+        "subtitle": "Organic Linen & Essential Oils",
+        "price": "From ₹2,499",
+        "image": "/site/diwali-gifting/wellness-hamper.png"
+      },
+      {
+        "name": "Morning Ritual",
+        "subtitle": "Artisanal Coffee & Copper Press",
+        "price": "From ₹1,999",
+        "image": "/site/client-appreciation/morning-ritual.jpg"
+      },
+      {
+        "name": "The Catalyst",
+        "subtitle": "Recycled Leather & Brass Stylus",
+        "price": "From ₹1,499",
+        "image": "/site/client-appreciation/the-catalyst.png"
+      },
+      {
+        "name": "Grand Celebration",
+        "subtitle": "Vintage Cuvee & Cocoa Nib Truffles",
+        "price": "From ₹3,499",
+        "image": "/site/client-appreciation/grand-celebration.png"
+      },
+      {
+        "name": "Classic 2-Jar Box",
+        "subtitle": "Two jars of premium dry fruits in a keepsake box",
+        "price": "From ₹699",
+        "image": "/kits/jar-box-2-navy.webp"
+      },
+      {
+        "name": "Client Thank-You Box",
+        "subtitle": "Cork diary, cork pen and a 2-jar dry fruit box",
+        "price": "From ₹1,399",
+        "image": "/kits/jar-box-2-white.webp"
+      },
+      {
+        "name": "Executive Cork Collection",
+        "subtitle": "4-jar dry fruits, cork diary and pen, bamboo bottle, candle",
+        "price": "From ₹2,199",
+        "image": "/kits/jar-box-4-navy.webp"
+      },
+      {
+        "name": "Grand Client Hamper",
+        "subtitle": "6-jar dry fruits, candles, cork diary and pen in a pinewood basket",
+        "price": "From ₹3,499",
+        "image": "/kits/pinewood-basket.webp"
+      }
     ]
   },
   "personalization": {
@@ -57,20 +133,52 @@
     "titleLine1": "Tailored to Your",
     "titleHighlight": "Brand Identity",
     "items": [
-      { "symbol": "◈", "title": "Logo Branding", "text": "Subtle engraving or foil-stamping on products and packaging." },
-      { "symbol": "✏", "title": "Personalized Messages", "text": "Hand-calligraphed notes included with every gift shipment." },
-      { "symbol": "📦", "title": "Packaging Styles", "text": "Choose from wooden crates, recycled boxes, or canvas wraps." }
+      {
+        "symbol": "◈",
+        "title": "Logo Branding",
+        "text": "Subtle engraving or foil-stamping on products and packaging."
+      },
+      {
+        "symbol": "✏",
+        "title": "Personalized Messages",
+        "text": "Hand-calligraphed notes included with every gift shipment."
+      },
+      {
+        "symbol": "📦",
+        "title": "Packaging Styles",
+        "text": "Choose from wooden crates, recycled boxes, or canvas wraps."
+      }
     ],
     "image": "/site/client-appreciation/personalization.png",
-    "imageAlt": "Custom"
+    "imageAlt": "Client gift box personalised with a company logo and a handwritten thank-you card"
   },
   "features": {
     "items": [
-      { "symbol": "🌿", "title": "100% Plastic Free", "text": "Fully compostable materials" },
-      { "symbol": "🤝", "title": "Artisan Direct", "text": "Supporting small makers" },
-      { "symbol": "🚚", "title": "Carbon Neutral", "text": "Global tracked delivery" },
-      { "symbol": "✦", "title": "B-Corp Certified", "text": "Socially responsible" },
-      { "symbol": "◐", "title": "Dedicated Concierge", "text": "Personalized support" }
+      {
+        "symbol": "🌿",
+        "title": "100% Plastic Free",
+        "text": "Fully compostable materials"
+      },
+      {
+        "symbol": "🤝",
+        "title": "Artisan Direct",
+        "text": "Supporting small makers"
+      },
+      {
+        "symbol": "🚚",
+        "title": "Carbon Neutral",
+        "text": "Global tracked delivery"
+      },
+      {
+        "symbol": "✦",
+        "title": "B-Corp Certified",
+        "text": "Socially responsible"
+      },
+      {
+        "symbol": "◐",
+        "title": "Dedicated Concierge",
+        "text": "Personalized support"
+      }
     ]
   },
   "trustedBy": {

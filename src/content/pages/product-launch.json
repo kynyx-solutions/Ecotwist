@@ -1,13 +1,16 @@
 {
-  "_meta": { "label": "Product Launch", "route": "/occasions/product-launch" },
+  "_meta": {
+    "label": "Product Launch",
+    "route": "/occasions/product-launch"
+  },
   "hero": {
     "backgroundImage": "/kits/eco-tech-accessories.webp",
     "backgroundImageAlt": "Product Launch Hero",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Product",
     "titleLine2": "Launch",
-    "titleHighlight": "Gifting Solutions.",
-    "intro": "Make your product launch unforgettable with curated gift experiences that amplify buzz, delight media, and create a lasting brand impression.",
+    "titleHighlight": "Gifts & PR Kits.",
+    "intro": "Make your launch unforgettable with product launch gifts that amplify buzz and delight media: reveal boxes, press kits and influencer kits that leave a lasting brand impression.",
     "primaryButton": "Explore Launch Kits",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -28,9 +31,27 @@
     "intro": "Tailored gifting for every stakeholder in your product launch ecosystem.",
     "linkText": "View Collection",
     "items": [
-      { "name": "VIP Launch Kits", "desc": "Exclusive hampers for key stakeholders, investors, and media guests at your product debut.", "accent": "#5b8fa8", "tag": "VIP", "img": "/site/client-appreciation/executive-boxes.png" },
-      { "name": "Branded Merchandise", "desc": "Premium custom merch — apparel, bags, and stationery that puts your new product top of mind.", "accent": "#3a6b82", "tag": "Brand", "img": "/kits/cork-denim-diary-branded.webp" },
-      { "name": "Media & Press Boxes", "desc": "Curated unboxing experiences designed to make your launch go viral on social media.", "accent": "#2e5571", "tag": "Media", "img": "/kits/seed-pencils.webp" }
+      {
+        "name": "VIP Launch Kits",
+        "desc": "Exclusive hampers for key stakeholders, investors, and media guests at your product debut.",
+        "accent": "#5b8fa8",
+        "tag": "VIP",
+        "img": "/site/client-appreciation/executive-boxes.png"
+      },
+      {
+        "name": "Branded Merchandise",
+        "desc": "Premium custom merch — apparel, bags, and stationery that puts your new product top of mind.",
+        "accent": "#3a6b82",
+        "tag": "Brand",
+        "img": "/kits/cork-denim-diary-branded.webp"
+      },
+      {
+        "name": "Media & Press Boxes",
+        "desc": "Curated unboxing experiences designed to make your launch go viral on social media.",
+        "accent": "#2e5571",
+        "tag": "Media",
+        "img": "/kits/seed-pencils.webp"
+      }
     ]
   },
   "products": {
@@ -38,12 +59,42 @@
     "intro": "The most-loved items in our product launch gifting range.",
     "viewAllText": "View All",
     "items": [
-      { "name": "Launch Day Hamper", "sub": "Starting at ₹1,999", "tag": "Premium", "img": "/site/client-appreciation/the-catalyst.png" },
-      { "name": "Branded Tech Essentials", "sub": "Starting at ₹2,999", "tag": "Customizable", "img": "/site/client-appreciation/custom-tech.png" },
-      { "name": "Press Kit Box", "sub": "Starting at ₹3,499", "tag": "Media", "img": "/site/diwali-gifting/premium-packaging.png" },
-      { "name": "Media Kit", "sub": "Starting at ₹349", "tag": "Press", "img": "/kits/paper-pen.webp" },
-      { "name": "Launch Reveal Box", "sub": "Starting at ₹1,499", "tag": "Bestseller", "img": "/kits/kraft-gift-box.webp" },
-      { "name": "VIP Launch Hamper", "sub": "Starting at ₹2,199", "tag": "Premium", "img": "/kits/jar-box-4-navy.webp" }
+      {
+        "name": "Launch Day Hamper",
+        "sub": "Starting at ₹1,999",
+        "tag": "Premium",
+        "img": "/site/client-appreciation/the-catalyst.png"
+      },
+      {
+        "name": "Branded Tech Essentials",
+        "sub": "Starting at ₹2,999",
+        "tag": "Customizable",
+        "img": "/site/client-appreciation/custom-tech.png"
+      },
+      {
+        "name": "Press Kit Box",
+        "sub": "Starting at ₹3,499",
+        "tag": "Media",
+        "img": "/site/diwali-gifting/premium-packaging.png"
+      },
+      {
+        "name": "Media Kit",
+        "sub": "Starting at ₹349",
+        "tag": "Press",
+        "img": "/kits/paper-pen.webp"
+      },
+      {
+        "name": "Launch Reveal Box",
+        "sub": "Starting at ₹1,499",
+        "tag": "Bestseller",
+        "img": "/kits/kraft-gift-box.webp"
+      },
+      {
+        "name": "VIP Launch Hamper",
+        "sub": "Starting at ₹2,199",
+        "tag": "Premium",
+        "img": "/kits/jar-box-4-navy.webp"
+      }
     ]
   },
   "customization": {
@@ -52,10 +103,26 @@
     "titleHighlight": "Maximum Impact",
     "intro": "Every element of your launch gift is an extension of your product story. We obsess over the details so your gift becomes a talking point long after launch day.",
     "items": [
-      { "symbol": "🚀", "title": "Product Integration", "desc": "Incorporate your actual product sample into the launch gift experience." },
-      { "symbol": "◈", "title": "Brand Story Inserts", "desc": "Beautifully designed inserts that tell your product's origin story." },
-      { "symbol": "📦", "title": "Unboxing Experience", "desc": "Magnetic closures, custom tissue, and layered reveal packaging." },
-      { "symbol": "🎥", "title": "QR Code Integration", "desc": "Scannable codes linking to launch videos, demos, or microsites." }
+      {
+        "symbol": "🚀",
+        "title": "Product Integration",
+        "desc": "Incorporate your actual product sample into the launch gift experience."
+      },
+      {
+        "symbol": "◈",
+        "title": "Brand Story Inserts",
+        "desc": "Beautifully designed inserts that tell your product's origin story."
+      },
+      {
+        "symbol": "📦",
+        "title": "Unboxing Experience",
+        "desc": "Magnetic closures, custom tissue, and layered reveal packaging."
+      },
+      {
+        "symbol": "🎥",
+        "title": "QR Code Integration",
+        "desc": "Scannable codes linking to launch videos, demos, or microsites."
+      }
     ],
     "image": "/kits/branded-kit-dark.webp",
     "imageAlt": "Launch Gift Box"
@@ -63,11 +130,31 @@
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🚀", "title": "Launch Impact", "desc": "Gifts engineered to amplify buzz around your product debut." },
-      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Seamless production for 50 to 5,000+ launch kits." },
-      { "symbol": "◎", "title": "Rapid Turnaround", "desc": "Express timelines available for tight launch windows." },
-      { "symbol": "✦", "title": "Brand Storytelling", "desc": "Every element designed to communicate your brand narrative." },
-      { "symbol": "◐", "title": "Launch Consultant", "desc": "Dedicated expert for your entire gifting journey." }
+      {
+        "symbol": "🚀",
+        "title": "Launch Impact",
+        "desc": "Gifts engineered to amplify buzz around your product debut."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "desc": "Seamless production for 50 to 5,000+ launch kits."
+      },
+      {
+        "symbol": "◎",
+        "title": "Rapid Turnaround",
+        "desc": "Express timelines available for tight launch windows."
+      },
+      {
+        "symbol": "✦",
+        "title": "Brand Storytelling",
+        "desc": "Every element designed to communicate your brand narrative."
+      },
+      {
+        "symbol": "◐",
+        "title": "Launch Consultant",
+        "desc": "Dedicated expert for your entire gifting journey."
+      }
     ]
   },
   "trust": {

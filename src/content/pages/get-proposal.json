@@ -1,16 +1,31 @@
 {
-  "_meta": { "label": "Get Proposal form", "route": "/get-proposal" },
+  "_meta": {
+    "label": "Get Proposal form",
+    "route": "/get-proposal"
+  },
   "steps": [
     {
       "stepLabel": "01. Occasion",
-      "subtitle": "Tell us about the",
-      "title": "Occasion",
-      "desc": "Every gift tells a story. Select the purpose for your curated collection.",
+      "subtitle": "Get a free",
+      "title": "corporate gifting proposal",
+      "desc": "Tell us the occasion and we will send your corporate gifting proposal with a branded mockup within 24 hours. Every gift tells a story.",
       "options": [
-        { "title": "Employee Appreciation", "desc": "Reward your team." },
-        { "title": "New Hire Onboarding", "desc": "Welcome new employees." },
-        { "title": "Client Gifting", "desc": "Strengthen relationships." },
-        { "title": "Event Swag", "desc": "Perfect for events." }
+        {
+          "title": "Employee Appreciation",
+          "desc": "Reward your team."
+        },
+        {
+          "title": "New Hire Onboarding",
+          "desc": "Welcome new employees."
+        },
+        {
+          "title": "Client Gifting",
+          "desc": "Strengthen relationships."
+        },
+        {
+          "title": "Event Swag",
+          "desc": "Perfect for events."
+        }
       ],
       "image1": "/kits/welcome-kit-ecotwist.webp",
       "image2": "/kits/premium-hampers-ecotwist.webp"
@@ -21,10 +36,22 @@
       "title": "Budget",
       "desc": "Choose a budget range that aligns with your gifting goals.",
       "options": [
-        { "title": "₹100 - ₹500", "desc": "" },
-        { "title": "₹500 - ₹1000", "desc": "" },
-        { "title": "₹1000 - ₹2000", "desc": "" },
-        { "title": "₹2000+", "desc": "" }
+        {
+          "title": "₹100 - ₹500",
+          "desc": ""
+        },
+        {
+          "title": "₹500 - ₹1000",
+          "desc": ""
+        },
+        {
+          "title": "₹1000 - ₹2000",
+          "desc": ""
+        },
+        {
+          "title": "₹2000+",
+          "desc": ""
+        }
       ],
       "image1": "/site/home/client-partnerships.avif",
       "image2": "/kits/jar-box-4-navy.webp"
@@ -35,10 +62,22 @@
       "title": "Quantity",
       "desc": "Tell us how many recipients you are planning for.",
       "options": [
-        { "title": "10 - 50", "desc": "" },
-        { "title": "50 - 100", "desc": "" },
-        { "title": "100 - 500", "desc": "" },
-        { "title": "500+", "desc": "" }
+        {
+          "title": "10 - 50",
+          "desc": ""
+        },
+        {
+          "title": "50 - 100",
+          "desc": ""
+        },
+        {
+          "title": "100 - 500",
+          "desc": ""
+        },
+        {
+          "title": "500+",
+          "desc": ""
+        }
       ],
       "image1": "/kits/onboarding-collection.webp",
       "image2": "/site/home/executive-gift-box.jpg"
@@ -49,10 +88,22 @@
       "title": "Branding",
       "desc": "Customize your gifts with premium branding options.",
       "options": [
-        { "title": "Logo Print", "desc": "" },
-        { "title": "Custom Packaging", "desc": "" },
-        { "title": "Embroidery", "desc": "" },
-        { "title": "No Branding", "desc": "" }
+        {
+          "title": "Logo Print",
+          "desc": ""
+        },
+        {
+          "title": "Custom Packaging",
+          "desc": ""
+        },
+        {
+          "title": "Embroidery",
+          "desc": ""
+        },
+        {
+          "title": "No Branding",
+          "desc": ""
+        }
       ],
       "image1": "/kits/branded-kit-dark.webp",
       "image2": "/kits/cork-denim-diary-branded.webp"

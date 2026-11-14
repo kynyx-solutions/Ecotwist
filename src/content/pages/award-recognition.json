@@ -1,12 +1,15 @@
 {
-  "_meta": { "label": "Award & Recognition", "route": "/occasions/award-recognition" },
+  "_meta": {
+    "label": "Award & Recognition",
+    "route": "/occasions/award-recognition"
+  },
   "hero": {
     "clickHint": "Click to honour",
     "eyebrow": "Corporate Solutions",
-    "titleLine1": "Award &",
+    "titleLine1": "Employee",
     "titleLine2": "Recognition",
-    "titleHighlight": "Gifting Solutions.",
-    "intro": "Honour your highest achievers with premium, personalised awards and gifts that make every recognition moment truly unforgettable.",
+    "titleHighlight": "Gifts & Awards.",
+    "intro": "Honour your highest achievers with employee recognition gifts that make every award moment unforgettable: engraved trophies, star performer boxes and premium portfolios, personalised for your R&R programme.",
     "primaryButton": "Explore Awards",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -27,9 +30,27 @@
     "intro": "Curated award gifting tiers designed to match every level of achievement and excellence.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Top Performer Awards", "tag": "Excellence", "text": "Luxurious gifts for your highest achievers — because extraordinary performance deserves extraordinary recognition.", "accent": "#c4a23a", "image": "/site/award-recognition/top-performer-awards.avif" },
-      { "name": "Long Service Honours", "tag": "Legacy", "text": "Prestigious awards and curated gifts celebrating decades of outstanding commitment to your organisation.", "accent": "#a8882e", "image": "/site/award-recognition/long-service-honours.jpeg" },
-      { "name": "Innovation Champions", "tag": "Innovation", "text": "Special recognition for the creative minds who drive your organisation forward with bold, fresh thinking.", "accent": "#8a6e20", "image": "/site/award-recognition/innovation-champions.jpeg" }
+      {
+        "name": "Top Performer Awards",
+        "tag": "Excellence",
+        "text": "Luxurious gifts for your highest achievers — because extraordinary performance deserves extraordinary recognition.",
+        "accent": "#c4a23a",
+        "image": "/site/award-recognition/top-performer-awards.avif"
+      },
+      {
+        "name": "Long Service Honours",
+        "tag": "Legacy",
+        "text": "Prestigious awards and curated gifts celebrating decades of outstanding commitment to your organisation.",
+        "accent": "#a8882e",
+        "image": "/site/award-recognition/long-service-honours.jpeg"
+      },
+      {
+        "name": "Innovation Champions",
+        "tag": "Innovation",
+        "text": "Special recognition for the creative minds who drive your organisation forward with bold, fresh thinking.",
+        "accent": "#8a6e20",
+        "image": "/site/award-recognition/innovation-champions.jpeg"
+      }
     ]
   },
   "products": {
@@ -37,12 +58,42 @@
     "intro": "Premium pieces crafted to honour your highest achievers.",
     "viewAllText": "View All",
     "items": [
-      { "name": "Gold Excellence Hamper", "price": "Starting at ₹3,499", "tag": "Luxury", "image": "/site/award-recognition/gold-excellence-hamper.jpeg" },
-      { "name": "Engraved Crystal Trophy", "price": "Starting at ₹2,999", "tag": "Customizable", "image": "/site/work-anniversary/years-of-service-awards.png" },
-      { "name": "Premium Leather Portfolio", "price": "Starting at ₹1,999", "tag": "Premium", "image": "/site/work-anniversary/leather-folio.png" },
-      { "name": "Recognition Cork Set", "price": "Starting at ₹649", "tag": "Team awards", "image": "/kits/cork-diary-pen.webp" },
-      { "name": "Star Performer Box", "price": "Starting at ₹1,799", "tag": "Bestseller", "image": "/kits/jar-box-2-navy.webp" },
-      { "name": "Executive Cork Collection", "price": "Starting at ₹2,199", "tag": "Luxury", "image": "/kits/jar-box-4-navy.webp" }
+      {
+        "name": "Gold Excellence Hamper",
+        "price": "Starting at ₹3,499",
+        "tag": "Luxury",
+        "image": "/site/award-recognition/gold-excellence-hamper.jpeg"
+      },
+      {
+        "name": "Engraved Crystal Trophy",
+        "price": "Starting at ₹2,999",
+        "tag": "Customizable",
+        "image": "/site/work-anniversary/years-of-service-awards.png"
+      },
+      {
+        "name": "Premium Leather Portfolio",
+        "price": "Starting at ₹1,999",
+        "tag": "Premium",
+        "image": "/site/work-anniversary/leather-folio.png"
+      },
+      {
+        "name": "Recognition Cork Set",
+        "price": "Starting at ₹649",
+        "tag": "Team awards",
+        "image": "/kits/cork-diary-pen.webp"
+      },
+      {
+        "name": "Star Performer Box",
+        "price": "Starting at ₹1,799",
+        "tag": "Bestseller",
+        "image": "/kits/jar-box-2-navy.webp"
+      },
+      {
+        "name": "Executive Cork Collection",
+        "price": "Starting at ₹2,199",
+        "tag": "Luxury",
+        "image": "/kits/jar-box-4-navy.webp"
+      }
     ]
   },
   "customization": {
@@ -51,22 +102,58 @@
     "titleHighlight": "as Their Achievements",
     "intro": "Each recognition gift is a unique testament to an individual's contribution. Our bespoke service ensures every award carries the weight and dignity that true excellence deserves.",
     "items": [
-      { "symbol": "🏆", "title": "Trophy Engraving", "text": "Names, dates, and personalised citations engraved on premium awards." },
-      { "symbol": "📜", "title": "Citation Certificates", "text": "Beautifully typeset achievement certificates with gold foil accents." },
-      { "symbol": "📦", "title": "Prestige Packaging", "text": "Velvet-lined rigid boxes with magnetic closures and satin ribbons." },
-      { "symbol": "🎨", "title": "Brand Alignment", "text": "Awards and packaging perfectly matched to your corporate visual identity." }
+      {
+        "symbol": "🏆",
+        "title": "Trophy Engraving",
+        "text": "Names, dates, and personalised citations engraved on premium awards."
+      },
+      {
+        "symbol": "📜",
+        "title": "Citation Certificates",
+        "text": "Beautifully typeset achievement certificates with gold foil accents."
+      },
+      {
+        "symbol": "📦",
+        "title": "Prestige Packaging",
+        "text": "Velvet-lined rigid boxes with magnetic closures and satin ribbons."
+      },
+      {
+        "symbol": "🎨",
+        "title": "Brand Alignment",
+        "text": "Awards and packaging perfectly matched to your corporate visual identity."
+      }
     ],
     "image": "/site/work-anniversary/years-of-service-awards.png",
-    "imageAlt": "Award"
+    "imageAlt": "Engraved years-of-service award plaques for employee recognition"
   },
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🏆", "title": "Prestige Craft", "text": "Award pieces handcrafted from premium materials by artisan makers." },
-      { "symbol": "◈", "title": "Bulk Ordering", "text": "Efficient production for 10 to 5,000 award recipients." },
-      { "symbol": "◎", "title": "Pan-India Delivery", "text": "White-glove delivery ensuring perfect presentation on arrival." },
-      { "symbol": "✦", "title": "Custom Branding", "text": "Your brand identity embedded at every touchpoint." },
-      { "symbol": "◐", "title": "Awards Specialist", "text": "Dedicated recognition expert for your programme." }
+      {
+        "symbol": "🏆",
+        "title": "Prestige Craft",
+        "text": "Award pieces handcrafted from premium materials by artisan makers."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "text": "Efficient production for 10 to 5,000 award recipients."
+      },
+      {
+        "symbol": "◎",
+        "title": "Pan-India Delivery",
+        "text": "White-glove delivery ensuring perfect presentation on arrival."
+      },
+      {
+        "symbol": "✦",
+        "title": "Custom Branding",
+        "text": "Your brand identity embedded at every touchpoint."
+      },
+      {
+        "symbol": "◐",
+        "title": "Awards Specialist",
+        "text": "Dedicated recognition expert for your programme."
+      }
     ]
   },
   "trust": {

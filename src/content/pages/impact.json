@@ -1,10 +1,13 @@
 {
-  "_meta": { "label": "Impact", "route": "/impact" },
+  "_meta": {
+    "label": "Impact",
+    "route": "/impact"
+  },
   "hero": {
     "eyebrow": "A Legacy of Responsibility",
     "titleLine1": "Sustainable",
-    "titleLine2": "Luxury Defined.",
-    "intro": "At Ecotwist, we believe true luxury is found in the harmony between exquisite design and ecological integrity.",
+    "titleLine2": "Corporate Gifting, Defined.",
+    "intro": "At Ecotwist, sustainable corporate gifting means exquisite design in harmony with ecological integrity: plastic-free packaging, natural materials and artisan-made products.",
     "scrollLabel": "Scroll"
   },
   "metrics": {
@@ -13,9 +16,21 @@
     "title": "Measured in",
     "titleHighlight": "meaning.",
     "items": [
-      { "value": "1000+", "label": "Kilograms CO2 Offset", "text": "Through regenerative forestry and localized production cycles that prioritize the planet." },
-      { "value": "100+", "label": "Master Artisans", "text": "Empowering heritage communities across four continents with fair living wages and healthcare." },
-      { "value": "100%", "label": "Traceable Materials", "text": "Every fiber has a story. Our blockchain-verified supply chain ensures absolute transparency." }
+      {
+        "value": "1000+",
+        "label": "Kilograms CO2 Offset",
+        "text": "Through regenerative forestry and localized production cycles that prioritize the planet."
+      },
+      {
+        "value": "100+",
+        "label": "Master Artisans",
+        "text": "Empowering heritage communities across four continents with fair living wages and healthcare."
+      },
+      {
+        "value": "100%",
+        "label": "Traceable Materials",
+        "text": "Every fiber has a story. Our blockchain-verified supply chain ensures absolute transparency."
+      }
     ]
   },
   "artisans": {
@@ -40,21 +55,45 @@
         "number": "01.",
         "title": "The Requirement",
         "text": "Sourcing raw materials that demand nothing from the earth but time.",
-        "tags": [{ "text": "Wild Organic Silk" }, { "text": "Post-Consumer Gold" }, { "text": "Regen Wool" }],
+        "tags": [
+          {
+            "text": "Wild Organic Silk"
+          },
+          {
+            "text": "Post-Consumer Gold"
+          },
+          {
+            "text": "Regen Wool"
+          }
+        ],
         "image": "/kits/welcome-kit-ecotwist.webp"
       },
       {
         "number": "02.",
         "title": "The Design",
         "text": "Architecture for the body. Every seam serves a functional and aesthetic purpose.",
-        "tags": [{ "text": "Draft No. 42A" }, { "text": "Zero-Waste Patterning" }],
+        "tags": [
+          {
+            "text": "Draft No. 42A"
+          },
+          {
+            "text": "Zero-Waste Patterning"
+          }
+        ],
         "image": "/kits/branded-kit-dark.webp"
       },
       {
         "number": "03.",
         "title": "The Delivery",
         "text": "Carbon-neutral transit to your door in plastic-free, archival packaging.",
-        "tags": [{ "text": "Modern Heirloom" }, { "text": "Lifetime Integrity" }],
+        "tags": [
+          {
+            "text": "Modern Heirloom"
+          },
+          {
+            "text": "Lifetime Integrity"
+          }
+        ],
         "image": "/kits/premium-hampers-ecotwist.webp"
       }
     ]

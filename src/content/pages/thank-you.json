@@ -1,15 +1,26 @@
 {
-  "_meta": { "label": "Thank-you page", "route": "/thanks" },
+  "_meta": {
+    "label": "Thank-you page",
+    "route": "/thanks"
+  },
   "hero": {
     "eyebrow": "EcoTwist Studio",
     "titleLine1": "Thank You.",
-    "titleLine2": "Your Journey Begins.",
-    "text": "Thank you for reaching out. Our sustainability experts are reviewing your requirements and will craft a tailored gifting experience for your brand.",
+    "titleLine2": "Your Corporate Gifting Proposal Is on Its Way.",
+    "text": "Thank you for reaching out. Our team is preparing your corporate gifting proposal and a branded mockup, and will send both within 24 hours.",
     "timeline": [
-      { "text": "Request Submitted" },
-      { "text": "Requirement Review" },
-      { "text": "Proposal Creation" },
-      { "text": "We Will Contact You" }
+      {
+        "text": "Request Submitted"
+      },
+      {
+        "text": "Requirement Review"
+      },
+      {
+        "text": "Proposal Creation"
+      },
+      {
+        "text": "We Will Contact You"
+      }
     ],
     "responseLabel": "Average Response Time",
     "responseUnit": "Hours",

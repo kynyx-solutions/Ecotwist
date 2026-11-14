@@ -1,5 +1,8 @@
 {
-  "_meta": { "label": "Women's Day Gifting", "route": "/occasions/womens-day" },
+  "_meta": {
+    "label": "Women's Day Gifting",
+    "route": "/occasions/womens-day"
+  },
   "theme": {
     "accent": "#d4869c",
     "dark": "#2a1420",
@@ -7,9 +10,9 @@
   },
   "hero": {
     "eyebrow": "International Women's Day · 8 March",
-    "titleLine1": "Women's Day gifts",
-    "titleHighlight": "she will actually use.",
-    "intro": "Sustainable Women's Day gifts for every woman on your team: soya wax candles, cork desk sets and dry fruit boxes, branded with your logo and a message from leadership.",
+    "titleLine1": "Women's Day gifts for employees",
+    "titleHighlight": "they will actually use.",
+    "intro": "Women's Day gifts for employees that feel personal: soya wax candles, cork desk sets and self-care boxes for every woman on your team, branded with your logo and a message from leadership.",
     "when": "8 March · order by 20 February for branded delivery",
     "primaryButton": "Plan Women's Day gifting",
     "secondaryButton": "See the kits",
@@ -21,10 +24,22 @@
     "title": "A thank-you that goes beyond a greeting.",
     "text": "Women's Day is one of the few occasions where companies gift the whole team on the same day. A useful, plastic-free gift with a personal note lands better than a generic hamper.",
     "points": [
-      { "title": "Useful, not decorative", "text": "Desk sets, candles and treats that get used long after 8 March." },
-      { "title": "Plastic-free by design", "text": "Cork, bamboo, soya wax and recycled paper in reusable boxes." },
-      { "title": "A message from leadership", "text": "A printed note on seed paper that can be planted." },
-      { "title": "Every office, one order", "text": "Delivered pan-India to each office or to employees at home." }
+      {
+        "title": "Useful, not decorative",
+        "text": "Desk sets, candles and treats that get used long after 8 March."
+      },
+      {
+        "title": "Plastic-free by design",
+        "text": "Cork, bamboo, soya wax and recycled paper in reusable boxes."
+      },
+      {
+        "title": "A message from leadership",
+        "text": "A printed note on seed paper that can be planted."
+      },
+      {
+        "title": "Every office, one order",
+        "text": "Delivered pan-India to each office or to employees at home."
+      }
     ]
   },
   "kits": {
@@ -33,35 +48,130 @@
     "intro": "Pick a kit as it is, or tell us your budget and headcount and we will adapt it.",
     "priceNote": "Starting prices per kit, including your logo. GST and delivery extra.",
     "items": [
-      { "title": "Little Light Box", "audience": "For large teams", "tag": "Under ₹500", "contents": "Soya wax candle, 2 seed pencils and a message card", "price": "From ₹299", "image": "/kits/candles-4.webp" },
-      { "title": "Calm Candle Box", "audience": "For every woman on the team", "tag": "Popular", "contents": "Set of 3 soya wax candles, recycled notepad and a message card", "price": "From ₹699", "image": "/kits/candles-3.webp" },
-      { "title": "Her Desk Set", "audience": "For the workday", "tag": "Desk", "contents": "Cork-and-denim diary, cork pen, seed pencils and a card", "price": "From ₹749", "image": "/kits/cork-diary-pen-flatlay.webp" },
-      { "title": "Wellness Reset Kit", "audience": "For a calmer week", "tag": "Wellness", "contents": "Bamboo bottle with tea infuser, 3 soya candles and a recycled journal", "price": "From ₹1,099", "image": "/kits/bamboo-bottle-infuser.webp" },
-      { "title": "Self-Care Treat Box", "audience": "For team leads", "tag": "Treat", "contents": "Two jars of premium dry fruits, a 3-candle set and a card", "price": "From ₹1,199", "image": "/kits/jar-box-2-palace.webp" },
-      { "title": "Leadership Box", "audience": "For women leaders", "tag": "Premium", "contents": "Velvet 3-jar dry fruit box, cork diary and pen, candle set", "price": "From ₹1,999", "image": "/kits/jar-box-3-velvet.webp" },
-      { "title": "Tote & Tumbler Set", "audience": "For commuters", "tag": "Everyday", "contents": "Organic cotton tote, insulated tumbler and a notebook", "price": "From ₹899", "image": "/site/employee-onboarding/sustainable-tote.png" },
-      { "title": "Artisan Morning Kit", "audience": "For tea lovers", "tag": "Artisan", "contents": "Handmade ceramic mug, herbal tea, coaster and a soya candle", "price": "From ₹1,299", "image": "/site/client-appreciation/artisanal-curations.png" },
-      { "title": "Self-Care Spa Box", "audience": "For a day off", "tag": "Self-care", "contents": "Bath salts, scented candle, face towel and herbal tea in a gift box", "price": "From ₹1,499", "image": "/site/diwali-gifting/wellness-hamper.png" }
+      {
+        "title": "Little Light Box",
+        "audience": "For large teams",
+        "tag": "Under ₹500",
+        "contents": "Soya wax candle, 2 seed pencils and a message card",
+        "price": "From ₹299",
+        "image": "/kits/candles-4.webp"
+      },
+      {
+        "title": "Calm Candle Box",
+        "audience": "For every woman on the team",
+        "tag": "Popular",
+        "contents": "Set of 3 soya wax candles, recycled notepad and a message card",
+        "price": "From ₹699",
+        "image": "/kits/candles-3.webp"
+      },
+      {
+        "title": "Her Desk Set",
+        "audience": "For the workday",
+        "tag": "Desk",
+        "contents": "Cork-and-denim diary, cork pen, seed pencils and a card",
+        "price": "From ₹749",
+        "image": "/kits/cork-diary-pen-flatlay.webp"
+      },
+      {
+        "title": "Wellness Reset Kit",
+        "audience": "For a calmer week",
+        "tag": "Wellness",
+        "contents": "Bamboo bottle with tea infuser, 3 soya candles and a recycled journal",
+        "price": "From ₹1,099",
+        "image": "/kits/bamboo-bottle-infuser.webp"
+      },
+      {
+        "title": "Self-Care Treat Box",
+        "audience": "For team leads",
+        "tag": "Treat",
+        "contents": "Two jars of premium dry fruits, a 3-candle set and a card",
+        "price": "From ₹1,199",
+        "image": "/kits/jar-box-2-palace.webp"
+      },
+      {
+        "title": "Leadership Box",
+        "audience": "For women leaders",
+        "tag": "Premium",
+        "contents": "Velvet 3-jar dry fruit box, cork diary and pen, candle set",
+        "price": "From ₹1,999",
+        "image": "/kits/jar-box-3-velvet.webp"
+      },
+      {
+        "title": "Tote & Tumbler Set",
+        "audience": "For commuters",
+        "tag": "Everyday",
+        "contents": "Organic cotton tote, insulated tumbler and a notebook",
+        "price": "From ₹899",
+        "image": "/site/employee-onboarding/sustainable-tote.png"
+      },
+      {
+        "title": "Artisan Morning Kit",
+        "audience": "For tea lovers",
+        "tag": "Artisan",
+        "contents": "Handmade ceramic mug, herbal tea, coaster and a soya candle",
+        "price": "From ₹1,299",
+        "image": "/site/client-appreciation/artisanal-curations.png"
+      },
+      {
+        "title": "Self-Care Spa Box",
+        "audience": "For a day off",
+        "tag": "Self-care",
+        "contents": "Bath salts, scented candle, face towel and herbal tea in a gift box",
+        "price": "From ₹1,499",
+        "image": "/site/diwali-gifting/wellness-hamper.png"
+      }
     ]
   },
   "personalisation": {
     "eyebrow": "Personalisation",
     "title": "Make it personal without making it complicated.",
     "items": [
-      { "symbol": "✿", "title": "Name printing", "text": "Her name on the cork diary, pen or box sleeve." },
-      { "symbol": "✉", "title": "Leadership note", "text": "A message from your CEO on plantable seed paper." },
-      { "symbol": "◈", "title": "Logo branding", "text": "Your logo on cork, bamboo and packaging." },
-      { "symbol": "❀", "title": "Gift-ready boxes", "text": "Kraft, magnetic or velvet boxes, ready to hand over." }
+      {
+        "symbol": "✿",
+        "title": "Name printing",
+        "text": "Her name on the cork diary, pen or box sleeve."
+      },
+      {
+        "symbol": "✉",
+        "title": "Leadership note",
+        "text": "A message from your CEO on plantable seed paper."
+      },
+      {
+        "symbol": "◈",
+        "title": "Logo branding",
+        "text": "Your logo on cork, bamboo and packaging."
+      },
+      {
+        "symbol": "❀",
+        "title": "Gift-ready boxes",
+        "text": "Kraft, magnetic or velvet boxes, ready to hand over."
+      }
     ]
   },
   "timeline": {
     "eyebrow": "How it works",
     "title": "From brief to 8 March",
     "steps": [
-      { "when": "Early February", "title": "Share your brief", "text": "Headcount, budget and office locations." },
-      { "when": "Within 2 days", "title": "Proposal & mockup", "text": "Kits shown with your branding." },
-      { "when": "By 20 February", "title": "Approve the order", "text": "We start production." },
-      { "when": "Before 8 March", "title": "Delivered", "text": "To each office or home, ready to gift." }
+      {
+        "when": "Early February",
+        "title": "Share your brief",
+        "text": "Headcount, budget and office locations."
+      },
+      {
+        "when": "Within 2 days",
+        "title": "Proposal & mockup",
+        "text": "Kits shown with your branding."
+      },
+      {
+        "when": "By 20 February",
+        "title": "Approve the order",
+        "text": "We start production."
+      },
+      {
+        "when": "Before 8 March",
+        "title": "Delivered",
+        "text": "To each office or home, ready to gift."
+      }
     ]
   },
   "cta": {

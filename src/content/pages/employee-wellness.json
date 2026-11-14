@@ -1,13 +1,16 @@
 {
-  "_meta": { "label": "Employee Wellness", "route": "/occasions/employee-wellness" },
+  "_meta": {
+    "label": "Employee Wellness",
+    "route": "/occasions/employee-wellness"
+  },
   "hero": {
     "hintSymbol": "✦",
     "hint": "Click to bloom",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Employee",
     "titleLine2": "Wellness",
-    "titleItalic": "Gifting Solutions.",
-    "intro": "Nurture your team's well-being with mindful, sustainable gifts designed to inspire balance and restoration.",
+    "titleItalic": "Gifts.",
+    "intro": "Nurture your team's well-being with employee wellness gifts designed for balance and rest: soya wax candles, tea infuser bottles, journals and self-care hampers.",
     "primaryButton": "Explore Wellness Kits",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -21,16 +24,34 @@
     "badgeSymbol": "🌿",
     "badgeText": "100% Sustainably Sourced Materials",
     "image": "/site/employee-wellness/philosophy.png",
-    "imageAlt": "Wellness"
+    "imageAlt": "Calm self-care hamper with a candle and herbal tea, an employee wellness gift"
   },
   "categories": {
     "title": "Curated Wellness Experiences",
     "intro": "Explore our themed collections designed to address the unique needs of the modern professional.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Mindful Workspace", "desc": "Eco-journals, desk plants, and ergonomic tools to create a sanctuary at work.", "accent": "#2d4337", "tag": "Focus", "image": "/site/employee-wellness/mindful-workspace.jpg" },
-      { "name": "Rest & Recovery", "desc": "Plush robes, silk eye masks, and artisanal teas for ultimate restoration.", "accent": "#8a7db5", "tag": "Restore", "image": "/site/employee-wellness/rest-recovery.png" },
-      { "name": "Digital Detox", "desc": "Curated physical books, analog timers, and intricate puzzle sets to unplug.", "accent": "#b5a26a", "tag": "Unplug", "image": "/site/employee-wellness/digital-detox.png" }
+      {
+        "name": "Mindful Workspace",
+        "desc": "Eco-journals, desk plants, and ergonomic tools to create a sanctuary at work.",
+        "accent": "#2d4337",
+        "tag": "Focus",
+        "image": "/site/employee-wellness/mindful-workspace.jpg"
+      },
+      {
+        "name": "Rest & Recovery",
+        "desc": "Plush robes, silk eye masks, and artisanal teas for ultimate restoration.",
+        "accent": "#8a7db5",
+        "tag": "Restore",
+        "image": "/site/employee-wellness/rest-recovery.png"
+      },
+      {
+        "name": "Digital Detox",
+        "desc": "Curated physical books, analog timers, and intricate puzzle sets to unplug.",
+        "accent": "#b5a26a",
+        "tag": "Unplug",
+        "image": "/site/employee-wellness/digital-detox.png"
+      }
     ]
   },
   "products": {
@@ -38,12 +59,42 @@
     "intro": "The most-loved additions to our corporate wellness programs.",
     "viewAll": "View All",
     "items": [
-      { "name": "Corporate Wellness Saver Combo", "price": "Starting at ₹1,499", "tag": "Eco-friendly", "image": "/site/client-appreciation/the-catalyst.png" },
-      { "name": "Artisanal Tea Press", "price": "Starting at ₹999", "tag": "Customizable", "image": "/site/employee-wellness/tea-press.png" },
-      { "name": "Recycled Yoga Mat", "price": "Starting at ₹1,299", "tag": "Eco-friendly", "image": "/site/employee-wellness/yoga-mat.png" },
-      { "name": "Little Light Box", "price": "Starting at ₹299", "tag": "Under ₹500", "image": "/kits/candles-4.webp" },
-      { "name": "Calm Candle Box", "price": "Starting at ₹699", "tag": "Eco-friendly", "image": "/kits/candles-3.webp" },
-      { "name": "Wellness Reset Kit", "price": "Starting at ₹1,099", "tag": "Bestseller", "image": "/kits/bamboo-bottle-infuser.webp" }
+      {
+        "name": "Corporate Wellness Saver Combo",
+        "price": "Starting at ₹1,499",
+        "tag": "Eco-friendly",
+        "image": "/site/client-appreciation/the-catalyst.png"
+      },
+      {
+        "name": "Artisanal Tea Press",
+        "price": "Starting at ₹999",
+        "tag": "Customizable",
+        "image": "/site/employee-wellness/tea-press.png"
+      },
+      {
+        "name": "Recycled Yoga Mat",
+        "price": "Starting at ₹1,299",
+        "tag": "Eco-friendly",
+        "image": "/site/employee-wellness/yoga-mat.png"
+      },
+      {
+        "name": "Little Light Box",
+        "price": "Starting at ₹299",
+        "tag": "Under ₹500",
+        "image": "/kits/candles-4.webp"
+      },
+      {
+        "name": "Calm Candle Box",
+        "price": "Starting at ₹699",
+        "tag": "Eco-friendly",
+        "image": "/kits/candles-3.webp"
+      },
+      {
+        "name": "Wellness Reset Kit",
+        "price": "Starting at ₹1,099",
+        "tag": "Bestseller",
+        "image": "/kits/bamboo-bottle-infuser.webp"
+      }
     ]
   },
   "customization": {
@@ -52,22 +103,58 @@
     "titleHighlight": "Wellness Goals",
     "text": "Every organization is unique. We provide a bespoke customization service to ensure your brand's voice and wellness mission are perfectly articulated.",
     "image": "/site/employee-wellness/personalization.webp",
-    "imageAlt": "Packaging",
+    "imageAlt": "Plastic-free wellness gift packaging with a branded card",
     "items": [
-      { "symbol": "◈", "title": "Logo Branding", "desc": "Subtle, high-end placement of your corporate identity." },
-      { "symbol": "✏", "title": "Personalized Affirmations", "desc": "Handwritten notes or custom printed mindfulness prompts." },
-      { "symbol": "📦", "title": "Eco-Packaging Styles", "desc": "Select from a range of recycled and biodegradable boxing." },
-      { "symbol": "🎨", "title": "Thematic Curation", "desc": "Colors and products matched to your event theme." }
+      {
+        "symbol": "◈",
+        "title": "Logo Branding",
+        "desc": "Subtle, high-end placement of your corporate identity."
+      },
+      {
+        "symbol": "✏",
+        "title": "Personalized Affirmations",
+        "desc": "Handwritten notes or custom printed mindfulness prompts."
+      },
+      {
+        "symbol": "📦",
+        "title": "Eco-Packaging Styles",
+        "desc": "Select from a range of recycled and biodegradable boxing."
+      },
+      {
+        "symbol": "🎨",
+        "title": "Thematic Curation",
+        "desc": "Colors and products matched to your event theme."
+      }
     ]
   },
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🏆", "title": "Premium Quality", "desc": "Luxury materials sourced from ethical partners." },
-      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Streamlined logistics for 10 to 10,000 sets." },
-      { "symbol": "◎", "title": "Fast Delivery", "desc": "Global fulfillment with white-glove service." },
-      { "symbol": "✦", "title": "Custom Branding", "desc": "Seamless integration of your brand identity." },
-      { "symbol": "◐", "title": "Wellness Concierge", "desc": "Dedicated expert to design your program." }
+      {
+        "symbol": "🏆",
+        "title": "Premium Quality",
+        "desc": "Luxury materials sourced from ethical partners."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "desc": "Streamlined logistics for 10 to 10,000 sets."
+      },
+      {
+        "symbol": "◎",
+        "title": "Fast Delivery",
+        "desc": "Global fulfillment with white-glove service."
+      },
+      {
+        "symbol": "✦",
+        "title": "Custom Branding",
+        "desc": "Seamless integration of your brand identity."
+      },
+      {
+        "symbol": "◐",
+        "title": "Wellness Concierge",
+        "desc": "Dedicated expert to design your program."
+      }
     ]
   },
   "trust": {

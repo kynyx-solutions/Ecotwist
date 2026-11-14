@@ -1,9 +1,12 @@
 {
-  "_meta": { "label": "Shipping Policy", "route": "/shipping-policy" },
+  "_meta": {
+    "label": "Shipping Policy",
+    "route": "/shipping-policy"
+  },
   "header": {
     "topLabel": "Shipping policy",
     "title": "Shipping Policy",
-    "intro": "Everything you need to know about processing, delivery and tracking."
+    "intro": "Our shipping policy: how we process, pack, deliver and track your corporate gift orders across India."
   },
   "journey": {
     "heading": "Processing & Shipping: Your Order's Journey",

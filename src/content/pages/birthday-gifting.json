@@ -1,18 +1,35 @@
 {
-  "_meta": { "label": "Birthday Gifting", "route": "/occasions/birthday-gifting" },
+  "_meta": {
+    "label": "Birthday Gifting",
+    "route": "/occasions/birthday-gifting"
+  },
   "hero": {
     "popHint": "Click balloons to pop!",
     "eyebrow": "Corporate Birthday Solutions",
-    "rotatingWords": ["Celebrate", "Cherish", "Delight", "Surprise"],
+    "rotatingWords": [
+      "Celebrate",
+      "Cherish",
+      "Delight",
+      "Surprise"
+    ],
     "rotatingSuffix": "Every Moment",
-    "titleLine1": "Birthday",
-    "titleLine2": "Gifting",
-    "titleHighlight": "Solutions.",
-    "intro": "Make every birthday feel extraordinary with personalised, sustainable gifts your team and clients will cherish for years.",
+    "titleLine1": "Employee",
+    "titleLine2": "Birthday",
+    "titleHighlight": "Gifts.",
+    "intro": "Make every birthday feel special with employee birthday gifts your team will keep: name-printed cork keepsakes, candle sets and treat boxes, sustainable and delivered on time.",
     "stats": [
-      { "value": "100+", "label": "Happy Clients" },
-      { "value": "50+", "label": "Gift Collections" },
-      { "value": "Pan-India", "label": "Delivery" }
+      {
+        "value": "100+",
+        "label": "Happy Clients"
+      },
+      {
+        "value": "50+",
+        "label": "Gift Collections"
+      },
+      {
+        "value": "Pan-India",
+        "label": "Delivery"
+      }
     ],
     "primaryButton": "Explore Birthday Gifts",
     "secondaryButton": "Request Quote",
@@ -34,9 +51,29 @@
     "intro": "Explore our themed collections designed to make every birthday celebration truly memorable.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Personalised Keepsakes", "desc": "Engraved photo frames, custom journals, and memory boxes.", "accent": "#d4856a", "tag": "Personal", "image": "/kits/cork-pens.webp" },
-      { "name": "Gourmet Celebration Kits", "desc": "Artisan chocolates, premium teas, and handcrafted sweets.", "accent": "#c4735d", "tag": "Gourmet", "image": "/kits/jar-box-2-white.webp", "photoId": "birthday-gourmet-kits" },
-      { "name": "Pampering Wellness Sets", "desc": "Luxurious bath salts, aromatherapy candles, and skin-care treats.", "accent": "#a0617a", "tag": "Wellness", "image": "/kits/candles-6.webp", "photoId": "birthday-wellness-sets" }
+      {
+        "name": "Personalised Keepsakes",
+        "desc": "Engraved photo frames, custom journals, and memory boxes.",
+        "accent": "#d4856a",
+        "tag": "Personal",
+        "image": "/kits/cork-pens.webp"
+      },
+      {
+        "name": "Gourmet Celebration Kits",
+        "desc": "Artisan chocolates, premium teas, and handcrafted sweets.",
+        "accent": "#c4735d",
+        "tag": "Gourmet",
+        "image": "/kits/jar-box-2-white.webp",
+        "photoId": "birthday-gourmet-kits"
+      },
+      {
+        "name": "Pampering Wellness Sets",
+        "desc": "Luxurious bath salts, aromatherapy candles, and skin-care treats.",
+        "accent": "#a0617a",
+        "tag": "Wellness",
+        "image": "/kits/candles-6.webp",
+        "photoId": "birthday-wellness-sets"
+      }
     ]
   },
   "products": {
@@ -44,12 +81,42 @@
     "intro": "The most-loved additions to our corporate birthday programs.",
     "viewAll": "View All",
     "items": [
-      { "name": "Celebration Hamper", "sub": "Starting at ₹1,499", "tag": "Bestseller", "image": "/site/client-appreciation/grand-celebration.png" },
-      { "name": "Sweet Indulgence Box", "sub": "Starting at ₹999", "tag": "Customizable", "image": "/site/diwali-gifting/gourmet-hamper.png" },
-      { "name": "Luxury Candle Set", "sub": "Starting at ₹1,199", "tag": "Eco-friendly", "image": "/kits/candles-3.webp" },
-      { "name": "Cork Keepsake Duo", "sub": "Starting at ₹249", "tag": "Name printed", "image": "/kits/cork-pens.webp" },
-      { "name": "Little Light Box", "sub": "Starting at ₹299", "tag": "Bestseller", "image": "/kits/candles-4.webp" },
-      { "name": "Birthday Treat Box", "sub": "Starting at ₹899", "tag": "Gourmet", "image": "/kits/jar-box-2-navy.webp" }
+      {
+        "name": "Celebration Hamper",
+        "sub": "Starting at ₹1,499",
+        "tag": "Bestseller",
+        "image": "/site/client-appreciation/grand-celebration.png"
+      },
+      {
+        "name": "Sweet Indulgence Box",
+        "sub": "Starting at ₹999",
+        "tag": "Customizable",
+        "image": "/site/diwali-gifting/gourmet-hamper.png"
+      },
+      {
+        "name": "Luxury Candle Set",
+        "sub": "Starting at ₹1,199",
+        "tag": "Eco-friendly",
+        "image": "/kits/candles-3.webp"
+      },
+      {
+        "name": "Cork Keepsake Duo",
+        "sub": "Starting at ₹249",
+        "tag": "Name printed",
+        "image": "/kits/cork-pens.webp"
+      },
+      {
+        "name": "Little Light Box",
+        "sub": "Starting at ₹299",
+        "tag": "Bestseller",
+        "image": "/kits/candles-4.webp"
+      },
+      {
+        "name": "Birthday Treat Box",
+        "sub": "Starting at ₹899",
+        "tag": "Gourmet",
+        "image": "/kits/jar-box-2-navy.webp"
+      }
     ]
   },
   "customization": {
@@ -58,22 +125,58 @@
     "titleHighlight": "Birthday Personality",
     "intro": "From the minimalist who appreciates subtle elegance to the one who loves a grand celebration — we craft birthday gifts that mirror their personality perfectly.",
     "items": [
-      { "symbol": "🎂", "title": "Name & Date Engraving", "desc": "Personalised messages laser-etched on premium products." },
-      { "symbol": "🎀", "title": "Signature Gift Wrapping", "desc": "Bespoke ribbons, tissue paper, and branded gift tags." },
-      { "symbol": "📸", "title": "Photo Personalisation", "desc": "Custom photo prints incorporated into hamper packaging." },
-      { "symbol": "🎨", "title": "Theme Curation", "desc": "Color palettes and products aligned to birthday themes." }
+      {
+        "symbol": "🎂",
+        "title": "Name & Date Engraving",
+        "desc": "Personalised messages laser-etched on premium products."
+      },
+      {
+        "symbol": "🎀",
+        "title": "Signature Gift Wrapping",
+        "desc": "Bespoke ribbons, tissue paper, and branded gift tags."
+      },
+      {
+        "symbol": "📸",
+        "title": "Photo Personalisation",
+        "desc": "Custom photo prints incorporated into hamper packaging."
+      },
+      {
+        "symbol": "🎨",
+        "title": "Theme Curation",
+        "desc": "Color palettes and products aligned to birthday themes."
+      }
     ],
     "image": "/kits/cork-diary-pen-flatlay.webp",
-    "imageAlt": "Custom"
+    "imageAlt": "Cork diary and pen flat lay, personalised as an employee birthday gift"
   },
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🎁", "title": "Joyful Curation", "desc": "Every item handpicked to spark delight." },
-      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Fulfillment for 10 to 10,000 gifts." },
-      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "On-time delivery everywhere." },
-      { "symbol": "✦", "title": "Custom Branding", "desc": "Your brand on every gift." },
-      { "symbol": "◐", "title": "Dedicated Support", "desc": "Expert consultants at every step." }
+      {
+        "symbol": "🎁",
+        "title": "Joyful Curation",
+        "desc": "Every item handpicked to spark delight."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "desc": "Fulfillment for 10 to 10,000 gifts."
+      },
+      {
+        "symbol": "◎",
+        "title": "Pan-India Delivery",
+        "desc": "On-time delivery everywhere."
+      },
+      {
+        "symbol": "✦",
+        "title": "Custom Branding",
+        "desc": "Your brand on every gift."
+      },
+      {
+        "symbol": "◐",
+        "title": "Dedicated Support",
+        "desc": "Expert consultants at every step."
+      }
     ]
   },
   "trust": {

@@ -1,10 +1,13 @@
 {
-  "_meta": { "label": "Solutions", "route": "/solutions" },
+  "_meta": {
+    "label": "Solutions",
+    "route": "/solutions"
+  },
   "hero": {
     "eyebrow": "Corporate Solutions",
-    "titleLine1": "Gifting with",
-    "titleLine2": "Profound Impact.",
-    "intro": "Beyond conventional corporate gifting. We craft high-impact, zero-waste solutions that align your organizational culture with global sustainability standards.",
+    "titleLine1": "Corporate gifting solutions",
+    "titleLine2": "with profound impact.",
+    "intro": "Corporate gifting solutions beyond the conventional: high-impact, zero-waste gifting that aligns your company culture with global sustainability standards.",
     "primaryButton": "Get Started",
     "secondaryButton": "Download Brochure",
     "image": "/site/solutions/hero.jpeg",
@@ -21,16 +24,41 @@
     "leftImageAlt": "Ecotwist employee onboarding collection: branded notebook, bottle and desk essentials",
     "rightImageAlt": "Premium Ecotwist corporate gift hampers in branded boxes",
     "stats": [
-      { "value": "5+", "label": "Countries Served" },
-      { "value": "5K+", "label": "Gifts Delivered" },
-      { "value": "0%", "label": "Plastic Used" }
+      {
+        "value": "5+",
+        "label": "Countries Served"
+      },
+      {
+        "value": "5K+",
+        "label": "Gifts Delivered"
+      },
+      {
+        "value": "0%",
+        "label": "Plastic Used"
+      }
     ],
     "processTitle": "Our Process",
     "process": [
-      { "step": "01", "text": "Brief & Brand Discovery", "symbol": "◎" },
-      { "step": "02", "text": "Sustainable Material Curation", "symbol": "◈" },
-      { "step": "03", "text": "Artisan Crafting & QC", "symbol": "◆" },
-      { "step": "04", "text": "Carbon-Neutral Delivery", "symbol": "◉" }
+      {
+        "step": "01",
+        "text": "Brief & Brand Discovery",
+        "symbol": "◎"
+      },
+      {
+        "step": "02",
+        "text": "Sustainable Material Curation",
+        "symbol": "◈"
+      },
+      {
+        "step": "03",
+        "text": "Artisan Crafting & QC",
+        "symbol": "◆"
+      },
+      {
+        "step": "04",
+        "text": "Carbon-Neutral Delivery",
+        "symbol": "◉"
+      }
     ],
     "quoteLabel": "Why it matters",
     "quote": "Every gift we create removes plastic from the supply chain and adds dignity to the craftsperson's hand.",
@@ -39,10 +67,22 @@
     "quoteRole": "Founding Mission",
     "certificationsTitle": "Certifications & Standards",
     "certifications": [
-      { "tag": "ZWC", "label": "Zero-Waste Certified" },
-      { "tag": "FSC", "label": "FSC Paper Standards" },
-      { "tag": "FTS", "label": "Fair Trade Sourcing" },
-      { "tag": "CN", "label": "Carbon Neutral Ops" }
+      {
+        "tag": "ZWC",
+        "label": "Zero-Waste Certified"
+      },
+      {
+        "tag": "FSC",
+        "label": "FSC Paper Standards"
+      },
+      {
+        "tag": "FTS",
+        "label": "Fair Trade Sourcing"
+      },
+      {
+        "tag": "CN",
+        "label": "Carbon Neutral Ops"
+      }
     ]
   },
   "occasions": {
@@ -52,18 +92,81 @@
     "cardText": "Premium sustainable gifting solutions.",
     "linkText": "Explore Kits",
     "cards": [
-      { "title": "Client Partnerships", "tag": "B2B", "image": "/site/home/client-partnerships.avif", "path": "/occasions/client-appreciation" },
-      { "title": "Employee Onboarding", "tag": "HR", "image": "/site/solutions/employee-onboarding.png", "path": "/occasions/employee-onboarding" },
-      { "title": "Festive Gifting", "tag": "Seasonal", "image": "", "photoId": "solutions-festive-gifting", "path": "/occasions/festive-gifting" },
-      { "title": "Events & Conferences", "tag": "Events", "image": "/site/solutions/events-conferences.png", "path": "/occasions/events-conferences" },
-      { "title": "Employee Wellness", "tag": "Wellness", "image": "/site/home/employee-wellness.avif", "path": "/occasions/employee-wellness" },
-      { "title": "Work Anniversary", "tag": "Milestone", "image": "", "photoId": "solutions-work-anniversary", "path": "/occasions/work-anniversary" },
-      { "title": "Product Launch", "tag": "Brand", "image": "/site/home/product-launch.avif", "path": "/occasions/product-launch" },
-      { "title": "Award & Recognition", "tag": "Culture", "image": "", "photoId": "solutions-award-recognition", "path": "/occasions/award-recognition" },
-      { "title": "Women's Day Gifting", "tag": "March", "image": "/kits/candles-6.webp", "path": "/occasions/womens-day" },
-      { "title": "Christmas Gifting", "tag": "December", "image": "/kits/jar-box-3-velvet.webp", "path": "/occasions/christmas-gifting" },
-      { "title": "Earth Day & Environment Day", "tag": "CSR", "image": "/kits/seed-pencils.webp", "path": "/occasions/earth-day-gifting" },
-      { "title": "Channel Partner Gifting", "tag": "Partners", "image": "/kits/jar-box-4-navy.webp", "path": "/occasions/channel-partner-gifting" }
+      {
+        "title": "Client Partnerships",
+        "tag": "B2B",
+        "image": "/site/home/client-partnerships.avif",
+        "path": "/occasions/client-appreciation"
+      },
+      {
+        "title": "Employee Onboarding",
+        "tag": "HR",
+        "image": "/site/solutions/employee-onboarding.png",
+        "path": "/occasions/employee-onboarding"
+      },
+      {
+        "title": "Festive Gifting",
+        "tag": "Seasonal",
+        "image": "",
+        "photoId": "solutions-festive-gifting",
+        "path": "/occasions/festive-gifting"
+      },
+      {
+        "title": "Events & Conferences",
+        "tag": "Events",
+        "image": "/site/solutions/events-conferences.png",
+        "path": "/occasions/events-conferences"
+      },
+      {
+        "title": "Employee Wellness",
+        "tag": "Wellness",
+        "image": "/site/home/employee-wellness.avif",
+        "path": "/occasions/employee-wellness"
+      },
+      {
+        "title": "Work Anniversary",
+        "tag": "Milestone",
+        "image": "",
+        "photoId": "solutions-work-anniversary",
+        "path": "/occasions/work-anniversary"
+      },
+      {
+        "title": "Product Launch",
+        "tag": "Brand",
+        "image": "/site/home/product-launch.avif",
+        "path": "/occasions/product-launch"
+      },
+      {
+        "title": "Award & Recognition",
+        "tag": "Culture",
+        "image": "",
+        "photoId": "solutions-award-recognition",
+        "path": "/occasions/award-recognition"
+      },
+      {
+        "title": "Women's Day Gifting",
+        "tag": "March",
+        "image": "/kits/candles-6.webp",
+        "path": "/occasions/womens-day"
+      },
+      {
+        "title": "Christmas Gifting",
+        "tag": "December",
+        "image": "/kits/jar-box-3-velvet.webp",
+        "path": "/occasions/christmas-gifting"
+      },
+      {
+        "title": "Earth Day & Environment Day",
+        "tag": "CSR",
+        "image": "/kits/seed-pencils.webp",
+        "path": "/occasions/earth-day-gifting"
+      },
+      {
+        "title": "Channel Partner Gifting",
+        "tag": "Partners",
+        "image": "/kits/jar-box-4-navy.webp",
+        "path": "/occasions/channel-partner-gifting"
+      }
     ]
   },
   "capabilities": {
@@ -71,10 +174,30 @@
     "title": "The Scaling",
     "titleHighlight": "Ecosystem",
     "items": [
-      { "number": "01.", "title": "Bulk Delivery", "subtitle": "Omnichannel logistics for teams of 50 to 500.", "text": "Carbon-neutral fulfillment across 5+ countries with real-time tracking dashboards." },
-      { "number": "02.", "title": "Custom Branding", "subtitle": "Architecture for the brand identity.", "text": "Eco-friendly laser etching and soy-based ink printing that respects the material's integrity." },
-      { "number": "03.", "title": "Eco-Packaging", "subtitle": "100% Plastic-Free, Archival Quality.", "text": "Biodegradable materials designed for a second life, presented with a premium unboxing feel." },
-      { "number": "04.", "title": "Studio Patna", "subtitle": "Artisanal Craftsmanship at Source.", "text": "Our Patna studio serves as the heart of our design and quality control for regional excellence." }
+      {
+        "number": "01.",
+        "title": "Bulk Delivery",
+        "subtitle": "Omnichannel logistics for teams of 50 to 500.",
+        "text": "Carbon-neutral fulfillment across 5+ countries with real-time tracking dashboards."
+      },
+      {
+        "number": "02.",
+        "title": "Custom Branding",
+        "subtitle": "Architecture for the brand identity.",
+        "text": "Eco-friendly laser etching and soy-based ink printing that respects the material's integrity."
+      },
+      {
+        "number": "03.",
+        "title": "Eco-Packaging",
+        "subtitle": "100% Plastic-Free, Archival Quality.",
+        "text": "Biodegradable materials designed for a second life, presented with a premium unboxing feel."
+      },
+      {
+        "number": "04.",
+        "title": "Studio Patna",
+        "subtitle": "Artisanal Craftsmanship at Source.",
+        "text": "Our Patna studio serves as the heart of our design and quality control for regional excellence."
+      }
     ]
   },
   "cta": {
