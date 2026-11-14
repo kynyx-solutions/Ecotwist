@@ -1,5 +1,5 @@
 // Reads and writes repo files for the admin "Website" editor.
-// - GITHUB_TOKEN set  → GitHub Contents API (each save is a commit; Vercel redeploys the site)
+// - GITHUB_TOKEN set  → GitHub (admin saves are drafts; Publish commits them all at once and Vercel redeploys)
 // - otherwise, dev    → the local files on disk
 // - otherwise (live)  → refuse with a clear message
 import crypto from 'crypto';
@@ -146,4 +146,55 @@ export async function writeFile(p, buffer, { sha, message }) {
   if (status === 409 || (status === 422 && !sha)) throw conflict();
   if (!ok) throw ghFail(status, json, 'save files');
   return json.content.sha;
+}
+
+// Saves several files as ONE commit (one Vercel deploy). files: [{ path, buffer }].
+// Returns { sha, url } (local mode: { sha: null, url: null }).
+export async function commitFiles(files, message) {
+  assertStorage();
+  files = files.map((f) => ({ ...f, path: cleanPath(f.path) }));
+
+  if (storageMode() === 'local') {
+    for (const f of files) {
+      const full = path.join(ROOT, f.path);
+      await fs.mkdir(path.dirname(full), { recursive: true });
+      await fs.writeFile(full, f.buffer);
+    }
+    return { sha: null, url: null };
+  }
+
+  const git = `${API}/repos/${repo()}/git`;
+  const call = async (url, init, what) => {
+    const r = await gh(url, init);
+    if (!r.ok) throw ghFail(r.status, r.json, what);
+    return r.json;
+  };
+
+  const blobs = [];
+  for (const f of files) {
+    const blob = await call(`${git}/blobs`, { method: 'POST', body: JSON.stringify({ content: f.buffer.toString('base64'), encoding: 'base64' }) }, 'save files');
+    blobs.push({ path: f.path, mode: '100644', type: 'blob', sha: blob.sha });
+  }
+
+  // Build on the latest commit; if someone pushes in between, try again on top of theirs
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const ref = await call(`${git}/ref/heads/${encodeURIComponent(branch())}`, {}, 'read the branch');
+    const parent = await call(`${git}/commits/${ref.object.sha}`, {}, 'read the branch');
+    const tree = await call(`${git}/trees`, { method: 'POST', body: JSON.stringify({ base_tree: parent.tree.sha, tree: blobs }) }, 'save files');
+    const commit = await call(`${git}/commits`, { method: 'POST', body: JSON.stringify({ message, tree: tree.sha, parents: [parent.sha] }) }, 'save files');
+    const update = await gh(`${git}/refs/heads/${encodeURIComponent(branch())}`, { method: 'PATCH', body: JSON.stringify({ sha: commit.sha, force: false }) });
+    if (update.ok) return { sha: commit.sha, url: `https://github.com/${repo()}/commit/${commit.sha}` };
+    if (update.status !== 422 && update.status !== 409) throw ghFail(update.status, update.json, 'publish');
+  }
+  throw new StorageError(409, 'The website code changed while publishing. Please press Publish again.');
+}
+
+// Vercel's deploy status for a commit, read from GitHub: 'building' | 'live' | 'failed' | 'unknown'
+export async function deployStatus(sha) {
+  if (storageMode() !== 'github' || !sha) return 'unknown';
+  const r = await gh(`${API}/repos/${repo()}/commits/${sha}/status`);
+  if (!r.ok) return 'unknown';
+  const vercel = (r.json.statuses ?? []).find((s) => /vercel/i.test(s.context ?? ''));
+  const state = vercel?.state ?? (r.json.total_count ? r.json.state : null);
+  return state === 'success' ? 'live' : state === 'failure' || state === 'error' ? 'failed' : state === 'pending' ? 'building' : 'unknown';
 }

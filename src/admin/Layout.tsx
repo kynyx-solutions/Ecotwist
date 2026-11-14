@@ -5,6 +5,7 @@ import { supabase } from './lib/supabase';
 import { useAuth } from './lib/auth';
 import siteImages from '../content/site-images.json';
 import { seoNavItems } from './seo/routes';
+import { PublishPanel } from './PublishPanel';
 
 const PHOTOS_MISSING = siteImages.images.filter((i) => !i.image).length;
 
@@ -111,6 +112,8 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         ))}
       </div>
+
+      <PublishPanel />
 
       <div className="mx-4 border-t border-white/10 px-2 py-4 text-sm">
         <a href="/" target="_blank" rel="noreferrer" className="mb-3 block text-[#D9D6CB] hover:text-white">View website ↗</a>

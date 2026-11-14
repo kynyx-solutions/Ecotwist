@@ -8,7 +8,7 @@ import type { JsonObject } from './schema';
 import { PageSeoPanel } from '../seo/PageSeoPanel';
 import { ScoreBadge } from '../seo/shared';
 
-type Loaded = { path: string; content: JsonObject; sha: string };
+type Loaded = { path: string; content: JsonObject; sha: string; draft?: boolean };
 
 const TITLES: Record<string, string> = {
   [PRODUCTS]: 'Product catalogue',
@@ -86,7 +86,7 @@ export function WebsiteEditor() {
         method: 'PUT',
         body: { path, content: next, sha: file.sha },
       });
-      setFile({ ...file, sha: res.sha });
+      setFile({ ...file, sha: res.sha, draft: res.sha.startsWith('draft:') });
       setContent(next);
       setSaved(JSON.stringify(next));
       toast(`Saved. ${res.message}`);
@@ -130,6 +130,12 @@ export function WebsiteEditor() {
           )
         }
       />
+
+      {file.draft && !conflict && (
+        <Card className="mb-6 border-brand-gold/40 bg-brand-gold/10 p-4 text-sm text-[#5c4a1c]">
+          You're seeing your saved draft. It isn't on the live site yet: press <strong>Publish changes</strong> in the sidebar when you're done.
+        </Card>
+      )}
 
       {conflict && (
         <Card className="mb-6 flex flex-wrap items-center justify-between gap-3 border-red-200 bg-red-50 p-4 text-sm text-red-800">

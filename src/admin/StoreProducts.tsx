@@ -8,8 +8,8 @@ import { Button, Card, Field, Input, PageHeader, Spinner, Textarea, formatMoney,
 /* ============================
    Store → Products & prices (/admin/store).
    Edits src/content/store.json, the one file the website shop, the order API
-   and the catalogue all read. Saving commits it and the site redeploys in
-   about 2 minutes. The server prices every order from this file.
+   and the catalogue all read. Saving keeps a draft; "Publish changes" in the
+   sidebar puts it live. The server prices every order from the live file.
 ============================ */
 
 const PATH = 'src/content/store.json';
