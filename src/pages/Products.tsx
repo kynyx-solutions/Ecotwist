@@ -1227,7 +1227,7 @@ export default function ExecutiveGiftPage() {
             <div className="mx-auto mt-4 h-px bg-[#c8a96e]"
               style={{ width: testimonialsVisible ? "48px" : "0px", transition: "width 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.3s" }} />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid gap-6 md:grid-cols-2 ${clientStories.length % 3 === 0 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
             {clientStories.map((t, i) => (
               <div key={i} className="testimonial-card bg-white border border-[#e8e4dd] p-7 rounded-sm"
                 style={{
