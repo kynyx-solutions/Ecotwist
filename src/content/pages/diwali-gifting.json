@@ -1,11 +1,14 @@
 {
-  "_meta": { "label": "Diwali Gifting", "route": "/occasions/depawali-gifting" },
+  "_meta": {
+    "label": "Diwali Gifting",
+    "route": "/occasions/depawali-gifting"
+  },
   "hero": {
     "eyebrow": "Festive Collection 2026",
-    "titleLine1": "Celebrate",
-    "titleLine2": "Diwali",
-    "titleHighlight": "Sustainably.",
-    "intro": "Celebrate the Festival of Lights with thoughtfully curated corporate gifting experiences crafted using premium sustainable materials, luxury packaging and timeless craftsmanship that strengthens every relationship.",
+    "titleLine1": "Diwali",
+    "titleLine2": "Corporate Gifts,",
+    "titleHighlight": "Celebrated Sustainably.",
+    "intro": "Celebrate the Festival of Lights with Diwali corporate gifts crafted from premium sustainable materials: heritage jar boxes, soya wax diyas and dry fruit hampers in luxury, plastic-free packaging that strengthens every relationship.",
     "primaryButton": "Explore Collection",
     "secondaryButton": "Request Catalogue",
     "feature1": "Sustainable Materials",
@@ -18,17 +21,38 @@
     "cardTwoLabel": "Handmade",
     "cardTwoTitle": "Sustainable",
     "badges": [
-      { "symbol": "🌿", "title": "Eco Packaging" },
-      { "symbol": "🎁", "title": "Luxury Finish" },
-      { "symbol": "🚚", "title": "Pan India Delivery" },
-      { "symbol": "✨", "title": "Custom Branding" }
+      {
+        "symbol": "🌿",
+        "title": "Eco Packaging"
+      },
+      {
+        "symbol": "🎁",
+        "title": "Luxury Finish"
+      },
+      {
+        "symbol": "🚚",
+        "title": "Pan India Delivery"
+      },
+      {
+        "symbol": "✨",
+        "title": "Custom Branding"
+      }
     ]
   },
   "stats": {
     "items": [
-      { "number": "100+", "label": "Corporate Clients" },
-      { "number": "25K+", "label": "Gift Boxes Delivered" },
-      { "number": "98%", "label": "Client Satisfaction" }
+      {
+        "number": "100+",
+        "label": "Corporate Clients"
+      },
+      {
+        "number": "25K+",
+        "label": "Gift Boxes Delivered"
+      },
+      {
+        "number": "98%",
+        "label": "Client Satisfaction"
+      }
     ]
   },
   "story": {
@@ -45,10 +69,22 @@
     "badgeValue": "100%",
     "badgeText": "Sustainable packaging with handcrafted luxury finishes.",
     "stats": [
-      { "value": "100+", "title": "Corporate Clients" },
-      { "value": "25000+", "title": "Gift Boxes" },
-      { "value": "98%", "title": "Happy Customers" },
-      { "value": "100%", "title": "Eco Packaging" }
+      {
+        "value": "100+",
+        "title": "Corporate Clients"
+      },
+      {
+        "value": "25000+",
+        "title": "Gift Boxes"
+      },
+      {
+        "value": "98%",
+        "title": "Happy Customers"
+      },
+      {
+        "value": "100%",
+        "title": "Eco Packaging"
+      }
     ]
   },
   "collections": {
@@ -58,12 +94,48 @@
     "intro": "Every hamper is handcrafted with premium products, elegant presentation and sustainable materials, making every gift a memorable experience.",
     "buttonText": "Explore Collection",
     "items": [
-      { "title": "Executive Luxury", "subtitle": "For CXOs & Leadership", "image": "/site/diwali-gifting/cxo-gift.png", "tag": "Premium", "color": "#C5A059" },
-      { "title": "Employee Delight", "subtitle": "Celebrate Every Team Member", "image": "/site/diwali-gifting/employee-delight.png", "tag": "Popular", "color": "#4A5D23" },
-      { "title": "Client Appreciation", "subtitle": "Build Strong Relationships", "image": "/site/diwali-gifting/client-hamper.png", "tag": "Corporate", "color": "#B98C3E" },
-      { "title": "Wellness Collection", "subtitle": "Healthy & Sustainable", "image": "/site/diwali-gifting/wellness-hamper.png", "tag": "Eco", "color": "#4A5D23" },
-      { "title": "Family Celebration", "subtitle": "Traditional Festive Joy", "image": "/site/diwali-gifting/family-celebration.png", "tag": "Festive", "color": "#C5A059" },
-      { "title": "Premium Gourmet", "subtitle": "Artisan Treats & Delicacies", "image": "/site/diwali-gifting/gourmet-hamper.png", "tag": "Luxury", "color": "#8C6A35" }
+      {
+        "title": "Executive Luxury",
+        "subtitle": "For CXOs & Leadership",
+        "image": "/site/diwali-gifting/cxo-gift.png",
+        "tag": "Premium",
+        "color": "#C5A059"
+      },
+      {
+        "title": "Employee Delight",
+        "subtitle": "Celebrate Every Team Member",
+        "image": "/site/diwali-gifting/employee-delight.png",
+        "tag": "Popular",
+        "color": "#4A5D23"
+      },
+      {
+        "title": "Client Appreciation",
+        "subtitle": "Build Strong Relationships",
+        "image": "/site/diwali-gifting/client-hamper.png",
+        "tag": "Corporate",
+        "color": "#B98C3E"
+      },
+      {
+        "title": "Wellness Collection",
+        "subtitle": "Healthy & Sustainable",
+        "image": "/site/diwali-gifting/wellness-hamper.png",
+        "tag": "Eco",
+        "color": "#4A5D23"
+      },
+      {
+        "title": "Family Celebration",
+        "subtitle": "Traditional Festive Joy",
+        "image": "/site/diwali-gifting/family-celebration.png",
+        "tag": "Festive",
+        "color": "#C5A059"
+      },
+      {
+        "title": "Premium Gourmet",
+        "subtitle": "Artisan Treats & Delicacies",
+        "image": "/site/diwali-gifting/gourmet-hamper.png",
+        "tag": "Luxury",
+        "color": "#8C6A35"
+      }
     ]
   },
   "signatureHamper": {
@@ -89,9 +161,18 @@
     "primaryButton": "Request Catalogue",
     "secondaryButton": "View Details",
     "highlights": [
-      { "title": "Handcrafted", "desc": "Every hamper is assembled with meticulous attention to detail." },
-      { "title": "Eco Conscious", "desc": "Plastic-free packaging using premium sustainable materials." },
-      { "title": "Fully Customisable", "desc": "Add branding, personalised cards and bespoke gift sleeves." }
+      {
+        "title": "Handcrafted",
+        "desc": "Every hamper is assembled with meticulous attention to detail."
+      },
+      {
+        "title": "Eco Conscious",
+        "desc": "Plastic-free packaging using premium sustainable materials."
+      },
+      {
+        "title": "Fully Customisable",
+        "desc": "Add branding, personalised cards and bespoke gift sleeves."
+      }
     ]
   },
   "inside": {
@@ -100,18 +181,42 @@
     "titleHighlight": "Every Hamper",
     "intro": "Every hamper is thoughtfully curated with premium festive essentials, gourmet delights and handcrafted keepsakes that create memorable gifting experiences.",
     "leftItems": [
-      { "title": "Premium Dry Fruits", "desc": "Almonds, Cashews & Pistachios" },
-      { "title": "Artisan Tea", "desc": "Premium loose leaf blends" },
-      { "title": "Luxury Chocolates", "desc": "Handcrafted festive treats" },
-      { "title": "Organic Honey", "desc": "Natural & sustainably sourced" }
+      {
+        "title": "Premium Dry Fruits",
+        "desc": "Almonds, Cashews & Pistachios"
+      },
+      {
+        "title": "Artisan Tea",
+        "desc": "Premium loose leaf blends"
+      },
+      {
+        "title": "Luxury Chocolates",
+        "desc": "Handcrafted festive treats"
+      },
+      {
+        "title": "Organic Honey",
+        "desc": "Natural & sustainably sourced"
+      }
     ],
     "image": "/site/diwali-gifting/curated-hamper.png",
     "imageAlt": "What is inside an Ecotwist Diwali corporate hamper",
     "rightItems": [
-      { "title": "Brass Diya", "desc": "Traditional festive décor" },
-      { "title": "Soy Wax Candle", "desc": "Hand-poured aromatic candle" },
-      { "title": "Personalised Card", "desc": "Printed with your message" },
-      { "title": "Eco Gift Box", "desc": "Reusable premium packaging" }
+      {
+        "title": "Brass Diya",
+        "desc": "Traditional festive décor"
+      },
+      {
+        "title": "Soy Wax Candle",
+        "desc": "Hand-poured aromatic candle"
+      },
+      {
+        "title": "Personalised Card",
+        "desc": "Printed with your message"
+      },
+      {
+        "title": "Eco Gift Box",
+        "desc": "Reusable premium packaging"
+      }
     ],
     "highlights": [
       "Premium Quality",
@@ -130,12 +235,30 @@
     "badgeLabel": "Premium Finish",
     "badgeTitle": "Custom Branding",
     "options": [
-      { "title": "Logo Embossing", "desc": "Elegant foil stamping and premium logo printing." },
-      { "title": "Personalised Greeting Cards", "desc": "Include festive wishes from your organisation." },
-      { "title": "Custom Gift Sleeves", "desc": "Luxury branded sleeves with festive artwork." },
-      { "title": "QR Video Messages", "desc": "Attach a personalised CEO or team message." },
-      { "title": "Eco Gift Tags", "desc": "Beautiful seed-paper tags with your branding." },
-      { "title": "Luxury Packaging", "desc": "Reusable premium boxes with magnetic closures." }
+      {
+        "title": "Logo Embossing",
+        "desc": "Elegant foil stamping and premium logo printing."
+      },
+      {
+        "title": "Personalised Greeting Cards",
+        "desc": "Include festive wishes from your organisation."
+      },
+      {
+        "title": "Custom Gift Sleeves",
+        "desc": "Luxury branded sleeves with festive artwork."
+      },
+      {
+        "title": "QR Video Messages",
+        "desc": "Attach a personalised CEO or team message."
+      },
+      {
+        "title": "Eco Gift Tags",
+        "desc": "Beautiful seed-paper tags with your branding."
+      },
+      {
+        "title": "Luxury Packaging",
+        "desc": "Reusable premium boxes with magnetic closures."
+      }
     ],
     "ctaEyebrow": "Corporate Orders",
     "ctaTitle": "Design a Gift Experience",
@@ -150,16 +273,44 @@
     "image": "/site/diwali-gifting/sustainable.png",
     "imageAlt": "Plastic-free, reusable Diwali gift packaging",
     "points": [
-      { "title": "Plastic-Free Packaging", "desc": "Beautiful recyclable packaging crafted with premium paper and reusable materials.", "symbol": "🌿" },
-      { "title": "Handcrafted by Artisans", "desc": "Supporting local communities and preserving traditional craftsmanship.", "symbol": "🤝" },
-      { "title": "Responsibly Sourced", "desc": "Curated products sourced from trusted sustainable partners.", "symbol": "🌱" },
-      { "title": "Reusable Gift Boxes", "desc": "Designed to be repurposed long after the celebration ends.", "symbol": "♻️" }
+      {
+        "title": "Plastic-Free Packaging",
+        "desc": "Beautiful recyclable packaging crafted with premium paper and reusable materials.",
+        "symbol": "🌿"
+      },
+      {
+        "title": "Handcrafted by Artisans",
+        "desc": "Supporting local communities and preserving traditional craftsmanship.",
+        "symbol": "🤝"
+      },
+      {
+        "title": "Responsibly Sourced",
+        "desc": "Curated products sourced from trusted sustainable partners.",
+        "symbol": "🌱"
+      },
+      {
+        "title": "Reusable Gift Boxes",
+        "desc": "Designed to be repurposed long after the celebration ends.",
+        "symbol": "♻️"
+      }
     ],
     "stats": [
-      { "value": "100%", "title": "Plastic-Free" },
-      { "value": "5000+", "title": "Eco Gift Boxes" },
-      { "value": "200+", "title": "Artisans Supported" },
-      { "value": "98%", "title": "Reusable Packaging" }
+      {
+        "value": "100%",
+        "title": "Plastic-Free"
+      },
+      {
+        "value": "5000+",
+        "title": "Eco Gift Boxes"
+      },
+      {
+        "value": "200+",
+        "title": "Artisans Supported"
+      },
+      {
+        "value": "98%",
+        "title": "Reusable Packaging"
+      }
     ],
     "journeyTitle": "Our Sustainable Journey",
     "journey": [
@@ -177,11 +328,31 @@
     "intro": "From your first enquiry to the final doorstep delivery, we manage every detail to ensure a seamless and memorable gifting experience.",
     "stepLabel": "Step",
     "steps": [
-      { "title": "Share Your Requirement", "desc": "Tell us your gifting goals, budget, quantity and preferred delivery timeline.", "symbol": "💬" },
-      { "title": "Curate Your Hamper", "desc": "Select from our festive collections or build a fully customised gift experience.", "symbol": "🎁" },
-      { "title": "Brand Customisation", "desc": "Add your logo, greeting cards, gift sleeves and premium packaging.", "symbol": "✨" },
-      { "title": "Production & Quality Check", "desc": "Every hamper is handcrafted, assembled and inspected before dispatch.", "symbol": "🛠️" },
-      { "title": "Delivery Across India", "desc": "Safe and timely delivery to offices, homes or multiple locations nationwide.", "symbol": "🚚" }
+      {
+        "title": "Share Your Requirement",
+        "desc": "Tell us your gifting goals, budget, quantity and preferred delivery timeline.",
+        "symbol": "💬"
+      },
+      {
+        "title": "Curate Your Hamper",
+        "desc": "Select from our festive collections or build a fully customised gift experience.",
+        "symbol": "🎁"
+      },
+      {
+        "title": "Brand Customisation",
+        "desc": "Add your logo, greeting cards, gift sleeves and premium packaging.",
+        "symbol": "✨"
+      },
+      {
+        "title": "Production & Quality Check",
+        "desc": "Every hamper is handcrafted, assembled and inspected before dispatch.",
+        "symbol": "🛠️"
+      },
+      {
+        "title": "Delivery Across India",
+        "desc": "Safe and timely delivery to offices, homes or multiple locations nationwide.",
+        "symbol": "🚚"
+      }
     ],
     "ctaEyebrow": "Need Assistance?",
     "ctaTitle": "Let's Create Something Special",
@@ -194,12 +365,36 @@
     "titleHighlight": "Celebration",
     "intro": "Every hamper tells a story. Explore our premium festive gifting experiences, handcrafted details and elegant corporate celebrations.",
     "items": [
-      { "image": "/site/diwali-gifting/luxury-box.png", "title": "Executive Luxury Box", "category": "Corporate Collection" },
-      { "image": "/site/diwali-gifting/festive-workspace.png", "title": "Festive Workspace", "category": "Corporate Celebration" },
-      { "image": "/site/diwali-gifting/premium-packaging.png", "title": "Premium Packaging", "category": "Luxury Finish" },
-      { "image": "/site/diwali-gifting/dry-fruit.png", "title": "Dry Fruit Collection", "category": "Premium Selection" },
-      { "image": "/site/diwali-gifting/employee-gifting.png", "title": "Employee Gifting", "category": "Festive Moments" },
-      { "image": "/site/diwali-gifting/luxury-hamper.png", "title": "Luxury Hamper", "category": "Signature Collection" }
+      {
+        "image": "/site/diwali-gifting/luxury-box.png",
+        "title": "Executive Luxury Box",
+        "category": "Corporate Collection"
+      },
+      {
+        "image": "/site/diwali-gifting/festive-workspace.png",
+        "title": "Festive Workspace",
+        "category": "Corporate Celebration"
+      },
+      {
+        "image": "/site/diwali-gifting/premium-packaging.png",
+        "title": "Premium Packaging",
+        "category": "Luxury Finish"
+      },
+      {
+        "image": "/site/diwali-gifting/dry-fruit.png",
+        "title": "Dry Fruit Collection",
+        "category": "Premium Selection"
+      },
+      {
+        "image": "/site/diwali-gifting/employee-gifting.png",
+        "title": "Employee Gifting",
+        "category": "Festive Moments"
+      },
+      {
+        "image": "/site/diwali-gifting/luxury-hamper.png",
+        "title": "Luxury Hamper",
+        "category": "Signature Collection"
+      }
     ],
     "highlightEyebrow": "Every Detail Matters",
     "highlightTitle": "Crafted to Leave a Lasting Impression",
@@ -217,10 +412,22 @@
     "eyebrow": "FAQ",
     "title": "Frequently Asked Questions",
     "items": [
-      { "question": "What is the minimum order quantity?", "answer": "We typically cater to corporate orders starting from 25 hampers, with flexible options based on your requirements." },
-      { "question": "Can we customise the packaging?", "answer": "Yes. We offer logo printing, personalised greeting cards, branded sleeves and fully customised gift boxes." },
-      { "question": "Do you deliver across India?", "answer": "Yes. We provide safe and timely delivery to offices, homes and multiple locations nationwide." },
-      { "question": "Can we request product samples?", "answer": "Absolutely. Sample hampers are available before placing large corporate orders." }
+      {
+        "question": "What is the minimum order quantity?",
+        "answer": "We typically cater to corporate orders starting from 25 hampers, with flexible options based on your requirements."
+      },
+      {
+        "question": "Can we customise the packaging?",
+        "answer": "Yes. We offer logo printing, personalised greeting cards, branded sleeves and fully customised gift boxes."
+      },
+      {
+        "question": "Do you deliver across India?",
+        "answer": "Yes. We provide safe and timely delivery to offices, homes and multiple locations nationwide."
+      },
+      {
+        "question": "Can we request product samples?",
+        "answer": "Absolutely. Sample hampers are available before placing large corporate orders."
+      }
     ]
   },
   "cta": {

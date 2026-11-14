@@ -1,23 +1,42 @@
 {
-  "_meta": { "label": "Products page", "route": "/products" },
+  "_meta": {
+    "label": "Products page",
+    "route": "/products"
+  },
   "intro": {
     "brandName": "ATELIER",
     "brandTagline": "Gifted"
   },
   "hero": {
     "eyebrow": "Executive Gift Collections",
-    "titleLine1": "Gifts that",
-    "titleHighlight": "speak",
-    "titleLine2": "without words.",
-    "intro": "Cork stationery, recycled paper goods, bamboo drinkware, soya wax candles & diyas and handcrafted jar gift boxes — for teams who value craft over consumption.",
+    "titleLine1": "Sustainable corporate",
+    "titleHighlight": "gift products",
+    "titleLine2": "that speak without words.",
+    "intro": "Sustainable corporate gift products for teams who value craft over consumption: cork stationery, recycled paper goods, bamboo drinkware, soya wax candles & diyas and handcrafted jar gift boxes.",
     "primaryButton": "Shop All Products",
     "secondaryButton": "View Gift Boxes →",
     "backgroundImage": "/kits/onboarding-collection.webp",
     "stats": [
-      { "value": "20", "suffix": "+", "label": "Curated Products" },
-      { "value": "100", "suffix": "%", "label": "Organic & Recycled" },
-      { "value": "40", "suffix": "+", "label": "Artisan Makers" },
-      { "value": "12", "suffix": "k+", "label": "Happy Recipients" }
+      {
+        "value": "20",
+        "suffix": "+",
+        "label": "Curated Products"
+      },
+      {
+        "value": "100",
+        "suffix": "%",
+        "label": "Organic & Recycled"
+      },
+      {
+        "value": "40",
+        "suffix": "+",
+        "label": "Artisan Makers"
+      },
+      {
+        "value": "12",
+        "suffix": "k+",
+        "label": "Happy Recipients"
+      }
     ],
     "scrollLabel": "Scroll"
   },
@@ -31,10 +50,26 @@
   "banners": {
     "linkText": "Shop →",
     "items": [
-      { "title": "Cork Collection", "category": "Cork Collection", "key": "cork-diary" },
-      { "title": "Recycled Paper", "category": "Recycled Paper", "key": "paper-pencil" },
-      { "title": "Candles", "category": "Candles", "key": "soy-wax-diyas" },
-      { "title": "Gift Boxes", "category": "Gift Boxes", "key": "gift-box-2-jar" }
+      {
+        "title": "Cork Collection",
+        "category": "Cork Collection",
+        "key": "cork-diary"
+      },
+      {
+        "title": "Recycled Paper",
+        "category": "Recycled Paper",
+        "key": "paper-pencil"
+      },
+      {
+        "title": "Candles",
+        "category": "Candles",
+        "key": "soy-wax-diyas"
+      },
+      {
+        "title": "Gift Boxes",
+        "category": "Gift Boxes",
+        "key": "gift-box-2-jar"
+      }
     ]
   },
   "productGrid": {

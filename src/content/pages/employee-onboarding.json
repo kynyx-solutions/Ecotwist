@@ -10,9 +10,9 @@
     "clickHint": "Click to spark",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Employee",
-    "titleLine2": "Onboarding",
-    "titleHighlight": "Gifting.",
-    "intro": "Make every new beginning memorable with consciously curated gifts that reflect your brand's values from day one.",
+    "titleLine2": "Welcome Kits",
+    "titleHighlight": "& Onboarding Gifts.",
+    "intro": "Make every new beginning memorable with an employee welcome kit that reflects your brand's values from day one: cork diaries, bamboo bottles, totes and mugs with your logo.",
     "primaryButton": "Explore Collections",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -39,7 +39,7 @@
   },
   "philosophy": {
     "image": "/site/employee-onboarding/philosophy.png",
-    "imageAlt": "Philosophy",
+    "imageAlt": "Eco-friendly employee welcome kit laid out on a desk: diary, bottle and plant",
     "quote": "\"A thoughtful first impression builds loyalty that lasts.\"",
     "quoteAuthor": "Ecotwist",
     "eyebrow": "The Philosophy",
@@ -182,7 +182,7 @@
     "titleStart": "Ready to create the perfect",
     "titleHighlight": "Onboarding",
     "titleEnd": "gift experience?",
-    "text": "Join over 50+ forward-thinking companies choosing sustainable onboarding gifting.",
+    "text": "Join 100+ forward-thinking companies choosing a sustainable employee welcome kit.",
     "primaryButton": "Get Started",
     "secondaryButton": "Schedule a Consultation"
   }

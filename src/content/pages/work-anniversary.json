@@ -1,13 +1,16 @@
 {
-  "_meta": { "label": "Work Anniversary", "route": "/occasions/work-anniversary" },
+  "_meta": {
+    "label": "Work Anniversary",
+    "route": "/occasions/work-anniversary"
+  },
   "hero": {
     "clickHint": "Click to celebrate",
     "clickHintSymbol": "✦",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Work",
     "titleLine2": "Anniversary",
-    "titleHighlight": "Gifting Solutions.",
-    "intro": "Celebrate the milestones that matter most — honour years of dedication with premium, personalised gifts that speak to loyalty and legacy.",
+    "titleHighlight": "Gifts.",
+    "intro": "Celebrate the milestones that matter: work anniversary gifts that honour years of dedication, from name-printed cork sets to executive hampers for 10+ years of service.",
     "primaryButton": "Explore Anniversary Gifts",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -28,9 +31,27 @@
     "intro": "Curated gifting tiers for every work anniversary milestone your team reaches.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Years of Service Awards", "desc": "Elegantly crafted plaques, trophies, and keepsakes marking 1, 5, 10, and 25-year milestones.", "accent": "#7a9e7e", "tag": "Legacy", "img": "/site/work-anniversary/years-of-service-awards.png" },
-      { "name": "Executive Gifting Sets", "desc": "Premium leather goods, fine stationery, and desk accessories for senior milestones.", "accent": "#5a7a5e", "tag": "Premium", "img": "/site/work-anniversary/executive-gifting-set.png" },
-      { "name": "Growth Journey Hampers", "desc": "Curated hampers celebrating professional growth — books, planners, and artisanal treats.", "accent": "#4a6e6e", "tag": "Growth", "img": "/site/work-anniversary/growth-journey-hamper.png" }
+      {
+        "name": "Years of Service Awards",
+        "desc": "Elegantly crafted plaques, trophies, and keepsakes marking 1, 5, 10, and 25-year milestones.",
+        "accent": "#7a9e7e",
+        "tag": "Legacy",
+        "img": "/site/work-anniversary/years-of-service-awards.png"
+      },
+      {
+        "name": "Executive Gifting Sets",
+        "desc": "Premium leather goods, fine stationery, and desk accessories for senior milestones.",
+        "accent": "#5a7a5e",
+        "tag": "Premium",
+        "img": "/site/work-anniversary/executive-gifting-set.png"
+      },
+      {
+        "name": "Growth Journey Hampers",
+        "desc": "Curated hampers celebrating professional growth — books, planners, and artisanal treats.",
+        "accent": "#4a6e6e",
+        "tag": "Growth",
+        "img": "/site/work-anniversary/growth-journey-hamper.png"
+      }
     ]
   },
   "products": {
@@ -38,12 +59,42 @@
     "intro": "Most-loved products for celebrating years of service.",
     "viewAllText": "View All",
     "items": [
-      { "name": "Milestone Memory Box", "sub": "Starting at ₹1,799", "tag": "Premium", "img": "/site/work-anniversary/milestone-memory-box.png" },
-      { "name": "Heritage Leather Folio", "sub": "Starting at ₹2,499", "tag": "Customizable", "img": "/site/work-anniversary/leather-folio.png" },
-      { "name": "Premium Desk Planter", "sub": "Starting at ₹999", "tag": "Eco-friendly", "img": "/site/work-anniversary/desk-planter.png" },
-      { "name": "Anniversary Treat Box", "sub": "Starting at ₹699", "tag": "1–3 years", "img": "/kits/jar-box-2-navy.webp" },
-      { "name": "Milestone Cork Set", "sub": "Starting at ₹1,299", "tag": "5 years", "img": "/kits/cork-denim-diaries.webp" },
-      { "name": "Executive Cork Collection", "sub": "Starting at ₹2,199", "tag": "10+ years", "img": "/kits/jar-box-4-navy.webp" }
+      {
+        "name": "Milestone Memory Box",
+        "sub": "Starting at ₹1,799",
+        "tag": "Premium",
+        "img": "/site/work-anniversary/milestone-memory-box.png"
+      },
+      {
+        "name": "Heritage Leather Folio",
+        "sub": "Starting at ₹2,499",
+        "tag": "Customizable",
+        "img": "/site/work-anniversary/leather-folio.png"
+      },
+      {
+        "name": "Premium Desk Planter",
+        "sub": "Starting at ₹999",
+        "tag": "Eco-friendly",
+        "img": "/site/work-anniversary/desk-planter.png"
+      },
+      {
+        "name": "Anniversary Treat Box",
+        "sub": "Starting at ₹699",
+        "tag": "1–3 years",
+        "img": "/kits/jar-box-2-navy.webp"
+      },
+      {
+        "name": "Milestone Cork Set",
+        "sub": "Starting at ₹1,299",
+        "tag": "5 years",
+        "img": "/kits/cork-denim-diaries.webp"
+      },
+      {
+        "name": "Executive Cork Collection",
+        "sub": "Starting at ₹2,199",
+        "tag": "10+ years",
+        "img": "/kits/jar-box-4-navy.webp"
+      }
     ]
   },
   "customization": {
@@ -52,21 +103,57 @@
     "titleHighlight": "Their Story",
     "intro": "No two journeys are the same. Our bespoke personalisation service ensures every anniversary gift tells the unique story of that individual's contribution to your organisation.",
     "items": [
-      { "symbol": "🏅", "title": "Year Engraving", "desc": "Milestone year and name laser-etched on premium products." },
-      { "symbol": "📜", "title": "Custom Citations", "desc": "Personalised appreciation letters drafted with your brand voice." },
-      { "symbol": "🌿", "title": "Eco Packaging", "desc": "Recycled, biodegradable gift boxes with linen lining." },
-      { "symbol": "🎨", "title": "Brand Integration", "desc": "Seamless logo placement and brand color matching." }
+      {
+        "symbol": "🏅",
+        "title": "Year Engraving",
+        "desc": "Milestone year and name laser-etched on premium products."
+      },
+      {
+        "symbol": "📜",
+        "title": "Custom Citations",
+        "desc": "Personalised appreciation letters drafted with your brand voice."
+      },
+      {
+        "symbol": "🌿",
+        "title": "Eco Packaging",
+        "desc": "Recycled, biodegradable gift boxes with linen lining."
+      },
+      {
+        "symbol": "🎨",
+        "title": "Brand Integration",
+        "desc": "Seamless logo placement and brand color matching."
+      }
     ],
     "image": "/site/work-anniversary/customized-gift.webp"
   },
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🏆", "title": "Recognition Culture", "desc": "Gifts that reinforce a culture of loyalty and appreciation." },
-      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Efficient fulfillment from 10 to 10,000 anniversary gifts." },
-      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "Reliable, on-time delivery across the entire country." },
-      { "symbol": "✦", "title": "Custom Branding", "desc": "Your brand identity woven into every product." },
-      { "symbol": "◐", "title": "Dedicated Support", "desc": "Personal gift consultants guiding every order." }
+      {
+        "symbol": "🏆",
+        "title": "Recognition Culture",
+        "desc": "Gifts that reinforce a culture of loyalty and appreciation."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "desc": "Efficient fulfillment from 10 to 10,000 anniversary gifts."
+      },
+      {
+        "symbol": "◎",
+        "title": "Pan-India Delivery",
+        "desc": "Reliable, on-time delivery across the entire country."
+      },
+      {
+        "symbol": "✦",
+        "title": "Custom Branding",
+        "desc": "Your brand identity woven into every product."
+      },
+      {
+        "symbol": "◐",
+        "title": "Dedicated Support",
+        "desc": "Personal gift consultants guiding every order."
+      }
     ]
   },
   "trust": {

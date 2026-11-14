@@ -15,6 +15,9 @@ export const findPageOrBlank = (seo: SeoFile, route: string): SeoPage =>
 export const TITLE_LIMITS = { min: 30, max: 60 };
 export const DESC_LIMITS = { min: 120, max: 160 };
 
+// Pages that should stay out of Google: no score penalty for their noindex
+export const PRIVATE_ROUTES = ['/cart', '/order-placed', '/thanks'];
+
 export type Tone = 'good' | 'ok' | 'bad';
 
 // green inside the range, amber a little outside, red when empty or far off
@@ -101,7 +104,8 @@ export function extractPageText(content: unknown): PageText {
     if (!heading) {
       for (const [k, section] of Object.entries(content)) {
         if (k === '_meta') continue;
-        heading = headingOf(section);
+        // A list of steps or slides: its first item is what visitors see first
+        heading = headingOf(Array.isArray(section) ? section[0] : section);
         if (heading) break;
       }
     }
@@ -209,8 +213,10 @@ export function scorePage({ page, site, pages, content }: { page: SeoPage; site:
   checks.push(check('image', page.image ? 'Share image set' : 'Share image (using the site default)', 5, page.image ? 5 : site.defaultImage ? 3 : 0,
     'Pick a share image for this page (1200×630 JPG or PNG works best on WhatsApp, LinkedIn and Facebook).'));
 
-  // Indexable
-  checks.push(check('index', page.noindex ? 'Hidden from Google (noindex)' : 'Visible to Google', 5, page.noindex ? 0 : 5,
+  // Indexable (cart, order and thank-you pages are meant to be hidden)
+  const privatePage = PRIVATE_ROUTES.includes(normalizeRoute(page.route));
+  checks.push(check('index', page.noindex ? (privatePage ? 'Hidden from Google on purpose (private page)' : 'Hidden from Google (noindex)') : 'Visible to Google', 5,
+    !page.noindex || privatePage ? 5 : 0,
     'Fine if intended (e.g. a thank-you page). Otherwise untick "Hide from Google".'));
 
   // Unique title & description

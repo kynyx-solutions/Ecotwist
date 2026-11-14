@@ -1,14 +1,17 @@
 {
-  "_meta": { "label": "Retirement Gifting", "route": "/occasions/retirement-gifting" },
+  "_meta": {
+    "label": "Retirement Gifting",
+    "route": "/occasions/retirement-gifting"
+  },
   "hero": {
     "backgroundImage": "",
     "photoId": "retirement-hero",
     "imageAlt": "Retirement Hero",
     "eyebrow": "Corporate Solutions",
     "titleLine1": "Retirement",
-    "titleLine2": "Gifting",
-    "titleHighlight": "Solutions.",
-    "intro": "A graceful send-off for a remarkable journey — curated retirement gifts that celebrate a lifetime of contribution with the dignity it deserves.",
+    "titleLine2": "Gifts for",
+    "titleHighlight": "Employees.",
+    "intro": "A graceful send-off for a remarkable journey: retirement gifts for employees that celebrate a lifetime of contribution, from legacy keepsake boxes to team memory journals.",
     "primaryButton": "Explore Retirement Gifts",
     "secondaryButton": "Request Quote",
     "scrollLabel": "Scroll"
@@ -22,16 +25,36 @@
     "badgeSymbol": "🌅",
     "badgeText": "Heirloom Quality — Made to Last a Lifetime",
     "image": "/site/work-anniversary/milestone-memory-box.png",
-    "imageAlt": "Retirement"
+    "imageAlt": "Milestone memory box, a personalised retirement gift for an employee"
   },
   "categories": {
     "title": "Retirement Gift Collections",
     "intro": "Thoughtfully curated collections for every retiree and every farewell.",
     "linkText": "View Collection",
     "items": [
-      { "name": "Legacy Tribute Gifts", "desc": "Handcrafted keepsakes and luxury mementos that honour a lifetime of achievement.", "accent": "#9c7bb5", "tag": "Legacy", "image": "/kits/jar-box-3-velvet.webp", "photoId": "retirement-legacy-tribute-gifts" },
-      { "name": "Relaxation & Leisure", "desc": "Premium wellness hampers, travel accessories, and hobby kits for the journey ahead.", "accent": "#7a5ea0", "tag": "Leisure", "image": "/kits/candles-6.webp", "photoId": "retirement-relaxation-leisure" },
-      { "name": "Personalised Memories", "desc": "Custom photo books, engraved items, and memory collections celebrating their career.", "accent": "#5e4a80", "tag": "Memories", "image": "/kits/cork-denim-diaries.webp" }
+      {
+        "name": "Legacy Tribute Gifts",
+        "desc": "Handcrafted keepsakes and luxury mementos that honour a lifetime of achievement.",
+        "accent": "#9c7bb5",
+        "tag": "Legacy",
+        "image": "/kits/jar-box-3-velvet.webp",
+        "photoId": "retirement-legacy-tribute-gifts"
+      },
+      {
+        "name": "Relaxation & Leisure",
+        "desc": "Premium wellness hampers, travel accessories, and hobby kits for the journey ahead.",
+        "accent": "#7a5ea0",
+        "tag": "Leisure",
+        "image": "/kits/candles-6.webp",
+        "photoId": "retirement-relaxation-leisure"
+      },
+      {
+        "name": "Personalised Memories",
+        "desc": "Custom photo books, engraved items, and memory collections celebrating their career.",
+        "accent": "#5e4a80",
+        "tag": "Memories",
+        "image": "/kits/cork-denim-diaries.webp"
+      }
     ]
   },
   "products": {
@@ -39,12 +62,48 @@
     "intro": "The most treasured pieces from our retirement gifting range.",
     "viewAll": "View All",
     "items": [
-      { "name": "Legacy Keepsake Box", "sub": "Starting at ₹3,999", "tag": "Luxury", "image": "/site/client-appreciation/personalization.png", "photoId": "retirement-legacy-keepsake-box" },
-      { "name": "Relaxation Hamper", "sub": "Starting at ₹2,499", "tag": "Wellness", "image": "/site/diwali-gifting/wellness-hamper.png", "photoId": "retirement-relaxation-hamper" },
-      { "name": "Memory Journal Set", "sub": "Starting at ₹1,799", "tag": "Personalised", "image": "/site/employee-onboarding/eco-leather-notebook.png", "photoId": "retirement-memory-journal-set" },
-      { "name": "Next Chapter Hamper", "sub": "Starting at ₹2,499", "tag": "Luxury", "image": "/kits/pinewood-basket.webp", "photoId": "retirement-legacy-keepsake-box" },
-      { "name": "Slow Days Candle Hamper", "sub": "Starting at ₹1,499", "tag": "Popular", "image": "/kits/candles-6.webp", "photoId": "retirement-relaxation-hamper" },
-      { "name": "Team Memory Diary", "sub": "Starting at ₹899", "tag": "Personal", "image": "/kits/cork-denim-diaries.webp", "photoId": "retirement-memory-journal-set" }
+      {
+        "name": "Legacy Keepsake Box",
+        "sub": "Starting at ₹3,999",
+        "tag": "Luxury",
+        "image": "/site/client-appreciation/personalization.png",
+        "photoId": "retirement-legacy-keepsake-box"
+      },
+      {
+        "name": "Relaxation Hamper",
+        "sub": "Starting at ₹2,499",
+        "tag": "Wellness",
+        "image": "/site/diwali-gifting/wellness-hamper.png",
+        "photoId": "retirement-relaxation-hamper"
+      },
+      {
+        "name": "Memory Journal Set",
+        "sub": "Starting at ₹1,799",
+        "tag": "Personalised",
+        "image": "/site/employee-onboarding/eco-leather-notebook.png",
+        "photoId": "retirement-memory-journal-set"
+      },
+      {
+        "name": "Next Chapter Hamper",
+        "sub": "Starting at ₹2,499",
+        "tag": "Luxury",
+        "image": "/kits/pinewood-basket.webp",
+        "photoId": "retirement-legacy-keepsake-box"
+      },
+      {
+        "name": "Slow Days Candle Hamper",
+        "sub": "Starting at ₹1,499",
+        "tag": "Popular",
+        "image": "/kits/candles-6.webp",
+        "photoId": "retirement-relaxation-hamper"
+      },
+      {
+        "name": "Team Memory Diary",
+        "sub": "Starting at ₹899",
+        "tag": "Personal",
+        "image": "/kits/cork-denim-diaries.webp",
+        "photoId": "retirement-memory-journal-set"
+      }
     ]
   },
   "customization": {
@@ -53,22 +112,58 @@
     "titleHighlight": "as Their Journey",
     "intro": "Every retirement is a singular story. We create a gift that captures decades of memories, achievements, and relationships.",
     "items": [
-      { "symbol": "🎓", "title": "Career Timeline", "desc": "Career journey prints marking key milestones." },
-      { "symbol": "📸", "title": "Photo Memorials", "desc": "Custom photo books capturing highlights of their tenure." },
-      { "symbol": "✍️", "title": "Team Tribute Booklet", "desc": "Heartfelt messages bound in a premium keepsake booklet." },
-      { "symbol": "📦", "title": "Heritage Packaging", "desc": "Heirloom-quality boxes designed to be treasured forever." }
+      {
+        "symbol": "🎓",
+        "title": "Career Timeline",
+        "desc": "Career journey prints marking key milestones."
+      },
+      {
+        "symbol": "📸",
+        "title": "Photo Memorials",
+        "desc": "Custom photo books capturing highlights of their tenure."
+      },
+      {
+        "symbol": "✍️",
+        "title": "Team Tribute Booklet",
+        "desc": "Heartfelt messages bound in a premium keepsake booklet."
+      },
+      {
+        "symbol": "📦",
+        "title": "Heritage Packaging",
+        "desc": "Heirloom-quality boxes designed to be treasured forever."
+      }
     ],
     "image": "/site/work-anniversary/leather-folio.png",
-    "imageAlt": "Gift"
+    "imageAlt": "Leather folio engraved with a name and years of service"
   },
   "why": {
     "title": "Why Choose Ecotwist",
     "items": [
-      { "symbol": "🌟", "title": "Graceful Tribute", "desc": "Gifts that honour a lifetime of service with dignity." },
-      { "symbol": "◈", "title": "Bulk Ordering", "desc": "Seamless fulfillment for 1 or 100 retirees." },
-      { "symbol": "◎", "title": "Pan-India Delivery", "desc": "On-time delivery for ceremonies across India." },
-      { "symbol": "✦", "title": "Deep Personalisation", "desc": "Every gift reflects their personal journey." },
-      { "symbol": "◐", "title": "Dedicated Support", "desc": "A consultant for your retirement programme." }
+      {
+        "symbol": "🌟",
+        "title": "Graceful Tribute",
+        "desc": "Gifts that honour a lifetime of service with dignity."
+      },
+      {
+        "symbol": "◈",
+        "title": "Bulk Ordering",
+        "desc": "Seamless fulfillment for 1 or 100 retirees."
+      },
+      {
+        "symbol": "◎",
+        "title": "Pan-India Delivery",
+        "desc": "On-time delivery for ceremonies across India."
+      },
+      {
+        "symbol": "✦",
+        "title": "Deep Personalisation",
+        "desc": "Every gift reflects their personal journey."
+      },
+      {
+        "symbol": "◐",
+        "title": "Dedicated Support",
+        "desc": "A consultant for your retirement programme."
+      }
     ]
   },
   "trust": {
